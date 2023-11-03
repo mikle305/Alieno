@@ -1,0 +1,12 @@
+{
+  "name": "com.mikle305.unity-screen-transitions",
+  "version": "1.0.0",
+  "displayName": "Unity Screen Transitions",
+  "description": "",
+  "unity": "2022.3",
+  "author": {
+    "name": "Mihail Babichev",
+    "email": "",
+    "url": "https://github.com/mikle305"
+  }
+}
