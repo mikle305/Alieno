@@ -2786,14 +2786,14 @@
             "_snappingEnabled": false,
             "_snappingOn": {
                 "x": true,
-                "y": true,
-                "z": false
-            },
-            "_visibleGrid": false,
-            "_gridOn": {
-                "x": false,
                 "y": false,
                 "z": true
+            },
+            "_visibleGrid": true,
+            "_gridOn": {
+                "x": false,
+                "y": true,
+                "z": false
             },
             "_lockedGrid": false,
             "_step": {
