@@ -1211,6 +1211,7 @@ GameObject:
   - component: {fileID: 4078725191484616}
   - component: {fileID: 5111841251721714029}
   - component: {fileID: 507919951813536729}
+  - component: {fileID: 1239482046880393507}
   - component: {fileID: 1105913242540431947}
   - component: {fileID: 8221697688862398661}
   - component: {fileID: 2017677509209712713}
@@ -1273,6 +1274,27 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _playerTransform: {fileID: 4078725191484616}
   _turnSpeed: 10
+--- !u!114 &1239482046880393507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398320186731392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdeaa68b28a11d4baa788a070f94a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerBody: {fileID: 1105913242540431947}
+  _dashDistance: 5
+  _dashSpeed: 10
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _dashMaterial: {fileID: 2100000, guid: b9d03f60a9cb4fd48aa70a0049bc8699, type: 2}
+  _trailMesh: {fileID: 137435413781793066}
+  _trailLife: 0.3
 --- !u!54 &1105913242540431947
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1282,8 +1304,8 @@ Rigidbody:
   m_GameObject: {fileID: 1398320186731392}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1298,7 +1320,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 2
 --- !u!136 &8221697688862398661
 CapsuleCollider:
