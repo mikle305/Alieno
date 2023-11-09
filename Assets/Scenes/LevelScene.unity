@@ -6601,6 +6601,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1118526059}
+    - target: {fileID: 1239482046880393507, guid: c38312671b1287f438871de666ae8f72, type: 3}
+      propertyPath: _dashMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 60d2e59c8206baa40a6a05dd11e976de, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
