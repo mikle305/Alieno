@@ -67,11 +67,14 @@ public class PlayerDash : MonoBehaviour
         
         _isDashing = true;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, dashDistance, _obstacleLayer);
+        var hit = Physics.Raycast(transform.position, direction, dashDistance, _obstacleLayer);
  
         if (hit)
         {
-            _dashTarget = transform.position + (Vector3)((direction.normalized * dashDistance) * hit.fraction);
+            print("Obstacle hit");
+            
+            // _dashTarget = transform.position + (Vector3)((direction * dashDistance) * hit.fraction);
+            _dashTarget = transform.position + (Vector3)((direction * dashDistance));
         }
         else
         {
