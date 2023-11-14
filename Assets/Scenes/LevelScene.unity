@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 514ff98a3e4e8aa4290a17ad1eabb81d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.14545462, g: 0.0941231, b: 0.21724021, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -715,6 +715,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4718072007889550, guid: 8e0cbd5c9eb5cb445a4a8e7bb1c66ffb, type: 3}
   m_PrefabInstance: {fileID: 108241805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &113163368 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6358293099992327959, guid: eca04ff4a64fb3f4f9e62fe42b082623, type: 3}
+  m_PrefabInstance: {fileID: 2131346193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &122319434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1935,17 +1946,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 976357596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &621606155 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4073934742363319192, guid: eca04ff4a64fb3f4f9e62fe42b082623, type: 3}
-  m_PrefabInstance: {fileID: 2131346193}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &625931136
 GameObject:
   m_ObjectHideFlags: 0
@@ -7507,7 +7507,7 @@ PrefabInstance:
     - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
       propertyPath: _nextLvlButton
       value: 
-      objectReference: {fileID: 621606155}
+      objectReference: {fileID: 113163368}
     - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
       propertyPath: _levelNumbers.Array.data[0]
       value: 
