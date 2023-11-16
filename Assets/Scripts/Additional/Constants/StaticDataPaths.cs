@@ -2,7 +2,8 @@
 {
     public static class StaticDataPaths
     {
-        public const string MusicConfig = "StaticData/MusicConfig";
-        public const string AppConfig = "StaticData/AppConfig";
+        public const string MusicConfig = "StaticData/Configs/MusicConfig";
+        public const string AppConfig = "StaticData/Configs/AppConfig";
+        public const string AbilitiesConfig = "StaticData/Configs/AbilitiesConfig";
     }
 }

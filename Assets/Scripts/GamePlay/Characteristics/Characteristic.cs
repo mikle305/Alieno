@@ -7,18 +7,17 @@ namespace GamePlay.Characteristics
 {
     public class Characteristic
     {
-        private DefaultStat _current;
-        private ModifiableStat _max;
+        private readonly DefaultStat _current;
+        private readonly ModifiableStat _max;
 
+        public float Current => _current.GetValue();
+        public float Max => _max.GetValue();
+        public IModifications Modifications => _max;
+        
         public event Action ValueChanged;
         public event Action ZeroReached;
 
 
-        public float Current => _current.GetValue();
-        public float Max => _max.GetValue();
-        public IModifications GetModifications => _max;
-        
-        
         public Characteristic(float current, float max)
         {
             _max = new ModifiableStat(max);

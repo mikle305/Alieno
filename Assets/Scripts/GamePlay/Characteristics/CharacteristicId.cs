@@ -2,6 +2,6 @@
 {
     public enum CharacteristicId
     {
-        Health
+        Health,
     }
 }

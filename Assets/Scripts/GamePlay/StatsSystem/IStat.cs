@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GamePlay.StatsSystem
+﻿namespace GamePlay.StatsSystem
 {
     public interface IStat
     {
@@ -9,10 +7,5 @@ namespace GamePlay.StatsSystem
         /// </summary>
         /// <returns></returns>
         public float GetValue();
-
-        /// <summary>
-        /// Notify subscribers with 2 params (value before change, value after change).
-        /// </summary>
-        public event Action<float, float> ValueChanged;
     }
 }
