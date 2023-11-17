@@ -1,46 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Additional.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelMapService : MonoBehaviour
+public class LevelMapService : MonoSingleton<LevelMapService>
 {
-    [SerializeField] private Button _nextLvlButton;
+    [SerializeField] public Button _nextLvlButton;
     [SerializeField] private Transform _pointer;
     [SerializeField] private List<Transform> _levelNumbers;
     [SerializeField] private Vector3 _offset = new Vector3(0,1,0);
     [SerializeField] private float _speed =1f;
-
-    private int _currentRoom = 0;
+    [SerializeField] private Coroutine _animation;
+    public event Action OnAnimationFinish;
+    private int _currentRoom = -1;
     private int _totalRooms;
+    private Vector3 _positionToMove;
     private void Start()
     {
         _nextLvlButton.onClick.AddListener(DisplayNextRoom);
         _totalRooms = _levelNumbers.Count;
-        StartCoroutine(LerpPointer(_levelNumbers[_currentRoom]));
     }
 
     public void DisplayNextRoom()
     {
-        if(++_currentRoom >= _totalRooms)
+        if(++_currentRoom >= _totalRooms || _animation != null)
             return;
-        
-        StartCoroutine(LerpPointer(_levelNumbers[_currentRoom]));
+
+        if (_animation == null)
+            _animation = StartCoroutine(MoveAnimation(_levelNumbers[_currentRoom]));
+        else
+            SkipAnimation();
     }
 
-    private IEnumerator LerpPointer(Transform moveTo)
+    private IEnumerator MoveAnimation(Transform moveTo)
     {
-        Vector3 posToMove = moveTo.position + _offset;
-        print("into");
-        print(posToMove);
-        print(_pointer.position);
-        while ((Vector3.Distance(_pointer.position, posToMove) > 0.001f))
+        _positionToMove = moveTo.position + _offset;
+        while ((Vector3.Distance(_pointer.position, _positionToMove) > 0.001f))
         {
-            print("cycle");
             var step =  _speed * Time.deltaTime; // calculate distance to move
-            _pointer.position = Vector3.MoveTowards(_pointer.position, posToMove, step);
-            print(posToMove);
-            print(_pointer.position);
+            _pointer.position = Vector3.MoveTowards(_pointer.position, _positionToMove, step);
             if (Vector3.Distance(_pointer.position, moveTo.position) < 0.001f)
             {
                 moveTo.position *= -1.0f;
@@ -48,5 +48,20 @@ public class LevelMapService : MonoBehaviour
             
             yield return null;
         }
+
+        yield return new WaitForSeconds(1f);
+     
+        _animation = null;
+        OnAnimationFinish?.Invoke();
+    }
+
+    private void SkipAnimation()
+    {
+        StopCoroutine(_animation);
+        _animation = null;
+
+        _pointer.position = _positionToMove;
+
+        OnAnimationFinish?.Invoke();
     }
 }
