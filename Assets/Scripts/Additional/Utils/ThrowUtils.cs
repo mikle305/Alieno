@@ -12,5 +12,8 @@ namespace Additional.Utils
         
         public static void ValueLessThanZero() 
             => throw new ArgumentException("Value must be not not less than zero");
+
+        public static void ComponentAlreadyAdded()
+            => throw new InvalidOperationException("Component is already added, can't add same components to entity");
     }
 }

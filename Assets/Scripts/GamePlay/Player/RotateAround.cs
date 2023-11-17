@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class RotateAround : MonoBehaviour
+namespace GamePlay.Player
 {
-    [SerializeField] GameObject target;
-    [SerializeField] private float _speed = 1f;
-    void Update()
+    public class RotateAround : MonoBehaviour
     {
-        transform.RotateAround(target.transform.position, Vector3.up, _speed * Time.deltaTime);
+        [SerializeField] GameObject target;
+        [SerializeField] private float _speed = 1f;
+        void Update()
+        {
+            transform.RotateAround(target.transform.position, Vector3.up, _speed * Time.deltaTime);
+        }
     }
 }

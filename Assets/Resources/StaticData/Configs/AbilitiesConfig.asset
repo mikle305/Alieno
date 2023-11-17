@@ -15,6 +15,7 @@ MonoBehaviour:
   <AbilitiesData>k__BackingField:
   - rid: 6338515585351548932
   - rid: 6338515585351548935
+  - rid: 6338515585351548937
   references:
     version: 2
     RefIds:
@@ -28,3 +29,7 @@ MonoBehaviour:
       data:
         <Name>k__BackingField: 
         <RicochetsCount>k__BackingField: 2
+    - rid: 6338515585351548937
+      type: {class: ForwardShotData, ns: StaticData.Abilities, asm: Assembly-CSharp}
+      data:
+        <Name>k__BackingField: 

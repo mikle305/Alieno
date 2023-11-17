@@ -9,7 +9,7 @@ namespace StaticData.Abilities
     {
         [field: SerializeField] public int RicochetsCount { get; private set; } = 2;
 
-        public override AbilityId Id => AbilityId.RicochetProjectile;
+        public override AbilityId Id => AbilityId.Ricochet;
         public override Type ComponentType { get; } = typeof(RicochetComponent);
     }
 }

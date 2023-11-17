@@ -2,8 +2,8 @@
 {
     public enum AbilityId
     {
-        MultishotProjectile,
-        FrontProjectilePlus,
-        RicochetProjectile,
+        ForwardShot,
+        Multishot,
+        Ricochet,
     }
 }
