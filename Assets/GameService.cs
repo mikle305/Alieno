@@ -34,7 +34,7 @@ public class GameService : MonoSingleton<GameService>
     {
         ToggleMap(false);
         ToggleRoomObjects(true);
-        _currentRoomObject = Instantiate(_roomList[++_currentRoomIndex]);
+        _currentRoomObject = Instantiate(_roomList[++_currentRoomIndex],Vector3.zero,Quaternion.Euler(0,180,0));
         _currentRoomController = _currentRoomObject.GetComponent<RoomController>();
         
         _currentRoomController.MovePlayerToSpawnPoint(_player.transform);

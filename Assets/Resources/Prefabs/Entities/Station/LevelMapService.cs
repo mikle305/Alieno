@@ -25,7 +25,13 @@ public class LevelMapService : MonoSingleton<LevelMapService>
 
     public void DisplayNextRoom()
     {
-        if(++_currentRoom >= _totalRooms || _animation != null)
+        if (_animation != null)
+        {
+            SkipAnimation();
+            return;
+        }
+        
+        if(++_currentRoom >= _totalRooms)
             return;
 
         if (_animation == null)
