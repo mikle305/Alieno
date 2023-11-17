@@ -5,11 +5,6 @@ namespace SaveData
     [Serializable]
     public class SettingsData
     {
-        public float Volume;
-
-        public SettingsData()
-        {
-            Volume = 1;
-        }
+        public float Volume = 1;
     }
 }

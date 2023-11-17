@@ -2,49 +2,52 @@
 using Additional.Constants;
 using Additional.Utils;
 using GamePlay.StatsSystem;
+using UnityEngine;
 
 namespace GamePlay.Characteristics
 {
-    public class Characteristic
+    public class Characteristic : MonoBehaviour
     {
+        [SerializeField] private float _defaultCurrent;
+        [SerializeField] private float _defaultMax;
+        
         private DefaultStat _current;
         private ModifiableStat _max;
+
+        public float Current => _current.GetValue();
+        public float Max => _max.GetValue();
+        public IModifications Modifications => _max;
 
         public event Action ValueChanged;
         public event Action ZeroReached;
 
 
-        public float Current => _current.GetValue();
-        public float Max => _max.GetValue();
-        public IModifications GetModifications => _max;
-        
-        
-        public Characteristic(float current, float max)
+        private void Awake()
         {
-            _max = new ModifiableStat(max);
-            _current = new DefaultStat(current);
+            _max = new ModifiableStat(_defaultMax);
+            _current = new DefaultStat(_defaultCurrent);
         }
 
-        public void Increase(float health)
+        public void Increase(float value)
         {
-            ValidateLessThanZero(health);
+            ValidateLessThanZero(value);
             if (IsZero())
                 return;
-            
+
             if (IsFull())
                 return;
-            
-            ApplyIncrease(health);
+
+            ApplyIncrease(value);
             InvokeChanged();
         }
 
-        public void Decrease(float damage)
+        public void Decrease(float value)
         {
-            ValidateLessThanZero(damage);
+            ValidateLessThanZero(value);
             if (IsZero())
                 return;
-            
-            ApplyDecrease(damage);
+
+            ApplyDecrease(value);
             InvokeChanged();
             TryInvokeZeroReached();
         }
@@ -64,10 +67,10 @@ namespace GamePlay.Characteristics
             else
                 _current.SetValue(0);
         }
-        
+
         private bool IsFull()
             => Math.Abs(Max - Current) < Constants.Epsilon;
-        
+
         private bool IsZero()
             => Current == 0;
 
@@ -79,7 +82,7 @@ namespace GamePlay.Characteristics
 
         private void InvokeChanged()
             => ValueChanged?.Invoke();
-        
+
         private static void ValidateLessThanZero(float value)
         {
             if (value <= 0)
