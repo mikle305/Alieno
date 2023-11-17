@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -22,7 +23,7 @@ namespace GamePlay.Player
         [FormerlySerializedAs("_isDashing")] public bool IsDashing;
         private PlayerMovement _movementComponent;
         private Vector3 _dashTarget;
-
+        private RaycastHit hit;
         private void Awake()
         {
             _movementComponent = GetComponent<PlayerMovement>();
@@ -63,22 +64,23 @@ namespace GamePlay.Player
         }
         public void Dash(float dashDistance)
         {
-            // owner.Movement.Velocity.normalized
         
             _horizontal = Input.GetAxisRaw("Horizontal");
             _vertical = Input.GetAxisRaw("Vertical");
+            
             var direction = new Vector3(_horizontal, 0,_vertical);
-        
+            if (direction.x != 0 && direction.z != null)
+                direction /= 2;
+            
             IsDashing = true;
 
-            var hit = Physics.Raycast(transform.position, direction, dashDistance, _obstacleLayer);
- 
-            if (hit)
+            if (Physics.Raycast(transform.position, direction, out hit, dashDistance,_obstacleLayer))
             {
                 print("Obstacle hit");
-            
-                // _dashTarget = transform.position + (Vector3)((direction * dashDistance) * hit.fraction);
-                _dashTarget = transform.position + (Vector3)((direction * dashDistance));
+                print("Hit Position"+hit.point);
+                print("Player Position"+transform.position);
+                _dashTarget =  transform.position + (hit.point - transform.position) / 3.5f;
+                print("Dash target"+_dashTarget);
             }
             else
             {
@@ -107,6 +109,14 @@ namespace GamePlay.Player
             mr.material = _dashMaterial;
         
             Destroy(go,_trailLife);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle") && IsDashing)
+            {
+                StopDashing();
+            }
         }
     }
 }
