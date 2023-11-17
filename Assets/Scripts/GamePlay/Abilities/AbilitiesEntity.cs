@@ -11,7 +11,7 @@ namespace GamePlay.Abilities
     public class AbilitiesEntity : MonoBehaviour
     {
         private StaticDataService _staticDataService;
-        private Dictionary<AbilityId, AbilityComponent> _abilitiesMap;
+        private readonly Dictionary<AbilityId, AbilityComponent> _abilitiesMap = new();
 
         public IReadOnlyDictionary<AbilityId, AbilityComponent> AbilitiesMap => _abilitiesMap;
         

@@ -14,7 +14,7 @@ namespace Additional.Game
         protected virtual void Awake()
         {
             if (_instance != null)
-                ThrowUtils.ManyInstancesOfSingleton();
+                ThrowUtils.ManyInstancesOfSingleton(gameObject.name);
                 
             _instance = (T)this;
         }
