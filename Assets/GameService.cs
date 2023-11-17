@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Additional.Game;
+using GamePlay.Player;
 using UnityEngine;
 
 public class GameService : MonoSingleton<GameService>
@@ -17,6 +18,7 @@ public class GameService : MonoSingleton<GameService>
     private GameObject _currentRoomObject;
     private RoomController _currentRoomController;
 
+    public event Action OnRoomFinish;
     private void Start()
     {
         _levelMapService = LevelMapService.Instance;
@@ -40,8 +42,6 @@ public class GameService : MonoSingleton<GameService>
         _currentRoomController.MovePlayerToSpawnPoint(_player.transform);
         _currentRoomController.AddFinishEvent(FinishRoom);
     }
-
-
     
     private void FinishRoom()
     {
@@ -49,6 +49,7 @@ public class GameService : MonoSingleton<GameService>
         ToggleMap(true);
         
         Destroy(_currentRoomObject);
+        OnRoomFinish?.Invoke();
     }
     
     private void ToggleRoomObjects(bool value)

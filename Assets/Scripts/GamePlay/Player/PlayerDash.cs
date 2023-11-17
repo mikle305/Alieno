@@ -19,26 +19,31 @@ namespace GamePlay.Player
         private float _horizontal;
         private float _vertical;
 
-        private bool _isDashing;
+        [FormerlySerializedAs("_isDashing")] public bool IsDashing;
+        private PlayerMovement _movementComponent;
         private Vector3 _dashTarget;
 
+        private void Awake()
+        {
+            _movementComponent = GetComponent<PlayerMovement>();
+        }
+        
         private void Start()
         {
-        
+            GameService.Instance.OnRoomFinish += StopDashing;
         }
         void Update ()
         {
-            if (Input.GetKeyDown("space") && !_isDashing)
+            if (Input.GetKeyDown("space") && !IsDashing)
             {
-                print("Dash Start");
+                _movementComponent.ClearVelocity();
                 Dash(_dashDistance);
             }
-
         }
     
         private void FixedUpdate()
         {
-            if (_isDashing)
+            if (IsDashing)
             {
                 SpawnTrailMesh();
                 _playerBody.velocity = Vector2.zero;
@@ -46,8 +51,7 @@ namespace GamePlay.Player
                 float distSqr = (_dashTarget - transform.position).sqrMagnitude;
                 if (distSqr < 0.1f)
                 {
-                    OnDashFinish();
-                    _dashTarget = Vector2.zero;
+                    StopDashing();
                     // owner.Vitals.IsInvincible = false;
                 }
                 else
@@ -65,7 +69,7 @@ namespace GamePlay.Player
             _vertical = Input.GetAxisRaw("Vertical");
             var direction = new Vector3(_horizontal, 0,_vertical);
         
-            _isDashing = true;
+            IsDashing = true;
 
             var hit = Physics.Raycast(transform.position, direction, dashDistance, _obstacleLayer);
  
@@ -82,9 +86,10 @@ namespace GamePlay.Player
             }
         }
 
-        public void OnDashFinish()
+        public void StopDashing()
         {
-            _isDashing = false;
+            IsDashing = false;
+            _dashTarget = Vector2.zero;
         }
 
         private void SpawnTrailMesh()
