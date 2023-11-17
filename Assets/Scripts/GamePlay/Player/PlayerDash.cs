@@ -70,18 +70,14 @@ namespace GamePlay.Player
             _vertical = Input.GetAxisRaw("Vertical");
             
             var direction = new Vector3(_horizontal, 0,_vertical);
-            if (direction.x != 0 && direction.z != null)
+            if (direction.x != 0 && direction.z != 0)
                 direction /= 2;
             
             IsDashing = true;
 
             if (Physics.Raycast(transform.position, direction, out hit, dashDistance,_obstacleLayer))
             {
-                print("Obstacle hit");
-                print("Hit Position"+hit.point);
-                print("Player Position"+transform.position);
                 _dashTarget =  transform.position + (hit.point - transform.position) / 3.5f;
-                print("Dash target"+_dashTarget);
             }
             else
             {
