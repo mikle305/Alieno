@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Additional.Extensions;
 using Additional.Utils;
 using Services;
-using StaticData.Abilities;
 using UnityEngine;
 
 namespace GamePlay.Abilities

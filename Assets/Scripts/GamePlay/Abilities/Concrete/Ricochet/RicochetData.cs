@@ -1,5 +1,4 @@
 using System;
-using StaticData.Abilities;
 
 namespace GamePlay.Abilities
 {
