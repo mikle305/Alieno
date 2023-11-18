@@ -31,13 +31,10 @@ MonoBehaviour:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
           <AdditionsCount>k__BackingField: 1
-          <ShotDelay>k__BackingField: 0.3
+          <ShotDelay>k__BackingField: 0.05
         - <Id>k__BackingField: 2
           <AdditionsCount>k__BackingField: 2
-          <ShotDelay>k__BackingField: 0.2
-        - <Id>k__BackingField: 3
-          <AdditionsCount>k__BackingField: 2
-          <ShotDelay>k__BackingField: 0.2
+          <ShotDelay>k__BackingField: 0.05
     - rid: 6974772225356857356
       type: {class: ForwardShotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:

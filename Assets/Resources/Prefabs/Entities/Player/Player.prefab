@@ -1414,7 +1414,9 @@ MonoBehaviour:
   _abilitiesEntity: {fileID: 8602244654995898822}
   _defaultAbilities:
   - <Id>k__BackingField: 0
-    <UpLevelTimes>k__BackingField: 1
+    <UpLevelTimes>k__BackingField: 0
+  - <Id>k__BackingField: 1
+    <UpLevelTimes>k__BackingField: 0
 --- !u!114 &5713044649035136142
 MonoBehaviour:
   m_ObjectHideFlags: 0

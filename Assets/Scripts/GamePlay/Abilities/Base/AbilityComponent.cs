@@ -4,6 +4,8 @@ namespace GamePlay.Abilities
 {
     public abstract class AbilityComponent
     {
+        public abstract AbilityId AbilityId { get; }
+        public abstract int CurrentLevelId { get; protected set; }
         public abstract void Init(AbilitiesEntity entity, AbilityData data);
         public abstract void UpLevel();
 
@@ -20,9 +22,10 @@ namespace GamePlay.Abilities
 
         protected TLevelData CurrentLevel => _data.Levels[CurrentLevelId - 1];
         protected AbilitiesEntity Entity { get; private set; }
-        
-        public int CurrentLevelId { get; private set; }
 
+        public sealed override int CurrentLevelId { get; protected set; }
+        public sealed override AbilityId AbilityId => _data.Id;
+        
 
         public sealed override void Init(AbilitiesEntity entity, AbilityData data)
         {
