@@ -7,13 +7,21 @@ namespace GamePlay.Abilities
     public class AbilitiesInitializer : MonoBehaviour
     {
         [SerializeField] private AbilitiesEntity _abilitiesEntity;
-        [SerializeField] private AbilityId[] _defaultAbilities;
+        [SerializeField] private DefaultAbilityEntry[] _defaultAbilities;
 
 
-        private async UniTaskVoid Start()
+        private void Start() 
+            => InitDefaultAbilities().Forget();
+
+        private async UniTask InitDefaultAbilities()
         {
             await UniTask.Yield();
-            _defaultAbilities.ForEach(_abilitiesEntity.AddAbility);
+            _defaultAbilities.ForEach(entry =>
+            {
+                _abilitiesEntity.AddAbility(entry.Id);
+                for (int i = 0; i < entry.UpLevelTimes; i++)
+                    _abilitiesEntity.UpLevel(entry.Id);
+            });
         }
     }
 }

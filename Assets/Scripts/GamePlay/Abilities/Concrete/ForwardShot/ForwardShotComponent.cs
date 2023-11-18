@@ -1,11 +1,10 @@
 ﻿using GamePlay.Characteristics;
 using Services;
-using StaticData.Abilities;
 using UnityEngine;
 
 namespace GamePlay.Abilities
 {
-    public class ForwardShotComponent : AbilityComponent<ForwardShotData>
+    public class ForwardShotComponent : AbilityComponent<ForwardShotData, ForwardShotLevelData>
     {
         private Transform _transform;
         private Attack _attack;
@@ -20,9 +19,9 @@ namespace GamePlay.Abilities
         }
 
         public override void OnCall() 
-            => CreateBullet();
+            => Shot();
 
-        private void CreateBullet()
+        private void Shot()
         {
             GameObject prefab = _attack.ProjectilePrefab;
             float speed = _attack.ProjectileSpeed.GetValue();
@@ -30,7 +29,11 @@ namespace GamePlay.Abilities
             Vector3 position = _attack.ForwardShotSpawn.position;
             Vector3 direction = _transform.forward;
 
-            _objectsFactory.CreateProjectile(prefab, position, direction, speed, damage);
+            for (int i = 0; i < CurrentLevel.ShotsCount; i++)
+            {
+                _objectsFactory.CreateProjectile(prefab, position, direction, speed, damage);
+                position = new Vector3(position.x - 0.5f, position.y, position.z);
+            }
         }
     }
 }

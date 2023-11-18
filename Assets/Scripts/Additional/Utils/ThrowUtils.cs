@@ -15,5 +15,8 @@ namespace Additional.Utils
 
         public static void ComponentAlreadyAdded()
             => throw new InvalidOperationException("Component is already added, can't add same components to entity");
+        
+        public static void ComponentNotAdded()
+            => throw new InvalidOperationException("Component is not added to entity");
     }
 }

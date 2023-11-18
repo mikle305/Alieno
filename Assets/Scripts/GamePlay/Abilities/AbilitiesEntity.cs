@@ -35,6 +35,22 @@ namespace GamePlay.Abilities
             _abilitiesMap[abilityId] = CreateAbility(abilityId);
         }
 
+        public void UpLevel(AbilityId abilityId)
+        {
+            if (!_abilitiesMap.TryGetValue(abilityId, out AbilityComponent ability))
+                ThrowUtils.ComponentNotAdded();
+            
+            ability!.UpLevel();
+        }
+
+        public void RemoveAbility(AbilityId abilityId)
+        {
+            if (!_abilitiesMap.Remove(abilityId, out AbilityComponent ability))
+                ThrowUtils.ComponentNotAdded();
+            
+            ability.OnDestroy();
+        }
+
         private AbilityComponent CreateAbility(AbilityId abilityId)
         {
             AbilityData abilityData = _staticDataService.GetAbility(abilityId);
