@@ -19,7 +19,10 @@ namespace GamePlay.Abilities
             _defaultAbilities.ForEach(entry =>
             {
                 _abilitiesEntity.AddAbility(entry.Id);
-                for (int i = 0; i < entry.UpLevelTimes; i++)
+                if (!_abilitiesEntity.AbilitiesMap.ContainsKey(entry.Id))
+                    return;
+                    
+                for (var i = 0; i < entry.UpLevelTimes; i++)
                     _abilitiesEntity.UpLevel(entry.Id);
             });
         }

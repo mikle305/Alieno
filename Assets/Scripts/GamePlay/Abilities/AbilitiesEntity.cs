@@ -30,8 +30,12 @@ namespace GamePlay.Abilities
         {
             if (_abilitiesMap.ContainsKey(abilityId))
                 ThrowUtils.ComponentAlreadyAdded();
+
+            AbilityComponent ability = CreateAbility(abilityId);
+            if (ability == null)
+                return;
             
-            _abilitiesMap[abilityId] = CreateAbility(abilityId);
+            _abilitiesMap[abilityId] = ability;
         }
 
         public void UpLevel(AbilityId abilityId)
@@ -52,6 +56,9 @@ namespace GamePlay.Abilities
 
         private AbilityComponent CreateAbility(AbilityId abilityId)
         {
+            if (_staticDataService == null)
+                return null;
+            
             AbilityData abilityData = _staticDataService.GetAbility(abilityId);
             var abilityComponent = Activator.CreateInstance(abilityData.ComponentType) as AbilityComponent;
             abilityComponent!.Init(this, abilityData);

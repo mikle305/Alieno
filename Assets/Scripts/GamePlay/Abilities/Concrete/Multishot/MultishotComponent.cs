@@ -19,7 +19,7 @@ namespace GamePlay.Abilities
 
             for (var i = 0; i < CurrentLevel.AdditionsCount; i++)
             {
-                await UniTask.WaitForSeconds(CurrentLevel.ShotDelay);
+                await UniTask.WaitForSeconds(CurrentLevel.ShotDelay, delayTiming: PlayerLoopTiming.FixedUpdate);
                 abilities.ForEach(a => a.OnCall());
             }
         }
