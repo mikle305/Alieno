@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GamePlay.Abilities;
 using GamePlay.StatsSystem;
@@ -30,6 +31,18 @@ namespace GamePlay.Characteristics
         }
 
         public Vector3[] GetSpawnPoints(AbilityId abilityId, int levelId)
-            => _spawnsMap[abilityId][levelId - 1].Spawns;
+        {
+            if (levelId < 1)
+                throw new InvalidOperationException("Ability LevelId can't be less than 1");
+            
+            if (!_spawnsMap.TryGetValue(abilityId, out SpawnByLevel[] levels))
+                throw new InvalidOperationException($"SpawnsData not filled for {abilityId.ToString()}");
+
+            if (levels.Length < levelId)
+                throw new InvalidOperationException(
+                    $"Level with index {levelId - 1} not filled in SpawnsData for {abilityId.ToString()}");
+                
+            return levels[levelId - 1].Spawns;
+        }
     }
 }
