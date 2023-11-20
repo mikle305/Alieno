@@ -2,13 +2,14 @@
 using GamePlay.Abilities;
 using GamePlay.Characteristics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GamePlay.Player
 {
     public class PlayerAttacker : MonoBehaviour
     {
         [SerializeField] private AbilitiesEntity _abilitiesEntity;
-        [SerializeField] private Attack _attack;
+        [FormerlySerializedAs("_attack")] [SerializeField] private ProjectileAttack _projectileAttack;
 
         private bool _onCooldown;
 
@@ -28,7 +29,7 @@ namespace GamePlay.Player
         private async UniTask StartCooldown()
         {
             _onCooldown = true;
-            await UniTask.WaitForSeconds(_attack.UseRate.GetValue());
+            await UniTask.WaitForSeconds(_projectileAttack.UseRate.GetValue());
             _onCooldown = false;
         }
     }
