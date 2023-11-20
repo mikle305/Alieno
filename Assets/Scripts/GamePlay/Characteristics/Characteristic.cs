@@ -16,7 +16,6 @@ namespace GamePlay.Characteristics
 
         public float Current => _current.GetValue();
         public float Max => _max.GetValue();
-        public IModifications Modifications => _max;
 
         public event Action ValueChanged;
         public event Action ZeroReached;
@@ -38,7 +37,6 @@ namespace GamePlay.Characteristics
                 return;
 
             ApplyIncrease(value);
-            InvokeChanged();
         }
 
         public void Decrease(float value)
@@ -48,24 +46,60 @@ namespace GamePlay.Characteristics
                 return;
 
             ApplyDecrease(value);
-            InvokeChanged();
-            TryInvokeZeroReached();
         }
 
-        private void ApplyIncrease(float health)
+        public void AddModifier(StatModifier modifier)
         {
-            float sum = _current.GetValue() + health;
+            float oldValue = Max;
+            _max.AddModifier(modifier);
+            float diff = Max - oldValue;
+            
+            ChangeCurrent(diff);
+        }
+
+        public void RemoveModifier(StatModifier modifier)
+        {
+            _max.RemoveModifier(modifier);
+            if (Current > Max)
+            {
+                _current.SetValue(Max);
+                ValueChanged?.Invoke();
+            }
+        }
+
+        public void ReplaceModifier(StatModifier toRemove, StatModifier toAdd)
+        {
+            float diff = 0;
+            _max.RemoveModifier(toRemove);
+            diff -= Max;
+            _max.AddModifier(toAdd);
+            diff += Max;
+            
+            ChangeCurrent(diff);
+        }
+
+        private void ApplyIncrease(float value)
+        {
+            float sum = _current.GetValue() + value;
             float maxValue = _max.GetValue();
             _current.SetValue(sum > maxValue ? maxValue : sum);
+            ValueChanged?.Invoke();
         }
 
-        private void ApplyDecrease(float damage)
+        private void ApplyDecrease(float value)
         {
-            float diff = _current.GetValue() - damage;
+            float diff = _current.GetValue() - value;
             if (diff > 0)
+            {
                 _current.SetValue(diff);
+            }
             else
+            {
                 _current.SetValue(0);
+                ZeroReached?.Invoke();
+            }
+            
+            ValueChanged?.Invoke();
         }
 
         private bool IsFull()
@@ -74,19 +108,18 @@ namespace GamePlay.Characteristics
         private bool IsZero()
             => Current == 0;
 
-        private void TryInvokeZeroReached()
-        {
-            if (IsZero())
-                ZeroReached?.Invoke();
-        }
-
-        private void InvokeChanged()
-            => ValueChanged?.Invoke();
-
         private static void ValidateLessThanZero(float value)
         {
             if (value <= 0)
                 ThrowUtils.ValueLessThanZero();
+        }
+
+        private void ChangeCurrent(float diff)
+        {
+            if (diff < 0)
+                Decrease(-diff);
+            else if (diff > 0)
+                Increase(diff);
         }
     }
 }

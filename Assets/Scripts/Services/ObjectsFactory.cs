@@ -12,7 +12,7 @@ namespace Services
 
         public GameObject CreateProjectile(GameObject prefab, Vector3 position, Vector3 direction, float speed, float damage)
         {
-            GameObject projectile = Object.Instantiate(prefab, position, Quaternion.identity);
+            GameObject projectile = Instantiate(prefab, position, Quaternion.identity);
             projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
             projectile.GetComponent<ProjectileDamage>().Init(damage);
             return projectile;

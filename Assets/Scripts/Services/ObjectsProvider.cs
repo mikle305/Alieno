@@ -1,4 +1,5 @@
 ﻿using Additional.Game;
+using UI.GamePlay;
 using UnityEngine;
 
 namespace Services
@@ -10,6 +11,8 @@ namespace Services
         private Camera _mainCamera;
 
         
+        public Hud Hud { get; set; }
+        public GameObject Character { get; set; }
         public Camera UICamera => _uiCamera;
         public Camera MainCamera => _mainCamera ??= Camera.main;
     }
