@@ -307,7 +307,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1783235613662278688}
   m_HandleRect: {fileID: 0}
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -333,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 4209744624388706651}
   _text: {fileID: 2690654215587671531}
+  _textShowType: 0
 --- !u!1 &3417087033537975998
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,13 +468,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5/5
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c480b9ca48bea54b9c9dbe37cf00c06, type: 2}
   m_sharedMaterial: {fileID: 3798590342722743461, guid: 7c480b9ca48bea54b9c9dbe37cf00c06, type: 2}
@@ -500,7 +501,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.4
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

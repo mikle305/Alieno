@@ -7,6 +7,6 @@ namespace GamePlay.Abilities
     public class DefaultAbilityEntry
     {
         [field: SerializeField] public AbilityId Id { get; private set; }
-        [field: SerializeField] public int UpLevelTimes { get; private set; }
+        [field: SerializeField, Min(1)] public int Level { get; private set; } = 1;
     }
 }

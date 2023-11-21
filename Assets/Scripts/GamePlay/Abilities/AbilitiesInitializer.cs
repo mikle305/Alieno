@@ -22,7 +22,7 @@ namespace GamePlay.Abilities
                 if (!_abilitiesEntity.AbilitiesMap.ContainsKey(entry.Id))
                     return;
                     
-                for (var i = 0; i < entry.UpLevelTimes; i++)
+                for (var i = 1; i < entry.Level; i++)
                     _abilitiesEntity.UpLevel(entry.Id);
             });
         }
