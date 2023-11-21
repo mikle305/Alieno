@@ -94,7 +94,6 @@ namespace GamePlay.Player
         {
             GameObject go = new GameObject("Trail");
             go.transform.SetPositionAndRotation(_playerBody.position,_playerBody.rotation);
-
             MeshRenderer mr = go.AddComponent<MeshRenderer>();
             MeshFilter mf = go.AddComponent<MeshFilter>();
 
