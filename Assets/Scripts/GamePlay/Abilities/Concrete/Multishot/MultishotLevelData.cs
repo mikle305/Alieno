@@ -6,7 +6,7 @@ namespace GamePlay.Abilities
     [Serializable]
     public class MultishotLevelData : AbilityLevelData
     {
-        [field: SerializeField] public int AdditionsCount { get; private set; }
-        [field: SerializeField] public float ShotDelay { get; private set; }
+        [field: SerializeField, Min(1)] public int AdditionsCount { get; private set; }
+        [field: SerializeField, Min(0)] public float ShotDelay { get; private set; }
     }
 }

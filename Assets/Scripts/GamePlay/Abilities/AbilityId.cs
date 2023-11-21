@@ -5,5 +5,6 @@
         ForwardShot,
         Multishot,
         Ricochet,
+        HealthBuff,
     }
 }

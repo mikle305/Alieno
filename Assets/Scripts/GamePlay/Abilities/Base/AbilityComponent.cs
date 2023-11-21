@@ -32,7 +32,7 @@ namespace GamePlay.Abilities
             Entity = entity;
             _data = data as TData;
             CurrentLevelId = 1;
-            OnInit();
+            OnCreate();
         }
 
         public sealed override void UpLevel()
@@ -41,8 +41,10 @@ namespace GamePlay.Abilities
                 throw new ArgumentOutOfRangeException();
                 
             CurrentLevelId++;
+            OnLevelUp();
         }
 
-        protected virtual void OnInit() { }
+        protected virtual void OnCreate() { }
+        protected virtual void OnLevelUp() { }
     }
 }

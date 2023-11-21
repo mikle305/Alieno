@@ -11,7 +11,7 @@ namespace GamePlay.Abilities
         private ObjectsFactory _objectsFactory;
 
 
-        protected override void OnInit()
+        protected override void OnCreate()
         {
             _transform = Entity.transform;
             _projectileAttack = Entity.GetComponent<ProjectileAttack>();

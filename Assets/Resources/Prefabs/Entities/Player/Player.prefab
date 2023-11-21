@@ -212,6 +212,8 @@ MonoBehaviour:
     <Level>k__BackingField: 1
   - <Id>k__BackingField: 1
     <Level>k__BackingField: 1
+  - <Id>k__BackingField: 3
+    <Level>k__BackingField: 3
 --- !u!114 &5713044649035136142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f33f0a9254405f8a1c91a6f0c518df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultCurrent: 5
-  _defaultMax: 5
+  _defaultCurrent: 100
+  _defaultMax: 100
 --- !u!114 &2795695381028728205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultUseRate: 1
-  _defaultDamage: 1
+  _defaultDamage: 20
   _defaultMoveSpeed: 15
   <Prefab>k__BackingField: {fileID: 4807152518047859045, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}
   _spawnsData:
