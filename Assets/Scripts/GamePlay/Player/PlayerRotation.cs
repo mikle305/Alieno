@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GamePlay.Player
 {
-    public class PlayerDirection : MonoBehaviour
+    public class PlayerRotation : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private Transform _playerTransform;

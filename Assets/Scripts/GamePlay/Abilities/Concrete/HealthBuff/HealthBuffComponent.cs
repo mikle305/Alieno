@@ -5,13 +5,13 @@ namespace GamePlay.Abilities
 {
     public class HealthBuffComponent : AbilityComponent<HealthBuffData, HealthBuffLevelData>
     {
-        private Health _health;
+        private HealthData _healthData;
         private StatModifier _lastModifier;
 
 
         protected override void OnCreate()
         {
-            _health = Entity.GetComponent<Health>();
+            _healthData = Entity.GetComponent<HealthData>();
             SetCurrentLevelBuff();
         }
 
@@ -26,9 +26,9 @@ namespace GamePlay.Abilities
             var newModifier = new StatModifier(ModifierType.Coefficient, coefficient);
 
             if (CurrentLevelId == 1)
-                _health.AddModifier(newModifier);
+                _healthData.AddModifier(newModifier);
             else
-                _health.ReplaceModifier(_lastModifier, newModifier);
+                _healthData.ReplaceModifier(_lastModifier, newModifier);
             
             _lastModifier = newModifier;
         }

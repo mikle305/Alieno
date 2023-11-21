@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GamePlay.Characteristics
 {
-    public class ProjectileAttack : MonoBehaviour
+    public class ProjectileAttackData : MonoBehaviour
     {
         [SerializeField] private float _defaultUseRate;
         [SerializeField] private float _defaultDamage;

@@ -9,17 +9,19 @@ namespace GamePlay.Player
     public class PlayerAttacker : MonoBehaviour
     {
         [SerializeField] private AbilitiesEntity _abilitiesEntity;
-        [FormerlySerializedAs("_attack")] [SerializeField] private ProjectileAttack _projectileAttack;
+        [SerializeField] private ProjectileAttackData _attackData;
 
         private bool _onCooldown;
 
+        public bool IsAutoAttacking { get; set; }
+        
 
         private void Update() 
-            => Attack();
+            => AttackOnCooldown();
 
-        public void Attack()
+        private void AttackOnCooldown()
         {
-            if (_onCooldown)
+            if (!IsAutoAttacking || _onCooldown) 
                 return;
             
             _abilitiesEntity.Call();
@@ -29,7 +31,7 @@ namespace GamePlay.Player
         private async UniTask StartCooldown()
         {
             _onCooldown = true;
-            await UniTask.WaitForSeconds(_projectileAttack.UseRate.GetValue());
+            await UniTask.WaitForSeconds(_attackData.UseRate.GetValue());
             _onCooldown = false;
         }
     }

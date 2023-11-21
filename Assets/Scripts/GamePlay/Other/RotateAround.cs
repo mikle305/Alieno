@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Player
+namespace GamePlay.Other
 {
     public class RotateAround : MonoBehaviour
     {

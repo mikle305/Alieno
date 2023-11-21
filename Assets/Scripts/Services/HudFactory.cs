@@ -23,7 +23,7 @@ namespace Services
 
         private void InitHealth(GameObject character)
         {
-            var health = character.GetComponent<Health>();
+            var health = character.GetComponent<HealthData>();
             ICharacteristicView view = _objectsProvider.Hud.HealthView;
             var presenter = new CharacteristicPresenter(health, view);
             view.Init(presenter);

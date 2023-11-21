@@ -1,93 +1,82 @@
-using Services;
+using Cysharp.Threading.Tasks;
+using GamePlay.Characteristics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Player
 {
     public class PlayerDash : MonoBehaviour
     {
-        [Header("Dash Settings")]
+        [SerializeField] private DashData _dashData;
         [SerializeField] private Rigidbody _playerBody;
-        [SerializeField] private float _dashDistance = 5f;
-        [SerializeField] private float _dashSpeed = 5f;
         [SerializeField] private LayerMask _obstacleLayer;
 
         [Header("Trail Settings")]
         [SerializeField] private Material _dashMaterial;
-        [FormerlySerializedAs("_trailRenderer")] [SerializeField] private SkinnedMeshRenderer _trailMesh;
+        [SerializeField] private SkinnedMeshRenderer _trailMesh;
         [SerializeField] private float _trailLife = 0.3f;
     
-        private float _horizontal;
-        private float _vertical;
-
-        [FormerlySerializedAs("_isDashing")] public bool IsDashing;
-        private PlayerMovement _movementComponent;
         private Vector3 _dashTarget;
-        private RaycastHit hit;
-        private void Awake()
-        {
-            _movementComponent = GetComponent<PlayerMovement>();
-        }
+        private RaycastHit _hit;
         
-        private void Start()
-        {
-            GameService.Instance.OnRoomFinish += StopDashing;
-        }
-        void Update ()
-        {
-            if (Input.GetKeyDown("space") && !IsDashing)
-            {
-                _movementComponent.ClearVelocity();
-                Dash(_dashDistance);
-            }
-        }
+        public bool OnCooldown { get; private set; }
+        public bool IsDashing { get; private set; }
+        
     
         private void FixedUpdate()
         {
-            if (IsDashing)
-            {
-                SpawnTrailMesh();
-                _playerBody.velocity = Vector2.zero;
- 
-                float distSqr = (_dashTarget - transform.position).sqrMagnitude;
-                if (distSqr < 0.1f)
-                {
-                    StopDashing();
-                    // owner.Vitals.IsInvincible = false;
-                }
-                else
-                {
-                    _playerBody.MovePosition(Vector3.Lerp(transform.position,
-                        _dashTarget, _dashSpeed * Time.deltaTime));
-                }
-            }
-        }
-        public void Dash(float dashDistance)
-        {
-        
-            _horizontal = Input.GetAxisRaw("Horizontal");
-            _vertical = Input.GetAxisRaw("Vertical");
+            if (!IsDashing)
+                return;
             
-            var direction = new Vector3(_horizontal, 0,_vertical);
-            if (direction.x != 0 && direction.z != 0)
-                direction /= 2;
+            UpdateDash();
+        }
+
+        private void OnCollisionEnter(Collision other) 
+            => StopOnObstacle(other);
+
+        public void Dash(Vector2 inputDirection)
+        {
+            if (IsDashing || OnCooldown)
+                return;
             
             IsDashing = true;
-
-            if (Physics.Raycast(transform.position, direction, out hit, dashDistance,_obstacleLayer))
-            {
-                _dashTarget =  transform.position + (hit.point - transform.position) / 3.5f;
-            }
-            else
-            {
-                _dashTarget = transform.position + (Vector3)(direction * dashDistance);
-            }
+            SetDashTarget(inputDirection);
         }
 
-        public void StopDashing()
+        public void Stop()
         {
+            StartCooldown().Forget();
             IsDashing = false;
-            _dashTarget = Vector2.zero;
+            _dashTarget = Vector3.zero;
+        }
+
+        private void UpdateDash()
+        {
+            SpawnTrailMesh();
+            Vector3 currentPosition = transform.position;
+            float distSqr = (_dashTarget - currentPosition).sqrMagnitude;
+            
+            if (distSqr < 0.1f)
+            {
+                Stop();
+                return;
+            }
+
+            Vector3 movePosition = Vector3.Lerp(currentPosition, _dashTarget, _dashData.Speed.GetValue() * Time.deltaTime);
+            _playerBody.MovePosition(movePosition);
+        }
+
+        private void SetDashTarget(Vector2 inputDirection)
+        {
+            Vector3 position = transform.position;
+            if (inputDirection.x != 0 && inputDirection.y != 0)
+                inputDirection /= 2;
+
+            var direction = new Vector3(inputDirection.x, 0, inputDirection.y);
+
+            if (Physics.Raycast(position, direction, out _hit, _dashData.Distance.GetValue(), _obstacleLayer))
+                _dashTarget = position + (_hit.point - position) / 3.5f;
+            else
+                _dashTarget = position + direction * _dashData.Distance.GetValue();
         }
 
         private void SpawnTrailMesh()
@@ -107,12 +96,17 @@ namespace GamePlay.Player
             Destroy(go,_trailLife);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void StopOnObstacle(Collision other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle") && IsDashing)
-            {
-                StopDashing();
-            }
+                Stop();
+        }
+
+        private async UniTask StartCooldown()
+        {
+            OnCooldown = true;
+            await UniTask.WaitForSeconds(_dashData.UseRate.GetValue());
+            OnCooldown = false;
         }
     }
 }
