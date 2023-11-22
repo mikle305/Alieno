@@ -9,11 +9,21 @@ namespace GamePlay.Player
     {
         [SerializeField] private AbilitiesEntity _abilitiesEntity;
         [SerializeField] private ProjectileAttackData _attackData;
+        [SerializeField] private PlayerAnimations _animations;
 
         private bool _onCooldown;
 
         public bool IsAutoAttacking { get; set; }
-        
+
+        private void Start()
+        {
+            _animations.OnAttackAnimation += Attack;
+        }
+
+        private void Attack()
+        {
+            _abilitiesEntity.Call();
+        }
 
         private void Update() 
             => AttackOnCooldown();
@@ -23,7 +33,7 @@ namespace GamePlay.Player
             if (!IsAutoAttacking || _onCooldown) 
                 return;
             
-            _abilitiesEntity.Call();
+            _animations.PlayAttackAnimation(_attackData.UseRate.GetValue());
             StartCooldown().Forget();
         }
 
