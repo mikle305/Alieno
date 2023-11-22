@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using GamePlay.Abilities;
 using GamePlay.StatsSystem;
+using Services;
 using UnityEngine;
 
 namespace GamePlay.Characteristics
 {
     public class ProjectileAttackData : MonoBehaviour
     {
+        [field: SerializeField] public ObjectId ObjectId { get; private set; }
         [SerializeField] private float _defaultUseRate;
         [SerializeField] private float _defaultDamage;
         [SerializeField] private float _defaultMoveSpeed;
-        [field: SerializeField] public GameObject Prefab { get; private set; }
         [SerializeField] private ProjectileSpawnData[] _spawnsData = {};
-        
-        private Dictionary<AbilityId, SpawnByLevel[]> _spawnsMap;
 
         public ModifiableStat Damage { get; private set; }
         public ModifiableStat MoveSpeed { get; private set; }
         public ModifiableStat UseRate { get; private set; }
-        
 
+        private Dictionary<AbilityId, SpawnByLevel[]> _spawnsMap;
+
+        
         private void Awake()
         {
             _spawnsMap = _spawnsData.ToDictionary(spawnData => spawnData.AbilityId, spawnData => spawnData.Levels);

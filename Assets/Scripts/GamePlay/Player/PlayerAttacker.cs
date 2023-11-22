@@ -2,7 +2,6 @@
 using GamePlay.Abilities;
 using GamePlay.Characteristics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Player
 {

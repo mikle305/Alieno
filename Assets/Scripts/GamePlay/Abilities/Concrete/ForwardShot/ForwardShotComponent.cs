@@ -1,4 +1,5 @@
 ﻿using GamePlay.Characteristics;
+using GamePlay.Projectile;
 using Services;
 using UnityEngine;
 
@@ -23,14 +24,22 @@ namespace GamePlay.Abilities
 
         private void Shot()
         {
-            GameObject prefab = _projectileAttackData.Prefab;
-            float speed = _projectileAttackData.MoveSpeed.GetValue();
-            float damage = _projectileAttackData.Damage.GetValue();
             Vector3[] spawnPoints = _projectileAttackData.GetSpawnPoints(AbilityId, CurrentLevelId);
             Vector3 direction = _transform.forward;
-
+            
             for (var i = 0; i < CurrentLevel.ShotsCount; i++)
-                _objectsFactory.CreateProjectile(prefab, spawnPoints[i], direction, speed, damage);
+                CreateProjectile(spawnPoints[i], direction);
+        }
+
+        private void CreateProjectile(Vector3 spawnPoint, Vector3 direction)
+        {
+            ObjectId objectId = _projectileAttackData.ObjectId;
+            float speed = _projectileAttackData.MoveSpeed.GetValue();
+            float damage = _projectileAttackData.Damage.GetValue();
+            
+            Transform projectile = _objectsFactory.CreateObject(objectId, spawnPoint, direction, speed, damage);
+            projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
+            projectile.GetComponent<ProjectileDamage>().Init(damage);
         }
     }
 }
