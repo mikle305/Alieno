@@ -26,7 +26,7 @@ namespace GameFlow.States
         public override void Update()
         {
             if (_menuService.IsPlayInvoked())
-                _gameStateMachine.Enter<LevelLoadingState>();
+                _gameStateMachine.Enter<SceneLoadingState>();
         }
     }
 }

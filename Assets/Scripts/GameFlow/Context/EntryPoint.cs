@@ -28,7 +28,7 @@ namespace GameFlow.Context
             State[] states = {
                 new ProgressLoadingState(stateMachine),
                 new MainMenuState(stateMachine),
-                new LevelLoadingState(stateMachine),
+                new SceneLoadingState(stateMachine),
             };
 
             foreach (State state in states) 

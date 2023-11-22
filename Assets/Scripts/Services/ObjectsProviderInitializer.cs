@@ -1,22 +1,22 @@
 ﻿using Additional.Game;
-using UI.GamePlay;
+using Cinemachine;
 using UnityEngine;
 
 namespace Services
 {
     public class ObjectsProviderInitializer : MonoSingleton<ObjectsProviderInitializer>
     {
-        [SerializeField] private Hud _hud;
-        [SerializeField] private GameObject _character;
-        
+        [SerializeField] private Camera _mainCamera;
+        [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+
         private ObjectsProvider _objectsProvider;
 
-        
+
         private void Start()
         {
             _objectsProvider = ObjectsProvider.Instance;
-            _objectsProvider.Hud = _hud;
-            _objectsProvider.Character = _character;
+            _objectsProvider.MainCamera = _mainCamera;
+            _objectsProvider.VirtualCamera = _virtualCamera;
         }
     }
 }

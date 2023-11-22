@@ -10,7 +10,7 @@ namespace GamePlay.Characteristics
 {
     public class ProjectileAttackData : MonoBehaviour
     {
-        [field: SerializeField] public ObjectId ObjectId { get; private set; }
+        [field: SerializeField] public PoolId PoolId { get; private set; }
         [SerializeField] private float _defaultUseRate;
         [SerializeField] private float _defaultDamage;
         [SerializeField] private float _defaultMoveSpeed;

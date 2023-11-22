@@ -33,11 +33,11 @@ namespace GamePlay.Abilities
 
         private void CreateProjectile(Vector3 spawnPoint, Vector3 direction)
         {
-            ObjectId objectId = _projectileAttackData.ObjectId;
+            PoolId poolId = _projectileAttackData.PoolId;
             float speed = _projectileAttackData.MoveSpeed.GetValue();
             float damage = _projectileAttackData.Damage.GetValue();
             
-            Transform projectile = _objectsFactory.CreateObject(objectId, spawnPoint, direction, speed, damage);
+            GameObject projectile = _objectsFactory.Create(poolId, spawnPoint);
             projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
             projectile.GetComponent<ProjectileDamage>().Init(damage);
         }

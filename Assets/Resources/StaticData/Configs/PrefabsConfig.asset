@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ab916a2f2574becae6c504e744023d4, type: 3}
-  m_Name: AppConfig
+  m_Name: PrefabsConfig
   m_EditorClassIdentifier: 
-  <ConnectionParams>k__BackingField: {fileID: 11400000, guid: 2d6994e2b9859954eb7cb82334f49620, type: 2}
+  <Character>k__BackingField: {fileID: 1398320186731392, guid: c38312671b1287f438871de666ae8f72, type: 3}
+  <Hud>k__BackingField: {fileID: 4136456505576376216, guid: 987e7cbecfc0ce947a6714deb4ae8a0e, type: 3}
+  <Marker>k__BackingField: {fileID: 8653516859488930249, guid: 91a52450e4de49c41b7a6ac50a5e1b26, type: 3}

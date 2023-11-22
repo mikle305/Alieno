@@ -9,7 +9,7 @@ namespace Services
     {
         [SerializeField] private PoolEntry[] _poolsEntries;
         
-        private Dictionary<ObjectId, IObjectPool<Poolable>> _poolsMap;
+        private Dictionary<PoolId, IObjectPool<Poolable>> _poolsMap;
 
 
         protected override void Awake()
@@ -18,7 +18,7 @@ namespace Services
             InitPools();
         }
 
-        public IObjectPool<Poolable> GetPool(ObjectId id)
+        public IObjectPool<Poolable> GetPool(PoolId id)
             => _poolsMap[id];
 
         private void InitPools() 

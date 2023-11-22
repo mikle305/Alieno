@@ -20,6 +20,7 @@ namespace Services
         private RoomController _currentRoomController;
 
         public event Action OnRoomFinish;
+        
         private void Start()
         {
             _levelMapService = LevelMapService.Instance;

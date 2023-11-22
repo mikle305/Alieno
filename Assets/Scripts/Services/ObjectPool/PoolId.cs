@@ -1,6 +1,6 @@
 ﻿namespace Services
 {
-    public enum ObjectId
+    public enum PoolId
     {
         PlayerProjectile,
     }

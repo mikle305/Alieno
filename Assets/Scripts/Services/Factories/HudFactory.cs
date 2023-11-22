@@ -7,24 +7,33 @@ namespace Services
 {
     public class HudFactory : MonoSingleton<HudFactory>
     {
-        private ObjectsProvider _objectsProvider;
-        
+        private StaticDataService _staticDataService;
+
 
         private void Start()
         {
-            _objectsProvider = ObjectsProvider.Instance;
+            _staticDataService = StaticDataService.Instance;
         }
-
-
-        public void CreateHud(GameObject character)
+        
+        public Hud Create(GameObject character)
         {
-            InitHealth(character);
+            Hud hud = CreateHud();
+            
+            InitHealth(hud, character);
+
+            return hud;
         }
 
-        private void InitHealth(GameObject character)
+        private Hud CreateHud()
+        {
+            Hud hudPrefab = _staticDataService.GetPrefabsConfig().Hud;
+            return Instantiate(hudPrefab);
+        }
+
+        private void InitHealth(Hud hud, GameObject character)
         {
             var health = character.GetComponent<HealthData>();
-            ICharacteristicView view = _objectsProvider.Hud.HealthView;
+            CharacteristicHudView view = hud.HealthView;
             var presenter = new CharacteristicPresenter(health, view);
             view.Init(presenter);
         }

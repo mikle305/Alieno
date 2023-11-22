@@ -1,4 +1,5 @@
 ﻿using Additional.Game;
+using Cinemachine;
 using UI.GamePlay;
 using UnityEngine;
 
@@ -13,7 +14,9 @@ namespace Services
         
         public Hud Hud { get; set; }
         public GameObject Character { get; set; }
+        public GameObject Marker { get; set; }
+        public Camera MainCamera { get; set; }
+        public CinemachineVirtualCamera VirtualCamera { get; set; }
         public Camera UICamera => _uiCamera;
-        public Camera MainCamera => _mainCamera ??= Camera.main;
     }
 }

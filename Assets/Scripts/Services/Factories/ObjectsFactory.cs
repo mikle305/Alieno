@@ -13,12 +13,12 @@ namespace Services
             _poolsProvider = ObjectPoolsProvider.Instance;
         }
 
-        public Transform CreateObject(ObjectId id, Vector3 position, Vector3 direction, float speed, float damage)
+        public GameObject Create(PoolId id, Vector3 position)
         {
-            Transform projectile = _poolsProvider.GetPool(id).Take().transform;
-            projectile.position = position;
-            projectile.rotation = Quaternion.identity;
-            return projectile;
+            Transform obj = _poolsProvider.GetPool(id).Take().transform;
+            obj.position = position;
+            obj.rotation = Quaternion.identity;
+            return obj.gameObject;
         }
     }
 }

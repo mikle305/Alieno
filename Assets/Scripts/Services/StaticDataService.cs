@@ -13,15 +13,19 @@ namespace Services
     public class StaticDataService : MonoSingleton<StaticDataService>
     {
         private MusicConfig _musicConfig;
-        private AppConfig _appConfig;
+        private PrefabsConfig _prefabsConfig;
+        private PoolIdsConfig _poolIdsConfig;
         private Dictionary<AbilityId, AbilityData> _abilitiesMap;
 
 
         public MusicConfig GetMusicConfig()
             => _musicConfig ??= LoadData<MusicConfig>(StaticDataPaths.MusicConfig);
 
-        public AppConfig GetAppConfig()
-            => _appConfig ??= LoadData<AppConfig>(StaticDataPaths.AppConfig);
+        public PrefabsConfig GetPrefabsConfig()
+            => _prefabsConfig ??= LoadData<PrefabsConfig>(StaticDataPaths.AppConfig);
+
+        public PoolIdsConfig GetPoolIdsConfig()
+            => _poolIdsConfig ??= LoadData<PoolIdsConfig>(StaticDataPaths.PoolIdsConfig);
 
         public AbilityData GetAbility(AbilityId id)
             => (_abilitiesMap ??= LoadAbilities()).GetValueOrDefault(id);
