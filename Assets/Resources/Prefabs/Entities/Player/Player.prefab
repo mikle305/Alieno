@@ -165,7 +165,7 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
-  _dashMaterial: {fileID: 2100000, guid: 60d2e59c8206baa40a6a05dd11e976de, type: 2}
+  _dashMaterial: {fileID: 2100000, guid: 1a18544e71580504b8efab2d34bb32c1, type: 2}
   _trailMesh: {fileID: 1013373454650480649}
   _trailLife: 0.3
 --- !u!114 &4333299743090805112

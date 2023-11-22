@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 111465331031506205}
   - component: {fileID: 1322277975338181641}
   - component: {fileID: 8628442665472423580}
+  - component: {fileID: 6492743159382862493}
   m_Layer: 0
   m_Name: RocketTurret
   m_TagString: Untagged
@@ -46,7 +47,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 0
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 99
   m_AngularSpeed: 240
   m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
@@ -68,8 +69,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51842cc9d19d9b341af196c9e12f365c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _agent: {fileID: 1322277975338181641}
+--- !u!54 &6492743159382862493
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468391878886794575}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2025283304212967935
 PrefabInstance:
   m_ObjectHideFlags: 0

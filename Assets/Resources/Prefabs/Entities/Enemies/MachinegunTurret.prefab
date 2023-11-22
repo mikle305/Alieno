@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2521445492720667960}
   - component: {fileID: 466223050698855216}
-  - component: {fileID: 3925813348103411786}
+  - component: {fileID: 1475642891732695007}
+  - component: {fileID: 1783581493434696624}
+  - component: {fileID: 1487850362788491719}
   m_Layer: 0
   m_Name: MachinegunTurret
   m_TagString: Untagged
@@ -46,7 +48,7 @@ NavMeshAgent:
   m_Radius: 2
   m_Speed: 0
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 99
   m_AngularSpeed: 240
   m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
@@ -56,7 +58,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3925813348103411786
+--- !u!114 &1475642891732695007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,11 +67,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 6957104929939289175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51842cc9d19d9b341af196c9e12f365c, type: 3}
+  m_Script: {fileID: 11500000, guid: ce546862e810f5343aa037cd3fbb64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _agent: {fileID: 466223050698855216}
+  _navMeshAgent: {fileID: 0}
+  _enemyMovement: {fileID: 0}
+  _enemyRotation: {fileID: 1783581493434696624}
+  _enemyAnimations: {fileID: 0}
+--- !u!114 &1783581493434696624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957104929939289175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdbea2612d06ab4eb6872b7913f2030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyTransform: {fileID: 2521445492720667960}
+  _turnSpeed: 3
+--- !u!54 &1487850362788491719
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957104929939289175}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &11795211464339874
 PrefabInstance:
   m_ObjectHideFlags: 0
