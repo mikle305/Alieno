@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4078725191484616}
   - component: {fileID: 2017677509209712713}
+  - component: {fileID: 5781377304457184436}
   - component: {fileID: 1105913242540431947}
   - component: {fileID: 8221697688862398661}
+  - component: {fileID: 2743460268994559412}
   - component: {fileID: 5111841251721714029}
   - component: {fileID: 507919951813536729}
   - component: {fileID: 1239482046880393507}
@@ -69,6 +71,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &5781377304457184436
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398320186731392}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.64, y: 1.14, z: 0.64}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!54 &1105913242540431947
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,6 +137,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.15, z: 0}
+--- !u!114 &2743460268994559412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398320186731392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96d48794bf5e904aae76b999a1ae795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5111841251721714029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ObjectId>k__BackingField: 0
   _defaultUseRate: 1
   _defaultDamage: 20
   _defaultMoveSpeed: 15
-  <Prefab>k__BackingField: {fileID: 4807152518047859045, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}
   _spawnsData:
   - <AbilityId>k__BackingField: 0
     <Levels>k__BackingField:
@@ -476,6 +506,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4078725191484616}
     m_Modifications:
+    - target: {fileID: 3669133624017740329, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9f3a40190a3b85643b4c25a652819f5c, type: 2}
     - target: {fileID: 4904381805458202860, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

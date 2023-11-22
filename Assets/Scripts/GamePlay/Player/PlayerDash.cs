@@ -93,6 +93,7 @@ namespace GamePlay.Player
             mr.material = _dashMaterial;
         
             Destroy(go,_trailLife);
+            Destroy(mesh,_trailLife);
         }
 
         private void StopOnObstacle(Collision other)
