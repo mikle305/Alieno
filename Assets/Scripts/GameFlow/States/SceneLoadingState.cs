@@ -1,7 +1,9 @@
 ﻿using Additional.Constants;
 using Cysharp.Threading.Tasks;
 using GameFlow.Context;
+using GamePlay.Other;
 using Services;
+using Services.Save;
 using UI.GamePlay;
 using UnityEngine;
 
@@ -11,8 +13,9 @@ namespace GameFlow.States
     {
         private readonly GameStateMachine _context;
         private readonly SceneLoader _sceneLoader;
-        private readonly MusicService _musicService;
         private readonly ObjectsProvider _objectsProvider;
+        private readonly SaveService _saveService;
+        
         private GameFactory _gameFactory;
         private HudFactory _hudFactory;
 
@@ -21,13 +24,11 @@ namespace GameFlow.States
         {
             _context = context;
             _sceneLoader = SceneLoader.Instance;
-            _musicService = MusicService.Instance;
+            _saveService = SaveService.Instance;
         }
 
-        public override void Enter()
-        {
-            _sceneLoader.Load(SceneNames.Level, OnLevelLoaded);
-        }
+        public override void Enter() 
+            => _sceneLoader.Load(SceneNames.Level, OnLevelLoaded);
 
         public override void Exit()
         {
@@ -39,24 +40,53 @@ namespace GameFlow.States
         private async UniTask OnLevelLoadedAsync()
         {
             await UniTask.DelayFrame(2);
-            InitFactories();
+            Construct();
             
             InitCharacter();
             InitMarker();
+            InitRoomsMap();
+            InitRooms();
             InitHud();
+            
+            EnterRoomSelectionState();
         }
 
-        private void InitFactories()
+        private void Construct()
         {
             _gameFactory = GameFactory.Instance;
             _hudFactory = HudFactory.Instance;
         }
-        
+
         private void InitCharacter()
         {
             GameObject character = _gameFactory.CreateCharacter();
             character.SetActive(false);
             _objectsProvider.Character = character;
+        }
+
+        private void InitRoomsMap()
+        {
+            int currentLevel = GetCurrentLevel();
+            RoomsMap roomsMap = _gameFactory.CreateRoomsMap(currentLevel);
+            roomsMap.gameObject.SetActive(false);
+            _objectsProvider.RoomsMap = roomsMap;
+        }
+
+        private void InitRooms()
+        {
+            int currentLevel = GetCurrentLevel();
+            Room[] rooms = _gameFactory.CreateRooms(currentLevel);
+            foreach (Room room in rooms) 
+                room.gameObject.SetActive(false);
+
+            _objectsProvider.Rooms = rooms;
+        }
+
+        private void InitMarker()
+        {
+            GameObject marker = _gameFactory.CreateMarker();
+            marker.SetActive(false);
+            _objectsProvider.Marker = marker;
         }
 
         private void InitHud()
@@ -67,11 +97,10 @@ namespace GameFlow.States
             _objectsProvider.Hud = hud;
         }
 
-        private void InitMarker()
-        {
-            GameObject marker = _gameFactory.CreateMarker();
-            marker.SetActive(false);
-            _objectsProvider.Marker = marker;
-        }
+        private void EnterRoomSelectionState() 
+            => _context.Enter<RoomSelectionState>();
+
+        private int GetCurrentLevel() 
+            => _saveService.Progress.PlayerData.Level;
     }
 }

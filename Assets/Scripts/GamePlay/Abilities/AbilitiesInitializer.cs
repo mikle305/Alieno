@@ -1,5 +1,6 @@
 ﻿using Additional.Extensions;
 using Cysharp.Threading.Tasks;
+using SaveData;
 using UnityEngine;
 
 namespace GamePlay.Abilities
@@ -7,7 +8,7 @@ namespace GamePlay.Abilities
     public class AbilitiesInitializer : MonoBehaviour
     {
         [SerializeField] private AbilitiesEntity _abilitiesEntity;
-        [SerializeField] private DefaultAbilityEntry[] _defaultAbilities;
+        [SerializeField] private AbilityEntry[] _defaultAbilities;
 
 
         private void Start() 

@@ -10,7 +10,6 @@ namespace GamePlay.Player
         [SerializeField] private PlayerDash _dash;
         
         private InputService _inputService;
-        private GameService _gameService;
         
         private Vector2 _moveDirection;
         private bool _isDashInvoked;
@@ -18,9 +17,7 @@ namespace GamePlay.Player
 
         private void Start()
         {
-            _gameService = GameService.Instance;
             _inputService = InputService.Instance;
-            _gameService.OnRoomFinish += OnRoomChanged;
         }
 
         private void Update()
@@ -52,7 +49,7 @@ namespace GamePlay.Player
             _movement.Move(_moveDirection);
         }
 
-        private void OnRoomChanged()
+        private void OnDisable()
         {
             _movement.Stop();
             _dash.Stop();

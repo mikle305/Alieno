@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Additional.Game;
+using Additional.Utils;
 using GamePlay.Enemy;
 using UnityEngine;
 
@@ -22,8 +23,10 @@ namespace Services
 
         public GameObject Create(EnemySpawn enemySpawn)
         {
-            PoolId id = _idsMap[enemySpawn.Id];
-            return _objectsFactory.Create(id, enemySpawn.transform.position);
+            if (!_idsMap.TryGetValue(enemySpawn.Id, out PoolId poolId))
+                ThrowUtils.NeedToCreatePool();
+                
+            return _objectsFactory.Create(poolId, enemySpawn.transform.position);
         }
 
         private void InitPoolIdsMap()

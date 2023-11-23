@@ -1,53 +1,52 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Services;
 using UnityEngine;
 
-public class PlayerRotationToEnemy : MonoBehaviour
+namespace GamePlay.Player
 {
-    public class PlayerRotation : MonoBehaviour
+    public class PlayerRotationToEnemy : MonoBehaviour
     {
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private Rigidbody _playerRigidBody;
         [SerializeField] private float _turnSpeed = 10f;
-
+    
         private RadarService _radarService;
+
+    
         private void Start()
         {
             _radarService = RadarService.Instance;
         }
 
-        private void Update() 
+        private void Update()
             => UpdateRotation(_radarService.GetClosestAndVisibleEnemy());
 
-        public void UpdateRotation(Transform _target)
+        private void UpdateRotation(Transform target)
         {
-            if(_target == null)
+            if (target == null)
                 RotateToMovement();
 
-            RotateToEnemy(_target);
+            RotateToEnemy(target);
         }
 
-        private void RotateToEnemy(Transform _target)
+        private void RotateToEnemy(Transform target)
         {
-            Quaternion OriginalRot = _playerTransform.rotation;
-            _playerTransform.LookAt(_target);
+            Quaternion originalRotation = _playerTransform.rotation;
+            _playerTransform.LookAt(target);
+            Quaternion newRotation = transform.rotation;
 
-            Quaternion NewRot = transform.rotation;
-
-            transform.rotation = Quaternion.Lerp(OriginalRot, NewRot, _turnSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(originalRotation, newRotation, _turnSpeed * Time.deltaTime);
         }
 
         private void RotateToMovement()
         {
-            var velocity = _playerRigidBody.velocity;
-            
-            if(velocity != Vector3.zero)
-            {
-                Quaternion toRotation = Quaternion.LookRotation(velocity, transform.up);
+            Vector3 velocity = _playerRigidBody.velocity;
 
-                transform.rotation = Quaternion.RotateTowards(_playerTransform.rotation, toRotation, _turnSpeed * Time.deltaTime);
-            }
+            if (velocity == Vector3.zero) 
+                return;
+        
+            Quaternion toRotation = Quaternion.LookRotation(velocity, transform.up);
+            transform.rotation =
+                Quaternion.RotateTowards(_playerTransform.rotation, toRotation, _turnSpeed * Time.deltaTime);
         }
     }
 }

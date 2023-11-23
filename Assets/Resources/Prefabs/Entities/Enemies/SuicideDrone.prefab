@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5000346093543423985}
   - component: {fileID: 6791622052337988144}
   - component: {fileID: 411336410143161977}
+  - component: {fileID: -1871335516789674443}
   m_Layer: 0
   m_Name: SuicideDrone
   m_TagString: Untagged
@@ -68,8 +69,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51842cc9d19d9b341af196c9e12f365c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _agent: {fileID: 6791622052337988144}
+--- !u!114 &-1871335516789674443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89da354612d84a458fec11156b8bd6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8941705410745824946
 PrefabInstance:
   m_ObjectHideFlags: 0

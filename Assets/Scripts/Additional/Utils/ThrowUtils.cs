@@ -18,5 +18,8 @@ namespace Additional.Utils
         
         public static void ComponentNotAdded()
             => throw new InvalidOperationException("Component is not added to entity");
+
+        public static void NeedToCreatePool()
+            => throw new InvalidOperationException();
     }
 }

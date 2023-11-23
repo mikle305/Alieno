@@ -1,75 +1,78 @@
 using System.Collections.Generic;
-using System.Linq;
 using Additional.Game;
-using Services;
 using TriInspector;
 using UnityEngine;
 
-public class RadarService : MonoSingleton<RadarService>
+namespace Services
 {
-    [SerializeField] private Transform _player;
-    [SerializeField] private List<Transform> _aliveEnemies;
-
-    [ShowInInspector] private Transform _currentClosest;
-    [ShowInInspector] private Transform _currentClosestAndVisible;
-
-    private int _lastUsedFrame =-1;
-    private List<Transform> _sortedEnemies;
-
-    public void Awake()
+    public class RadarService : MonoSingleton<RadarService>
     {
-        _player = ObjectsProvider.Instance.Character.transform;
-        _aliveEnemies = ObjectsProvider.Instance.AliveEnemies;
-    }
+        [SerializeField] private Transform _player;
+        [SerializeField] private List<Transform> _aliveEnemies;
 
-    public Transform GetClosestAndVisibleEnemy()
-    {
-        if (_lastUsedFrame == Time.frameCount || _aliveEnemies.Count == 0)
-            return _currentClosestAndVisible;
+        [ShowInInspector] private Transform _currentClosest;
+        [ShowInInspector] private Transform _currentClosestAndVisible;
+    
+        private int _lastUsedFrame =-1;
+        private List<Transform> _sortedEnemies;
+    
 
-        _lastUsedFrame = Time.frameCount;
-        _sortedEnemies = new List<Transform>(_aliveEnemies);
-        _sortedEnemies.Sort(CompareDistances);
-        _currentClosest = _sortedEnemies[0];
-        _currentClosestAndVisible = null;
-        foreach (var enemy in _sortedEnemies)
+        private void Start()
         {
-            if (IsVisible(enemy))
+            _player = ObjectsProvider.Instance.Character.transform;
+            _aliveEnemies = ObjectsProvider.Instance.AliveEnemies;
+        }
+
+        public Transform GetClosestAndVisibleEnemy()
+        {
+            if (_lastUsedFrame == Time.frameCount || _aliveEnemies.Count == 0)
+                return _currentClosestAndVisible;
+
+            _lastUsedFrame = Time.frameCount;
+            _sortedEnemies = new List<Transform>(_aliveEnemies);
+            _sortedEnemies.Sort(CompareDistances);
+            _currentClosest = _sortedEnemies[0];
+            _currentClosestAndVisible = null;
+            foreach (var enemy in _sortedEnemies)
             {
-                _currentClosestAndVisible = enemy;
-                break;
+                if (IsVisible(enemy))
+                {
+                    _currentClosestAndVisible = enemy;
+                    break;
+                }
+            }
+        
+        
+            return _currentClosestAndVisible;
+        }
+
+        private bool IsVisible(Transform enemy)
+        {
+            if (Physics.Linecast(_player.position, enemy.position))
+            {
+                return false;
+            }
+            else
+            {
+                Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+                Gizmos.DrawLine(_player.position, enemy.position);
+                return true;
             }
         }
         
-        
-        return _currentClosestAndVisible;
-    }
-
-    private bool IsVisible(Transform enemy)
-    {
-        if (Physics.Linecast(_player.position, enemy.position))
+        private int CompareDistances(Transform prevEnemy, Transform nextEnemy)
         {
-            return false;
-        }
-        else
-        {
-            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-            Gizmos.DrawLine(_player.position, enemy.position);
-            return true;
-        }
-    }
-    private int CompareDistances(Transform prevEnemy, Transform nextEnemy)
-    {
-        var playerPos = _player.position;
-        var prevDistance = (playerPos - prevEnemy.position).sqrMagnitude;
-        var nextDistance = (playerPos - nextEnemy.position).sqrMagnitude;
+            var playerPos = _player.position;
+            var prevDistance = (playerPos - prevEnemy.position).sqrMagnitude;
+            var nextDistance = (playerPos - nextEnemy.position).sqrMagnitude;
 
-        if (nextDistance > prevDistance)
-            return 1;
+            if (nextDistance > prevDistance)
+                return 1;
         
-        if (nextDistance < prevDistance)
-            return -1;
+            if (nextDistance < prevDistance)
+                return -1;
         
-        return 0;
+            return 0;
+        }
     }
 }

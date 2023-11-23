@@ -7,15 +7,15 @@ namespace Services.Save
     public class SaveService : MonoSingleton<SaveService>
     {
         private const string _progressKey = "Progress";
-        private ISaveStorage<PlayerProgress> _storage;
+        private ISaveStorage<Progress> _storage;
         
-        public PlayerProgress Progress { get; private set; }
+        public Progress Progress { get; private set; }
         public event Action ProgressLoaded;
 
 
         private void Start()
         {
-            _storage = new PlayerPrefsStorage<PlayerProgress>(_progressKey);
+            _storage = new PlayerPrefsStorage<Progress>(_progressKey);
         }
         
         public void Save()
@@ -25,7 +25,7 @@ namespace Services.Save
 
         public void Load()
         {
-            Progress = _storage.Load() ?? new PlayerProgress();
+            Progress = _storage.Load() ?? new Progress();
             ProgressLoaded?.Invoke();
         }
     }

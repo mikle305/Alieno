@@ -3,5 +3,6 @@
     public enum PoolId
     {
         PlayerProjectile,
+        SuicideDrone,
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Additional.Game;
+using GamePlay.Other;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,23 +10,26 @@ namespace Services
 {
     public class LevelMapService : MonoSingleton<LevelMapService>
     {
-        [SerializeField] public Button _nextLvlButton;
-        [SerializeField] private Transform _pointer;
-        [SerializeField] private List<Transform> _levelNumbers;
-        [SerializeField] private Vector3 _offset = new Vector3(0,1,0);
+        [SerializeField] private Vector3 _offset = new(0,1,0);
         [SerializeField] private float _speed =1f;
-        [SerializeField] private Coroutine _animation;
-        public event Action OnAnimationFinish;
+
         private int _currentRoom = -1;
-        private int _totalRooms;
         private Vector3 _positionToMove;
+        private Coroutine _animation;
+        private ObjectsProvider _objectsProvider;
+        private RoomsMap _roomsMap;
+
+        public event Action AnimationFinished;
+
+        
         private void Start()
         {
-            _nextLvlButton.onClick.AddListener(DisplayNextRoom);
-            _totalRooms = _levelNumbers.Count;
+            _objectsProvider = ObjectsProvider.Instance;
+            _roomsMap = _objectsProvider.RoomsMap;
+            _roomsMap.NextLvlButton.onClick.AddListener(DisplayNextRoom);
         }
 
-        public void DisplayNextRoom()
+        private void DisplayNextRoom()
         {
             if (_animation != null)
             {
@@ -33,11 +37,11 @@ namespace Services
                 return;
             }
         
-            if(++_currentRoom >= _totalRooms)
+            if(++_currentRoom >= _roomsMap.LevelNumbers.Count)
                 return;
 
             if (_animation == null)
-                _animation = StartCoroutine(MoveAnimation(_levelNumbers[_currentRoom]));
+                _animation = StartCoroutine(MoveAnimation(_roomsMap.LevelNumbers[_currentRoom]));
             else
                 SkipAnimation();
         }
@@ -45,11 +49,11 @@ namespace Services
         private IEnumerator MoveAnimation(Transform moveTo)
         {
             _positionToMove = moveTo.position + _offset;
-            while ((Vector3.Distance(_pointer.position, _positionToMove) > 0.001f))
+            while ((Vector3.Distance(_roomsMap.Pointer.position, _positionToMove) > 0.001f))
             {
                 var step =  _speed * Time.deltaTime; // calculate distance to move
-                _pointer.position = Vector3.MoveTowards(_pointer.position, _positionToMove, step);
-                if (Vector3.Distance(_pointer.position, moveTo.position) < 0.001f)
+                _roomsMap.Pointer.position = Vector3.MoveTowards(_roomsMap.Pointer.position, _positionToMove, step);
+                if (Vector3.Distance(_roomsMap.Pointer.position, moveTo.position) < 0.001f)
                 {
                     moveTo.position *= -1.0f;
                 } 
@@ -60,7 +64,7 @@ namespace Services
             yield return new WaitForSeconds(1f);
      
             _animation = null;
-            OnAnimationFinish?.Invoke();
+            AnimationFinished?.Invoke();
         }
 
         private void SkipAnimation()
@@ -68,9 +72,8 @@ namespace Services
             StopCoroutine(_animation);
             _animation = null;
 
-            _pointer.position = _positionToMove;
-
-            OnAnimationFinish?.Invoke();
+            _roomsMap.Pointer.position = _positionToMove;
+            AnimationFinished?.Invoke();
         }
     }
 }

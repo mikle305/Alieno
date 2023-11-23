@@ -15,3 +15,19 @@ MonoBehaviour:
   <Character>k__BackingField: {fileID: 1398320186731392, guid: c38312671b1287f438871de666ae8f72, type: 3}
   <Hud>k__BackingField: {fileID: 4136456505576376216, guid: 987e7cbecfc0ce947a6714deb4ae8a0e, type: 3}
   <Marker>k__BackingField: {fileID: 8653516859488930249, guid: 91a52450e4de49c41b7a6ac50a5e1b26, type: 3}
+  <Levels>k__BackingField:
+  - <Map>k__BackingField: {fileID: 8112452390089319818, guid: eca04ff4a64fb3f4f9e62fe42b082623, type: 3}
+    <Rooms>k__BackingField:
+    - {fileID: 1788103645522148317, guid: 40a42ae63ad9fe242b05bad3788fe0cb, type: 3}
+    - {fileID: 1667650024488729698, guid: 629ae5d4a79e4aa4fac7e2c06460b45e, type: 3}
+    - {fileID: 4288021259650716638, guid: df380881d6e1262428036861f429903c, type: 3}
+    - {fileID: 4345591163387887260, guid: b0c6459481986d74e83be3ac6279d795, type: 3}
+    - {fileID: 1983330111947455281, guid: 5a9b8b5e3fb63d241befe68cf517058b, type: 3}
+    - {fileID: 1269045054201012456, guid: b9c8ab726665ed848a715d7e3eefffa1, type: 3}
+    - {fileID: 3723075015309861506, guid: caad8b1aa3962db4592f5a667a81e880, type: 3}
+    - {fileID: 7907880956200711690, guid: b55fafa557e98764e89f9d3386708460, type: 3}
+    - {fileID: 1535383300105021612, guid: 554a7275914bd154b9ea13c461d329f3, type: 3}
+    - {fileID: 8146546021413923876, guid: 3af60fc5ba27e764389f12d624a661f6, type: 3}
+    - {fileID: 5634281820204224938, guid: 8c5c2f72545d9a647b5ac58e3bf431ed, type: 3}
+    - {fileID: 999353504489469918, guid: 7fe76328b7cc71b499a2618ef1463570, type: 3}
+    - {fileID: 2257603116380550113, guid: b4c6f95bebd7cab4a93c01467a783f82, type: 3}

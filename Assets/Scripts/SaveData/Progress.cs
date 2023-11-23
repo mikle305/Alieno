@@ -3,8 +3,9 @@
 namespace SaveData
 {
     [Serializable]
-    public class PlayerProgress
+    public class Progress
     {
         public SettingsData SettingsData = new();
+        public PlayerData PlayerData = new();
     }
 }
