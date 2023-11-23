@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Cinemachine;
 using GameFlow.Context;
 using GamePlay.Enemy;
 using GamePlay.Other;
@@ -22,11 +23,11 @@ namespace GameFlow.States
             _context = context;
             _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
-            _enemyFactory = EnemyFactory.Instance;
         }
 
         public override void Enter()
         {
+            _enemyFactory = EnemyFactory.Instance;
             InitCurrentRoom();
             SpawnPlayer();
             SpawnEnemies();
@@ -34,13 +35,12 @@ namespace GameFlow.States
 
         public override void Exit()
         {
-            
         }
 
         private void InitCurrentRoom()
         {
             int room = _saveService.Progress.PlayerData.Room;
-            _currentRoom = _objectsProvider.Rooms[room];
+            _currentRoom = _objectsProvider.Rooms[room - 1];
             _currentRoom.gameObject.SetActive(true);
         }
 
@@ -50,6 +50,10 @@ namespace GameFlow.States
             character.position = _currentRoom.EntryPoint.position;
             character.localPosition += new Vector3(0, 0.3f, 0);
             character.gameObject.SetActive(true);
+
+            CinemachineVirtualCamera virtualCamera = _objectsProvider.VirtualCamera;
+            virtualCamera.LookAt = character;
+            virtualCamera.Follow = character;
         }
 
         private void SpawnEnemies()

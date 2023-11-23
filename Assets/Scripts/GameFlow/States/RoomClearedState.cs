@@ -29,12 +29,21 @@ namespace GameFlow.States
         }
 
         public override void Exit()
-            => DisableRoomDependentObject();
+        {
+            DisableRoomDependentObject();
+            SetProgress();
+        }
 
         private void InitCurrentRoom()
         {
             int room = _saveService.Progress.PlayerData.Room;
-            _currentRoom = _objectsProvider.Rooms[room];
+            _currentRoom = _objectsProvider.Rooms[room - 1];
+        }
+
+        private void SetProgress()
+        {
+            _saveService.Progress.PlayerData.Room++;
+            _saveService.Save();
         }
 
         private void InitPlayerExitDetector()

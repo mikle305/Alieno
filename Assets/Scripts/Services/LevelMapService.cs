@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Additional.Game;
-using GamePlay.Other;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Services
 {
@@ -17,19 +14,16 @@ namespace Services
         private Vector3 _positionToMove;
         private Coroutine _animation;
         private ObjectsProvider _objectsProvider;
-        private RoomsMap _roomsMap;
-
+        
         public event Action AnimationFinished;
-
+        
         
         private void Start()
         {
             _objectsProvider = ObjectsProvider.Instance;
-            _roomsMap = _objectsProvider.RoomsMap;
-            _roomsMap.NextLvlButton.onClick.AddListener(DisplayNextRoom);
         }
 
-        private void DisplayNextRoom()
+        public void DisplayNextRoom()
         {
             if (_animation != null)
             {
@@ -37,11 +31,11 @@ namespace Services
                 return;
             }
         
-            if(++_currentRoom >= _roomsMap.LevelNumbers.Count)
+            if(++_currentRoom >= _objectsProvider.RoomsMap.LevelNumbers.Count)
                 return;
 
             if (_animation == null)
-                _animation = StartCoroutine(MoveAnimation(_roomsMap.LevelNumbers[_currentRoom]));
+                _animation = StartCoroutine(MoveAnimation(_objectsProvider.RoomsMap.LevelNumbers[_currentRoom]));
             else
                 SkipAnimation();
         }
@@ -49,11 +43,11 @@ namespace Services
         private IEnumerator MoveAnimation(Transform moveTo)
         {
             _positionToMove = moveTo.position + _offset;
-            while ((Vector3.Distance(_roomsMap.Pointer.position, _positionToMove) > 0.001f))
+            while ((Vector3.Distance(_objectsProvider.RoomsMap.Pointer.position, _positionToMove) > 0.001f))
             {
                 var step =  _speed * Time.deltaTime; // calculate distance to move
-                _roomsMap.Pointer.position = Vector3.MoveTowards(_roomsMap.Pointer.position, _positionToMove, step);
-                if (Vector3.Distance(_roomsMap.Pointer.position, moveTo.position) < 0.001f)
+                _objectsProvider.RoomsMap.Pointer.position = Vector3.MoveTowards(_objectsProvider.RoomsMap.Pointer.position, _positionToMove, step);
+                if (Vector3.Distance(_objectsProvider.RoomsMap.Pointer.position, moveTo.position) < 0.001f)
                 {
                     moveTo.position *= -1.0f;
                 } 
@@ -72,7 +66,7 @@ namespace Services
             StopCoroutine(_animation);
             _animation = null;
 
-            _roomsMap.Pointer.position = _positionToMove;
+            _objectsProvider.RoomsMap.Pointer.position = _positionToMove;
             AnimationFinished?.Invoke();
         }
     }

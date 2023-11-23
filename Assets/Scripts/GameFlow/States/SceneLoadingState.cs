@@ -25,6 +25,7 @@ namespace GameFlow.States
             _context = context;
             _sceneLoader = SceneLoader.Instance;
             _saveService = SaveService.Instance;
+            _objectsProvider = ObjectsProvider.Instance;
         }
 
         public override void Enter() 

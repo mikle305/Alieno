@@ -7,29 +7,27 @@ namespace Services
 {
     public class RadarService : MonoSingleton<RadarService>
     {
-        [SerializeField] private Transform _player;
-        [SerializeField] private List<Transform> _aliveEnemies;
-
         [ShowInInspector] private Transform _currentClosest;
         [ShowInInspector] private Transform _currentClosestAndVisible;
     
         private int _lastUsedFrame =-1;
         private List<Transform> _sortedEnemies;
-    
+        private ObjectsProvider _objectsProvider;
+
 
         private void Start()
         {
-            _player = ObjectsProvider.Instance.Character.transform;
-            _aliveEnemies = ObjectsProvider.Instance.AliveEnemies;
+            _objectsProvider = ObjectsProvider.Instance;
         }
 
         public Transform GetClosestAndVisibleEnemy()
         {
-            if (_lastUsedFrame == Time.frameCount || _aliveEnemies.Count == 0)
+            List<Transform> aliveEnemies = _objectsProvider.AliveEnemies;
+            if (_lastUsedFrame == Time.frameCount || aliveEnemies.Count == 0)
                 return _currentClosestAndVisible;
 
             _lastUsedFrame = Time.frameCount;
-            _sortedEnemies = new List<Transform>(_aliveEnemies);
+            _sortedEnemies = new List<Transform>(aliveEnemies);
             _sortedEnemies.Sort(CompareDistances);
             _currentClosest = _sortedEnemies[0];
             _currentClosestAndVisible = null;
@@ -48,21 +46,23 @@ namespace Services
 
         private bool IsVisible(Transform enemy)
         {
-            if (Physics.Linecast(_player.position, enemy.position))
+            Transform character = _objectsProvider.Character.transform;
+            if (Physics.Linecast(character.position, enemy.position))
             {
                 return false;
             }
             else
             {
-                Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-                Gizmos.DrawLine(_player.position, enemy.position);
+                /*Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+                Gizmos.DrawLine(character.position, enemy.position);*/
                 return true;
             }
         }
         
         private int CompareDistances(Transform prevEnemy, Transform nextEnemy)
         {
-            var playerPos = _player.position;
+            Transform character = _objectsProvider.Character.transform;
+            var playerPos = character.position;
             var prevDistance = (playerPos - prevEnemy.position).sqrMagnitude;
             var nextDistance = (playerPos - nextEnemy.position).sqrMagnitude;
 

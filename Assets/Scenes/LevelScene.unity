@@ -625,22 +625,6 @@ PrefabInstance:
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 1200536296}
-    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _poolsEntries.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _poolsEntries.Array.data[1].<Id>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _poolsEntries.Array.data[1].<Prefab>k__BackingField
-      value: 
-      objectReference: {fileID: -1871335516789674443, guid: 631585195cecc9944a6757256fad11aa, type: 3}
-    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _poolsEntries.Array.data[1].<StartCount>k__BackingField
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4953684018189316841, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -680,78 +664,6 @@ PrefabInstance:
     - target: {fileID: 4953684018189316841, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7326160585587232888, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _cursor
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7326160585587232888, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7326160585587232888, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelMap
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _pointer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _nextLvlButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[8]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[9]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[10]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[11]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834737114898965285, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
-      propertyPath: _levelNumbers.Array.data[12]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

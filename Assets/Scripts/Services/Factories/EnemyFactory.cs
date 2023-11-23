@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Additional.Game;
-using Additional.Utils;
 using GamePlay.Enemy;
 using UnityEngine;
 
@@ -9,6 +9,8 @@ namespace Services
 {
     public class EnemyFactory : MonoSingleton<EnemyFactory>
     {
+        [SerializeField] private EnemyEntry[] _enemyPrefabs = {};
+        
         private StaticDataService _staticDataService;
         private ObjectsFactory _objectsFactory;
         private Dictionary<EnemyId, PoolId> _idsMap;
@@ -23,10 +25,8 @@ namespace Services
 
         public GameObject Create(EnemySpawn enemySpawn)
         {
-            if (!_idsMap.TryGetValue(enemySpawn.Id, out PoolId poolId))
-                ThrowUtils.NeedToCreatePool();
-                
-            return _objectsFactory.Create(poolId, enemySpawn.transform.position);
+            GameObject prefab = _enemyPrefabs.First(x => x.Id == enemySpawn.Id).Prefab;
+            return Instantiate(prefab, enemySpawn.transform.position, Quaternion.identity, enemySpawn.transform);
         }
 
         private void InitPoolIdsMap()
@@ -38,4 +38,10 @@ namespace Services
         }
     }
 
+    [Serializable]
+    public class EnemyEntry
+    {
+        [field: SerializeField] public EnemyId Id { get; private set; }
+        [field: SerializeField] public GameObject Prefab { get; private set; }
+    }
 }
