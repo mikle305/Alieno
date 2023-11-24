@@ -8,7 +8,10 @@ namespace Services
 {
     public class SettingsService : MonoSingleton<SettingsService>
     {
-        private const string _volumeMixerParameter = "Volume";
+        [SerializeField] private string _volumeMixerParam = "Volume";
+        [SerializeField] private string _sfxMixerParam = "SFX";
+        [SerializeField] private string _musicMixerParam = "Music";
+        
         private SaveService _saveService;
         private AudioMixer _audioMixer;
         
@@ -30,10 +33,12 @@ namespace Services
 
         private void ApplySettings()
         {
-            SetVolume();
+            ApplyMixerGroup(_volumeMixerParam, Settings.Volume);
+            ApplyMixerGroup(_musicMixerParam, Settings.Music);
+            ApplyMixerGroup(_sfxMixerParam, Settings.Sfx);
         }
         
-        private void SetVolume()
-            => _audioMixer.SetFloat(_volumeMixerParameter, Mathf.Log10(Settings.Volume) * 20);
+        private void ApplyMixerGroup(string mixerParam, float value)
+            => _audioMixer.SetFloat(mixerParam, Mathf.Log10(value) * 20);
     }
 }
