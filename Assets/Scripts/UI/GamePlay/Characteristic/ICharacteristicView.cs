@@ -2,7 +2,7 @@
 {
     public interface ICharacteristicView
     {
-        public void Init(CharacteristicPresenter presenter);
+        public void Init(ICharacteristicPresenter presenter);
         public void SetValue(float current, float max);
     }
 }

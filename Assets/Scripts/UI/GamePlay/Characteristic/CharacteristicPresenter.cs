@@ -2,7 +2,7 @@
 
 namespace UI.GamePlay
 {
-    public class CharacteristicPresenter
+    public class CharacteristicPresenter : ICharacteristicPresenter
     {
         private readonly ICharacteristicView _view;
         private readonly Characteristic _model;

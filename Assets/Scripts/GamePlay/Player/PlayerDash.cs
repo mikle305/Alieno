@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using GamePlay.Characteristics;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace GamePlay.Player
         
         public bool OnCooldown { get; private set; }
         public bool IsDashing { get; private set; }
+
+        public event Action<float> CooldownStarted; 
         
     
         private void FixedUpdate()
@@ -105,7 +108,9 @@ namespace GamePlay.Player
         private async UniTask StartCooldown()
         {
             OnCooldown = true;
-            await UniTask.WaitForSeconds(_dashData.UseRate.GetValue());
+            float cooldown = _dashData.UseRate.GetValue();
+            CooldownStarted?.Invoke(cooldown);
+            await UniTask.WaitForSeconds(cooldown);
             OnCooldown = false;
         }
     }

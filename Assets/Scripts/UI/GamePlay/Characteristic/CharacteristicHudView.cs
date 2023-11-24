@@ -17,7 +17,7 @@ namespace UI.GamePlay
         private CharacteristicTextShowType _textShowType = CharacteristicTextShowType.Percents;
 
         private Dictionary<CharacteristicTextShowType, Func<float, float, string>> _textCreatorMap;
-        private CharacteristicPresenter _presenter;
+        private ICharacteristicPresenter _presenter;
 
 
         private void Awake()
@@ -25,7 +25,7 @@ namespace UI.GamePlay
             InitTextCreatorMap();
         }
 
-        public void Init(CharacteristicPresenter presenter)
+        public void Init(ICharacteristicPresenter presenter)
         {
             _presenter = presenter;
         }

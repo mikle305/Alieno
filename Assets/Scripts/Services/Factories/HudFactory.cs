@@ -1,5 +1,6 @@
 ﻿using Additional.Game;
 using GamePlay.Characteristics;
+using GamePlay.Player;
 using UI.GamePlay;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Services
             Hud hud = CreateHud();
             
             InitHealth(hud, character);
+            InitDash(hud, character);
 
             return hud;
         }
@@ -35,6 +37,14 @@ namespace Services
             var health = character.GetComponent<HealthData>();
             CharacteristicHudView view = hud.HealthView;
             var presenter = new CharacteristicPresenter(health, view);
+            view.Init(presenter);
+        }
+
+        private void InitDash(Hud hud, GameObject character)
+        {
+            var dash = character.GetComponent<PlayerDash>();
+            CharacteristicHudView view = hud.DashView;
+            var presenter = new DashPresenter(dash, view);
             view.Init(presenter);
         }
     }
