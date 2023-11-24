@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3774195931102479749}
   - component: {fileID: -5024378107208401444}
   - component: {fileID: 4924949148901033628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,9 +182,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8443714332464046698}
     m_Modifications:
+    - target: {fileID: 1031348193690348, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1069238066155946, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1120835270511274, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
       propertyPath: m_Name
       value: Hit 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120835270511274, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687085223856288, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879833098151502, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4598895280422352, guid: aed54f2359f04e14f866b2c258d2043d, type: 3}
       propertyPath: m_LocalScale.x

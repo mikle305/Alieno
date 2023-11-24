@@ -10,6 +10,7 @@ namespace GamePlay.Player
         [SerializeField] private DashData _dashData;
         [SerializeField] private Rigidbody _playerBody;
         [SerializeField] private LayerMask _obstacleLayer;
+        [SerializeField] private TrailPrefab _trailPrefab;
 
         [Header("Trail Settings")]
         [SerializeField] private Material _dashMaterial;
@@ -84,18 +85,16 @@ namespace GamePlay.Player
 
         private void SpawnTrailMesh()
         {
-            GameObject go = new GameObject("Trail");
-            go.transform.SetPositionAndRotation(_playerBody.position,_playerBody.rotation);
-            MeshRenderer mr = go.AddComponent<MeshRenderer>();
-            MeshFilter mf = go.AddComponent<MeshFilter>();
-
+            var trail = Instantiate(_trailPrefab,_playerBody.position,_playerBody.rotation);
+            
+            
             Mesh mesh = new Mesh();
             _trailMesh.BakeMesh(mesh);
 
-            mf.mesh = mesh;
-            mr.material = _dashMaterial;
-        
-            Destroy(go,_trailLife);
+            trail.MeshRenderer.material = _dashMaterial;
+            trail.MeshFilter.mesh = mesh;
+            
+            Destroy(trail.gameObject,_trailLife);
             Destroy(mesh,_trailLife);
         }
 

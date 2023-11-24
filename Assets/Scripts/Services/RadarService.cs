@@ -7,6 +7,7 @@ namespace Services
 {
     public class RadarService : MonoSingleton<RadarService>
     {
+        [SerializeField] private LayerMask _layersToIgnore;
         [ShowInInspector] private Transform _currentClosest;
         [ShowInInspector] private Transform _currentClosestAndVisible;
     
@@ -47,14 +48,14 @@ namespace Services
         private bool IsVisible(Transform enemy)
         {
             Transform character = _objectsProvider.Character.transform;
-            if (Physics.Linecast(character.position, enemy.position))
+            if (Physics.Linecast(character.position, enemy.position,_layersToIgnore))
             {
+                Debug.DrawLine(character.position,enemy.position,Color.red);
                 return false;
             }
             else
             {
-                /*Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-                Gizmos.DrawLine(character.position, enemy.position);*/
+                Debug.DrawLine(character.position,enemy.position,Color.green);
                 return true;
             }
         }
@@ -67,10 +68,10 @@ namespace Services
             var nextDistance = (playerPos - nextEnemy.position).sqrMagnitude;
 
             if (nextDistance > prevDistance)
-                return 1;
+                return -1;
         
             if (nextDistance < prevDistance)
-                return -1;
+                return 1;
         
             return 0;
         }

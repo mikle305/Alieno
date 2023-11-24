@@ -1,4 +1,4 @@
-using Services;
+    using Services;
 using UnityEngine;
 
 namespace GamePlay.Player
@@ -40,12 +40,12 @@ namespace GamePlay.Player
         private void RotateToMovement()
         {
             Vector3 velocity = _playerRigidBody.velocity;
-
             if (velocity == Vector3.zero) 
                 return;
-        
+
             Quaternion toRotation = Quaternion.LookRotation(velocity, transform.up);
-            transform.rotation =
+
+            _playerTransform.rotation =
                 Quaternion.RotateTowards(_playerTransform.rotation, toRotation, _turnSpeed * Time.deltaTime);
         }
     }

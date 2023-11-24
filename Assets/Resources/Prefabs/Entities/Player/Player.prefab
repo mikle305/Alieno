@@ -48,6 +48,7 @@ Transform:
   - {fileID: 5524727442297987760}
   - {fileID: 1800941652048926322}
   - {fileID: 3299447139900905733}
+  - {fileID: 1765226821990195970}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &5781377304457184436
@@ -181,6 +182,7 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  _trailPrefab: {fileID: 7468715156371395589, guid: de6f6b52768c8b14a9d3e28165ad2eaf, type: 3}
   _dashMaterial: {fileID: 2100000, guid: 1a18544e71580504b8efab2d34bb32c1, type: 2}
   _trailMesh: {fileID: 1013373454650480649}
   _trailLife: 0.3
@@ -228,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 4078725191484616}
   _playerRigidBody: {fileID: 1105913242540431947}
-  _turnSpeed: 10
+  _turnSpeed: 180
 --- !u!114 &8602244654995898822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PoolId>k__BackingField: 0
+  <ProjectileId>k__BackingField: 0
   _defaultUseRate: 1
   _defaultDamage: 20
   _defaultMoveSpeed: 15
@@ -468,6 +470,37 @@ Transform:
   - {fileID: 8769333049718250252}
   - {fileID: 4373567419167119172}
   m_Father: {fileID: 5524727442297987760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8973855427768699561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765226821990195970}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1765226821990195970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973855427768699561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.4090133, y: -3.2544386, z: 6.8190207}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4078725191484616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9221623026071947283
 GameObject:
