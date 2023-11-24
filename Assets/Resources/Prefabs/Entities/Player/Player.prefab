@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTransform: {fileID: 4078725191484616}
   _playerRigidBody: {fileID: 1105913242540431947}
-  _turnSpeed: 180
+  _turnSpeed: 360
 --- !u!114 &8602244654995898822
 MonoBehaviour:
   m_ObjectHideFlags: 0

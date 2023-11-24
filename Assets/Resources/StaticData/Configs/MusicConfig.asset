@@ -14,7 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicCollection:
   - _id: 0
-    _clip: {fileID: 8300000, guid: e4d7f134994e1304fa46c49eec1346fe, type: 3}
+    _clip: {fileID: 8300000, guid: cbadb8e9e872947469d41363f977612c, type: 3}
+    _basicVolume: 0.25
   - _id: 1
-    _clip: {fileID: 8300000, guid: 7ba32afd15e47b240b0e9b27faed7503, type: 3}
+    _clip: {fileID: 8300000, guid: cf9c11f1f75cbd74f85f17bc945441f9, type: 3}
+    _basicVolume: 0.25
+  - _id: 2
+    _clip: {fileID: 8300000, guid: bae1c3268ce14f041b78d8770edb3a5c, type: 3}
+    _basicVolume: 0.25
+  - _id: 3
+    _clip: {fileID: 8300000, guid: 5a3c18fcc7f20d0429f893e51123320d, type: 3}
+    _basicVolume: 0.25
+  - _id: 4
+    _clip: {fileID: 8300000, guid: fd4808c59bd670b4ba44663030012893, type: 3}
+    _basicVolume: 0.25
+  - _id: 5
+    _clip: {fileID: 8300000, guid: 7844e6f3fd7cb4544b6b0571a6e3b59d, type: 3}
+    _basicVolume: 0.25
+  - _id: 6
+    _clip: {fileID: 8300000, guid: fd38f8bca5b82224fbfe671a79b9c396, type: 3}
+    _basicVolume: 0.1
   <AudioMixer>k__BackingField: {fileID: 24100000, guid: e58abe0e1f4a7dc42b6fa0def29b3fef, type: 2}

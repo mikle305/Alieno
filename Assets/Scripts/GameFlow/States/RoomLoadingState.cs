@@ -17,6 +17,7 @@ namespace GameFlow.States
         private readonly EnemiesDeathObserver _enemiesDeathObserver;
         private Room _currentRoom;
         private EnemyFactory _enemyFactory;
+        private MusicService _musicService;
 
 
         public RoomLoadingState(GameStateMachine context)
@@ -25,15 +26,22 @@ namespace GameFlow.States
             _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
             _enemiesDeathObserver = EnemiesDeathObserver.Instance;
+            _musicService = MusicService.Instance;
         }
 
         public override void Enter()
         {
             InitCurrentRoom();
+            SwitchToRoomMusic();
             SpawnPlayer();
             SpawnEnemies();
             ShowRoomDependentObjects();
             SubscribeEnemiesObserver();
+        }
+
+        private void SwitchToRoomMusic()
+        {
+            _musicService.Play(_currentRoom.BackgroundMusic);
         }
 
         public override void Exit()
@@ -51,6 +59,7 @@ namespace GameFlow.States
             int room = _saveService.Progress.PlayerData.Room;
             _currentRoom = _objectsProvider.Rooms[room - 1];
             _currentRoom.gameObject.SetActive(true);
+            
         }
 
         private void SpawnPlayer()

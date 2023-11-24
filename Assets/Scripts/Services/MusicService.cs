@@ -16,7 +16,13 @@ namespace Services
             _musicConfig = StaticDataService.Instance.GetMusicConfig();
         }
 
-        public void Play(MusicId musicId) 
-            => _audioSource.clip = _musicConfig.GetMusicClip(musicId);
+        public void Play(MusicId musicId)
+        {
+            Music music = _musicConfig.GetMusic(musicId);   
+
+            _audioSource.clip = music.Clip;
+            _audioSource.volume = music.BasicVolume;
+            _audioSource.Play();
+        }
     }
 }

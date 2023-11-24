@@ -11,10 +11,9 @@ namespace StaticData.Music
         [SerializeField] private List<Music> _musicCollection;
         [field: SerializeField] public AudioMixer AudioMixer { get; private set; }
 
-
-        public AudioClip GetMusicClip(MusicId id)
+        public Music GetMusic(MusicId id)
             => _musicCollection
-                .FirstOrDefault(m => m.Id == id)
-                ?.Clip;
+                .FirstOrDefault(m => m.Id == id);
+
     }
 }

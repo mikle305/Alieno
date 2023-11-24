@@ -217,6 +217,7 @@ MonoBehaviour:
   _enemySpawnsParent: {fileID: 5861580185710907078}
   <EntryPoint>k__BackingField: {fileID: 8753052059331104429}
   <ExitPoint>k__BackingField: {fileID: 3499944506714914547}
+  <BackgroundMusic>k__BackingField: 1
 --- !u!1 &1948274761661137945
 GameObject:
   m_ObjectHideFlags: 0
