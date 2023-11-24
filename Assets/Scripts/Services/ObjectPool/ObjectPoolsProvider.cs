@@ -9,7 +9,7 @@ namespace Services
     {
         [SerializeField] private ProjectilePoolEntry[] _defaultProjectilePools;
         
-        private Dictionary<ProjectileId, IObjectPool<Poolable>> _projectilePools;
+        private Dictionary<ProjectileId, IObjectPool<GameObject>> _projectilePools;
         private StaticDataService _staticDataService;
         private Dictionary<ProjectileId, GameObject> _projectilePrefabs;
 
@@ -21,25 +21,27 @@ namespace Services
             InitProjectilePools();
         }
 
-        public Poolable TakeProjectile(ProjectileId id) 
-            => _projectilePools.TryGetValue(id, out IObjectPool<Poolable> pool) 
+        public GameObject TakeProjectile(ProjectileId id) 
+            => _projectilePools.TryGetValue(id, out IObjectPool<GameObject> pool) 
                 ? pool.Take() 
                 : null;
 
         private void InitProjectilePools() 
             => _projectilePools = _defaultProjectilePools.ToDictionary(entry => entry.Id, CreateProjectilePool);
 
-        private IObjectPool<Poolable> CreateProjectilePool(ProjectilePoolEntry entry)
+        private IObjectPool<GameObject> CreateProjectilePool(ProjectilePoolEntry entry)
         {
             Transform parent = new GameObject(entry.Id.ToString()).transform;
             parent.parent = transform;
 
-            var prefab = _projectilePrefabs[entry.Id].AddComponent<Poolable>();
-            return new GameObjectPool<Poolable>(prefab, entry.StartCount, parent, InitPoolable);
+            GameObject prefab = _projectilePrefabs[entry.Id];
+            return new GameObjectPool(prefab, entry.StartCount, parent, InitPoolable);
         }
 
-        private static void InitPoolable(Poolable obj, IObjectPool<Poolable> pool)
-            => obj.Init(pool);
+        private static void InitPoolable(GameObject obj, IObjectPool<GameObject> pool)
+        {
+            obj.AddComponent<Poolable>().Init(pool);
+        }
 
         private void InitProjectilePrefabsMap() 
             => _projectilePrefabs = _staticDataService

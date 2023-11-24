@@ -5,13 +5,13 @@ namespace Services
 {
     public class Poolable : MonoBehaviour
     {
-        private IObjectPool<Poolable> _pool;
+        private IObjectPool<GameObject> _pool;
         
 
-        public void Init(IObjectPool<Poolable> pool) 
+        public void Init(IObjectPool<GameObject> pool) 
             => _pool = pool;
 
         public void Release()
-            => _pool.Release(this);
+            => _pool.Release(gameObject);
     }
 }
