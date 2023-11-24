@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CursorMovement : MonoBehaviour
 {
+    /*
     [SerializeField] private Camera _camera;
     
     private Plane _plane = new Plane(Vector3.down, 0);
@@ -28,5 +29,5 @@ public class CursorMovement : MonoBehaviour
             return Vector3.zero;
         }
     }
-
+*/
 }

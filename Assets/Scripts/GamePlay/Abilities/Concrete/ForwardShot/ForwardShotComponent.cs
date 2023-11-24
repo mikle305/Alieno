@@ -9,14 +9,14 @@ namespace GamePlay.Abilities
     {
         private Transform _transform;
         private ProjectileAttackData _projectileAttackData;
-        private ObjectsFactory _objectsFactory;
+        private ProjectileFactory _projectileFactory;
 
 
         protected override void OnCreate()
         {
             _transform = Entity.transform;
             _projectileAttackData = Entity.GetComponent<ProjectileAttackData>();
-            _objectsFactory = ObjectsFactory.Instance;
+            _projectileFactory = ProjectileFactory.Instance;
         }
 
         public override void OnCall() 
@@ -33,11 +33,11 @@ namespace GamePlay.Abilities
 
         private void CreateProjectile(Vector3 spawnPoint, Vector3 direction)
         {
-            PoolId poolId = _projectileAttackData.PoolId;
+            ProjectileId projectileId = _projectileAttackData.ProjectileId;
             float speed = _projectileAttackData.MoveSpeed.GetValue();
             float damage = _projectileAttackData.Damage.GetValue();
             
-            GameObject projectile = _objectsFactory.Create(poolId, spawnPoint);
+            GameObject projectile = _projectileFactory.Create(projectileId, spawnPoint);
             projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
             projectile.GetComponent<ProjectileDamage>().Init(damage);
         }

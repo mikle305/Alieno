@@ -5,7 +5,7 @@ using UnityEngine;
 namespace StaticData
 {
     [Serializable]
-    public class LevelData
+    public class LevelEntry
     {
         [field: SerializeField] public RoomsMap Map { get; private set; }
         [field: SerializeField] public Room[] Rooms { get; private set; }

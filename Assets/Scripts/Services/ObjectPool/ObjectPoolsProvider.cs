@@ -7,31 +7,44 @@ namespace Services
 {
     public class ObjectPoolsProvider : MonoSingleton<ObjectPoolsProvider>
     {
-        [SerializeField] private PoolEntry[] _poolsEntries;
+        [SerializeField] private ProjectilePoolEntry[] _defaultProjectilePools;
         
-        private Dictionary<PoolId, IObjectPool<Poolable>> _poolsMap;
+        private Dictionary<ProjectileId, IObjectPool<Poolable>> _projectilePools;
+        private StaticDataService _staticDataService;
+        private Dictionary<ProjectileId, GameObject> _projectilePrefabs;
 
 
-        protected override void Awake()
+        private void Start()
         {
-            base.Awake();
-            InitPools();
+            _staticDataService = StaticDataService.Instance;
+            InitProjectilePrefabsMap();
+            InitProjectilePools();
         }
 
-        public IObjectPool<Poolable> GetPool(PoolId id)
-            => _poolsMap[id];
+        public Poolable TakeProjectile(ProjectileId id) 
+            => _projectilePools.TryGetValue(id, out IObjectPool<Poolable> pool) 
+                ? pool.Take() 
+                : null;
 
-        private void InitPools() 
-            => _poolsMap = _poolsEntries.ToDictionary(entry => entry.Id, CreatePool);
+        private void InitProjectilePools() 
+            => _projectilePools = _defaultProjectilePools.ToDictionary(entry => entry.Id, CreateProjectilePool);
 
-        private IObjectPool<Poolable> CreatePool(PoolEntry entry)
+        private IObjectPool<Poolable> CreateProjectilePool(ProjectilePoolEntry entry)
         {
             Transform parent = new GameObject(entry.Id.ToString()).transform;
             parent.parent = transform;
-            return new GameObjectPool<Poolable>(entry.Prefab, entry.StartCount, parent, InitPoolable);
+
+            var prefab = _projectilePrefabs[entry.Id].AddComponent<Poolable>();
+            return new GameObjectPool<Poolable>(prefab, entry.StartCount, parent, InitPoolable);
         }
 
         private static void InitPoolable(Poolable obj, IObjectPool<Poolable> pool)
             => obj.Init(pool);
+
+        private void InitProjectilePrefabsMap() 
+            => _projectilePrefabs = _staticDataService
+                .GetPrefabsConfig()
+                .Projectiles
+                .ToDictionary(x => x.Id, x => x.Prefab);
     }
 }

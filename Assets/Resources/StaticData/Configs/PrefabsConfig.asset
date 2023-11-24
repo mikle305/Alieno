@@ -31,3 +31,9 @@ MonoBehaviour:
     - {fileID: -2591570898280212148, guid: 8c5c2f72545d9a647b5ac58e3bf431ed, type: 3}
     - {fileID: -4270962198518013523, guid: 7fe76328b7cc71b499a2618ef1463570, type: 3}
     - {fileID: 5446841349079864952, guid: b4c6f95bebd7cab4a93c01467a783f82, type: 3}
+  <Enemies>k__BackingField:
+  - <Id>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 2643963481109582220, guid: 631585195cecc9944a6757256fad11aa, type: 3}
+  <Projectiles>k__BackingField:
+  - <Id>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 4807152518047859045, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}

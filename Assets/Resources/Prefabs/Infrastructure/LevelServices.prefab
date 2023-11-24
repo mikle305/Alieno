@@ -107,9 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d44f109b6e4033af97f312df07b588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefabs:
-  - <Id>k__BackingField: 0
-    <Prefab>k__BackingField: {fileID: 2643963481109582220, guid: 631585195cecc9944a6757256fad11aa, type: 3}
 --- !u!114 &7642921351860181096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,10 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865b4488733545b99613566c6fe32fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolsEntries:
+  _defaultProjectilePools:
   - <Id>k__BackingField: 0
-    <Prefab>k__BackingField: {fileID: 6555685928861038718, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}
-    <StartCount>k__BackingField: 30
+    <StartCount>k__BackingField: 15
 --- !u!1 &8964130785870587346
 GameObject:
   m_ObjectHideFlags: 0

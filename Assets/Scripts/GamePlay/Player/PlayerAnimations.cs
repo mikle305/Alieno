@@ -1,31 +1,40 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    
-    private static string _idle = "Idle";
-    private static string _rightAttack = "RightAttack";
-    private static string _leftAttack = "LeftAttack";
-    private static string _attackSpeed = "AttackSpeed";
 
-    private string _lastAttackUsed = _leftAttack;
+    private static readonly int _idle = Animator.StringToHash("Idle");
+    private static readonly int _rightAttack = Animator.StringToHash("RightAttack");
+    private static readonly int _leftAttack = Animator.StringToHash("LeftAttack");
+    private static readonly int _attackSpeed = Animator.StringToHash("AttackSpeed");
+
+    private int _lastAttackUsed = _leftAttack;
+    
     public event Action OnAttackAnimation; 
+    
+    
     public void PlayAttackAnimation(float attackSpeed)
     {
         _animator.SetFloat(_attackSpeed,1/attackSpeed);
-
-        string newAttackUsed = _lastAttackUsed == _leftAttack ? _rightAttack : _leftAttack;
-        _animator.SetTrigger(newAttackUsed);
-        _lastAttackUsed = newAttackUsed;
+        
+        int nextAttack = GetNextAttack();
+        _animator.SetTrigger(nextAttack);
+        _lastAttackUsed = nextAttack;
     }
-
+    
+    /// <summary>
+    /// Animation event
+    /// </summary>
+    [JetBrains.Annotations.UsedImplicitly]
     public void InvokeAttack()
     {
         OnAttackAnimation?.Invoke();
     }
+
+    private int GetNextAttack() 
+        => _lastAttackUsed == _leftAttack 
+            ? _rightAttack 
+            : _leftAttack;
 }

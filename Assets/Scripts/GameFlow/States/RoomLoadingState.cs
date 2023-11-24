@@ -31,6 +31,7 @@ namespace GameFlow.States
             InitCurrentRoom();
             SpawnPlayer();
             SpawnEnemies();
+            ShowRoomDependentObjects();
         }
 
         public override void Exit()
@@ -67,6 +68,12 @@ namespace GameFlow.States
             }
 
             _objectsProvider.AliveEnemies = aliveEnemies;
+        }
+
+        private void ShowRoomDependentObjects()
+        {
+            _objectsProvider.Marker.SetActive(true);
+            _objectsProvider.Hud.gameObject.SetActive(true);
         }
     }
 }

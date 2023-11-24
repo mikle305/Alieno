@@ -14,7 +14,6 @@ namespace Services
     {
         private MusicConfig _musicConfig;
         private PrefabsConfig _prefabsConfig;
-        private PoolIdsConfig _poolIdsConfig;
         private Dictionary<AbilityId, AbilityData> _abilitiesMap;
 
 
@@ -23,9 +22,6 @@ namespace Services
 
         public PrefabsConfig GetPrefabsConfig()
             => _prefabsConfig ??= LoadData<PrefabsConfig>(StaticDataPaths.AppConfig);
-
-        public PoolIdsConfig GetPoolIdsConfig()
-            => _poolIdsConfig ??= LoadData<PoolIdsConfig>(StaticDataPaths.PoolIdsConfig);
 
         public AbilityData GetAbility(AbilityId id)
             => (_abilitiesMap ??= LoadAbilities()).GetValueOrDefault(id);

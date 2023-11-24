@@ -9,6 +9,8 @@ namespace StaticData
         [field: SerializeField] public GameObject Character { get; private set; }
         [field: SerializeField] public Hud Hud { get; private set; }
         [field: SerializeField] public GameObject Marker { get; private set; }
-        [field: SerializeField] public LevelData[] Levels { get; private set; }
+        [field: SerializeField] public LevelEntry[] Levels { get; private set; }
+        [field: SerializeField] public EnemyEntry[] Enemies { get; private set; }
+        [field: SerializeField] public ProjectileEntry[] Projectiles { get; private set; }
     }
 }

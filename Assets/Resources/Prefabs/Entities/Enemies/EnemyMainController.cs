@@ -20,7 +20,6 @@ public class EnemyMainController : MonoBehaviour
     private void Update()
     {
         Transform target = _objectsProvider.Character.transform;
-        print(target);
         _enemyMovement?.UpdateMovement(_navMeshAgent, target);
         _enemyRotation?.UpdateRotation(target);
         _enemyAnimations?.UpdateAnimations(_navMeshAgent);
