@@ -38,10 +38,8 @@ namespace Services
             return new GameObjectPool(prefab, entry.StartCount, parent, InitPoolable);
         }
 
-        private static void InitPoolable(GameObject obj, IObjectPool<GameObject> pool)
-        {
-            obj.AddComponent<Poolable>().Init(pool);
-        }
+        private static void InitPoolable(GameObject obj, IObjectPool<GameObject> pool) 
+            => obj.AddComponent<Poolable>().Init(pool);
 
         private void InitProjectilePrefabsMap() 
             => _projectilePrefabs = _staticDataService

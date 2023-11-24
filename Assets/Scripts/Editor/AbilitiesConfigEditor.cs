@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GamePlay.Abilities;
-using StaticData.Abilities;
+using StaticData;
 using TriInspector.Editors;
 using UnityEditor;
 using UnityEditor.Callbacks;

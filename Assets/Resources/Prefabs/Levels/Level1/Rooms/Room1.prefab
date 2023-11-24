@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawnsParent: {fileID: 5861580185710907078}
   <EntryPoint>k__BackingField: {fileID: 8753052059331104429}
-  <ExitPoint>k__BackingField: {fileID: 2984767189818978347}
+  <ExitPoint>k__BackingField: {fileID: 3499944506714914547}
 --- !u!1 &1948274761661137945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,6 +4145,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 040dd2d1aade24c4a84fc7622f59e8f8, type: 3}
+--- !u!1 &3499944506714914547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 531769649766138304, guid: 040dd2d1aade24c4a84fc7622f59e8f8, type: 3}
+  m_PrefabInstance: {fileID: 4031695084678774579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8144115764347380633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5113489325402807466, guid: 040dd2d1aade24c4a84fc7622f59e8f8, type: 3}

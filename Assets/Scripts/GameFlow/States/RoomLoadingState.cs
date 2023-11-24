@@ -14,6 +14,7 @@ namespace GameFlow.States
         private readonly GameStateMachine _context;
         private readonly SaveService _saveService;
         private readonly ObjectsProvider _objectsProvider;
+        private readonly EnemiesDeathObserver _enemiesDeathObserver;
         private Room _currentRoom;
         private EnemyFactory _enemyFactory;
 
@@ -23,19 +24,26 @@ namespace GameFlow.States
             _context = context;
             _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
+            _enemiesDeathObserver = EnemiesDeathObserver.Instance;
         }
 
         public override void Enter()
         {
-            _enemyFactory = EnemyFactory.Instance;
             InitCurrentRoom();
             SpawnPlayer();
             SpawnEnemies();
             ShowRoomDependentObjects();
+            SubscribeEnemiesObserver();
         }
 
         public override void Exit()
         {
+        }
+
+        private void OnEnemiesCleared()
+        {
+            _enemiesDeathObserver.AllCleared -= OnEnemiesCleared;
+            _context.Enter<RoomClearedState>();
         }
 
         private void InitCurrentRoom()
@@ -59,6 +67,7 @@ namespace GameFlow.States
 
         private void SpawnEnemies()
         {
+            _enemyFactory = EnemyFactory.Instance;
             EnemySpawn[] enemySpawns = _currentRoom.EnemySpawns;
             var aliveEnemies = new List<Transform>(enemySpawns.Length);
             foreach (EnemySpawn enemySpawn in enemySpawns)
@@ -74,6 +83,12 @@ namespace GameFlow.States
         {
             _objectsProvider.Marker.SetActive(true);
             _objectsProvider.Hud.gameObject.SetActive(true);
+        }
+
+        private void SubscribeEnemiesObserver()
+        {
+            _enemiesDeathObserver.AllCleared += OnEnemiesCleared;
+            _enemiesDeathObserver.Init();
         }
     }
 }
