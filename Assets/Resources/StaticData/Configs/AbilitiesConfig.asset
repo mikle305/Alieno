@@ -17,6 +17,9 @@ MonoBehaviour:
   - rid: 6974772225356857355
   - rid: 6974772225356857356
   - rid: 6338515697417846785
+  - rid: 6338515767009476608
+  - rid: 6338515767009476609
+  - rid: 6338515767009476610
   references:
     version: 2
     RefIds:
@@ -32,6 +35,36 @@ MonoBehaviour:
           <PercentsBuff>k__BackingField: 100
         - <Id>k__BackingField: 4
           <PercentsBuff>k__BackingField: 150
+    - rid: 6338515767009476608
+      type: {class: DiagonalShotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <ShotsDirections>k__BackingField:
+          - {x: 1, y: 0, z: 1}
+          - {x: -1, y: 0, z: 1}
+        - <Id>k__BackingField: 2
+          <ShotsDirections>k__BackingField:
+          - {x: 1, y: 0, z: 1}
+          - {x: -1, y: 0, z: 1}
+          - {x: 1, y: 0, z: -1}
+          - {x: -1, y: 0, z: -1}
+    - rid: 6338515767009476609
+      type: {class: SideShotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <ShotsDirections>k__BackingField:
+          - {x: -1, y: 0, z: 0}
+          - {x: 1, y: 0, z: 0}
+    - rid: 6338515767009476610
+      type: {class: BackShotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <ShotsDirections>k__BackingField:
+          - {x: 0, y: 0, z: -1}
+          - {x: 0, y: 0, z: -1}
     - rid: 6974772225356857354
       type: {class: RicochetData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:
@@ -53,6 +86,9 @@ MonoBehaviour:
       data:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
-          <ShotsCount>k__BackingField: 1
+          <ShotsDirections>k__BackingField:
+          - {x: 0, y: 0, z: 1}
         - <Id>k__BackingField: 2
-          <ShotsCount>k__BackingField: 2
+          <ShotsDirections>k__BackingField:
+          - {x: 0, y: 0, z: 1}
+          - {x: 0, y: 0, z: 1}

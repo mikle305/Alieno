@@ -1,4 +1,6 @@
 ﻿using Additional.Game;
+using GamePlay.Characteristics;
+using GamePlay.Projectile;
 using UnityEngine;
 
 namespace Services
@@ -13,21 +15,26 @@ namespace Services
             _poolsProvider = ObjectPoolsProvider.Instance;
         }
 
-        public GameObject Create(ProjectileId id, Vector3 position)
+        public GameObject Create(ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)
         {
-            GameObject projectile = _poolsProvider.TakeProjectile(id);
-            if (projectile != null)
-                return SpawnFromPool(projectile, position);
+            GameObject projectile = _poolsProvider.TakeProjectile(attackData.ProjectileId);
+            if (projectile == null)
+                return null;
 
-            return null;
+            Configure(projectile, attackData, spawnPoint, direction);
+            return projectile;
         }
 
-        private GameObject SpawnFromPool(GameObject projectile, Vector3 position)
+        private void Configure(GameObject projectile, ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)
         {
             Transform projectileTransform = projectile.transform;
-            projectileTransform.position = position;
+            projectileTransform.position = spawnPoint;
             projectileTransform.rotation = Quaternion.identity;
-            return projectile;
+            
+            float speed = attackData.MoveSpeed.GetValue();
+            float damage = attackData.Damage.GetValue();
+            projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
+            projectile.GetComponent<ProjectileDamage>().Init(damage);
         }
     }
 }

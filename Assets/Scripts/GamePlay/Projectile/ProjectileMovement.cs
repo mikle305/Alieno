@@ -23,7 +23,7 @@ namespace GamePlay.Projectile
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _isWorking = false;
         }
