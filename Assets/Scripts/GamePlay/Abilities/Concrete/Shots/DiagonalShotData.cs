@@ -6,6 +6,6 @@ namespace GamePlay.Abilities
     public class DiagonalShotData : AbilityData<ShotLevelData>
     {
         public override AbilityId Id => AbilityId.DiagonalShot;
-        public override Type ComponentType { get; } = typeof(DiagonalShotComponent);
+        public override Type ComponentType => typeof(ShotComponent<DiagonalShotData>);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GamePlay.Abilities
 {
-    public abstract class ShotComponentBase<TShotData> : AbilityComponent<TShotData, ShotLevelData>
+    public class ShotComponent<TShotData> : AbilityComponent<TShotData, ShotLevelData>
         where TShotData : AbilityData<ShotLevelData>
     {
         private Transform _transform;

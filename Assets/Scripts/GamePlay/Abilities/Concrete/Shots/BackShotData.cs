@@ -6,6 +6,6 @@ namespace GamePlay.Abilities
     public class BackShotData : AbilityData<ShotLevelData>
     {
         public override AbilityId Id => AbilityId.BackShot;
-        public override Type ComponentType => typeof(BackShotComponent);
+        public override Type ComponentType => typeof(ShotComponent<BackShotData>);
     }
 }

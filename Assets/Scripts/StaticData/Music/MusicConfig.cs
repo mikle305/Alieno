@@ -14,6 +14,5 @@ namespace StaticData.Music
         public Music GetMusic(MusicId id)
             => _musicCollection
                 .FirstOrDefault(m => m.Id == id);
-
     }
 }

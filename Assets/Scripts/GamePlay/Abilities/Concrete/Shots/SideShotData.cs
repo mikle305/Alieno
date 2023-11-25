@@ -6,6 +6,6 @@ namespace GamePlay.Abilities
     public class SideShotData : AbilityData<ShotLevelData>
     {
         public override AbilityId Id => AbilityId.SideShot;
-        public override Type ComponentType => typeof(SideShotComponent);
+        public override Type ComponentType => typeof(ShotComponent<SideShotData>);
     }
 }
