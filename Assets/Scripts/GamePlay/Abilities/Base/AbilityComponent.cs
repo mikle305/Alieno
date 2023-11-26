@@ -1,4 +1,5 @@
 ﻿using System;
+using GamePlay.Projectile;
 
 namespace GamePlay.Abilities
 {
@@ -10,7 +11,8 @@ namespace GamePlay.Abilities
         public abstract void UpLevel();
 
         public virtual void OnTick() { }
-        public virtual void OnCall() { }
+        public virtual void OnShotCalled() { }
+        public virtual void OnShotDone(ProjectileDamage projectile) { }
         public virtual void OnDestroy() { }
     }
 
@@ -22,10 +24,13 @@ namespace GamePlay.Abilities
 
         protected TLevelData CurrentLevel => _data.Levels[CurrentLevelId - 1];
         protected AbilitiesEntity Entity { get; private set; }
+        
+        protected virtual void OnCreate() { }
+        protected virtual void OnLevelUp() { }
 
         public sealed override int CurrentLevelId { get; protected set; }
         public sealed override AbilityId AbilityId => _data.Id;
-        
+
 
         public sealed override void Init(AbilitiesEntity entity, AbilityData data)
         {
@@ -43,8 +48,5 @@ namespace GamePlay.Abilities
             CurrentLevelId++;
             OnLevelUp();
         }
-
-        protected virtual void OnCreate() { }
-        protected virtual void OnLevelUp() { }
     }
 }

@@ -7,7 +7,7 @@ namespace GamePlay.Abilities
 {
     public class MultishotComponent : AbilityComponent<MultishotData, MultishotLevelData>
     {
-        public override void OnCall()
+        public override void OnShotCalled()
             => RecallShotComponents().Forget();
 
         private async UniTask RecallShotComponents()
@@ -21,7 +21,7 @@ namespace GamePlay.Abilities
             for (var i = 0; i < CurrentLevel.AdditionsCount; i++)
             {
                 await UniTask.WaitForSeconds(CurrentLevel.ShotDelay, delayTiming: PlayerLoopTiming.FixedUpdate);
-                abilities.ForEach(a => a.OnCall());
+                abilities.ForEach(a => a.OnShotCalled());
             }
         }
 

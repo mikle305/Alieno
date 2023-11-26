@@ -22,7 +22,7 @@ namespace GamePlay.Player
 
         private void Attack()
         {
-            _abilitiesEntity.Call();
+            _abilitiesEntity.CallShot();
         }
 
         private void Update() 

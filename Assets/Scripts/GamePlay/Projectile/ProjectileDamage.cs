@@ -9,7 +9,6 @@ namespace GamePlay.Projectile
     public class ProjectileDamage : MonoBehaviour, IDestroy
     {
         private float _damage;
-
         public event Action Happened;
         
         

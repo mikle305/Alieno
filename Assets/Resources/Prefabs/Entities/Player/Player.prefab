@@ -321,6 +321,8 @@ MonoBehaviour:
   - <AbilityId>k__BackingField: 3
     <Levels>k__BackingField:
     - _spawns:
+      - {fileID: 8384312247197390296}
+    - _spawns:
       - {fileID: 1889873160249291115}
       - {fileID: 4094786817286484373}
 --- !u!114 &727168980131107189

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Additional.Extensions;
 using Additional.Utils;
+using GamePlay.Projectile;
 using Services;
 using UnityEngine;
 
@@ -23,8 +24,11 @@ namespace GamePlay.Abilities
         private void Update()
             => _abilitiesMap.ForEach(item => item.Value.OnTick());
 
-        public void Call() 
-            => _abilitiesMap.ForEach(item => item.Value.OnCall());
+        public void CallShot() 
+            => _abilitiesMap.ForEach(item => item.Value.OnShotCalled());
+
+        public void EndShot(ProjectileDamage projectile)
+            => _abilitiesMap.ForEach(item => item.Value.OnShotDone(projectile));
 
         public void AddAbility(AbilityId abilityId)
         {

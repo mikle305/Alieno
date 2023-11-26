@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f33f0a9254405f8a1c91a6f0c518df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultCurrent: 35
-  _defaultMax: 35
+  _defaultCurrent: 150
+  _defaultMax: 150
 --- !u!114 &5561741798163748319
 MonoBehaviour:
   m_ObjectHideFlags: 0

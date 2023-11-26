@@ -1,4 +1,5 @@
 ﻿using GamePlay.Characteristics;
+using GamePlay.Projectile;
 using Services;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace GamePlay.Abilities
             _projectileFactory = ProjectileFactory.Instance;
         }
 
-        public override void OnCall() 
+        public override void OnShotCalled() 
             => Shot();
         
         private void Shot()
@@ -30,11 +31,12 @@ namespace GamePlay.Abilities
             for (var i = 0; i < shotsDirections.Length; i++)
             {
                 Vector3 direction = _transform.rotation * shotsDirections[i].normalized;
-                SpawnProjectile(spawnPoints[i], direction);
+                ProjectileDamage projectile = SpawnProjectile(spawnPoints[i], direction);
+                Entity.EndShot(projectile);
             }
         }
 
-        private void SpawnProjectile(Vector3 spawnPoint, Vector3 direction) 
-            => _projectileFactory.Create(_projectileAttackData, spawnPoint, direction);
+        private ProjectileDamage SpawnProjectile(Vector3 spawnPoint, Vector3 direction) 
+            => _projectileFactory.Create(_projectileAttackData, spawnPoint, direction).GetComponent<ProjectileDamage>();
     }
 }
