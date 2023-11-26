@@ -41,7 +41,6 @@ namespace GamePlay.Characteristics
 
         public void Decrease(float value)
         {
-            print($"Damage: {value}");
             ValidateLessThanZero(value);
             if (IsZero())
                 return;

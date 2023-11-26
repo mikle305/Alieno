@@ -60,9 +60,6 @@ namespace GamePlay.Abilities
 
         private AbilityComponent CreateAbility(AbilityId abilityId)
         {
-            if (_staticDataService == null)
-                return null;
-            
             AbilityData abilityData = _staticDataService.GetAbility(abilityId);
             var abilityComponent = Activator.CreateInstance(abilityData.ComponentType) as AbilityComponent;
             abilityComponent!.Init(this, abilityData);
