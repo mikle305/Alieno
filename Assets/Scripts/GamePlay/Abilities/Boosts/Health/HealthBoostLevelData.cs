@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GamePlay.Abilities
 {
     [Serializable]
-    public class HealthBuffLevelData : AbilityLevelData
+    public class HealthBoostLevelData : AbilityLevelData
     {
         [field: SerializeField, Min(0)] public int PercentsBuff { get; private set; }
     }

@@ -1,18 +1,19 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using GamePlay.Characteristics;
+using GamePlay.Damage;
 
-namespace Services
+namespace Services.Damage
 {
-    public class FlameHandler : StatusHandler<FlameStatus>
+    public class PoisonHandler : StatusHandler<PoisonStatus>
     {
-        protected override bool OnHandle(DamageData damageData, FlameStatus status)
+        protected override bool OnHandle(DamageData damageData, PoisonStatus status)
         {
             StartDamageLoop(damageData, status).Forget();
             return true;
         }
 
-        private async UniTask StartDamageLoop(DamageData damageData, FlameStatus status)
+        private async UniTask StartDamageLoop(DamageData damageData, PoisonStatus status)
         {
             HealthData receiverHealth = damageData.Receiver;
             if (receiverHealth == null)
@@ -20,12 +21,11 @@ namespace Services
 
             var cts = new CancellationTokenSource();
             receiverHealth.ZeroReached += cts.Cancel;
-            while (!cts.IsCancellationRequested && status.CountLeft != 0)
+            while (!cts.IsCancellationRequested)
             {
-                status.CountLeft--;
                 float damage = damageData.MainDamage * status.DamagePercents / 100; 
                 receiverHealth.Decrease(damage);
-                await UniTask.WaitForSeconds(status.UseRate, cancellationToken: cts.Token);
+                await UniTask.WaitForSeconds(status.Rate, cancellationToken: cts.Token);
             }
 
             receiverHealth.ZeroReached -= cts.Cancel;

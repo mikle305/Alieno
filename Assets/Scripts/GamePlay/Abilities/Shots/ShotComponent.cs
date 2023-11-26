@@ -1,6 +1,7 @@
 ﻿using GamePlay.Characteristics;
 using GamePlay.Projectile;
 using Services;
+using Services.Factories;
 using UnityEngine;
 
 namespace GamePlay.Abilities
@@ -37,6 +38,6 @@ namespace GamePlay.Abilities
         }
 
         private ProjectileDamage SpawnProjectile(Vector3 spawnPoint, Vector3 direction) 
-            => _projectileFactory.Create(_projectileAttackData, spawnPoint, direction).GetComponent<ProjectileDamage>();
+            => _projectileFactory.Create(_projectileAttackData, spawnPoint, direction);
     }
 }

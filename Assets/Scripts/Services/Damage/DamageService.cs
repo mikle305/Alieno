@@ -1,6 +1,7 @@
 ﻿using Additional.Game;
+using GamePlay.Damage;
 
-namespace Services
+namespace Services.Damage
 {
     public class DamageService : MonoSingleton<DamageService>
     {
@@ -15,18 +16,15 @@ namespace Services
 
         public void Process(DamageData damageData)
         {
-            foreach (StatusHandler handler in _handlers)
-            {
-                bool toNext = handler.Handle(damageData);
-                if (!toNext)
-                    return;
-            }
+            foreach (StatusHandler handler in _handlers) 
+                handler.Handle(damageData);
         }
 
         private void InitHandlers()
         {
             _handlers = new StatusHandler[]
             {
+                new MainDamageHandler(),
                 new PoisonHandler(),
                 new FlameHandler(),
                 new DisposeHandler(),

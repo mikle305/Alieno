@@ -3,7 +3,7 @@ using Additional.Game;
 using GamePlay.Enemy;
 using UnityEngine;
 
-namespace Services
+namespace Services.Factories
 {
     public class EnemyFactory : MonoSingleton<EnemyFactory>
     {

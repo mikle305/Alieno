@@ -1,7 +1,7 @@
 ﻿using Additional.Game;
 using UnityEngine;
 
-namespace Services
+namespace Services.ObjectPool
 {
     public class Poolable : MonoBehaviour
     {

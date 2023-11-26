@@ -1,9 +1,10 @@
 ﻿using Additional.Game;
 using GamePlay.Characteristics;
 using GamePlay.Projectile;
+using Services.ObjectPool;
 using UnityEngine;
 
-namespace Services
+namespace Services.Factories
 {
     public class ProjectileFactory : MonoSingleton<ProjectileFactory>
     {
@@ -15,17 +16,17 @@ namespace Services
             _poolsProvider = ObjectPoolsProvider.Instance;
         }
 
-        public GameObject Create(ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)
+        public ProjectileDamage Create(ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)
         {
             GameObject projectile = _poolsProvider.TakeProjectile(attackData.ProjectileId);
             if (projectile == null)
                 return null;
 
             Configure(projectile, attackData, spawnPoint, direction);
-            return projectile;
+            return projectile.GetComponent<ProjectileDamage>();
         }
 
-        private void Configure(GameObject projectile, ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)
+        private static void Configure(GameObject projectile, ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)
         {
             Transform projectileTransform = projectile.transform;
             projectileTransform.position = spawnPoint;
@@ -33,8 +34,9 @@ namespace Services
             
             float speed = attackData.MoveSpeed.GetValue();
             float damage = attackData.Damage.GetValue();
+            var sender = attackData.GetComponent<HealthData>();
+            projectile.GetComponent<ProjectileDamage>().Init(sender, damage);
             projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
-            projectile.GetComponent<ProjectileDamage>().Init(damage);
         }
     }
 }

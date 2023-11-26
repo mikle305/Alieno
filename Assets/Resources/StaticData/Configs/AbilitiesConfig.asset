@@ -13,28 +13,17 @@ MonoBehaviour:
   m_Name: AbilitiesConfig
   m_EditorClassIdentifier: 
   <AbilitiesData>k__BackingField:
-  - rid: 6974772225356857354
   - rid: 6974772225356857355
   - rid: 6974772225356857356
-  - rid: 6338515697417846785
   - rid: 6338515767009476608
   - rid: 6338515767009476609
   - rid: 6338515767009476610
+  - rid: 6974772411534671872
+  - rid: 6974772411534671873
+  - rid: 6974772411534671874
   references:
     version: 2
     RefIds:
-    - rid: 6338515697417846785
-      type: {class: HealthBuffData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
-      data:
-        <Levels>k__BackingField:
-        - <Id>k__BackingField: 1
-          <PercentsBuff>k__BackingField: 30
-        - <Id>k__BackingField: 2
-          <PercentsBuff>k__BackingField: 60
-        - <Id>k__BackingField: 3
-          <PercentsBuff>k__BackingField: 100
-        - <Id>k__BackingField: 4
-          <PercentsBuff>k__BackingField: 150
     - rid: 6338515767009476608
       type: {class: DiagonalShotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:
@@ -68,12 +57,6 @@ MonoBehaviour:
           <ShotsDirections>k__BackingField:
           - {x: 0, y: 0, z: -1}
           - {x: 0, y: 0, z: -1}
-    - rid: 6974772225356857354
-      type: {class: RicochetData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
-      data:
-        <Levels>k__BackingField:
-        - <Id>k__BackingField: 1
-          <RicochetsCount>k__BackingField: 2
     - rid: 6974772225356857355
       type: {class: MultishotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:
@@ -95,3 +78,28 @@ MonoBehaviour:
           <ShotsDirections>k__BackingField:
           - {x: 0, y: 0, z: 1}
           - {x: 0, y: 0, z: 1}
+    - rid: 6974772411534671872
+      type: {class: PoisonStatusData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <DamagePercents>k__BackingField: 10
+          <Rate>k__BackingField: 1.5
+    - rid: 6974772411534671873
+      type: {class: FlameStatusData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <DamagePercents>k__BackingField: 25
+          <Rate>k__BackingField: 1
+          <Count>k__BackingField: 3
+    - rid: 6974772411534671874
+      type: {class: HealthBoostData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <PercentsBuff>k__BackingField: 40
+        - <Id>k__BackingField: 2
+          <PercentsBuff>k__BackingField: 100
+        - <Id>k__BackingField: 3
+          <PercentsBuff>k__BackingField: 180

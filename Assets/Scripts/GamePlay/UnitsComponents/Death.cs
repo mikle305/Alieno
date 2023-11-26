@@ -12,12 +12,12 @@ namespace GamePlay.UnitsComponents
         public event Action Happened;
 
 
-        private void Awake()
+        private void OnEnable()
         {
             _health.ZeroReached += Die;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _health.ZeroReached -= Die;
         }

@@ -2,7 +2,7 @@
 using GamePlay.Other;
 using UnityEngine;
 
-namespace Services
+namespace Services.Factories
 {
     public class GameFactory : MonoSingleton<GameFactory>
     {

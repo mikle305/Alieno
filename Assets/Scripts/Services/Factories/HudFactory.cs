@@ -4,7 +4,7 @@ using GamePlay.Player;
 using UI.GamePlay;
 using UnityEngine;
 
-namespace Services
+namespace Services.Factories
 {
     public class HudFactory : MonoSingleton<HudFactory>
     {

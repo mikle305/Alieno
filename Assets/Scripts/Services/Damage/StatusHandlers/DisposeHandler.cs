@@ -1,6 +1,7 @@
 ﻿using Additional.Extensions;
+using GamePlay.Damage;
 
-namespace Services
+namespace Services.Damage
 {
     public class DisposeHandler : StatusHandler
     {

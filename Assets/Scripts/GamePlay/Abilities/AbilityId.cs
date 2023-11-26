@@ -9,5 +9,7 @@
         Multishot,
         Ricochet,
         HealthBuff,
+        Flame,
+        Poison,
     }
 }

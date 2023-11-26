@@ -1,4 +1,6 @@
-﻿namespace Services
+﻿using GamePlay.Damage;
+
+namespace Services.Damage
 {
     public abstract class StatusHandler
     {

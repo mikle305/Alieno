@@ -3,7 +3,7 @@ using System.Linq;
 using Additional.Game;
 using UnityEngine;
 
-namespace Services
+namespace Services.ObjectPool
 {
     public class ObjectPoolsProvider : MonoSingleton<ObjectPoolsProvider>
     {
