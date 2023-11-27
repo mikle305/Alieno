@@ -1,4 +1,7 @@
-﻿using GamePlay.Enemy;
+﻿using System.Linq;
+using Additional.Constants;
+using GamePlay.Enemy;
+using StaticData;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,7 +14,31 @@ namespace Editor
         public static void RenderCustomGizmo(EnemySpawn enemySpawner, GizmoType gizmo)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(enemySpawner.transform.position, 0.5f);
+
+            if (enemySpawner == null)
+            {
+                Gizmos.DrawSphere(enemySpawner.transform.position, 0.5f);
+            }
+            else
+            {
+               GameObject prefab = GetEnemyPrefab(enemySpawner.Id);
+               MeshFilter[] meshFilters = prefab.GetComponentsInChildren<MeshFilter>();
+               foreach (var filter in meshFilters)
+               {
+                   DrawMeshGizmo(enemySpawner,filter);
+               }
+            }
+        }
+        
+        private static GameObject GetEnemyPrefab(EnemyId targetId)
+            => Resources.Load<PrefabsConfig>(StaticDataPaths.AppConfig)
+                .Enemies
+                .First(x => x.Id == targetId)
+                .Prefab;
+
+        private static void DrawMeshGizmo(EnemySpawn enemySpawner,MeshFilter meshFilter)
+        {
+            Gizmos.DrawMesh(meshFilter.sharedMesh,enemySpawner.transform.position,enemySpawner.transform.rotation);
         }
     }
 }
