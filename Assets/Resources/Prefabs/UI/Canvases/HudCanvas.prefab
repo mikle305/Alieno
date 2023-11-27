@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 6780484044227855119}
   _animDuration: 0
+  _hideOnFull: 0
   _text: {fileID: 0}
   _textShowType: 1
 --- !u!1 &2677533205435390852
@@ -589,6 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 4209744624388706651}
   _animDuration: 0.2
+  _hideOnFull: 0
   _text: {fileID: 2690654215587671531}
   _textShowType: 1
 --- !u!1 &3417087033537975998
