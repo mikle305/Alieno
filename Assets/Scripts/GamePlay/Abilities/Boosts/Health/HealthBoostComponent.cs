@@ -3,7 +3,7 @@ using GamePlay.StatsSystem;
 
 namespace GamePlay.Abilities
 {
-    public class HealthBuffComponent : AbilityComponent<HealthBoostData, HealthBoostLevelData>
+    public class HealthBoostComponent : AbilityComponent<HealthBoostData, HealthBoostLevelData>
     {
         private HealthData _healthData;
         private StatModifier _lastModifier;

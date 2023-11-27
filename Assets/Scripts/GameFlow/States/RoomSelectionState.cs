@@ -10,8 +10,8 @@ namespace GameFlow.States
         private readonly GameStateMachine _context;
         private readonly ObjectsProvider _objectsProvider;
         private LevelMapService _levelMapService;
-        private MusicService _musicService;
-        private SaveService _saveService;
+        private readonly MusicService _musicService;
+        private readonly SaveService _saveService;
 
 
         public RoomSelectionState(GameStateMachine context)

@@ -32,6 +32,8 @@ namespace GameFlow.Context
                 new RoomSelectionState(stateMachine),
                 new RoomLoadingState(stateMachine),
                 new RoomClearedState(stateMachine),
+                new LastRoomCheckState(stateMachine),
+                new AbilitySelectionState(stateMachine),
             };
 
             foreach (State state in states) 

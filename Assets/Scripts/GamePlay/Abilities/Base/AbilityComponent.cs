@@ -7,7 +7,7 @@ namespace GamePlay.Abilities
     {
         public abstract AbilityId AbilityId { get; }
         public abstract int CurrentLevelId { get; protected set; }
-        public abstract void Init(AbilitiesEntity entity, AbilityData data);
+        public abstract void Init(AbilitiesEntity entity, AbilityData data, int level = 1);
         public abstract void UpLevel();
 
         public virtual void OnTick() { }
@@ -32,11 +32,11 @@ namespace GamePlay.Abilities
         public sealed override AbilityId AbilityId => _data.Id;
 
 
-        public sealed override void Init(AbilitiesEntity entity, AbilityData data)
+        public sealed override void Init(AbilitiesEntity entity, AbilityData data, int level = 1)
         {
             Entity = entity;
             _data = data as TData;
-            CurrentLevelId = 1;
+            CurrentLevelId = level;
             OnCreate();
         }
 

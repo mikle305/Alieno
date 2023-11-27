@@ -10,6 +10,7 @@ namespace GamePlay.Abilities
         [ShowInInspector, PropertyOrder(0)] public abstract AbilityId Id { get; }
 
         public abstract Type ComponentType { get; }
+        public abstract int MaxLevel { get; }
     }
 
     [Serializable]
@@ -17,5 +18,6 @@ namespace GamePlay.Abilities
         where TLevelData : AbilityLevelData, new()
     {
         [field: SerializeField] public TLevelData[] Levels { get; private set; } = { new() };
+        public sealed override int MaxLevel => Levels.Length;
     }
 }

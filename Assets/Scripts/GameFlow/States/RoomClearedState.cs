@@ -1,9 +1,13 @@
-﻿using GameFlow.Context;
+﻿using System;
+using Additional.Constants;
+using GameFlow.Context;
+using GamePlay.Characteristics;
 using GamePlay.Other;
 using GamePlay.Player;
+using SaveData;
 using Services;
 using Services.Save;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace GameFlow.States
 {
@@ -25,13 +29,21 @@ namespace GameFlow.States
         public override void Enter()
         {
             InitCurrentRoom();
-            InitPlayerExitDetector();
+            SetCurrentProgress();
+            InitPlayerExitDetector(EnterLastRoomCheck);
         }
 
         public override void Exit()
         {
             DisableRoomDependentObject();
-            SetProgress();
+        }
+
+        private void SetCurrentProgress()
+        {
+            PlayerData playerProgress = _saveService.Progress.PlayerData;
+            playerProgress.Room++;
+            playerProgress.CurrentHealth = GetCharacterHpToSave();
+            _saveService.Save();
         }
 
         private void InitCurrentRoom()
@@ -40,20 +52,14 @@ namespace GameFlow.States
             _currentRoom = _objectsProvider.Rooms[room - 1];
         }
 
-        private void SetProgress()
-        {
-            _saveService.Progress.PlayerData.Room++;
-            _saveService.Save();
-        }
-
-        private void InitPlayerExitDetector()
+        private void InitPlayerExitDetector(Action onPlayerDetected)
         {
             var detector = _currentRoom.ExitPoint.AddComponent<PlayerCollisionDetector>();
-            detector.PlayerEntered += EnterRoomSelectionState;
+            detector.PlayerEntered += onPlayerDetected;
         }
 
-        private void EnterRoomSelectionState() 
-            => _context.Enter<RoomSelectionState>();
+        private void EnterLastRoomCheck() 
+            => _context.Enter<LastRoomCheckState>();
 
         private void DisableRoomDependentObject()
         {
@@ -61,6 +67,12 @@ namespace GameFlow.States
             _objectsProvider.Marker.gameObject.SetActive(false);
             _objectsProvider.Hud.gameObject.SetActive(false);
             Object.Destroy(_currentRoom.gameObject);
+        }
+
+        private float GetCharacterHpToSave()
+        {
+            var characterHealth = _objectsProvider.Character.GetComponent<HealthData>();
+            return DefaultPlayerProgress.Health * (characterHealth.Current / characterHealth.Max);
         }
     }
 }

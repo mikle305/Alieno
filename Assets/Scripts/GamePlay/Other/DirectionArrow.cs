@@ -1,24 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DirectionArrow : MonoBehaviour
+namespace GamePlay.Other
 {
-    [SerializeField] private Transform _exitPoint;
-    private void Update()
+    public class DirectionArrow : MonoBehaviour
     {
-        if (_exitPoint == null)
+        [SerializeField] private Transform _exitPoint;
+        private void Update()
         {
-            TryFindExit();
-            return;
-        }
+            if (_exitPoint == null)
+            {
+                TryFindExit();
+                return;
+            }
         
-        transform.LookAt(_exitPoint);
-    }
+            transform.LookAt(_exitPoint);
+        }
 
-    private void TryFindExit()
-    {
-        _exitPoint = GameObject.Find("ExitPoint").transform;
+        private void TryFindExit()
+        {
+            _exitPoint = GameObject.Find("ExitPoint").transform;
+        }
     }
 }

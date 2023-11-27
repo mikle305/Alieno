@@ -25,6 +25,9 @@ namespace Services
         public AbilityData GetAbility(AbilityId id)
             => (_abilitiesMap ??= LoadAbilities()).GetValueOrDefault(id);
 
+        public AbilityData[] GetAllAbilities()
+            => _abilitiesMap.Values.ToArray();
+
         
         private static Dictionary<AbilityId, AbilityData> LoadAbilities()
             => LoadData<AbilitiesConfig>(StaticDataPaths.AbilitiesConfig)

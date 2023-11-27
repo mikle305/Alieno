@@ -30,12 +30,12 @@ namespace GamePlay.Abilities
         public void EndShot(ProjectileDamage projectile)
             => _abilitiesMap.ForEach(item => item.Value.OnShotDone(projectile));
 
-        public void AddAbility(AbilityId abilityId)
+        public void AddAbility(AbilityId abilityId, int level = 1)
         {
             if (_abilitiesMap.ContainsKey(abilityId))
                 ThrowUtils.ComponentAlreadyAdded();
 
-            AbilityComponent ability = CreateAbility(abilityId);
+            AbilityComponent ability = CreateAbility(abilityId, level);
             if (ability == null)
                 return;
             
@@ -58,11 +58,11 @@ namespace GamePlay.Abilities
             ability.OnDestroy();
         }
 
-        private AbilityComponent CreateAbility(AbilityId abilityId)
+        private AbilityComponent CreateAbility(AbilityId abilityId, int level)
         {
             AbilityData abilityData = _staticDataService.GetAbility(abilityId);
             var abilityComponent = Activator.CreateInstance(abilityData.ComponentType) as AbilityComponent;
-            abilityComponent!.Init(this, abilityData);
+            abilityComponent!.Init(this, abilityData, level);
             return abilityComponent;
         }
     }

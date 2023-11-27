@@ -17,12 +17,7 @@ namespace GamePlay.Abilities
         private async UniTask InitDefaultAbilities()
         {
             await UniTask.Yield();
-            _defaultAbilities.ForEach(entry =>
-            {
-                _abilitiesEntity.AddAbility(entry.Id);
-                for (var i = 1; i < entry.Level; i++)
-                    _abilitiesEntity.UpLevel(entry.Id);
-            });
+            _defaultAbilities.ForEach(entry => _abilitiesEntity.AddAbility(entry.Id, entry.Level));
         }
     }
 }
