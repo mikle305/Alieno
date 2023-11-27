@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Additional.Constants;
 using DG.Tweening;
 using TMPro;
 using TriInspector;
@@ -8,13 +9,16 @@ using UnityEngine.UI;
 
 namespace UI.GamePlay
 {
-    public class CharacteristicHudView : MonoBehaviour, ICharacteristicView
+    public class CharacteristicView : MonoBehaviour, ICharacteristicView
     {
         [SerializeField] 
         private Slider _slider;
         
         [SerializeField, Min(0)] 
         private float _animDuration;
+
+        [SerializeField] 
+        private bool _hideOnFull;
         
         [SerializeField] [InfoBox("Optional", TriMessageType.None)] 
         private TextMeshProUGUI _text;
@@ -40,6 +44,17 @@ namespace UI.GamePlay
 
         public void SetValue(float current, float max)
         {
+            if (_hideOnFull)
+            {
+                if (IsFull(current, max))
+                {
+                    gameObject.SetActive(false);
+                    return;
+                }
+
+                gameObject.SetActive(true);
+            }
+            
             UpdateBar(current, max);
             UpdateText(current, max);
         }
@@ -81,5 +96,8 @@ namespace UI.GamePlay
                 },
             };
         }
+
+        private bool IsFull(float current, float max) 
+            => max - current < Constants.Epsilon;
     }
 }

@@ -5,7 +5,7 @@ namespace Services.Damage
 {
     public class MainDamageHandler : StatusHandler
     {
-        public override bool Handle(DamageData damageData)
+        public override bool Work(DamageData damageData)
         {
             HealthData receiverHealth = damageData.Receiver;
             if (receiverHealth == null)

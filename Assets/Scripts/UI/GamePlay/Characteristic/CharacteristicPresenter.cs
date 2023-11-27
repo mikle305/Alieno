@@ -12,10 +12,15 @@ namespace UI.GamePlay
         {
             _model = model;
             _view = view;
+            Bind();
+        }
+
+        private void Bind()
+        {
             _model.ValueChanged += UpdateStatBar;
             UpdateStatBar();
         }
-        
+
         private void UpdateStatBar() 
             => _view.SetValue(_model.Current, _model.Max);
     }

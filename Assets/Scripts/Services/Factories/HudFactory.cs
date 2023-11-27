@@ -35,7 +35,7 @@ namespace Services.Factories
         private void InitHealth(Hud hud, GameObject character)
         {
             var health = character.GetComponent<HealthData>();
-            CharacteristicHudView view = hud.HealthView;
+            CharacteristicView view = hud.HealthView;
             var presenter = new CharacteristicPresenter(health, view);
             view.Init(presenter);
         }
@@ -43,7 +43,7 @@ namespace Services.Factories
         private void InitDash(Hud hud, GameObject character)
         {
             var dash = character.GetComponent<PlayerDash>();
-            CharacteristicHudView view = hud.DashView;
+            CharacteristicView view = hud.DashView;
             var presenter = new DashPresenter(dash, view);
             view.Init(presenter);
         }

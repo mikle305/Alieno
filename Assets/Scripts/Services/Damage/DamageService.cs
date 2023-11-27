@@ -16,8 +16,12 @@ namespace Services.Damage
 
         public void Process(DamageData damageData)
         {
-            foreach (StatusHandler handler in _handlers) 
-                handler.Handle(damageData);
+            foreach (StatusHandler statusHandler in _handlers)
+            {
+                 bool toNext = statusHandler.Work(damageData);
+                 if (!toNext)
+                     break;
+            }
         }
 
         private void InitHandlers()

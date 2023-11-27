@@ -4,13 +4,13 @@ namespace Services.Damage
 {
     public abstract class StatusHandler
     {
-        public abstract bool Handle(DamageData damageData);
+        public abstract bool Work(DamageData damageData);
     }
 
     public abstract class StatusHandler<TStatus> : StatusHandler
         where TStatus : Status
     {
-        public sealed override bool Handle(DamageData damageData)
+        public sealed override bool Work(DamageData damageData)
         {
             if (!damageData.Statuses.TryGetValue(typeof(TStatus), out Status status))
                 return true;

@@ -5,7 +5,7 @@ namespace Services.Damage
 {
     public class DisposeHandler : StatusHandler
     {
-        public override bool Handle(DamageData damageData)
+        public override bool Work(DamageData damageData)
         {
             damageData.Projectile.Dispose();
             return false;
