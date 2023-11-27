@@ -26,7 +26,6 @@ namespace Services
         public void Init(int currentRoom)
         {
             _currentRoom = currentRoom;
-            print(currentRoom);
             if (_currentRoom != -1)
             {
                 _positionToMove = _objectsProvider.RoomsMap.LevelNumbers[_currentRoom].position + _offset;

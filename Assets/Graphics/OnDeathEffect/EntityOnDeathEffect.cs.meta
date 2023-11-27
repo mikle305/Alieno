@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d475c79fdfed6fb4696a190eacdd8ec8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _healthData: {instanceID: 0}
+  - _trailPrefab: {fileID: 7468715156371395589, guid: de6f6b52768c8b14a9d3e28165ad2eaf, type: 3}
+  - _meshMaterial: {fileID: 2100000, guid: 3827f86fdbc82cb428b6e87e27b1ce13, type: 2}
+  - _effectToSpawn: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
