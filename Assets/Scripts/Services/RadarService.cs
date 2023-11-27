@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using Additional.Game;
 using TriInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Services
 {
     public class RadarService : MonoSingleton<RadarService>
     {
-        [SerializeField] private LayerMask _layersToIgnore;
+        [FormerlySerializedAs("_layersToIgnore")] [SerializeField] private LayerMask _layerToCheckFor;
         [ShowInInspector] private Transform _currentClosest;
         [ShowInInspector] private Transform _currentClosestAndVisible;
     
@@ -48,9 +49,12 @@ namespace Services
         private bool IsVisible(Transform enemy)
         {
             Transform character = _objectsProvider.Character.transform;
-            if (Physics.Linecast(character.position, enemy.position,_layersToIgnore))
+
+            RaycastHit hit;
+            if (Physics.Linecast(character.position, enemy.position,out hit,_layerToCheckFor,QueryTriggerInteraction.UseGlobal))
             {
                 Debug.DrawLine(character.position,enemy.position,Color.red);
+                Debug.Log("Blocker object name:" + hit.collider.gameObject.name);
                 return false;
             }
             else

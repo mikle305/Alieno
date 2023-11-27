@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 381099388382940386}
   - component: {fileID: 2984524577524092667}
   - component: {fileID: 2900918923746010002}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SparksBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4927,7 +4927,7 @@ GameObject:
   - component: {fileID: 1283503155452016855}
   - component: {fileID: 5343316494594282720}
   - component: {fileID: 4664874940315350538}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SparksExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9825,7 +9825,7 @@ GameObject:
   - component: {fileID: 2407757702565848705}
   - component: {fileID: 2249798776218144516}
   - component: {fileID: 6456574322533349503}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14723,7 +14723,7 @@ GameObject:
   - component: {fileID: 2266116887205244166}
   - component: {fileID: 2560947662625708122}
   - component: {fileID: 3331855889497518171}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Halo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19621,7 +19621,7 @@ GameObject:
   - component: {fileID: 5732898019720176648}
   - component: {fileID: 1299093861820026265}
   - component: {fileID: 3950958778343298213}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24519,7 +24519,7 @@ GameObject:
   - component: {fileID: 9013782877721452483}
   - component: {fileID: 7219026954977894584}
   - component: {fileID: 4441162052459435755}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Darkness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29417,7 +29417,7 @@ GameObject:
   - component: {fileID: 3702912031533998122}
   - component: {fileID: 6723358103908763857}
   - component: {fileID: 8170722365971941701}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34315,7 +34315,7 @@ GameObject:
   - component: {fileID: 7493395094015612476}
   - component: {fileID: 2135692712645050525}
   - component: {fileID: 7418918008567952651}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39214,7 +39214,7 @@ GameObject:
   - component: {fileID: 2677394950464408494}
   - component: {fileID: 526790835855979744}
   - component: {fileID: 9140312985942832366}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PlayerProjectileOnDestroyEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

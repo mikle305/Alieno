@@ -34,6 +34,8 @@ MonoBehaviour:
   <Enemies>k__BackingField:
   - <Id>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 2643963481109582220, guid: 631585195cecc9944a6757256fad11aa, type: 3}
+  - <Id>k__BackingField: 1
+    <Prefab>k__BackingField: {fileID: 818936025786322816, guid: b808215d5a5a4db47a33486ced987101, type: 3}
   <Projectiles>k__BackingField:
   - <Id>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 4807152518047859045, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}

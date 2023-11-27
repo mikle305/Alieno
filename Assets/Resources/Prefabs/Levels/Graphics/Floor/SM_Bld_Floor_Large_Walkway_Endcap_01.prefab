@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33623009258224574}
   - component: {fileID: 23174700905078270}
   - component: {fileID: 65973594668831948}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Bld_Floor_Large_Walkway_Endcap_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

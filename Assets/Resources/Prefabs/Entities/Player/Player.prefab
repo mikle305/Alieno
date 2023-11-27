@@ -259,7 +259,15 @@ MonoBehaviour:
   _abilitiesEntity: {fileID: 8602244654995898822}
   _defaultAbilities:
   - Id: 0
+    Level: 2
+  - Id: 4
+    Level: 2
+  - Id: 3
+    Level: 2
+  - Id: 2
     Level: 1
+  - Id: 1
+    Level: 2
 --- !u!114 &5713044649035136142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1765226821990195970}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,9 +700,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4078725191484616}
     m_Modifications:
+    - target: {fileID: 1030922645295695030, guid: 6c4015a143b74d6418eee930283ac210, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2816998679441441975, guid: 6c4015a143b74d6418eee930283ac210, type: 3}
       propertyPath: m_Name
       value: DirectionArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816998679441441975, guid: 6c4015a143b74d6418eee930283ac210, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8444939534324177685, guid: 6c4015a143b74d6418eee930283ac210, type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,6 +770,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4078725191484616}
     m_Modifications:
+    - target: {fileID: 671702061328587736, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 737390291541617832, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124505613390354697, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3669133624017740329, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -801,6 +829,38 @@ PrefabInstance:
     - target: {fileID: 5080107097181574522, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
       propertyPath: m_Name
       value: FlyEfect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080107097181574522, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5147891197342184722, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844013595719096018, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082572761763210123, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7803675474842278436, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121797780310606361, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882651774939098605, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102986974914173709, guid: 735e84ff5e7ed564d9ce18606c87c90d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

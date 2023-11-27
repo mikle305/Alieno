@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2333373639508296987}
   - component: {fileID: 5765410446069528560}
   - component: {fileID: 4702833456336256580}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EntryPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

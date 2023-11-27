@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33755533088854250}
   - component: {fileID: 23879066960077536}
   - component: {fileID: 65878624921427994}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Bld_Floor_Large_Walkway_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
