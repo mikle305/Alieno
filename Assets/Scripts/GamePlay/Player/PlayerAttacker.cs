@@ -37,9 +37,9 @@ namespace GamePlay.Player
                 return;
 
             Transform enemy = _radarService.GetClosestAndVisibleEnemy();
-            if(enemy == null)
-                return;
-            
+            // if(enemy == null)
+            //     return;
+            //
             _animations.PlayAttackAnimation(_attackData.UseRate.GetValue());
             StartCooldown().Forget();
         }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6407696992043481034}
   - component: {fileID: 8123723155240321540}
   - component: {fileID: 5561741798163748319}
+  - component: {fileID: 5747806846484912053}
   m_Layer: 8
   m_Name: SuicideDrone
   m_TagString: Untagged
@@ -154,6 +155,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 8123723155240321540}
+--- !u!114 &5747806846484912053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accea726fc7814144bf41d1d3d8a9269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthData: {fileID: 8123723155240321540}
+  _trailPrefab: {fileID: 7468715156371395589, guid: de6f6b52768c8b14a9d3e28165ad2eaf, type: 3}
+  _meshFilters:
+  - {fileID: 2643482921537865579}
+  - {fileID: 3365913895731702379}
+  - {fileID: 5788171752025070009}
+  - {fileID: 4628382074278540799}
+  - {fileID: 1152630304664246424}
+  - {fileID: 737946710138780727}
+  _skinnedMeshRenderers: []
+  _meshMaterial: {fileID: 2100000, guid: 3827f86fdbc82cb428b6e87e27b1ce13, type: 2}
+  _effectToSpawn: {fileID: 0}
+  _lifetime: 0.4
+  _addScale: 1.1
 --- !u!1001 &920835793650087047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -349,8 +376,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+--- !u!33 &737946710138780727 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 8514872228730112645, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+  m_PrefabInstance: {fileID: 8941705410745824946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &1152630304664246424 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 8352390145490398762, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+  m_PrefabInstance: {fileID: 8941705410745824946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1369184598509783246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8004870786121596540, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+  m_PrefabInstance: {fileID: 8941705410745824946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &2643482921537865579 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 6393097183710867929, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+  m_PrefabInstance: {fileID: 8941705410745824946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &3365913895731702379 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 5954164877979475161, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+  m_PrefabInstance: {fileID: 8941705410745824946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &4628382074278540799 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 4335841964153439053, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
+  m_PrefabInstance: {fileID: 8941705410745824946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &5788171752025070009 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 3189927567496245003, guid: c53e58c59cba20e4ab6f2080fbdafb5f, type: 3}
   m_PrefabInstance: {fileID: 8941705410745824946}
   m_PrefabAsset: {fileID: 0}
