@@ -848,7 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1498168252563361374}
-  - component: {fileID: 5424867028516629632}
+  - component: {fileID: 4140056745984355102}
   m_Layer: 0
   m_Name: Spawn (2)
   m_TagString: Untagged
@@ -871,7 +871,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5861580185710907078}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5424867028516629632
+--- !u!114 &4140056745984355102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
