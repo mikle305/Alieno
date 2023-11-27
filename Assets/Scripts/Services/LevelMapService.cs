@@ -23,6 +23,26 @@ namespace Services
             _objectsProvider = ObjectsProvider.Instance;
         }
 
+        public void Init(int currentRoom)
+        {
+            _currentRoom = currentRoom;
+            print(currentRoom);
+            if (_currentRoom != -1)
+            {
+                _positionToMove = _objectsProvider.RoomsMap.LevelNumbers[_currentRoom].position + _offset;
+                _objectsProvider.RoomsMap.Pointer.position = _positionToMove;
+            }
+            
+            if (CheckForAutoSkip())
+            {
+                AnimationFinished?.Invoke();
+                return;
+            }
+            
+            _objectsProvider.RoomsMap.gameObject.SetActive(true);
+            _objectsProvider.RoomsMap.NextLvlButton.onClick.AddListener(DisplayNextRoom);
+
+        }
         public void DisplayNextRoom()
         {
             if (_animation != null)
@@ -30,7 +50,7 @@ namespace Services
                 SkipAnimation();
                 return;
             }
-        
+            print(_objectsProvider.RoomsMap.LevelNumbers.Count);
             if(++_currentRoom >= _objectsProvider.RoomsMap.LevelNumbers.Count)
                 return;
 
@@ -40,6 +60,11 @@ namespace Services
                 SkipAnimation();
         }
 
+        private bool CheckForAutoSkip()
+        {
+            return _objectsProvider.RoomsMap.AutoSkipToggle.isOn;
+        }
+        
         private IEnumerator MoveAnimation(Transform moveTo)
         {
             _positionToMove = moveTo.position + _offset;
@@ -61,7 +86,7 @@ namespace Services
             AnimationFinished?.Invoke();
         }
 
-        private void SkipAnimation()
+        public void SkipAnimation()
         {
             StopCoroutine(_animation);
             _animation = null;

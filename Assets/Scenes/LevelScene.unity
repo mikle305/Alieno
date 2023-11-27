@@ -499,7 +499,7 @@ MonoBehaviour:
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
-    m_BlendHint: 1
+    m_BlendHint: 3
     m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:

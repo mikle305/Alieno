@@ -60,9 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: BMYEONSUNG
   m_EditorClassIdentifier: 
-  hashCode: 668457557
+  hashCode: 1973972093
   material: {fileID: 3798590342722743461}
-  materialHashCode: 1485335125
+  materialHashCode: -1764994371
   m_Version: 1.1.0
   m_SourceFontFileGUID: a4cdf48e76b94c3489ae09c6d623cf3e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: a4cdf48e76b94c3489ae09c6d623cf3e, type: 3}

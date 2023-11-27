@@ -1,5 +1,6 @@
 ﻿using GameFlow.Context;
 using Services;
+using Services.Save;
 using StaticData.Music;
 
 namespace GameFlow.States
@@ -10,6 +11,7 @@ namespace GameFlow.States
         private readonly ObjectsProvider _objectsProvider;
         private LevelMapService _levelMapService;
         private MusicService _musicService;
+        private SaveService _saveService;
 
 
         public RoomSelectionState(GameStateMachine context)
@@ -17,17 +19,19 @@ namespace GameFlow.States
             _context = context;
             _objectsProvider = ObjectsProvider.Instance;
             _musicService = MusicService.Instance;
+            _saveService = SaveService.Instance;
         }
 
         public override void Enter()
         {
             _levelMapService = LevelMapService.Instance;
             _levelMapService.AnimationFinished += EnterRoomLoadingState;
-            _objectsProvider.RoomsMap.gameObject.SetActive(true);
-            _objectsProvider.RoomsMap.NextLvlButton.onClick.AddListener(_levelMapService.DisplayNextRoom);
+            _levelMapService.Init(_saveService.Progress.PlayerData.Room - 2);
+
             _musicService.Play(MusicId.PerkSelection);
         }
 
+ 
         public override void Exit()
         {
             _levelMapService.AnimationFinished -= EnterRoomLoadingState;
