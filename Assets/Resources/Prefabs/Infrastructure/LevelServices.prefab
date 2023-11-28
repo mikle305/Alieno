@@ -316,6 +316,12 @@ MonoBehaviour:
   _defaultProjectilePools:
   - <Id>k__BackingField: 0
     <StartCount>k__BackingField: 15
+  - <Id>k__BackingField: 1
+    <StartCount>k__BackingField: 5
+  - <Id>k__BackingField: 2
+    <StartCount>k__BackingField: 15
+  - <Id>k__BackingField: 3
+    <StartCount>k__BackingField: 45
 --- !u!1 &8964130785870587346
 GameObject:
   m_ObjectHideFlags: 0

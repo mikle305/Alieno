@@ -13,12 +13,17 @@ GameObject:
   - component: {fileID: 7881502597471904660}
   - component: {fileID: 411336410143161977}
   - component: {fileID: -5802737614022627323}
+  - component: {fileID: 2224754497552070491}
   - component: {fileID: -6407696992043481034}
+  - component: {fileID: 5048471267220782429}
   - component: {fileID: 5561741798163748319}
   - component: {fileID: 5747806846484912053}
   - component: {fileID: 7879734721742889912}
   - component: {fileID: 8123723155240321540}
   - component: {fileID: 8012373367392362118}
+  - component: {fileID: 6256560151315806811}
+  - component: {fileID: 2906676484710208410}
+  - component: {fileID: 7459243500147071988}
   m_Layer: 8
   m_Name: SuicideDrone
   m_TagString: Untagged
@@ -41,6 +46,7 @@ Transform:
   m_Children:
   - {fileID: 1369184598509783246}
   - {fileID: 1928617157307886591}
+  - {fileID: 7303166966296894635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &6791622052337988144
@@ -53,11 +59,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 240
-  m_StoppingDistance: 3
+  m_Speed: 7.5
+  m_Acceleration: 15
+  avoidancePriority: 99
+  m_AngularSpeed: 640
+  m_StoppingDistance: 1.8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -114,6 +120,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyTransform: {fileID: 5000346093543423985}
   _turnSpeed: 3
+--- !u!114 &2224754497552070491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a9fc8a3300ce24ea74e9316abb92bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _attackIndicator: {fileID: 8037865332162061285, guid: 13ff37d8e71f6c5469699615733ae920, type: 3}
 --- !u!114 &-6407696992043481034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,10 +146,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce546862e810f5343aa037cd3fbb64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _aiPrefab: {fileID: 11400000, guid: f54af48e746292a499493ed8afe8ce32, type: 2}
   _navMeshAgent: {fileID: 6791622052337988144}
   _enemyMovement: {fileID: 411336410143161977}
   _enemyRotation: {fileID: -5802737614022627323}
-  _enemyAnimations: {fileID: 0}
+  _enemyAnimations: {fileID: 2224754497552070491}
+  _enemyAttacker: {fileID: 5048471267220782429}
+--- !u!114 &5048471267220782429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc14ee7cfaa18db4db948ba412960ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilitiesEntity: {fileID: 6256560151315806811}
+  _attackData: {fileID: 7459243500147071988}
 --- !u!114 &5561741798163748319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +255,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characteristic: {fileID: 8123723155240321540}
-  _value: 120
+  _value: 480
+--- !u!114 &6256560151315806811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bb9cf9cbf844f0a303b644ad5797fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2906676484710208410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb73965a2f5442e2bd9ed8be00d3449b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilitiesEntity: {fileID: 6256560151315806811}
+  _defaultAbilities:
+  - Id: 0
+    Level: 1
+--- !u!114 &7459243500147071988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ProjectileId>k__BackingField: 1
+  _defaultUseRate: 1
+  _defaultDamage: 20
+  _defaultMoveSpeed: 15
+  _spawnsData:
+  - <AbilityId>k__BackingField: 0
+    <Levels>k__BackingField:
+    - _spawns:
+      - {fileID: 7303166966296894635}
+--- !u!1 &8148377328108508002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7303166966296894635}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7303166966296894635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8148377328108508002}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000346093543423985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8380730579078376546
 PrefabInstance:
   m_ObjectHideFlags: 0

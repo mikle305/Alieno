@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4866635148089394}
   - component: {fileID: 33022363569585910}
   - component: {fileID: 23071456444186598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Wep_Rifle_Mag_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,8 +94,7 @@ GameObject:
   - component: {fileID: 4416509164870928}
   - component: {fileID: 33660422657946452}
   - component: {fileID: 23568367457915364}
-  - component: {fileID: 64847287875836804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,28 +168,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64847287875836804
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087233085573688}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43224424643243092, guid: f7f23d0aca5d40143af6f2b685430563, type: 2}
 --- !u!1 &1559918221196860
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +179,7 @@ GameObject:
   - component: {fileID: 4771672081221304}
   - component: {fileID: 33024579742436158}
   - component: {fileID: 23414000165031676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Wep_Rifle_Trigger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

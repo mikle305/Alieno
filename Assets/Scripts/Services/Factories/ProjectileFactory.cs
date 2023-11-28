@@ -30,7 +30,7 @@ namespace Services.Factories
         {
             Transform projectileTransform = projectile.transform;
             projectileTransform.position = spawnPoint;
-            projectileTransform.rotation = Quaternion.identity;
+            projectileTransform.rotation = Quaternion.LookRotation(direction);
             
             float speed = attackData.MoveSpeed.GetValue();
             float damage = attackData.Damage.GetValue();

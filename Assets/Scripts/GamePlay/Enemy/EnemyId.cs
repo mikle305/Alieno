@@ -3,6 +3,10 @@ namespace GamePlay.Enemy
     public enum EnemyId
     {
         SuicideDrone,
-        BasicSoldier
+        BasicSoldier,
+        MachineGunTurret,
+        RocketTurret,
+        Grunt,
+        Elite
     }
 }
