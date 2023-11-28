@@ -37,6 +37,8 @@ namespace Services.Factories
             var sender = attackData.GetComponent<HealthData>();
             projectile.GetComponent<ProjectileDamage>().Init(sender, damage);
             projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
+            if (projectile.TryGetComponent(out ProjectileLifetime projectileLifetime))
+                projectileLifetime.Init();
         }
     }
 }
