@@ -2346,7 +2346,6 @@ GameObject:
   - component: {fileID: 6429150348112109253}
   - component: {fileID: 1991681352590358165}
   - component: {fileID: 6358293099992327959}
-  - component: {fileID: 542611359511658003}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2456,21 +2455,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &542611359511658003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7578003413338141994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button:
-    m_key: Play
-    value: 0
 --- !u!1 &7599215202470681795
 GameObject:
   m_ObjectHideFlags: 0

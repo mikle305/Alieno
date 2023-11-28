@@ -31,11 +31,9 @@ namespace UI.GamePlay
 
         private void OnPlayClicked()
         {
-            _uiFadeDuration = 0.5f;
             _rotateCameraTokenSource = new CancellationTokenSource();
             _sequenceTween = DOTween.Sequence()
-                .Append(_canvasGroup.DOFade(0, _uiFadeDuration))
-                .Append(_mainCamera.DOLookAt(_cameraPath[^1].position, 0.5f))
+                .Append(FadeUi())
                 .Append(MoveAndRotateCameraByPath())
                 .OnComplete(OnSequenceCompleted);
         }
@@ -56,9 +54,11 @@ namespace UI.GamePlay
 
         private async UniTask RotateCamera(CancellationToken cancellationToken)
         {
+            Transform target = _cameraPath[^1];
             while (!cancellationToken.IsCancellationRequested)
             {
-                _mainCamera.LookAt(_cameraPath[^1]);
+                Quaternion targetRotation = Quaternion.LookRotation(target.position - _mainCamera.position);
+                _mainCamera.rotation = Quaternion.Slerp(_mainCamera.rotation, targetRotation, 5 * Time.deltaTime);
                 await UniTask.Yield(cancellationToken);
             }
         }
@@ -67,5 +67,8 @@ namespace UI.GamePlay
         {
             _sequenceTween?.Kill();
         }
+
+        private Tween FadeUi() 
+            => _canvasGroup.DOFade(0, _uiFadeDuration);
     }
 }
