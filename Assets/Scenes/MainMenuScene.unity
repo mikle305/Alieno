@@ -551,10 +551,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 814951814}
     - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: _cameraPath.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
       propertyPath: _cameraPath.Array.data[0]
       value: 
       objectReference: {fileID: 1534003513}
@@ -566,21 +562,9 @@ PrefabInstance:
       propertyPath: _cameraPath.Array.data[2]
       value: 
       objectReference: {fileID: 1495801298}
-    - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: _cameraPath.Array.data[3]
-      value: 
-      objectReference: {fileID: 1495801298}
     - target: {fileID: 2229109876865749012, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3937188625933858008, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3937188625933858008, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: m_fontSize
-      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 4107340554280064651, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
       propertyPath: m_AnchorMax.y
