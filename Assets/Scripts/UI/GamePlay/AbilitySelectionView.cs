@@ -44,8 +44,11 @@ namespace UI.GamePlay
 
         private void DisposeButtons()
         {
-            foreach (AbilityButton button in _buttons) 
+            foreach (AbilityButton button in _buttons)
+            {
                 button.ButtonClicked -= OnButtonClicked;
+                button.Text.text = string.Empty;
+            }
         }
     }
 }

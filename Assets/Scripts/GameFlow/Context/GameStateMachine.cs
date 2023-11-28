@@ -20,6 +20,16 @@ namespace GameFlow.Context
             _currentState.Enter();
         }
 
+        public void Enter<T, TNext>()
+            where T : State
+            where TNext : State
+        {
+            _currentState?.Exit();
+            _currentState = _states[typeof(T)];
+            Debug.Log(_currentState.GetType().Name);
+            _currentState.Enter<TNext>();
+        }
+
         public void Update()
         {
             _currentState?.Update();

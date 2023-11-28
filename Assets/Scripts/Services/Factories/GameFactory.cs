@@ -32,11 +32,11 @@ namespace Services.Factories
             return Instantiate(roomsMapPrefab);
         }
 
-        public Room[] CreateRooms(int level)
+        public Room[] CreateRooms(int level, int room)
         {
             Room[] roomsPrefabs = _staticDataService.GetPrefabsConfig().Levels[level - 1].Rooms;
             var rooms = new Room[roomsPrefabs.Length];
-            for (var i = 0; i < roomsPrefabs.Length; i++)
+            for (int i = room - 1; i < roomsPrefabs.Length; i++)
                 rooms[i] = Instantiate(roomsPrefabs[i], Vector3.zero, Quaternion.Euler(0, 180, 0));
 
             return rooms;

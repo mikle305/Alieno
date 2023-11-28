@@ -5,7 +5,6 @@ using GamePlay.Other;
 using Services;
 using Services.Factories;
 using Services.Save;
-using UI.GamePlay;
 using UnityEngine;
 
 namespace GameFlow.States
@@ -70,9 +69,11 @@ namespace GameFlow.States
         private void InitRooms()
         {
             int currentLevel = GetCurrentLevel();
-            Room[] rooms = _gameFactory.CreateRooms(currentLevel);
-            foreach (Room room in rooms) 
-                room.gameObject.SetActive(false);
+            int currentRoom = GetCurrentRoom();
+            Room[] rooms = _gameFactory.CreateRooms(currentLevel, currentRoom);
+
+            for (int i = currentRoom - 1; i < rooms.Length; i++) 
+                rooms[i].gameObject.SetActive(false);
 
             _objectsProvider.Rooms = rooms;
         }
@@ -89,5 +90,8 @@ namespace GameFlow.States
 
         private int GetCurrentLevel() 
             => _saveService.Progress.PlayerData.Level;
+
+        private int GetCurrentRoom() 
+            => _saveService.Progress.PlayerData.Room;
     }
 }

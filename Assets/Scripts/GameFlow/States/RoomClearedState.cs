@@ -1,13 +1,9 @@
-﻿using System;
-using Additional.Constants;
+﻿using Additional.Constants;
 using GameFlow.Context;
 using GamePlay.Characteristics;
-using GamePlay.Other;
-using GamePlay.Player;
 using SaveData;
 using Services;
 using Services.Save;
-using Object = UnityEngine.Object;
 
 namespace GameFlow.States
 {
@@ -16,8 +12,7 @@ namespace GameFlow.States
         private readonly GameStateMachine _context;
         private readonly SaveService _saveService;
         private readonly ObjectsProvider _objectsProvider;
-        private Room _currentRoom;
-
+        
 
         public RoomClearedState(GameStateMachine context)
         {
@@ -30,12 +25,7 @@ namespace GameFlow.States
         {
             InitCurrentRoom();
             SetCurrentProgress();
-            InitPlayerExitDetector(EnterLastRoomCheck);
-        }
-
-        public override void Exit()
-        {
-            DisableRoomDependentObject();
+            EnterLastRoomCheck();
         }
 
         private void SetCurrentProgress()
@@ -50,24 +40,7 @@ namespace GameFlow.States
         private void InitCurrentRoom()
         {
             int room = _saveService.Progress.PlayerData.Room;
-            _currentRoom = _objectsProvider.Rooms[room - 1];
-        }
-
-        private void InitPlayerExitDetector(Action onPlayerDetected)
-        {
-            var detector = _currentRoom.ExitPoint.AddComponent<PlayerCollisionDetector>();
-            detector.PlayerEntered += onPlayerDetected;
-        }
-
-        private void EnterLastRoomCheck() 
-            => _context.Enter<LastRoomCheckState>();
-
-        private void DisableRoomDependentObject()
-        {
-            _objectsProvider.Character.gameObject.SetActive(false);
-            _objectsProvider.Marker.gameObject.SetActive(false);
-            _objectsProvider.Hud.gameObject.SetActive(false);
-            Object.Destroy(_currentRoom.gameObject);
+            _objectsProvider.CurrentRoom = _objectsProvider.Rooms[room - 1];
         }
 
         private float GetCharacterHpToSave()
@@ -75,5 +48,8 @@ namespace GameFlow.States
             var characterHealth = _objectsProvider.Character.GetComponent<HealthData>();
             return DefaultPlayerProgress.Health * (characterHealth.Current / characterHealth.Max);
         }
+
+        private void EnterLastRoomCheck() 
+            => _context.Enter<LastRoomCheckState>();
     }
 }

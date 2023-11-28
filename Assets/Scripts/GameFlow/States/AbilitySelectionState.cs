@@ -39,7 +39,10 @@ namespace GameFlow.States
         {
             SaveAbilitiesProgress(id);
             UpPlayerAbility(id);
-            EnterRoomSelection();
+            if (HasCurrentRoom())
+                EnterRoomExitWaiting();
+            else
+                EnterRoomSelection();
         }
 
         private void SaveAbilitiesProgress(AbilityId id)
@@ -63,7 +66,13 @@ namespace GameFlow.States
             else
                 characterEntity.AddAbility(id);
         }
-        
+
+        private bool HasCurrentRoom() 
+            => _objectsProvider.CurrentRoom != null;
+
+        private void EnterRoomExitWaiting() 
+            => _context.Enter<RoomExitWaitingState, RoomSelectionState>();
+
         private void EnterRoomSelection() 
             => _context.Enter<RoomSelectionState>();
     }

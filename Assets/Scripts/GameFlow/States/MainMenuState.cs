@@ -7,32 +7,34 @@ namespace GameFlow.States
 {
     public class MainMenuState : State
     {
-        private readonly GameStateMachine _gameStateMachine;
+        private readonly GameStateMachine _context;
         private readonly SceneLoader _sceneLoader;
         private readonly MenuService _menuService;
         private readonly MusicService _musicService;
         
-        public MainMenuState(GameStateMachine gameStateMachine)
+        
+        public MainMenuState(GameStateMachine context)
         {
-            _gameStateMachine = gameStateMachine;
+            _context = context;
             _sceneLoader = SceneLoader.Instance;
             _menuService = MenuService.Instance;
             _musicService = MusicService.Instance;
         }
 
-        private void SetMenuMusic()
-        {
-            _musicService.Play(MusicId.MainMenu1);
-        }
         public override void Enter()
         {
-            _sceneLoader.Load(SceneNames.MainMenu,SetMenuMusic);
+            _sceneLoader.Load(SceneNames.MainMenu, SetMenuMusic);
         }
 
         public override void Update()
         {
             if (_menuService.IsPlayInvoked())
-                _gameStateMachine.Enter<SceneLoadingState>();
+                _context.Enter<SceneLoadingState>();
+        }
+
+        private void SetMenuMusic()
+        {
+            _musicService.Play(MusicId.MainMenu1);
         }
     }
 }

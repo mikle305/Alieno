@@ -36,6 +36,7 @@ namespace GameFlow.Context
                 new LastRoomCheckState(stateMachine),
                 new AbilitiesGenerationState(stateMachine),
                 new AbilitySelectionState(stateMachine),
+                new RoomExitWaitingState(stateMachine),
             };
 
             foreach (State state in states) 

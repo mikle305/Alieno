@@ -17,6 +17,7 @@ namespace Services
         public GameObject Character { get; set; }
         public RoomsMap RoomsMap { get; set; }
         public Room[] Rooms { get; set; }
+        public Room CurrentRoom { get; set; }
         public GameObject Marker { get; set; }
         public List<Transform> AliveEnemies { get; set; }
 

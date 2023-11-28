@@ -30,7 +30,6 @@ namespace GameFlow.States
 
             _musicService.Play(MusicId.PerkSelection);
         }
-
  
         public override void Exit()
         {

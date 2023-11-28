@@ -27,7 +27,7 @@ namespace GameFlow.States
             if (IsLastRoom())
             {
                 SetNextLevelProgress();
-                EnterMainMenu();
+                EnterRoomExitWaiting();
             }
             else
             {
@@ -50,13 +50,13 @@ namespace GameFlow.States
         private void EnterAbilityGeneration()
             => _context.Enter<AbilitiesGenerationState>();
 
-        private void EnterMainMenu()
-            => _context.Enter<MainMenuState>();
+        private void EnterRoomExitWaiting()
+            => _context.Enter<RoomExitWaitingState, MainMenuState>();
 
         private bool IsLastRoom()
         {
             int currentRoom = _saveService.Progress.PlayerData.Room;
-            return currentRoom == _objectsProvider.Rooms.Length;
+            return currentRoom == _objectsProvider.Rooms.Length + 1;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Services.Save
         public void Save()
         {
             _storage.Save(Progress);
+            print(Progress.PlayerData.Room);
         }
 
         public void Load()
