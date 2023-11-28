@@ -5,17 +5,21 @@ using SaveData;
 
 namespace Services
 {
-    public class MenuService : MonoSingleton<MenuService>
+    public class MainMenuService : MonoSingleton<MainMenuService>
     {
-        public event Action PlayInvoked;
+        public event Action StartGameInvoked;
         public event Action<PlayerData> ProgressReceived;
+        public event Action PlayClicked;
         
 
         private void Update()
         {
-            if (SimpleInput.GetButtonDown(InputConstants.Play))
-                PlayInvoked?.Invoke();
+            if (SimpleInput.GetButtonDown(InputConstants.Play)) 
+                PlayClicked?.Invoke();
         }
+        
+        public void StartGame()
+            => StartGameInvoked?.Invoke();
 
         public void DisplayProgress(PlayerData playerProgress)
             => ProgressReceived?.Invoke(playerProgress);

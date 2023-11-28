@@ -8,12 +8,12 @@ namespace UI.GamePlay
     public class LevelProgressText : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _text;
-        private MenuService _menuService;
+        private MainMenuService _menuService;
 
 
         private void Awake()
         {
-            _menuService = MenuService.Instance;
+            _menuService = MainMenuService.Instance;
             _menuService.ProgressReceived += DisplayLevel;
         }
 

@@ -11,7 +11,7 @@ namespace GameFlow.States
     {
         private readonly GameStateMachine _context;
         private readonly SceneLoader _sceneLoader;
-        private readonly MenuService _menuService;
+        private readonly MainMenuService _menuService;
         private readonly MusicService _musicService;
         private readonly StaticDataService _staticDataService;
         private readonly SaveService _saveService;
@@ -22,7 +22,7 @@ namespace GameFlow.States
         {
             _context = context;
             _sceneLoader = SceneLoader.Instance;
-            _menuService = MenuService.Instance;
+            _menuService = MainMenuService.Instance;
             _musicService = MusicService.Instance;
             _staticDataService = StaticDataService.Instance;
             _saveService = SaveService.Instance;
@@ -36,12 +36,12 @@ namespace GameFlow.States
 
         public override void Exit()
         {
-            _menuService.PlayInvoked -= TryEnterLevel;
+            _menuService.StartGameInvoked -= TryEnterLevel;
         }
 
         private void OnMainMenuLoaded()
         {
-            _menuService.PlayInvoked += TryEnterLevel;
+            _menuService.StartGameInvoked += TryEnterLevel;
             DisplayLevelProgress();
             PlayMenuMusic();
         }
