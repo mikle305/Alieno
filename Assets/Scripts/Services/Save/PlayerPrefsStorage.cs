@@ -15,7 +15,7 @@ namespace Services.Save
 
         public void Save(T data)
         {
-            string json = data.ToJson();
+            string json = data.Serialize();
             PlayerPrefs.SetString(_dataKey, json);
             PlayerPrefs.Save();
         }
@@ -24,7 +24,7 @@ namespace Services.Save
         {
             return PlayerPrefs
                 .GetString(_dataKey)
-                .FromJson<T>();
+                .Deserialize<T>();
         }
     }
 }

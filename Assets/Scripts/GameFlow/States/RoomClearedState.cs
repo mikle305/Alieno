@@ -42,6 +42,7 @@ namespace GameFlow.States
         {
             PlayerData playerProgress = _saveService.Progress.PlayerData;
             playerProgress.Room++;
+            playerProgress.AbilitySelected = false;
             playerProgress.CurrentHealth = GetCharacterHpToSave();
             _saveService.Save();
         }

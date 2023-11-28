@@ -29,10 +29,12 @@ namespace GameFlow.Context
                 new ProgressLoadingState(stateMachine),
                 new MainMenuState(stateMachine),
                 new SceneLoadingState(stateMachine),
+                new ProgressRestoreState(stateMachine),
                 new RoomSelectionState(stateMachine),
                 new RoomLoadingState(stateMachine),
                 new RoomClearedState(stateMachine),
                 new LastRoomCheckState(stateMachine),
+                new AbilitiesGenerationState(stateMachine),
                 new AbilitySelectionState(stateMachine),
             };
 

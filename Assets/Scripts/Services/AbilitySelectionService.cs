@@ -24,7 +24,6 @@ namespace Services
 
         public AbilityId[] GenerateAbilities(Dictionary<AbilityId, int> currentAbilities)
         {
-            var skipAbilities = new HashSet<AbilityId>();
             IEnumerable<AbilityData> filteredAbilities = _staticDataService
                 .GetAllAbilities()
                 .Where(a => !IsMaxLevel(currentAbilities, a));
@@ -37,6 +36,9 @@ namespace Services
             AbilitiesGenerated?.Invoke(generatedAbilities);
             return generatedAbilities;
         }
+
+        public void RestoreAbilities(AbilityId[] generatedAbilities)
+            => AbilitiesGenerated?.Invoke(generatedAbilities);
 
         public void SetSelectedAbility(AbilityId id)
             => AbilitySelected?.Invoke(id);

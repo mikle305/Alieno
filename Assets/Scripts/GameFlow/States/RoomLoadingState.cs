@@ -16,9 +16,9 @@ namespace GameFlow.States
         private readonly SaveService _saveService;
         private readonly ObjectsProvider _objectsProvider;
         private readonly EnemiesDeathObserver _enemiesDeathObserver;
-        private Room _currentRoom;
+        private readonly MusicService _musicService;
         private EnemyFactory _enemyFactory;
-        private MusicService _musicService;
+        private Room _currentRoom;
 
 
         public RoomLoadingState(GameStateMachine context)
@@ -60,7 +60,6 @@ namespace GameFlow.States
             int room = _saveService.Progress.PlayerData.Room;
             _currentRoom = _objectsProvider.Rooms[room - 1];
             _currentRoom.gameObject.SetActive(true);
-            
         }
 
         private void SpawnPlayer()

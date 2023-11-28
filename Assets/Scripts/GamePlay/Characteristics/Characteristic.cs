@@ -8,9 +8,6 @@ namespace GamePlay.Characteristics
 {
     public class Characteristic : MonoBehaviour
     {
-        [SerializeField] private float _defaultCurrent;
-        [SerializeField] private float _defaultMax;
-        
         private DefaultStat _current;
         private ModifiableStat _max;
 
@@ -21,10 +18,10 @@ namespace GamePlay.Characteristics
         public event Action ZeroReached;
 
 
-        private void Awake()
+        public void Init(float current, float max)
         {
-            _max = new ModifiableStat(_defaultMax);
-            _current = new DefaultStat(_defaultCurrent);
+            _max = new ModifiableStat(max);
+            _current = new DefaultStat(current);
         }
 
         public void Increase(float value)

@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
 
 namespace Additional.Extensions
 {
     public static class JsonExtensions
     {
-        public static T FromJson<T>(this string jsonString) 
-            => JsonUtility.FromJson<T>(jsonString);
+        public static T Deserialize<T>(this string jsonString) 
+            => JsonConvert.DeserializeObject<T>(jsonString);
 
-        public static string ToJson<T>(this T obj) 
-            => JsonUtility.ToJson(obj);
+        public static string Serialize<T>(this T obj) 
+            => JsonConvert.SerializeObject(obj);
     }
 }

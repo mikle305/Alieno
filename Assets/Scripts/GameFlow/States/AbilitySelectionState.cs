@@ -10,44 +10,36 @@ namespace GameFlow.States
     public class AbilitySelectionState : State
     {
         private readonly GameStateMachine _context;
-        private readonly SaveService _saveService;
         private readonly AbilitySelectionService _abilitySelectionService;
+        private readonly SaveService _saveService;
         private readonly ObjectsProvider _objectsProvider;
-
+        
 
         public AbilitySelectionState(GameStateMachine context)
         {
             _context = context;
-            _saveService = SaveService.Instance;
             _abilitySelectionService = AbilitySelectionService.Instance;
+            _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
         }
 
         public override void Enter()
         {
+            _objectsProvider.Hud.gameObject.SetActive(true);
             _abilitySelectionService.AbilitySelected += OnAbilitySelected;
-            GenerateAndSaveAbilities();
         }
 
         public override void Exit()
         {
+            _objectsProvider.Hud.gameObject.SetActive(false);
             _abilitySelectionService.AbilitySelected -= OnAbilitySelected;
         }
 
         private void OnAbilitySelected(AbilityId id)
         {
             SaveAbilitiesProgress(id);
-            SetAbilityToEntity(id);
+            UpPlayerAbility(id);
             EnterRoomSelection();
-        }
-
-        private void GenerateAndSaveAbilities()
-        {
-            PlayerData playerProgress = _saveService.Progress.PlayerData;
-            playerProgress.SelectionAbilities = _abilitySelectionService
-                .GenerateAbilities(playerProgress.CurrentAbilities);
-            
-            _saveService.Save();
         }
 
         private void SaveAbilitiesProgress(AbilityId id)
@@ -58,11 +50,12 @@ namespace GameFlow.States
             else
                 playerProgress.CurrentAbilities[id] = 1;
 
-            playerProgress.SelectionAbilities = Array.Empty<AbilityId>();
+            playerProgress.AbilitySelected = true;
+            playerProgress.GeneratedAbilities = Array.Empty<AbilityId>();
             _saveService.Save();
         }
 
-        private void SetAbilityToEntity(AbilityId id)
+        private void UpPlayerAbility(AbilityId id)
         {
             var characterEntity = _objectsProvider.Character.GetComponent<AbilitiesEntity>();
             if (characterEntity.AbilitiesMap.ContainsKey(id))
@@ -70,7 +63,7 @@ namespace GameFlow.States
             else
                 characterEntity.AddAbility(id);
         }
-
+        
         private void EnterRoomSelection() 
             => _context.Enter<RoomSelectionState>();
     }

@@ -31,7 +31,7 @@ namespace GameFlow.States
             }
             else
             {
-                EnterAbilitySelection();
+                EnterAbilityGeneration();
             }
         }
 
@@ -41,14 +41,14 @@ namespace GameFlow.States
             playerData.Room = DefaultPlayerProgress.Room;
             playerData.Level++;
             playerData.CurrentHealth = DefaultPlayerProgress.Health;
-            playerData.SelectionAbilities = Array.Empty<AbilityId>();
+            playerData.GeneratedAbilities = Array.Empty<AbilityId>();
             playerData.CurrentAbilities = DefaultPlayerProgress.GetAbilities();
 
             _saveService.Save();
         }
 
-        private void EnterAbilitySelection()
-            => _context.Enter<AbilitySelectionState>();
+        private void EnterAbilityGeneration()
+            => _context.Enter<AbilitiesGenerationState>();
 
         private void EnterMainMenu()
             => _context.Enter<MainMenuState>();

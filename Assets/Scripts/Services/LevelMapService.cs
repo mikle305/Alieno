@@ -49,7 +49,7 @@ namespace Services
                 SkipAnimation();
                 return;
             }
-            print(_objectsProvider.RoomsMap.LevelNumbers.Count);
+            
             if(++_currentRoom >= _objectsProvider.RoomsMap.LevelNumbers.Count)
                 return;
 
@@ -59,11 +59,9 @@ namespace Services
                 SkipAnimation();
         }
 
-        private bool CheckForAutoSkip()
-        {
-            return _objectsProvider.RoomsMap.AutoSkipToggle.isOn;
-        }
-        
+        private bool CheckForAutoSkip() 
+            => _objectsProvider.RoomsMap.AutoSkipToggle.isOn;
+
         private IEnumerator MoveAnimation(Transform moveTo)
         {
             _positionToMove = moveTo.position + _offset;

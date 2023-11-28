@@ -16,7 +16,7 @@ namespace GamePlay.Abilities
         public IReadOnlyDictionary<AbilityId, AbilityComponent> AbilitiesMap => _abilitiesMap;
         
         
-        private void Start()
+        private void Awake()
         {
             _staticDataService = StaticDataService.Instance;
         }

@@ -27,7 +27,6 @@ namespace GamePlay.Damage
         private void Start()
         {
             _healthData.ValueChanged += OnHitEffects;
-
         }
 
         private void OnHitEffects()

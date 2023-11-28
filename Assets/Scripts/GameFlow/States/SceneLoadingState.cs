@@ -18,7 +18,6 @@ namespace GameFlow.States
         private readonly SaveService _saveService;
         
         private GameFactory _gameFactory;
-        private HudFactory _hudFactory;
 
 
         public SceneLoadingState(GameStateMachine context)
@@ -32,31 +31,25 @@ namespace GameFlow.States
         public override void Enter() 
             => _sceneLoader.Load(SceneNames.Level, OnLevelLoaded);
 
-        public override void Exit()
-        {
-        }
-
         private void OnLevelLoaded()
             => OnLevelLoadedAsync().Forget();
 
         private async UniTask OnLevelLoadedAsync()
         {
-            await UniTask.DelayFrame(2);
-            Construct();
+            await Construct();
             
             InitCharacter();
             InitMarker();
             InitRoomsMap();
             InitRooms();
-            InitHud();
             
-            EnterRoomSelectionState();
+            EnterProgressRestore();
         }
 
-        private void Construct()
+        private async UniTask Construct()
         {
+            await UniTask.Yield();
             _gameFactory = GameFactory.Instance;
-            _hudFactory = HudFactory.Instance;
         }
 
         private void InitCharacter()
@@ -91,16 +84,8 @@ namespace GameFlow.States
             _objectsProvider.Marker = marker;
         }
 
-        private void InitHud()
-        {
-            GameObject character = _objectsProvider.Character;
-            Hud hud = _hudFactory.Create(character);
-            hud.gameObject.SetActive(false);
-            _objectsProvider.Hud = hud;
-        }
-
-        private void EnterRoomSelectionState() 
-            => _context.Enter<RoomSelectionState>();
+        private void EnterProgressRestore() 
+            => _context.Enter<ProgressRestoreState>();
 
         private int GetCurrentLevel() 
             => _saveService.Progress.PlayerData.Level;

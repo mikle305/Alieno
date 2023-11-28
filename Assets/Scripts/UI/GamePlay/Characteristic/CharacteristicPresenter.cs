@@ -12,13 +12,13 @@ namespace UI.GamePlay
         {
             _model = model;
             _view = view;
-            Bind();
         }
 
-        private void Bind()
+        public void Bind(bool forceUpdate = false)
         {
             _model.ValueChanged += UpdateStatBar;
-            UpdateStatBar();
+            if (forceUpdate)
+                UpdateStatBar();
         }
 
         private void UpdateStatBar() 

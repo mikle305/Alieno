@@ -37,6 +37,7 @@ namespace Services.Factories
             var health = character.GetComponent<HealthData>();
             CharacteristicView view = hud.HealthView;
             var presenter = new CharacteristicPresenter(health, view);
+            presenter.Bind(forceUpdate: true);
             view.Init(presenter);
         }
 

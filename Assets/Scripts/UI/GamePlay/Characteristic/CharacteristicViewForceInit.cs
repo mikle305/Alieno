@@ -9,12 +9,13 @@ namespace UI.GamePlay
         [SerializeField] private CharacteristicView _view;
 
 
-        private void Start() 
+        private void Awake() 
             => Bind();
 
         private void Bind()
         {
             var presenter = new CharacteristicPresenter(_model, _view);
+            presenter.Bind();
             _view.Init(presenter);
         }
     }

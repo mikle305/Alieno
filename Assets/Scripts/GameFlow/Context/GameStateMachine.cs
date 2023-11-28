@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Additional.Utils;
 using GameFlow.States;
+using UnityEngine;
 
 namespace GameFlow.Context
 {
@@ -15,6 +16,7 @@ namespace GameFlow.Context
         {
             _currentState?.Exit();
             _currentState = _states[typeof(T)];
+            Debug.Log(_currentState.GetType().Name);
             _currentState.Enter();
         }
 
