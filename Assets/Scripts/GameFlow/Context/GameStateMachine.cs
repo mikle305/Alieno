@@ -8,25 +8,21 @@ namespace GameFlow.Context
 {
     public class GameStateMachine
     {
-        private State _currentState;
         private readonly Dictionary<Type, State> _states = new();
+        private State _currentState;
 
 
         public void Enter<T>() where T : State
         {
             _currentState?.Exit();
             _currentState = _states[typeof(T)];
-            Debug.Log(_currentState.GetType().Name);
             _currentState.Enter();
         }
 
-        public void Enter<T, TNext>()
-            where T : State
-            where TNext : State
+        public void Enter<T, TNext>() where T : State where TNext : State
         {
             _currentState?.Exit();
             _currentState = _states[typeof(T)];
-            Debug.Log(_currentState.GetType().Name);
             _currentState.Enter<TNext>();
         }
 

@@ -1,11 +1,18 @@
-﻿using Additional.Constants;
+﻿using System;
+using Additional.Constants;
 using Additional.Game;
 
 namespace Services
 {
     public class MenuService : MonoSingleton<MenuService>
     {
-        public bool IsPlayInvoked()
-            => SimpleInput.GetButtonDown(InputConstants.Play);
+        public event Action PlayInvoked;
+
+
+        private void Update()
+        {
+            if (SimpleInput.GetButtonDown(InputConstants.Play))
+                PlayInvoked?.Invoke();
+        }
     }
 }

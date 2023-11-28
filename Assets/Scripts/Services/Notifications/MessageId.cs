@@ -3,5 +3,6 @@
     public enum MessageId
     {
         PasswordResetRequested,
+        NoLevelsMore,
     }
 }

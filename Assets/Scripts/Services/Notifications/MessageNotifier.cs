@@ -28,7 +28,8 @@ namespace Services.Notifications
 
             _internalMessages = new Dictionary<MessageId, string>
             {
-                { MessageId.PasswordResetRequested, "Password reset link was sent on your email" }
+                { MessageId.PasswordResetRequested, "Password reset link was sent on your email" },
+                { MessageId.NoLevelsMore, "No levels more yet!\nThanks for playing!" },
             };
         }
 
