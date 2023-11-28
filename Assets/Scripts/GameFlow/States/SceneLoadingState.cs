@@ -38,6 +38,7 @@ namespace GameFlow.States
             await Construct();
             
             InitCharacter();
+            InitDirectionArrow();
             InitMarker();
             InitRoomsMap();
             InitRooms();
@@ -56,6 +57,13 @@ namespace GameFlow.States
             GameObject character = _gameFactory.CreateCharacter();
             character.SetActive(false);
             _objectsProvider.Character = character;
+        }
+
+        private void InitDirectionArrow()
+        {
+            var directionArrow = _objectsProvider.Character.GetComponentInChildren<DirectionArrow>();
+            directionArrow.gameObject.SetActive(false);
+            _objectsProvider.DirectionArrow = directionArrow;
         }
 
         private void InitRoomsMap()

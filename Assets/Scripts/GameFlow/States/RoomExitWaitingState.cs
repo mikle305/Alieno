@@ -2,6 +2,7 @@
 using GameFlow.Context;
 using GamePlay.Player;
 using Services;
+using UnityEngine;
 
 namespace GameFlow.States
 {
@@ -18,23 +19,34 @@ namespace GameFlow.States
         }
 
         public override void Enter<TNext>()
-            => InitPlayerExitDetector(EnterNextState<TNext>);
+        {
+            EnableExitDirectionArrow();
+            InitPlayerExitDetector(EnterNextState<TNext>);
+        }
 
         public override void Exit()
             => DisposeRoomDependentObjects();
-        
-        private void DisposeRoomDependentObjects()
+
+        private void EnableExitDirectionArrow()
         {
-            _objectsProvider.Character.gameObject.SetActive(false);
-            _objectsProvider.Marker.gameObject.SetActive(false);
-            _objectsProvider.Hud.gameObject.SetActive(false);
-            UnityEngine.Object.Destroy(_objectsProvider.CurrentRoom.gameObject);
+            Transform exitPoint = _objectsProvider.CurrentRoom.ExitPoint.transform;
+            _objectsProvider.DirectionArrow.SetTarget(exitPoint);
+            _objectsProvider.DirectionArrow.gameObject.SetActive(true);
         }
 
         private void InitPlayerExitDetector(Action onPlayerExited)
         {
             var detector = _objectsProvider.CurrentRoom.ExitPoint.AddComponent<PlayerCollisionDetector>();
             detector.PlayerEntered += onPlayerExited;
+        }
+
+        private void DisposeRoomDependentObjects()
+        {
+            _objectsProvider.Character.gameObject.SetActive(false);
+            _objectsProvider.Marker.gameObject.SetActive(false);
+            _objectsProvider.Hud.gameObject.SetActive(false);
+            _objectsProvider.DirectionArrow.gameObject.SetActive(false);
+            UnityEngine.Object.Destroy(_objectsProvider.CurrentRoom.gameObject);
         }
 
         private void EnterNextState<TNext>()

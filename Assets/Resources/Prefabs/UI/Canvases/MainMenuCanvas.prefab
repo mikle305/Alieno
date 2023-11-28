@@ -1890,8 +1890,8 @@ RectTransform:
   - {fileID: 4908972747345494626}
   - {fileID: 8683602506145716958}
   - {fileID: 1872550071137534635}
-  - {fileID: 3986127908127642292}
   - {fileID: 7785668936939982675}
+  - {fileID: 3986127908127642292}
   m_Father: {fileID: 7283848173920439398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1928,9 +1928,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   _canvasGroup: {fileID: 8505126340493557733}
   _uiFadeDuration: 0.5
-  _cameraMoveDuration: 1.5
+  _cameraMoveDuration: 2.5
 --- !u!1 &6543726384706421683
 GameObject:
   m_ObjectHideFlags: 0

@@ -578,14 +578,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 814951814}
     - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: _cameraMoveDuration
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: _cameraPath.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
       propertyPath: _cameraPath.Array.data[0]
       value: 
       objectReference: {fileID: 814951814}

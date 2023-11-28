@@ -4,21 +4,19 @@ namespace GamePlay.Other
 {
     public class DirectionArrow : MonoBehaviour
     {
-        [SerializeField] private Transform _exitPoint;
+        private Transform _target;
+
+        public void SetTarget(Transform target)
+            => _target = target;
+        
         private void Update()
         {
-            if (_exitPoint == null)
-            {
-                TryFindExit();
+            if (_target == null)
                 return;
-            }
-        
-            transform.LookAt(_exitPoint);
-        }
 
-        private void TryFindExit()
-        {
-            _exitPoint = GameObject.Find("ExitPoint").transform;
+            Vector3 targetPosition = _target.position;
+            targetPosition.y = transform.position.y;
+            transform.LookAt(targetPosition);
         }
     }
 }

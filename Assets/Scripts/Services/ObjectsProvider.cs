@@ -19,6 +19,7 @@ namespace Services
         public Room[] Rooms { get; set; }
         public Room CurrentRoom { get; set; }
         public GameObject Marker { get; set; }
+        public DirectionArrow DirectionArrow { get; set; }
         public List<Transform> AliveEnemies { get; set; }
 
         public Camera MainCamera { get; set; }

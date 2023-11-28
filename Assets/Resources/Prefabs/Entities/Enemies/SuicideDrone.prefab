@@ -19,10 +19,10 @@ GameObject:
   - component: {fileID: 5561741798163748319}
   - component: {fileID: 5747806846484912053}
   - component: {fileID: 7879734721742889912}
-  - component: {fileID: 8123723155240321540}
-  - component: {fileID: 8012373367392362118}
   - component: {fileID: 6256560151315806811}
   - component: {fileID: 2906676484710208410}
+  - component: {fileID: 8012373367392362118}
+  - component: {fileID: 8123723155240321540}
   - component: {fileID: 7459243500147071988}
   m_Layer: 8
   m_Name: SuicideDrone
@@ -230,32 +230,6 @@ MonoBehaviour:
   _effectToSpawn: {fileID: 0}
   _lifetime: 1
   _addScale: 1.05
---- !u!114 &8123723155240321540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2643963481109582220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7f33f0a9254405f8a1c91a6f0c518df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8012373367392362118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2643963481109582220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fde0f4be54c44caac122243d56ce4d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characteristic: {fileID: 8123723155240321540}
-  _value: 480
 --- !u!114 &6256560151315806811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +258,32 @@ MonoBehaviour:
   _defaultAbilities:
   - Id: 0
     Level: 1
+--- !u!114 &8012373367392362118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fde0f4be54c44caac122243d56ce4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characteristic: {fileID: 8123723155240321540}
+  _value: 200
+--- !u!114 &8123723155240321540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643963481109582220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f33f0a9254405f8a1c91a6f0c518df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7459243500147071988
 MonoBehaviour:
   m_ObjectHideFlags: 0
