@@ -42,6 +42,7 @@ namespace GameFlow.States
         private void OnMainMenuLoaded()
         {
             _menuService.PlayInvoked += TryEnterLevel;
+            DisplayLevelProgress();
             PlayMenuMusic();
         }
 
@@ -52,6 +53,9 @@ namespace GameFlow.States
             else
                 EnterSceneLoading();
         }
+
+        private void DisplayLevelProgress()
+            => _menuService.DisplayProgress(_saveService.Progress.PlayerData);
 
         private bool IsLastLevel() 
             => _staticDataService.GetPrefabsConfig().Levels.Length < _saveService.Progress.PlayerData.Level;

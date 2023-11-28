@@ -360,6 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1025318a6e4a7bb4aacbcc11a2d24fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layersToIgnore:
+  _layerToCheckFor:
     serializedVersion: 2
-    m_Bits: 488
+    m_Bits: 64

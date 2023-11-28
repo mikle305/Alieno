@@ -7,9 +7,9 @@
         SideShot,
         BackShot,
         Multishot,
-        Ricochet,
         HealthBuff,
         Flame,
         Poison,
+        Ricochet,
     }
 }
