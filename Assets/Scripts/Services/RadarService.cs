@@ -31,26 +31,28 @@ namespace Services
             Transform ricoshetTo = null;
             _ricoshetFrom = ricoshetFrom;
             
-            if (_lastUsedFrameEnemies == Time.frameCount)
+            if (_lastUsedFrameEnemies == Time.frameCount && _objectsProvider.AliveEnemies.Count > 1)
             {
                 _enemyAndItsClosest.TryGetValue(ricoshetFrom, out ricoshetTo);
                 if (ricoshetTo == null)
                 {
-                    ricoshetTo = FindClosestToEnemy(ricoshetTo);
+                    ricoshetTo = FindClosestToEnemy();
                 }
             }
-            else if (_objectsProvider.AliveEnemies.Count == 0)
+            else if (_objectsProvider.AliveEnemies.Count > 1)
             {
                 _enemyAndItsClosest = new Dictionary<Transform, Transform>();
                 _lastUsedFrameEnemies = Time.frameCount;
-                ricoshetTo = FindClosestToEnemy(ricoshetTo);
+                ricoshetTo = FindClosestToEnemy();
             }
 
             return ricoshetTo;
         }
 
-        private Transform FindClosestToEnemy(Transform ricoshetTo)
+        private Transform FindClosestToEnemy()
         {
+            Transform ricoshetTo = null;
+            
             List<Transform> sortedEnemiesRico = new List<Transform>(_objectsProvider.AliveEnemies);
             sortedEnemiesRico.Remove(_ricoshetFrom); // remove self from list
             sortedEnemiesRico.Sort(CompareDistancesRicoshet);
@@ -61,7 +63,8 @@ namespace Services
                 {
                     ricoshetTo = enemy;
                     _enemyAndItsClosest.Add(_ricoshetFrom, enemy);
-                    break;
+                    
+                    return ricoshetTo;
                 }
             }
 
