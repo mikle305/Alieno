@@ -23,9 +23,15 @@ namespace Editor
             {
                GameObject prefab = GetEnemyPrefab(enemySpawner.Id);
                MeshFilter[] meshFilters = prefab.GetComponentsInChildren<MeshFilter>();
+               SkinnedMeshRenderer[] skinnedMeshRenderers = prefab.GetComponentsInChildren<SkinnedMeshRenderer>();
+               
                foreach (var filter in meshFilters)
                {
                    DrawMeshGizmo(enemySpawner,filter);
+               }
+               foreach (var renderer in skinnedMeshRenderers)
+               {
+                   DrawMeshGizmoSkinned(enemySpawner,renderer);
                }
             }
         }
@@ -39,6 +45,11 @@ namespace Editor
         private static void DrawMeshGizmo(EnemySpawn enemySpawner,MeshFilter meshFilter)
         {
             Gizmos.DrawMesh(meshFilter.sharedMesh,enemySpawner.transform.position,enemySpawner.transform.rotation);
+        }
+        
+        private static void DrawMeshGizmoSkinned(EnemySpawn enemySpawner,SkinnedMeshRenderer skinnedMeshRenderer)
+        {
+            Gizmos.DrawMesh(skinnedMeshRenderer.sharedMesh,enemySpawner.transform.position,enemySpawner.transform.rotation);
         }
     }
 }
