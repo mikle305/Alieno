@@ -322,6 +322,8 @@ MonoBehaviour:
     <StartCount>k__BackingField: 15
   - <Id>k__BackingField: 3
     <StartCount>k__BackingField: 45
+  - <Id>k__BackingField: 6
+    <StartCount>k__BackingField: 5
 --- !u!1 &8964130785870587346
 GameObject:
   m_ObjectHideFlags: 0

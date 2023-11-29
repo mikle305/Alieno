@@ -34,4 +34,11 @@ public class EnemyAnimations : MonoBehaviour
         
         Destroy(effect,lifetime);
     }
+    
+    public void SpawnAttackIndicatorTowards(Vector3 spawnPoint,float lifetime,Vector3 target)
+    {
+        var effect = Instantiate(_attackIndicator, spawnPoint, Quaternion.LookRotation(target, Vector3.up));
+        effect.transform.LookAt(target);
+        Destroy(effect,lifetime);
+    }
 }
