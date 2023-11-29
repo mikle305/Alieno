@@ -63,6 +63,10 @@ MonoBehaviour:
       data:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
+          <Count>k__BackingField: 2
+        - <Id>k__BackingField: 2
+          <Count>k__BackingField: 4
+        - <Id>k__BackingField: 3
           <Count>k__BackingField: -1
     - rid: 6974772225356857355
       type: {class: MultishotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
