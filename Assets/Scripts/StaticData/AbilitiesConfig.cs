@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace StaticData
 {
-    [CreateAssetMenu(menuName = "StaticData/AbilitiesConfig", fileName = "AbilitiesConfig")]
+    [CreateAssetMenu(menuName = "StaticData/Abilities Config", fileName = "AbilitiesConfig")]
     public class AbilitiesConfig : ScriptableObject
     {
         [field: SerializeReference, HideReferencePicker]

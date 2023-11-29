@@ -16,5 +16,8 @@
         Poison,
         ObstaclePenetration,
         Ricochet,
+        BouncyWall,
+        Berserker,
+        LifeStealer,
     }
 }

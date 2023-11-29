@@ -9,6 +9,7 @@ namespace UI.GamePlay
     public class AbilityButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
+        [field: SerializeField] public Image Icon { get; private set; }
         [field: SerializeField] public TextMeshProUGUI Text { get; private set; }
         
         public AbilityId AbilityId { get; set; }

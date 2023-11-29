@@ -5,6 +5,7 @@ using Additional.Game;
 using GamePlay.Abilities;
 using StaticData;
 using StaticData.Music;
+using StaticData.UI;
 using UnityEngine;
 
 namespace Services
@@ -14,6 +15,7 @@ namespace Services
         private MusicConfig _musicConfig;
         private PrefabsConfig _prefabsConfig;
         private Dictionary<AbilityId, AbilityData> _abilitiesMap;
+        private UiConfig _uiConfig;
 
 
         public MusicConfig GetMusicConfig()
@@ -21,6 +23,9 @@ namespace Services
 
         public PrefabsConfig GetPrefabsConfig()
             => _prefabsConfig ??= LoadData<PrefabsConfig>(StaticDataPaths.AppConfig);
+
+        public UiConfig GetUiConfig()
+            => _uiConfig ??= LoadData<UiConfig>(StaticDataPaths.UiConfig);
 
         public AbilityData GetAbility(AbilityId id)
             => (_abilitiesMap ??= LoadAbilities()).GetValueOrDefault(id);
