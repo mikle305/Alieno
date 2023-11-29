@@ -34,7 +34,7 @@ namespace Services.Factories
 
             var sender = attackData.GetComponent<HealthData>();
             float speed = attackData.MoveSpeed.GetValue();
-            float mainDamage = attackData.MainDamage.GetValue();
+            float mainDamage = attackData.AttackDamage.GetValue();
             float critChance = attackData.CritChance.GetValue();
             float critMultiplier = attackData.CritMultiplier.GetValue();
             

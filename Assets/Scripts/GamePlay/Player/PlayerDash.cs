@@ -107,7 +107,7 @@ namespace GamePlay.Player
         private async UniTask StartCooldown()
         {
             OnCooldown = true;
-            float cooldown = _dashData.UseRate.GetValue();
+            float cooldown = _dashData.Rate.GetValue();
             CooldownStarted?.Invoke(cooldown);
             await UniTask.WaitForSeconds(cooldown);
             OnCooldown = false;

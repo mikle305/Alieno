@@ -40,7 +40,7 @@ public class EnemyAttacker : MonoBehaviour
     private async UniTask StartCooldown()
     {
         OnCooldown = true;
-        await UniTask.WaitForSeconds(_attackData.UseRate.GetValue());
+        await UniTask.WaitForSeconds(_attackData.AttackRate.GetValue());
         OnCooldown = false;
     }
 }

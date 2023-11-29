@@ -40,14 +40,14 @@ namespace GamePlay.Player
             if(enemy == null)
                 return;
             
-            _animations.PlayAttackAnimation(_attackData.UseRate.GetValue());
+            _animations.PlayAttackAnimation(_attackData.AttackRate.GetValue());
             StartCooldown().Forget();
         }
 
         private async UniTask StartCooldown()
         {
             _onCooldown = true;
-            await UniTask.WaitForSeconds(_attackData.UseRate.GetValue());
+            await UniTask.WaitForSeconds(_attackData.AttackRate.GetValue());
             _onCooldown = false;
         }
     }

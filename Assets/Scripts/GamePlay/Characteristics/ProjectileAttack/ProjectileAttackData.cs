@@ -6,33 +6,34 @@ using GamePlay.StatsSystem;
 using Services;
 using Services.ObjectPool;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GamePlay.Characteristics
 {
     public class ProjectileAttackData : MonoBehaviour
     {
-        [SerializeField] private float _defaultUseRate;
-        [SerializeField] private float _defaultDamage;
+        [FormerlySerializedAs("_defaultUseRate")] [SerializeField] private float _defaultAttackRate;
+        [FormerlySerializedAs("_defaultDamage")] [SerializeField] private float _defaultAttackDamage;
         [SerializeField] private float _defaultMoveSpeed;
         [SerializeField] private ProjectileSpawnData[] _spawnsData = {};
         [field: SerializeField] public ProjectileId ProjectileId { get; private set; }
 
-        
-        public ModifiableStat MainDamage { get; private set; }
+
+        public ModifiableStat AttackRate { get; private set; }
+        public ModifiableStat AttackDamage { get; private set; }
         public ModifiableStat CritChance { get; private set; }
         public ModifiableStat CritMultiplier { get; private set; }
         public ModifiableStat MoveSpeed { get; private set; }
-        public ModifiableStat UseRate { get; private set; }
 
-        
+
         private Dictionary<AbilityId, SpawnByLevel[]> _spawnsMap;
 
         
         private void Awake()
         {
             _spawnsMap = _spawnsData.ToDictionary(spawnData => spawnData.AbilityId, spawnData => spawnData.Levels);
-            UseRate = new ModifiableStat(_defaultUseRate);
-            MainDamage = new ModifiableStat(_defaultDamage);
+            AttackRate = new ModifiableStat(_defaultAttackRate);
+            AttackDamage = new ModifiableStat(_defaultAttackDamage);
             CritChance = new ModifiableStat();
             CritMultiplier = new ModifiableStat();
             MoveSpeed = new ModifiableStat(_defaultMoveSpeed);
