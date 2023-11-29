@@ -17,4 +17,14 @@ public class EnemyRotation : MonoBehaviour
         
         transform.rotation = Quaternion.Lerp(OriginalRot, NewRot, _turnSpeed * Time.deltaTime);
     }
+    
+    public void UpdateRotation(Vector3 _target)
+    {
+        Quaternion OriginalRot = _enemyTransform.rotation;
+        _enemyTransform.LookAt(_target);
+        
+        Quaternion NewRot = transform.rotation;
+        
+        transform.rotation = Quaternion.Lerp(OriginalRot, NewRot, _turnSpeed * Time.deltaTime);
+    }
 }

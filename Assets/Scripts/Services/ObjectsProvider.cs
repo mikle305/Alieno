@@ -15,6 +15,7 @@ namespace Services
         
         public Hud Hud { get; set; }
         public GameObject Character { get; set; }
+        public Rigidbody CharacterRigidbody { get; set; }
         public RoomsMap RoomsMap { get; set; }
         public Room[] Rooms { get; set; }
         public Room CurrentRoom { get; set; }

@@ -24,6 +24,7 @@ public class EnemyMainController : MonoBehaviour
     private void Update()
     {
         _ai.Target = _objectsProvider.Character.transform;
+        _ai.TargetRigidbody = _objectsProvider.CharacterRigidbody;
         _ai.Execute(_navMeshAgent,_enemyMovement,_enemyRotation,_enemyAnimations,_enemyAttacker);
     }
 

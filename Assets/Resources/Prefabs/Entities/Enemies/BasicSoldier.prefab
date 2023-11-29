@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTransform: {fileID: 3182461028789825333}
-  _turnSpeed: 3
+  _turnSpeed: 12
 --- !u!114 &4921899492529252940
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,5 +22,15 @@ namespace Additional.Utils
                 return true;
             }
         }
+        
+        public static Vector3 CalcFuturePos(Transform target,Rigidbody targetRigidBody,float predictionTime){
+            var finalPos = target.position;
+            var velocity = targetRigidBody.velocity;
+
+            velocity *= predictionTime;
+            finalPos += velocity;
+
+            return finalPos;
+        }
     }
 }

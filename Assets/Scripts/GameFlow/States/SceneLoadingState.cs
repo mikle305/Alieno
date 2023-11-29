@@ -57,6 +57,7 @@ namespace GameFlow.States
             GameObject character = _gameFactory.CreateCharacter();
             character.SetActive(false);
             _objectsProvider.Character = character;
+            _objectsProvider.CharacterRigidbody = character.GetComponent<Rigidbody>();
         }
 
         private void InitDirectionArrow()
