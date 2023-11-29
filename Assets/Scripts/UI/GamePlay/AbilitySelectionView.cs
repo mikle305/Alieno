@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using GamePlay.Abilities;
 using Services;
 using StaticData.UI;
+using TMPro;
 using UI.Windows;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace UI.GamePlay
     {
         [SerializeField] private Window _window;
         [SerializeField] private AbilityButton[] _buttons;
+        [SerializeField] private TextMeshProUGUI _label;
+        [SerializeField] private string _labelText = "Select ability";
         
         private AbilitySelectionService _abilitySelectionService;
         private StaticDataService _staticDataService;
@@ -32,8 +35,8 @@ namespace UI.GamePlay
 
         private async UniTask ShowAbilitiesViewAsync(AbilityId[] abilities)
         {
-            InitButtons(abilities);
             await ToggleWindow(ToggleMode.Open);
+            InitButtons(abilities);
         }
 
         private async UniTask HideAbilitiesViewAsync(AbilityButton clickedButton)
@@ -45,6 +48,8 @@ namespace UI.GamePlay
 
         private void InitButtons(AbilityId[] abilities)
         {
+            var text = string.Empty;
+            DOTween.To(() => text, (x) => text = x, _labelText, 0.5f).OnUpdate(() => _label.text = text);
             UiConfig uiConfig = _staticDataService.GetUiConfig();
             for (var i = 0; i < abilities.Length; i++)
             {
