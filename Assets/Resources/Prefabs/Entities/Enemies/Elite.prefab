@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8949412866297770893}
-  _attackIndicator: {fileID: 0}
+  _attackIndicator: {fileID: 6174431566261564324, guid: f437af9d23d0c5c45970ccce34b5bdf7, type: 3}
 --- !u!114 &7129166342604233869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTransform: {fileID: 1850404383511190596}
-  _turnSpeed: 3
+  _turnSpeed: 15
 --- !u!114 &3659976426823050404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce546862e810f5343aa037cd3fbb64a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aiPrefab: {fileID: 11400000, guid: 1808a563ca016c1418712fa04638c5b0, type: 2}
+  _aiPrefab: {fileID: 11400000, guid: cb62238f6353c364a87e7db704804714, type: 2}
   _navMeshAgent: {fileID: 8517378541204767837}
   _enemyMovement: {fileID: 610164405394600125}
   _enemyRotation: {fileID: 7129166342604233869}
@@ -274,6 +274,8 @@ MonoBehaviour:
   _defaultAbilities:
   - Id: 0
     Level: 1
+  - Id: 9
+    Level: 2
 --- !u!114 &-8377261397995871635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,15 +314,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ProjectileId>k__BackingField: 2
-  _defaultUseRate: 1
-  _defaultDamage: 15
-  _defaultMoveSpeed: 18
+  _defaultUseRate: 1.5
+  _defaultDamage: 35
+  _defaultMoveSpeed: 75
   _spawnsData:
   - <AbilityId>k__BackingField: 0
     <Levels>k__BackingField:
     - _spawns:
       - {fileID: 2517797658354647723}
+  <ProjectileId>k__BackingField: 6
 --- !u!1 &7290666094534144424
 GameObject:
   m_ObjectHideFlags: 0
