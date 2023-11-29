@@ -22,6 +22,7 @@ MonoBehaviour:
   - rid: 6974772411534671873
   - rid: 6974772411534671874
   - rid: 6338515877272748033
+  - rid: 6338515877272748034
   references:
     version: 2
     RefIds:
@@ -68,6 +69,19 @@ MonoBehaviour:
           <Count>k__BackingField: 4
         - <Id>k__BackingField: 3
           <Count>k__BackingField: -1
+    - rid: 6338515877272748034
+      type: {class: CritBoostData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <ChanceCoefficient>k__BackingField: 0.05
+          <MultiplierCoefficient>k__BackingField: 2
+        - <Id>k__BackingField: 2
+          <ChanceCoefficient>k__BackingField: 0.15
+          <MultiplierCoefficient>k__BackingField: 2
+        - <Id>k__BackingField: 3
+          <ChanceCoefficient>k__BackingField: 0.3
+          <MultiplierCoefficient>k__BackingField: 2.5
     - rid: 6974772225356857355
       type: {class: MultishotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:
@@ -117,8 +131,8 @@ MonoBehaviour:
       data:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
-          <PercentsBuff>k__BackingField: 40
+          <HealthCoefficient>k__BackingField: 1.4
         - <Id>k__BackingField: 2
-          <PercentsBuff>k__BackingField: 100
+          <HealthCoefficient>k__BackingField: 2
         - <Id>k__BackingField: 3
-          <PercentsBuff>k__BackingField: 180
+          <HealthCoefficient>k__BackingField: 2.8

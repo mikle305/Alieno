@@ -11,16 +11,20 @@ namespace GamePlay.Characteristics
 {
     public class ProjectileAttackData : MonoBehaviour
     {
-        [field: SerializeField] public ProjectileId ProjectileId { get; private set; }
         [SerializeField] private float _defaultUseRate;
         [SerializeField] private float _defaultDamage;
         [SerializeField] private float _defaultMoveSpeed;
         [SerializeField] private ProjectileSpawnData[] _spawnsData = {};
+        [field: SerializeField] public ProjectileId ProjectileId { get; private set; }
 
-        public ModifiableStat Damage { get; private set; }
+        
+        public ModifiableStat MainDamage { get; private set; }
+        public ModifiableStat CritChance { get; private set; }
+        public ModifiableStat CritMultiplier { get; private set; }
         public ModifiableStat MoveSpeed { get; private set; }
         public ModifiableStat UseRate { get; private set; }
 
+        
         private Dictionary<AbilityId, SpawnByLevel[]> _spawnsMap;
 
         
@@ -28,7 +32,9 @@ namespace GamePlay.Characteristics
         {
             _spawnsMap = _spawnsData.ToDictionary(spawnData => spawnData.AbilityId, spawnData => spawnData.Levels);
             UseRate = new ModifiableStat(_defaultUseRate);
-            Damage = new ModifiableStat(_defaultDamage);
+            MainDamage = new ModifiableStat(_defaultDamage);
+            CritChance = new ModifiableStat();
+            CritMultiplier = new ModifiableStat();
             MoveSpeed = new ModifiableStat(_defaultMoveSpeed);
         }
 

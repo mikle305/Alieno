@@ -67,8 +67,7 @@ namespace GamePlay.Characteristics
         public void ReplaceModifier(StatModifier toRemove, StatModifier toAdd)
         {
             float diff = -Max;
-            _max.RemoveModifier(toRemove);
-            _max.AddModifier(toAdd);
+            _max.ReplaceModifier(toRemove, toAdd);
             diff += Max;
             
             ChangeCurrent(diff);

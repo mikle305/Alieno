@@ -12,18 +12,23 @@ namespace GamePlay.Projectile
     {
         private DamageService _damageService;
         private HealthData _sender;
-        private float _damage;
+        private float _mainDamage;
+        private float _critChance;
+        private float _critMultiplier;
+
 
         public Dictionary<Type, Status> Statuses { get; } = new();
 
         public event Action Happened;
 
 
-        public void Init(HealthData sender, float damage)
+        public void Init(HealthData sender, float mainDamage, float critChance, float critMultiplier)
         {
+            _critMultiplier = critMultiplier;
+            _critChance = critChance;
             _damageService = DamageService.Instance;
             _sender = sender;
-            _damage = damage;
+            _mainDamage = mainDamage;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -49,7 +54,9 @@ namespace GamePlay.Projectile
                 Sender = _sender,
                 Receiver = receiverHealth,
                 Projectile = gameObject,
-                MainDamage = _damage,
+                MainDamage = _mainDamage,
+                CritChance = _critChance,
+                CritMultiplier = _critMultiplier,
                 Statuses = Statuses,
             };
     }

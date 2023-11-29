@@ -8,6 +8,8 @@ namespace GamePlay.Damage
     public class DamageData
     {
         public float MainDamage { get; set; }
+        public float CritChance { get; set; }
+        public float CritMultiplier { get; set; }
         public HealthData Sender { get; set; }
         
         /// <summary>

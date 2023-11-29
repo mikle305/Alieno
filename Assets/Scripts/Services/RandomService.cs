@@ -15,6 +15,25 @@ namespace Services
         public int Generate(int min, int max)
             => Random.Range(min, max + 1);
 
+        /// <summary>
+        /// </summary>
+        /// <param name="min">Inclusive</param>
+        /// <param name="max">Inclusive</param>
+        public float Generate(float min, float max)
+            => Random.Range(min, max);
+        
+        /// <summary>
+        /// </summary>
+        /// <param name="chance">Chance coefficient from 0 to 1</param>
+        /// <returns></returns>
+        public bool TryChance(float chance)
+        {
+            if (chance < 0 || chance > 1)
+                throw new InvalidOperationException("InvalidChance");
+            
+            return chance >= Generate(0, 1);
+        }
+
         public T PickOne<T>(IEnumerable<T> collection)
             => PickMany(collection, 1).Single();
 

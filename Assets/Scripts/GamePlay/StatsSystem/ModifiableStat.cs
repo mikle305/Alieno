@@ -43,6 +43,15 @@ namespace GamePlay.StatsSystem
             return result;
         }
 
+        public bool ReplaceModifier(StatModifier toRemove, StatModifier toAdd)
+        {
+            if (!RemoveModifier(toRemove))
+                return false;
+            
+            AddModifier(toAdd);
+            return true;
+        }
+
         private float CalculateFinalValue()
         {
             CalculateModifiers(out float additionBefore, out float coefficient, out float additionAfter);

@@ -12,20 +12,19 @@ namespace GamePlay.Abilities
         protected override void OnCreate()
         {
             _healthData = Entity.GetComponent<HealthData>();
-            SetCurrentLevelBuff();
+            SetCurrentLevelBoost();
         }
 
         protected override void OnLevelUp()
         {
-            SetCurrentLevelBuff();
+            SetCurrentLevelBoost();
         }
 
-        private void SetCurrentLevelBuff()
+        private void SetCurrentLevelBoost()
         {
-            float coefficient = CurrentLevel.PercentsBuff / 100.0f;
-            var newModifier = new StatModifier(ModifierType.Coefficient, coefficient);
+            var newModifier = new StatModifier(ModifierType.Coefficient, CurrentLevel.HealthCoefficient - 1);
 
-            if (CurrentLevelId == 1)
+            if (_lastModifier == null)
                 _healthData.AddModifier(newModifier);
             else
                 _healthData.ReplaceModifier(_lastModifier, newModifier);

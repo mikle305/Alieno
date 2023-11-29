@@ -31,11 +31,14 @@ namespace Services.Factories
             Transform projectileTransform = projectile.transform;
             projectileTransform.position = spawnPoint;
             projectileTransform.rotation = Quaternion.LookRotation(direction);
-            
-            float speed = attackData.MoveSpeed.GetValue();
-            float damage = attackData.Damage.GetValue();
+
             var sender = attackData.GetComponent<HealthData>();
-            projectile.GetComponent<ProjectileDamage>().Init(sender, damage);
+            float speed = attackData.MoveSpeed.GetValue();
+            float mainDamage = attackData.MainDamage.GetValue();
+            float critChance = attackData.CritChance.GetValue();
+            float critMultiplier = attackData.CritMultiplier.GetValue();
+            
+            projectile.GetComponent<ProjectileDamage>().Init(sender, mainDamage, critChance, critMultiplier);
             projectile.GetComponent<ProjectileMovement>().StartMove(direction, speed);
             if (projectile.TryGetComponent(out ProjectileLifetime projectileLifetime))
                 projectileLifetime.Init();

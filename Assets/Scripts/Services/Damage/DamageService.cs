@@ -6,11 +6,12 @@ namespace Services.Damage
     public class DamageService : MonoSingleton<DamageService>
     {
         private StatusHandler[] _handlers;
+        private RandomService _randomService;
 
 
-        protected override void Awake()
+        protected void Start()
         {
-            base.Awake();
+            _randomService = RandomService.Instance;
             InitHandlers();
         }
 
@@ -28,7 +29,7 @@ namespace Services.Damage
         {
             _handlers = new StatusHandler[]
             {
-                new MainDamageHandler(),
+                new MainDamageHandler(_randomService),
                 new PoisonHandler(),
                 new FlameHandler(),
                 new ObstaclePenetrationHandler(),
