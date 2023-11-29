@@ -21,6 +21,7 @@ MonoBehaviour:
   - rid: 6974772411534671872
   - rid: 6974772411534671873
   - rid: 6974772411534671874
+  - rid: 6338515877272748033
   references:
     version: 2
     RefIds:
@@ -57,6 +58,12 @@ MonoBehaviour:
           <ShotsDirections>k__BackingField:
           - {x: 0, y: 0, z: -1}
           - {x: 0, y: 0, z: -1}
+    - rid: 6338515877272748033
+      type: {class: ObstaclePenetrationData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
+      data:
+        <Levels>k__BackingField:
+        - <Id>k__BackingField: 1
+          <Count>k__BackingField: -1
     - rid: 6974772225356857355
       type: {class: MultishotData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:

@@ -31,6 +31,7 @@ namespace Services.Damage
                 new MainDamageHandler(),
                 new PoisonHandler(),
                 new FlameHandler(),
+                new ObstaclePenetrationHandler(),
                 new DisposeHandler(),
             };
         }

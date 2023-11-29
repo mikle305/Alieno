@@ -10,6 +10,7 @@
         HealthBuff,
         Flame,
         Poison,
+        ObstaclePenetration,
         Ricochet,
     }
 }

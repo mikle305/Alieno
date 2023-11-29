@@ -12,12 +12,14 @@ namespace Services.Damage
         {
             { typeof(FlameStatusLevelData), CreateFlameStatus },
             { typeof(PoisonStatusLevelData), CreatePoisonStatus },
+            { typeof(ObstaclePenetrationLevelData), CreateObstaclePenetrationStatus },
         };
 
         private readonly Dictionary<Type, Type> _typesMap = new()
         {
             { typeof(FlameStatusLevelData), typeof(FlameStatus) },
             { typeof(PoisonStatusLevelData), typeof(PoisonStatus) },
+            { typeof(ObstaclePenetrationLevelData), typeof(ObstaclePenetrationStatus) },
         };
 
         public Status Map(AbilityLevelData abilityLevel, out Type statusType)
@@ -45,6 +47,15 @@ namespace Services.Damage
             {
                 DamagePercents = poisonAbility.DamagePercents,
                 Rate = poisonAbility.Rate,
+            };
+        }
+
+        private static Status CreateObstaclePenetrationStatus(AbilityLevelData abilityLevel)
+        {
+            var obstaclePenetrationAbility = (ObstaclePenetrationLevelData) abilityLevel;
+            return new ObstaclePenetrationStatus
+            {
+                CountLeft = obstaclePenetrationAbility.Count,
             };
         }
     }
