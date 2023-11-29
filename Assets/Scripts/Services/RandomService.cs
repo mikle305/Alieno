@@ -31,7 +31,10 @@ namespace Services
             if (chance < 0 || chance > 1)
                 throw new InvalidOperationException("InvalidChance");
             
-            return chance >= Generate(0, 1);
+            if (chance == 0)
+                return false;
+            
+            return chance >= Generate(0.0f, 1.0f);
         }
 
         public T PickOne<T>(IEnumerable<T> collection)

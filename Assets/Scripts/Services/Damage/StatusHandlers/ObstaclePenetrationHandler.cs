@@ -1,5 +1,4 @@
-﻿using GamePlay.Characteristics;
-using GamePlay.Damage;
+﻿using GamePlay.Damage;
 
 namespace Services.Damage
 {
@@ -7,7 +6,7 @@ namespace Services.Damage
     {
         protected override bool OnHandle(DamageData damageData, ObstaclePenetrationStatus status)
         {
-            if (damageData.Receiver.TryGetComponent(out HealthData _)) 
+            if (damageData.Receiver != null) 
                 return true;
 
             if (status.CountLeft == 0)
