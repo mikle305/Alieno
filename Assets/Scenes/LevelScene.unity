@@ -656,6 +656,18 @@ PrefabInstance:
       propertyPath: _virtualCamera
       value: 
       objectReference: {fileID: 1200536296}
+    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
+      propertyPath: _defaultProjectilePools.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
+      propertyPath: _defaultProjectilePools.Array.data[5].<Id>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755407073701287431, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
+      propertyPath: _defaultProjectilePools.Array.data[5].<StartCount>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4953684018189316841, guid: f5374edcbc2ffd34d9e4cd89880ee6fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
