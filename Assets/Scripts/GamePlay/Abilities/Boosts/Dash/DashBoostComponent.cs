@@ -17,7 +17,7 @@ namespace GamePlay.Abilities
             SetCurrentLevelBoost();
         }
 
-        protected override void OnLevelUp()
+        protected override void OnLevelChanged()
         {
             SetCurrentLevelBoost();
         }

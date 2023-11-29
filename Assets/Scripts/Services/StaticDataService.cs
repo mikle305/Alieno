@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Additional.Constants;
+﻿using Additional.Constants;
 using Additional.Game;
-using GamePlay.Abilities;
 using StaticData;
 using StaticData.Music;
 using StaticData.UI;
@@ -14,8 +11,8 @@ namespace Services
     {
         private MusicConfig _musicConfig;
         private PrefabsConfig _prefabsConfig;
-        private Dictionary<AbilityId, AbilityData> _abilitiesMap;
         private UiConfig _uiConfig;
+        private AbilitiesConfig _abilitiesConfig;
 
 
         public MusicConfig GetMusicConfig()
@@ -26,18 +23,10 @@ namespace Services
 
         public UiConfig GetUiConfig()
             => _uiConfig ??= LoadData<UiConfig>(StaticDataPaths.UiConfig);
-
-        public AbilityData GetAbility(AbilityId id)
-            => (_abilitiesMap ??= LoadAbilities()).GetValueOrDefault(id);
-
-        public AbilityData[] GetAllAbilities()
-            => _abilitiesMap.Values.ToArray();
-
         
-        private static Dictionary<AbilityId, AbilityData> LoadAbilities()
-            => LoadData<AbilitiesConfig>(StaticDataPaths.AbilitiesConfig)
-                .AbilitiesData
-                .ToDictionary(a => a.Id, a => a);
+        public AbilitiesConfig GetAbilitiesConfig()
+            => _abilitiesConfig ??= LoadData<AbilitiesConfig>(StaticDataPaths.AbilitiesConfig);
+        
 
         private static T LoadData<T>(string path)
             where T : Object

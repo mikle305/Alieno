@@ -26,6 +26,31 @@ MonoBehaviour:
   - rid: 6338515877272748035
   - rid: 6338515877272748036
   - rid: 6338515877272748037
+  <PlayerAbilitiesData>k__BackingField:
+  - <AbilityId>k__BackingField: 0
+    <Levels>k__BackingField: 0100000002000000
+  - <AbilityId>k__BackingField: 1
+    <Levels>k__BackingField: 0100000002000000
+  - <AbilityId>k__BackingField: 2
+    <Levels>k__BackingField: 01000000
+  - <AbilityId>k__BackingField: 3
+    <Levels>k__BackingField: 0100000002000000
+  - <AbilityId>k__BackingField: 4
+    <Levels>k__BackingField: 01000000
+  - <AbilityId>k__BackingField: 5
+    <Levels>k__BackingField: 010000000200000003000000
+  - <AbilityId>k__BackingField: 6
+    <Levels>k__BackingField: 010000000200000003000000
+  - <AbilityId>k__BackingField: 7
+    <Levels>k__BackingField: 0100000002000000
+  - <AbilityId>k__BackingField: 8
+    <Levels>k__BackingField: 0100000002000000
+  - <AbilityId>k__BackingField: 9
+    <Levels>k__BackingField: 0100000002000000
+  - <AbilityId>k__BackingField: 11
+    <Levels>k__BackingField: 01000000
+  - <AbilityId>k__BackingField: 10
+    <Levels>k__BackingField: 01000000
   references:
     version: 2
     RefIds:

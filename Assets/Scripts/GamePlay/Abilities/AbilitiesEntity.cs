@@ -42,12 +42,12 @@ namespace GamePlay.Abilities
             _abilitiesMap[abilityId] = ability;
         }
 
-        public void UpLevel(AbilityId abilityId)
+        public void SetLevel(AbilityId abilityId, int level)
         {
             if (!_abilitiesMap.TryGetValue(abilityId, out AbilityComponent ability))
                 ThrowUtils.ComponentNotAdded();
             
-            ability!.UpLevel();
+            ability!.SetLevel(level);
         }
 
         public void RemoveAbility(AbilityId abilityId)
@@ -60,7 +60,7 @@ namespace GamePlay.Abilities
 
         private AbilityComponent CreateAbility(AbilityId abilityId, int level)
         {
-            AbilityData abilityData = _staticDataService.GetAbility(abilityId);
+            AbilityData abilityData = _staticDataService.GetAbilitiesConfig().GetAbility(abilityId);
             var abilityComponent = Activator.CreateInstance(abilityData.ComponentType) as AbilityComponent;
             abilityComponent!.Init(this, abilityData, level);
             return abilityComponent;

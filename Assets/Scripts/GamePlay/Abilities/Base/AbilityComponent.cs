@@ -8,7 +8,7 @@ namespace GamePlay.Abilities
         public abstract AbilityId AbilityId { get; }
         public abstract int CurrentLevelId { get; protected set; }
         public abstract void Init(AbilitiesEntity entity, AbilityData data, int level = 1);
-        public abstract void UpLevel();
+        public abstract void SetLevel(int level);
 
         public virtual void OnTick() { }
         public virtual void OnShotCalled() { }
@@ -26,7 +26,7 @@ namespace GamePlay.Abilities
         protected AbilitiesEntity Entity { get; private set; }
         
         protected virtual void OnCreate() { }
-        protected virtual void OnLevelUp() { }
+        protected virtual void OnLevelChanged() { }
 
         public sealed override int CurrentLevelId { get; protected set; }
         public sealed override AbilityId AbilityId => _data.Id;
@@ -36,17 +36,20 @@ namespace GamePlay.Abilities
         {
             Entity = entity;
             _data = data as TData;
-            CurrentLevelId = level;
+            SetLevel(level);
             OnCreate();
         }
 
-        public sealed override void UpLevel()
+        public sealed override void SetLevel(int level)
         {
-            if (_data.Levels.Length <= CurrentLevelId)
+            if (_data.MaxLevel == level)
+                return;
+            
+            if (_data.MaxLevel < level)
                 throw new ArgumentOutOfRangeException();
                 
-            CurrentLevelId++;
-            OnLevelUp();
+            CurrentLevelId = level;
+            OnLevelChanged();
         }
     }
 }

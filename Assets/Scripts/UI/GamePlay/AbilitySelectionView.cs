@@ -21,10 +21,10 @@ namespace UI.GamePlay
         {
             _staticDataService = StaticDataService.Instance;
             _abilitySelectionService = AbilitySelectionService.Instance;
-            _abilitySelectionService.AbilitiesGenerated += ShowAbilitiesView;
+            _abilitySelectionService.AbilitiesGenerated += OnAbilitiesGenerated;
         }
 
-        private void ShowAbilitiesView(AbilityId[] abilities)
+        private void OnAbilitiesGenerated(AbilityId[] abilities)
             => ShowAbilitiesViewAsync(abilities).Forget();
 
         private void OnButtonClicked(AbilityButton clickedButton) 
