@@ -274,7 +274,7 @@ MonoBehaviour:
   _defaultAbilities:
   - Id: 0
     Level: 1
-  - Id: 9
+  - Id: 12
     Level: 2
 --- !u!114 &-8377261397995871635
 MonoBehaviour:
@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultUseRate: 1.5
-  _defaultDamage: 35
+  _defaultAttackRate: 1.5
+  _defaultAttackDamage: 35
   _defaultMoveSpeed: 75
   _spawnsData:
   - <AbilityId>k__BackingField: 0
