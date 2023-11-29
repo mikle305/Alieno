@@ -42,6 +42,8 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 2606510338487605604, guid: 4db7befe7cbcf924184cd7707f61f36e, type: 3}
   - <Id>k__BackingField: 5
     <Prefab>k__BackingField: {fileID: 4178675250689914056, guid: 120657880f4d7b746abdfcfa012cafaf, type: 3}
+  - <Id>k__BackingField: 3
+    <Prefab>k__BackingField: {fileID: 5468391878886794575, guid: c9298c5b9170f07469e8d997e10e2526, type: 3}
   <Projectiles>k__BackingField:
   - <Id>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 4807152518047859045, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}
@@ -53,3 +55,5 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 8349505019788292705, guid: 1feae36f8e396844b8b3c0f43ec6fefc, type: 3}
   - <Id>k__BackingField: 6
     <Prefab>k__BackingField: {fileID: 5296522147171261054, guid: b76bc5bc4db96c849b4d6b97b3a319ee, type: 3}
+  - <Id>k__BackingField: 4
+    <Prefab>k__BackingField: {fileID: 7896600582549687648, guid: 3a87d553f4ffbc74a9e69a26b0924c13, type: 3}
