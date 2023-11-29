@@ -14,10 +14,10 @@ public class DroneAI : EnemyAI
 
         if (!_enemyAttacker.OnCooldown)
         {
+            _navMeshAgent.enabled = true;
             _enemyMovement?.UpdateMovement(_navMeshAgent, Target);
             _enemyRotation?.UpdateRotation(Target);
-            _navMeshAgent.enabled = true;
-            if (GameplayUtils.DistanceBetween(_navMeshAgent.transform, Target) <= 2f)
+            if (GameplayUtils.DistanceBetween(_navMeshAgent.transform, Target) <= 3f)
             {
                 _navMeshAgent.enabled = false;
 

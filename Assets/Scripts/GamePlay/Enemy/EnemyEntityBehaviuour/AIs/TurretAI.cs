@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Additional.Utils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +11,7 @@ public class TurretAI : EnemyAI
         EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
     {
         _enemyRotation?.UpdateRotation(Target);
-        if(!_enemyAttacker.OnCooldown)
+        if (!_enemyAttacker.OnCooldown && GameplayUtils.IsVisible(_enemyRotation.transform, Target))
             _enemyAttacker?.Attack();
     }
 }
