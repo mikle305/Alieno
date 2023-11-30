@@ -1,10 +1,13 @@
 ﻿using Additional.Game;
 using GamePlay.Statuses;
+using UnityEngine;
 
 namespace Services.Statuses
 {
     public class DamageService : MonoSingleton<DamageService>
     {
+        [SerializeField] private LayerMask _obstacleLayer;
+        
         private StatusHandler[] _handlers;
         private RandomService _randomService;
         private RadarService _radarService;
@@ -38,7 +41,7 @@ namespace Services.Statuses
                 new ElementHandler<PoisonStatus>(),
                 new ObstaclePenetrationHandler(),
                 new RicochetHandler(_radarService),
-                new BouncyWallHandler(),
+                new BouncyWallHandler(_obstacleLayer),
                 new DisposeHandler(),
             };
         }

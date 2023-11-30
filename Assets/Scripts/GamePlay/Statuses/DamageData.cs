@@ -11,7 +11,7 @@ namespace GamePlay.Statuses
         public float CritChance { get; set; }
         public float CritMultiplier { get; set; }
         public HealthData Sender { get; set; }
-        
+
         /// <summary>
         /// Must be null if obstacle
         /// </summary>

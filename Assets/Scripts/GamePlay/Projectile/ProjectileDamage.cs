@@ -31,10 +31,8 @@ namespace GamePlay.Projectile
             _mainDamage = mainDamage;
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            SendDamage(other.gameObject);
-        }
+        private void OnTriggerEnter(Collider receiver) 
+            => HandleReceiver(receiver);
 
         private void OnDisable()
         {
@@ -42,17 +40,17 @@ namespace GamePlay.Projectile
             Happened?.Invoke();
         }
 
-        private void SendDamage(GameObject receiver)
+        private void HandleReceiver(Collider receiver)
         {
             receiver.TryGetComponent(out HealthData receiverHealth);
             _damageService.Process(CreateDamageData(receiverHealth));
         }
 
-        private DamageData CreateDamageData(HealthData receiverHealth) 
+        private DamageData CreateDamageData(HealthData receiver) 
             => new()
             {
                 Sender = _sender,
-                Receiver = receiverHealth,
+                Receiver = receiver,
                 Projectile = gameObject,
                 MainDamage = _mainDamage,
                 CritChance = _critChance,
