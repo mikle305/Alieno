@@ -11,5 +11,6 @@ namespace GamePlay.Enemy
         SmartSuicideDrone,
         WeakSuicideDrone,
         WeakSoldier,
+        SpiderBoss,
     }
 }

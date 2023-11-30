@@ -9,5 +9,7 @@
         RocketTurretProjectile,
         GruntProjectile,
         EliteProjectile,
+        SpiderWaveProjectile,
+        SpiderLaserProjectile,
     }
 }
