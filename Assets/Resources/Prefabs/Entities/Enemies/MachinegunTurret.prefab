@@ -324,6 +324,7 @@ MonoBehaviour:
   _enemyRotation: {fileID: 1783581493434696624}
   _enemyAnimations: {fileID: 0}
   _enemyAttacker: {fileID: 4634896428764013715}
+  _healthData: {fileID: 6689405100299378652}
 --- !u!114 &1783581493434696624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,9 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ProjectileId>k__BackingField: 3
-  _defaultUseRate: 0.5
-  _defaultDamage: 4
+  _defaultAttackRate: 0.5
+  _defaultAttackDamage: 4
   _defaultMoveSpeed: 30
   _spawnsData:
   - <AbilityId>k__BackingField: 0
@@ -435,6 +435,7 @@ MonoBehaviour:
       - {fileID: 4959769857320926948}
       - {fileID: 8801585936543088126}
       - {fileID: 4457782366596390300}
+  <ProjectileId>k__BackingField: 3
 --- !u!114 &6689405100299378652
 MonoBehaviour:
   m_ObjectHideFlags: 0

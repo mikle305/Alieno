@@ -188,6 +188,7 @@ MonoBehaviour:
   _enemyRotation: {fileID: 7129166342604233869}
   _enemyAnimations: {fileID: 6297470102274768593}
   _enemyAttacker: {fileID: 3659976426823050404}
+  _healthData: {fileID: 4543939739511896277}
 --- !u!114 &6931390934923153104
 MonoBehaviour:
   m_ObjectHideFlags: 0

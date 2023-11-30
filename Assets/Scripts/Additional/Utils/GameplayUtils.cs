@@ -37,5 +37,10 @@ namespace Additional.Utils
 
             return finalPos;
         }
+
+        public static LayerMask GetEnemyLayerMask()
+        {
+            return (1 << LayerMask.NameToLayer("Enemy"));
+        }
     }
 }

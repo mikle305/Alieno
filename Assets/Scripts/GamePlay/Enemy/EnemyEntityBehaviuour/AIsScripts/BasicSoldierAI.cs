@@ -13,6 +13,8 @@ public class BasicSoldierAI : EnemyAI
         bool isVisible = GameplayUtils.IsVisible(_enemyRotation.transform, Target);
         if (!_enemyAttacker.OnCooldown && isVisible)
         {
+            _enemyMovement?.UpdateMovement(_navMeshAgent, _navMeshAgent.transform);
+
             _enemyAttacker?.Attack();
         }
         else if (!isVisible)

@@ -33,11 +33,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6839256990452621407}
   - {fileID: 6071559923247454654}
+  - {fileID: 8772379172225724307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3642961555902096983
@@ -4017,7 +4018,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.06
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14755,3 +14756,65 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &1593409804031417308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2091354472600725329}
+    m_Modifications:
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.925
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050178725918739103, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+      propertyPath: m_Name
+      value: RifleOnSpawnEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+--- !u!4 &8772379172225724307 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8043760606041764943, guid: abb43a920ca9c3049b5d130718485085, type: 3}
+  m_PrefabInstance: {fileID: 1593409804031417308}
+  m_PrefabAsset: {fileID: 0}

@@ -35,6 +35,7 @@ namespace GameFlow.States
             InitCurrentRoom();
             SwitchToRoomMusic();
             SpawnPlayer();
+            MoveCameraToPlayer();
             SpawnEnemies();
             ShowRoomDependentObjects();
             SubscribeEnemiesObserver();
@@ -62,6 +63,21 @@ namespace GameFlow.States
             _currentRoom.gameObject.SetActive(true);
         }
 
+        private void MoveCameraToPlayer()
+        {
+            var vCam = _objectsProvider.VirtualCamera;
+            var mCam = _objectsProvider.MainCamera;
+            var playerPosition = _objectsProvider.Character.transform.position;
+
+            vCam.enabled = false;
+            mCam.enabled = false;
+            vCam.transform.position = playerPosition;
+            mCam.transform.position = playerPosition;
+            
+            vCam.enabled = true;
+            mCam.enabled = true;
+        }
+        
         private void SpawnPlayer()
         {
             Transform character = _objectsProvider.Character.transform;

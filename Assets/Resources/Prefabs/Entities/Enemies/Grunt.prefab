@@ -219,6 +219,7 @@ MonoBehaviour:
   _enemyRotation: {fileID: 7818507114989484590}
   _enemyAnimations: {fileID: 5801439889101852523}
   _enemyAttacker: {fileID: 711729808867447078}
+  _healthData: {fileID: 117319620385906942}
 --- !u!114 &3007465494336276260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,15 +340,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ProjectileId>k__BackingField: 2
-  _defaultUseRate: 1
-  _defaultDamage: 25
+  _defaultAttackRate: 1
+  _defaultAttackDamage: 25
   _defaultMoveSpeed: 25
   _spawnsData:
   - <AbilityId>k__BackingField: 0
     <Levels>k__BackingField:
     - _spawns:
       - {fileID: 2714785628436267687}
+  <ProjectileId>k__BackingField: 2
 --- !u!1001 &2531008296309473032
 PrefabInstance:
   m_ObjectHideFlags: 0

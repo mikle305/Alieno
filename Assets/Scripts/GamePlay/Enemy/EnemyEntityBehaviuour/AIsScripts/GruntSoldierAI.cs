@@ -18,6 +18,7 @@ public class GruntSoldierAI : EnemyAI
             
             if (!_enemyAttacker.OnCooldown)
             {
+                _enemyMovement?.UpdateMovement(_navMeshAgent, _navMeshAgent.transform);
                 _enemyAttacker?.Attack();
             }
         }
