@@ -11,9 +11,6 @@ namespace Services.Damage
 
             if (status.CountLeft == 0)
                 return true;
-            
-            if (status.CountLeft == -1)
-                return false;
 
             status.CountLeft--;
             return false;

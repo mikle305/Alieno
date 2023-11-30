@@ -6,26 +6,21 @@ namespace GamePlay.Projectile
     public class ProjectileMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        
-        private bool _isWorking;
 
-
-        public void StartMove(Vector3 direction, float speed)
-            => MoveAsync(direction, speed).Forget();
         
-        private async UniTask MoveAsync(Vector3 direction, float speed)
+        public bool IsWorking { get; set; }
+        public Vector3 Direction { get; set; }
+        public float Speed { get; set; }
+        
+        private void Update()
         {
-            _isWorking = true;
-            while (_isWorking)
-            {
-                _rigidbody.velocity = direction * speed;
-                await UniTask.Yield();
-            }
+            if (!IsWorking)
+                 return;
+            
+            _rigidbody.velocity = Direction * Speed;
         }
 
-        private void OnDisable()
-        {
-            _isWorking = false;
-        }
+        private void OnDisable() 
+            => IsWorking = false;
     }
 }

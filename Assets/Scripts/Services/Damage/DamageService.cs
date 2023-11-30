@@ -7,11 +7,13 @@ namespace Services.Damage
     {
         private StatusHandler[] _handlers;
         private RandomService _randomService;
+        private RadarService _radarService;
 
 
         protected void Start()
         {
             _randomService = RandomService.Instance;
+            _radarService = RadarService.Instance;
             InitHandlers();
         }
 
@@ -30,9 +32,13 @@ namespace Services.Damage
             _handlers = new StatusHandler[]
             {
                 new MainDamageHandler(_randomService),
+                new VampirismHandler(),
+                new HealthAbsorptionHandler(),
                 new PoisonHandler(),
                 new FlameHandler(),
                 new ObstaclePenetrationHandler(),
+                new RicochetHandler(_radarService),
+                new BouncyWallHandler(),
                 new DisposeHandler(),
             };
         }

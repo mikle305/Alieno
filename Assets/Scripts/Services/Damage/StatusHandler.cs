@@ -2,11 +2,18 @@
 
 namespace Services.Damage
 {
+    /// <summary>
+    /// Inherit when not ability
+    /// </summary>
     public abstract class StatusHandler
     {
         public abstract bool Work(DamageData damageData);
     }
 
+    /// <summary>
+    /// Inherit when ability
+    /// </summary>
+    /// <typeparam name="TStatus"></typeparam>
     public abstract class StatusHandler<TStatus> : StatusHandler
         where TStatus : Status
     {

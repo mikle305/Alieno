@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+namespace GamePlay.Enemy
 {
-    public void UpdateMovement(NavMeshAgent _agent, Transform _target)
+    public class EnemyMovement : MonoBehaviour
     {
-        if (_target != null)
-            _agent.destination = _target.position;
-    }
+        public void UpdateMovement(NavMeshAgent _agent, Transform _target)
+        {
+            if (_target != null)
+                _agent.destination = _target.position;
+        }
     
-    public void UpdateMovement(NavMeshAgent _agent, Vector3 _target)
-    {
-        if (_target != null)
-            _agent.destination = _target;
+        public void UpdateMovement(NavMeshAgent _agent, Vector3 _target)
+        {
+            if (_target != null)
+                _agent.destination = _target;
+        }
     }
 }

@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using Additional.Utils;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "Enemy Ai/RocketTurret AI")]
-public class RocketTurretAI : EnemyAI
+namespace GamePlay.Enemy
 {
-    public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-        EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+    [CreateAssetMenu(menuName = "Enemy Ai/RocketTurret AI")]
+    public class RocketTurretAI : EnemyAI
     {
+        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
+            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+        {
         
         
-        _enemyRotation?.UpdateRotation(Target);
-        if (!_enemyAttacker.OnCooldown &&  GameplayUtils.IsVisible(_enemyRotation.transform, Target))
-            _enemyAttacker?.Attack();
+            _enemyRotation?.UpdateRotation(Target);
+            if (!_enemyAttacker.OnCooldown &&  GameplayUtils.IsVisible(_enemyRotation.transform, Target))
+                _enemyAttacker?.Attack();
+        }
     }
 }

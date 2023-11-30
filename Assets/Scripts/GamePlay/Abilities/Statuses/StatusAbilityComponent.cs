@@ -1,7 +1,6 @@
 ﻿using System;
 using GamePlay.Damage;
 using GamePlay.Projectile;
-using Services;
 using Services.Damage;
 
 namespace GamePlay.Abilities

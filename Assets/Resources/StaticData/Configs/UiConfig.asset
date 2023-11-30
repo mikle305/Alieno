@@ -56,8 +56,8 @@ MonoBehaviour:
     <Icon>k__BackingField: {fileID: 21300000, guid: 43651dcc8e960f84098d7ccb66358690, type: 3}
     <Name>k__BackingField: Bouncy Wall
   - <Id>k__BackingField: 15
-    <Icon>k__BackingField: {fileID: 21300000, guid: b837358e66a4b67438d5e957c0e9be17, type: 3}
-    <Name>k__BackingField: Berserker
-  - <Id>k__BackingField: 16
     <Icon>k__BackingField: {fileID: 21300000, guid: 9ebbe4d076cf9da4ba57f92213aa69e6, type: 3}
-    <Name>k__BackingField: Life Stealer
+    <Name>k__BackingField: Vampirism
+  - <Id>k__BackingField: 16
+    <Icon>k__BackingField: {fileID: 21300000, guid: b837358e66a4b67438d5e957c0e9be17, type: 3}
+    <Name>k__BackingField: Health Absorption

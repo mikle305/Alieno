@@ -13,6 +13,10 @@ namespace Services.Damage
             { typeof(FlameStatusLevelData), CreateFlameStatus },
             { typeof(PoisonStatusLevelData), CreatePoisonStatus },
             { typeof(ObstaclePenetrationLevelData), CreateObstaclePenetrationStatus },
+            { typeof(VampirismLevelData), CreateVampirismStatus },
+            { typeof(HealthAbsorptionLevelData), CreateHealthAbsorptionStatus },
+            { typeof(RicochetLevelData), CreateRicochetStatus },
+            { typeof(BouncyWallLevelData), CreateBouncyWallStatus },
         };
 
         private readonly Dictionary<Type, Type> _typesMap = new()
@@ -20,6 +24,10 @@ namespace Services.Damage
             { typeof(FlameStatusLevelData), typeof(FlameStatus) },
             { typeof(PoisonStatusLevelData), typeof(PoisonStatus) },
             { typeof(ObstaclePenetrationLevelData), typeof(ObstaclePenetrationStatus) },
+            { typeof(VampirismLevelData), typeof(VampirismStatus) },
+            { typeof(HealthAbsorptionLevelData), typeof(HealthAbsorptionStatus) },
+            { typeof(RicochetLevelData), typeof(RicochetStatus) },
+            { typeof(BouncyWallLevelData), typeof(BouncyWallStatus) },
         };
 
         public Status Map(AbilityLevelData abilityLevel, out Type statusType)
@@ -29,9 +37,9 @@ namespace Services.Damage
             return _factoriesMap[abilityType].Invoke(abilityLevel);
         }
 
-        private static Status CreateFlameStatus(AbilityLevelData abilityLevel)
+        private static Status CreateFlameStatus(AbilityLevelData ability)
         {
-            var flameAbility = (FlameStatusLevelData)abilityLevel;
+            var flameAbility = (FlameStatusLevelData)ability;
             return new FlameStatus
             {
                 DamagePercents = flameAbility.DamagePercents,
@@ -40,9 +48,9 @@ namespace Services.Damage
             };
         }
 
-        private static Status CreatePoisonStatus(AbilityLevelData abilityLevel)
+        private static Status CreatePoisonStatus(AbilityLevelData ability)
         {
-            var poisonAbility = (PoisonStatusLevelData)abilityLevel;
+            var poisonAbility = (PoisonStatusLevelData)ability;
             return new PoisonStatus
             {
                 DamagePercents = poisonAbility.DamagePercents,
@@ -50,12 +58,48 @@ namespace Services.Damage
             };
         }
 
-        private static Status CreateObstaclePenetrationStatus(AbilityLevelData abilityLevel)
+        private static Status CreateObstaclePenetrationStatus(AbilityLevelData ability)
         {
-            var obstaclePenetrationAbility = (ObstaclePenetrationLevelData) abilityLevel;
+            var obstaclePenetrationAbility = (ObstaclePenetrationLevelData)ability;
             return new ObstaclePenetrationStatus
             {
                 CountLeft = obstaclePenetrationAbility.Count,
+            };
+        }
+
+        private static Status CreateHealthAbsorptionStatus(AbilityLevelData ability)
+        {
+            var healthAbsorptionAbility = (HealthAbsorptionLevelData)ability;
+            return new HealthAbsorptionStatus
+            {
+                MaxHealthCoefficient = healthAbsorptionAbility.MaxHealthCoefficient,
+            };
+        }
+
+        private static Status CreateVampirismStatus(AbilityLevelData ability)
+        {
+            var vampirismAbility = (VampirismLevelData)ability;
+            return new VampirismStatus
+            {
+                DamageCoefficient = vampirismAbility.DamageCoefficient,
+            };
+        }
+
+        private static Status CreateBouncyWallStatus(AbilityLevelData ability)
+        {
+            var bouncyWallAbility = (BouncyWallLevelData)ability;
+            return new BouncyWallStatus
+            {
+                CountLeft = bouncyWallAbility.Count,
+            };
+        }
+
+        private static Status CreateRicochetStatus(AbilityLevelData ability)
+        {
+            var ricochetAbility = (RicochetLevelData)ability;
+            return new RicochetStatus
+            {
+                CountLeft = ricochetAbility.Count,
             };
         }
     }

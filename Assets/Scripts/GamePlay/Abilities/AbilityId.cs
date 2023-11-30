@@ -17,7 +17,7 @@
         ObstaclePenetration,
         Ricochet,
         BouncyWall,
-        Berserker,
-        LifeStealer,
+        Vampirism,
+        HealthAbsorption,
     }
 }

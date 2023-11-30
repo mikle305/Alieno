@@ -2,17 +2,19 @@ using Additional.Utils;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "Enemy Ai/EliteSoldier AI")]
-public class EliteSoldierAI : EnemyAI
+namespace GamePlay.Enemy
 {
-    [SerializeField] private float _delayBeforeAttack;
-
-    [SerializeField] private Vector3 _attackIndicatorOffset = new Vector3(0, 0.2f, 0);
-
-    private Vector3 _shootingPos;
-    public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-        EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+    [CreateAssetMenu(menuName = "Enemy Ai/EliteSoldier AI")]
+    public class EliteSoldierAI : EnemyAI
     {
+        [SerializeField] private float _delayBeforeAttack;
+
+        [SerializeField] private Vector3 _attackIndicatorOffset = new Vector3(0, 0.2f, 0);
+
+        private Vector3 _shootingPos;
+        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
+            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+        {
 
             _enemyAnimations?.UpdateAnimations(_navMeshAgent);
             
@@ -27,6 +29,7 @@ public class EliteSoldierAI : EnemyAI
             {
                 _enemyRotation?.UpdateRotation(_shootingPos);   
             }
+        }
     }
 }
 
