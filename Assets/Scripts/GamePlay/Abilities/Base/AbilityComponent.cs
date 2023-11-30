@@ -36,7 +36,11 @@ namespace GamePlay.Abilities
         {
             Entity = entity;
             _data = data as TData;
-            SetLevel(level);
+            
+            if (_data!.MaxLevel < level)
+                throw new ArgumentOutOfRangeException();
+            
+            CurrentLevelId = level;
             OnCreate();
         }
 

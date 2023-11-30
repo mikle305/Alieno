@@ -36,10 +36,10 @@ MonoBehaviour:
     <Name>k__BackingField: Crit Boost
   - <Id>k__BackingField: 7
     <Icon>k__BackingField: {fileID: 21300000, guid: 7ee749875c329fc44b9818e55bd2accf, type: 3}
-    <Name>k__BackingField: Attack Damage Boost
+    <Name>k__BackingField: Attack Damage
   - <Id>k__BackingField: 8
     <Icon>k__BackingField: {fileID: 21300000, guid: c8ccd239d012da94ca6678ae1213ec61, type: 3}
-    <Name>k__BackingField: Attack Speed Boost
+    <Name>k__BackingField: Attack Speed
   - <Id>k__BackingField: 9
     <Icon>k__BackingField: {fileID: 21300000, guid: 53c8a47885fd9964bb98e3d83c029b79, type: 3}
     <Name>k__BackingField: Dash Boost

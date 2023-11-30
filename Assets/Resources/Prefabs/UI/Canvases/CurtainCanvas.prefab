@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 4746758205081438664}
   - component: {fileID: 3403494874067522937}
   - component: {fileID: 1707296845031214359}
+  - component: {fileID: 6155012166255514333}
   m_Layer: 5
   m_Name: CurtainCanvas
   m_TagString: Untagged
@@ -294,7 +295,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -362,6 +363,18 @@ MonoBehaviour:
   _loadingText: {fileID: 5809150944526303261}
   _loadingCircle: {fileID: 9150869875039905073}
   _showingDuration: 0.5
+--- !u!114 &6155012166255514333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245868238825814170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ac6c88b7a79ba4a950adc6703bbdfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7777534379341142568
 GameObject:
   m_ObjectHideFlags: 0

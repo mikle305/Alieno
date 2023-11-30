@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 5971056477235159297}
   - component: {fileID: 827320676175290262}
   - component: {fileID: 3712749846510535816}
+  - component: {fileID: 5812549438670283572}
   m_Layer: 5
   m_Name: ErrorPopupCanvas
   m_TagString: Untagged
@@ -412,7 +413,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -480,6 +481,18 @@ MonoBehaviour:
   _text: {fileID: 4992863334408904953}
   _invisibleBackground: {fileID: 5446304675640344882}
   _confirmButton: {fileID: 4775264777668435019}
+--- !u!114 &5812549438670283572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344294698251853139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ac6c88b7a79ba4a950adc6703bbdfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5446304675640344882
 GameObject:
   m_ObjectHideFlags: 0

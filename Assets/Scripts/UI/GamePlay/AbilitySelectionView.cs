@@ -1,84 +1,128 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Coffee.UIEffects;
 using DG.Tweening;
 using GamePlay.Abilities;
 using Services;
 using StaticData.UI;
 using TMPro;
-using UI.Windows;
+using UI.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.GamePlay
 {
     public class AbilitySelectionView : MonoBehaviour
     {
-        [SerializeField] private Window _window;
-        [SerializeField] private AbilityButton[] _buttons;
         [SerializeField] private TextMeshProUGUI _label;
-        [SerializeField] private string _labelText = "Select ability";
-        
+        [SerializeField] private Image _window;
+        [SerializeField] private AbilityButton[] _buttons;
+
+        [Space(5), Header("Animation Settings")]
+        [SerializeField] private float _windowAnimTime = 0.4f;
+        [SerializeField] private float _labelAnimTime = 0.3f;
+        [SerializeField] private float _buttonAnimTime = 0.5f;
+
         private AbilitySelectionService _abilitySelectionService;
-        private StaticDataService _staticDataService;
+        private UiConfig _uiConfig;
 
 
         private void Awake()
         {
-            _staticDataService = StaticDataService.Instance;
+            _uiConfig = StaticDataService.Instance.GetUiConfig();
             _abilitySelectionService = AbilitySelectionService.Instance;
             _abilitySelectionService.AbilitiesGenerated += OnAbilitiesGenerated;
         }
 
         private void OnAbilitiesGenerated(AbilityId[] abilities)
-            => ShowAbilitiesViewAsync(abilities).Forget();
-
-        private void OnButtonClicked(AbilityButton clickedButton) 
-            => HideAbilitiesViewAsync(clickedButton).Forget();
-
-        private async UniTask ShowAbilitiesViewAsync(AbilityId[] abilities)
         {
-            await ToggleWindow(ToggleMode.Open);
-            InitButtons(abilities);
+            DOTween.Sequence()
+                .Append(FadeWindow(true))
+                .Append(FadeLabel(true))
+                .Append(ShowAbilities(abilities))
+                .SetUpdate(true);
         }
 
-        private async UniTask HideAbilitiesViewAsync(AbilityButton clickedButton)
+        private void OnButtonClicked(AbilityButton clickedButton)
         {
-            DisposeButtons();
-            await ToggleWindow(ToggleMode.Close);
-            SetSelectedAbility(clickedButton);
+            DOTween.Sequence()
+                .Append(FadeLabel(false))
+                .Join(HideAbilities())
+                .Append(FadeWindow(false))
+                .OnComplete(() => SendSelectedAbility(clickedButton))
+                .SetUpdate(true);
         }
 
-        private void InitButtons(AbilityId[] abilities)
+        private Tween ShowAbilities(AbilityId[] abilities)
         {
-            var text = string.Empty;
-            DOTween.To(() => text, (x) => text = x, _labelText, 0.5f).OnUpdate(() => _label.text = text);
-            UiConfig uiConfig = _staticDataService.GetUiConfig();
+            Sequence buttonsSequence = DOTween.Sequence();
             for (var i = 0; i < abilities.Length; i++)
             {
-                AbilityUiData uiData = uiConfig.GetAbilityData(abilities[i]);
-                _buttons[i].AbilityId = abilities[i];
-                _buttons[i].Text.text = uiData.Name;
-                _buttons[i].Icon.sprite = uiData.Icon;
-                _buttons[i].ButtonClicked += OnButtonClicked;
+                InitAbility(_buttons[i], abilities[i]);
+                buttonsSequence
+                    .Append(FadeAbilityIcon(_buttons[i], true))
+                    .Join(FadeAbilityName(_buttons[i], true));
             }
+
+            return buttonsSequence;
         }
 
-        private void DisposeButtons()
+        private Tween HideAbilities()
         {
+            Sequence buttonsSequence = DOTween.Sequence();
             foreach (AbilityButton button in _buttons)
             {
-                button.ButtonClicked -= OnButtonClicked;
-                button.Text.text = string.Empty;
-                button.Icon.sprite = null;
+                buttonsSequence
+                    .Join(FadeAbilityIcon(button, false))
+                    .Join(FadeAbilityName(button, false)
+                        .OnComplete(() => DisposeAbility(button)));
             }
+
+            return buttonsSequence;
         }
 
-        private async UniTask ToggleWindow(ToggleMode mode)
+        private Tween FadeWindow(bool show)
         {
-            var windowToggled = false;
-            _window.Toggle(mode, onDone: () => windowToggled = true);
-            await UniTask.WaitUntil(() => windowToggled);
+            float targetFade = show ? 1.0f : 0.0f;
+            return _window.DOFillAmount(targetFade, _windowAnimTime);
         }
 
-        private void SetSelectedAbility(AbilityButton clickedButton) 
+        private Tween FadeLabel(bool show)
+        {
+            var moveCharsAnim = _label.GetComponent<MoveCharsTween>();
+            return show
+                ? _label.DOFade(1, _labelAnimTime).OnComplete(moveCharsAnim.Enable)
+                : _label.DOFade(0, _labelAnimTime).OnStart(moveCharsAnim.Disable);
+        }
+
+        private Tween FadeAbilityName(AbilityButton abilityButton, bool show)
+        {
+            float targetFade = show ? 1.0f : 0.0f;
+            return abilityButton.Text.DOFade(targetFade, _buttonAnimTime);
+        }
+
+        private Tween FadeAbilityIcon(AbilityButton abilityButton, bool show)
+        {
+            float targetFade = show ? 0.0f : 1.0f;
+            var iconDissolve = abilityButton.Icon.GetComponent<UIDissolve>();
+            return DOTween.To(() => iconDissolve.effectFactor, x => iconDissolve.effectFactor = x, targetFade, _buttonAnimTime);
+        }
+
+        private void InitAbility(AbilityButton abilityButton, AbilityId abilityId)
+        {
+            AbilityUiData uiData = _uiConfig.GetAbilityData(abilityId);
+            abilityButton.AbilityId = abilityId;
+            abilityButton.Text.text = uiData.Name;
+            abilityButton.Icon.sprite = uiData.Icon;
+            abilityButton.ButtonClicked += OnButtonClicked;
+        }
+
+        private void DisposeAbility(AbilityButton abilityButton)
+        {
+            abilityButton.ButtonClicked -= OnButtonClicked;
+            abilityButton.Text.text = string.Empty;
+            abilityButton.Icon.sprite = null;
+        }
+
+        private void SendSelectedAbility(AbilityButton clickedButton)
             => _abilitySelectionService.SetSelectedAbility(clickedButton.AbilityId);
     }
 }

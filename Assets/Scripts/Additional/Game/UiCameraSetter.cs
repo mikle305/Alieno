@@ -18,6 +18,7 @@ namespace Additional.Game
             var canvas = GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = uiCamera;
+            canvas.planeDistance = 5;
         }
     }
 }
