@@ -33,17 +33,17 @@ namespace GameFlow.States
         {
             _sceneLoader.Load(SceneNames.MainMenu, OnMainMenuLoaded);
         }
-
-        public override void Exit()
-        {
-            _menuService.StartGameInvoked -= TryEnterLevel;
-        }
-
+        
         private void OnMainMenuLoaded()
         {
             _menuService.StartGameInvoked += TryEnterLevel;
             DisplayLevelProgress();
             PlayMenuMusic();
+        }
+
+        public override void Exit()
+        {
+            _menuService.StartGameInvoked -= TryEnterLevel;
         }
 
         private void TryEnterLevel()

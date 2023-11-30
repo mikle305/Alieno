@@ -1,10 +1,6 @@
 ﻿using System.Linq;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using DG.Tweening.Core;
-using DG.Tweening.Plugins.Core.PathCore;
-using DG.Tweening.Plugins.Options;
 using Services;
 using UnityEngine;
 
@@ -31,6 +27,7 @@ namespace UI.GamePlay
 
         private void OnPlayClicked()
         {
+            _menuService.PlayClicked -= OnPlayClicked;
             _rotateCameraTokenSource = new CancellationTokenSource();
             _sequenceTween = DOTween.Sequence()
                 .Append(FadeUi())
@@ -49,24 +46,18 @@ namespace UI.GamePlay
             Vector3[] path = _cameraPath.Select(t => t.position).ToArray();
             return _mainCamera
                 .DOPath(path, _cameraMoveDuration, PathType.CatmullRom, gizmoColor: Color.red)
-                .OnStart(() => RotateCamera(_rotateCameraTokenSource.Token).Forget());
+                .OnUpdate(RotateCamera);
         }
 
-        private async UniTask RotateCamera(CancellationToken cancellationToken)
+        private void RotateCamera()
         {
             Transform target = _cameraPath[^1];
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(target.position - _mainCamera.position);
-                _mainCamera.rotation = Quaternion.Slerp(_mainCamera.rotation, targetRotation, 5 * Time.deltaTime);
-                await UniTask.Yield(cancellationToken);
-            }
+            Quaternion targetRotation = Quaternion.LookRotation(target.position - _mainCamera.position);
+            _mainCamera.rotation = Quaternion.Slerp(_mainCamera.rotation, targetRotation, 5 * Time.deltaTime);
         }
 
-        private void OnDestroy()
-        {
-            _sequenceTween?.Kill();
-        }
+        private void OnDestroy() 
+            => _sequenceTween?.Kill();
 
         private Tween FadeUi() 
             => _canvasGroup.DOFade(0, _uiFadeDuration);

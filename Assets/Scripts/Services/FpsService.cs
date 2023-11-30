@@ -1,4 +1,5 @@
 ﻿using Additional.Game;
+using UnityEngine;
 
 namespace Services
 {
@@ -7,7 +8,8 @@ namespace Services
         protected override void Awake()
         {
             base.Awake();
-
+            
+            SetBackgroundLoadingPriority();
             Set60TargetFps();
         }
 
@@ -17,6 +19,11 @@ namespace Services
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
 #endif
+        }
+
+        private static void SetBackgroundLoadingPriority()
+        {
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
         }
     }
 }
