@@ -10,9 +10,10 @@ namespace Additional.Constants
         public const int Room = 1;
 
         public const int SelectionAbilitiesCount = 3;
-        
+
         public static Dictionary<AbilityId, int> GetAbilities()
-            => new() {
+            => new()
+            {
                 { AbilityId.ForwardShot, 1 },
             };
     }

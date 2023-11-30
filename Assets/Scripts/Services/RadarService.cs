@@ -99,11 +99,9 @@ namespace Services
         {
             Transform character = start;
 
-            RaycastHit hit;
-            if (Physics.Linecast(character.position, target.position,out hit,_layerToCheckFor,QueryTriggerInteraction.UseGlobal))
+            if (Physics.Linecast(character.position, target.position,out RaycastHit _,_layerToCheckFor,QueryTriggerInteraction.UseGlobal))
             {
                 Debug.DrawLine(character.position,target.position,Color.red);
-                Debug.Log("Blocker object name:" + hit.collider.gameObject.name);
                 return false;
             }
             else

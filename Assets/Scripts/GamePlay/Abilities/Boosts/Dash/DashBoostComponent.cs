@@ -1,5 +1,5 @@
 ﻿using GamePlay.Characteristics;
-using GamePlay.StatsSystem;
+using GamePlay.Stats;
 
 namespace GamePlay.Abilities
 {

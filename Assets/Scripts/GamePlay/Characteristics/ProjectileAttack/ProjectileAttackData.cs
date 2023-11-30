@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GamePlay.Abilities;
-using GamePlay.StatsSystem;
+using GamePlay.Stats;
 using Services.ObjectPool;
 using UnityEngine;
 using UnityEngine.Serialization;

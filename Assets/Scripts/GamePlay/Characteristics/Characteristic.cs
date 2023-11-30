@@ -1,7 +1,7 @@
 ﻿using System;
 using Additional.Constants;
 using Additional.Utils;
-using GamePlay.StatsSystem;
+using GamePlay.Stats;
 using UnityEngine;
 
 namespace GamePlay.Characteristics

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using GamePlay.Characteristics;
-using GamePlay.Damage;
+using GamePlay.Statuses;
 using GamePlay.UnitsComponents;
-using Services.Damage;
+using Services.Statuses;
 using UnityEngine;
 
 namespace GamePlay.Projectile

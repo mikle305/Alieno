@@ -1,4 +1,4 @@
-﻿using GamePlay.StatsSystem;
+﻿using GamePlay.Stats;
 using UnityEngine;
 using UnityEngine.Serialization;
 

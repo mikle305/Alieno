@@ -1,7 +1,7 @@
 ﻿using System;
-using GamePlay.Damage;
 using GamePlay.Projectile;
-using Services.Damage;
+using GamePlay.Statuses;
+using Services.Statuses;
 
 namespace GamePlay.Abilities
 {
