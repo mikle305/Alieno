@@ -24,11 +24,11 @@ namespace GameFlow.States
 
         public override void Enter()
         {
+            _musicService.Play(MusicId.PerkSelection);
             _levelMapService = LevelMapService.Instance;
             _levelMapService.AnimationFinished += EnterRoomLoadingState;
             _levelMapService.Init(_saveService.Progress.PlayerData.Room - 2);
 
-            _musicService.Play(MusicId.PerkSelection);
         }
  
         public override void Exit()
