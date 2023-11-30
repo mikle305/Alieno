@@ -9,6 +9,11 @@ namespace Additional.Utils
             return (from.position - to.position).sqrMagnitude;
         }
         
+        public static float DistanceBetween(Vector3 from, Vector3 to)
+        {
+            return (from - to).sqrMagnitude;
+        }
+        
         public static bool IsVisible(Transform start,Transform target)
         {
             Transform character = start;

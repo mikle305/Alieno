@@ -10,8 +10,10 @@ public class RocketTurretAI : EnemyAI
     public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
         EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
     {
+        
+        
         _enemyRotation?.UpdateRotation(Target);
-        if (!_enemyAttacker.OnCooldown)
+        if (!_enemyAttacker.OnCooldown &&  GameplayUtils.IsVisible(_enemyRotation.transform, Target))
             _enemyAttacker?.Attack();
     }
 }

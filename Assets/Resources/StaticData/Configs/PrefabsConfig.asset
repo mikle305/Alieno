@@ -44,13 +44,15 @@ MonoBehaviour:
     <Prefab>k__BackingField: {fileID: 4178675250689914056, guid: 120657880f4d7b746abdfcfa012cafaf, type: 3}
   - <Id>k__BackingField: 3
     <Prefab>k__BackingField: {fileID: 5468391878886794575, guid: c9298c5b9170f07469e8d997e10e2526, type: 3}
+  - <Id>k__BackingField: 6
+    <Prefab>k__BackingField: {fileID: 5522961269537822975, guid: e5dcf8e5a9d23e141b4c86def84e2a7c, type: 3}
   <Projectiles>k__BackingField:
   - <Id>k__BackingField: 0
     <Prefab>k__BackingField: {fileID: 4807152518047859045, guid: ae5537e3ab7b6af4887fbf4ccf3fbf05, type: 3}
   - <Id>k__BackingField: 1
     <Prefab>k__BackingField: {fileID: 3791587571751323285, guid: 8fad975f0decbec4dbf547b4060f20d1, type: 3}
   - <Id>k__BackingField: 2
-    <Prefab>k__BackingField: {fileID: 5234568450691378180, guid: 861c9b5251857234084c7adcd7e65ee9, type: 3}
+    <Prefab>k__BackingField: {fileID: 3458060468239615416, guid: 595a8456775baaf43ba4089897ea74c7, type: 3}
   - <Id>k__BackingField: 3
     <Prefab>k__BackingField: {fileID: 8349505019788292705, guid: 1feae36f8e396844b8b3c0f43ec6fefc, type: 3}
   - <Id>k__BackingField: 6

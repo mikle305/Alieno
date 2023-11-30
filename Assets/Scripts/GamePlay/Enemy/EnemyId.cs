@@ -7,6 +7,7 @@ namespace GamePlay.Enemy
         MachineGunTurret,
         RocketTurret,
         Grunt,
-        Elite
+        Elite,
+        SmartSuicideDrone,
     }
 }

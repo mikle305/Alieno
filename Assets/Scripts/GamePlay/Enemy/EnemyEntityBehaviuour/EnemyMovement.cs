@@ -8,4 +8,10 @@ public class EnemyMovement : MonoBehaviour
         if (_target != null)
             _agent.destination = _target.position;
     }
+    
+    public void UpdateMovement(NavMeshAgent _agent, Vector3 _target)
+    {
+        if (_target != null)
+            _agent.destination = _target;
+    }
 }

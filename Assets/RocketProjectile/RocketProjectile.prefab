@@ -154,11 +154,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5254155419374727201}
-  - component: {fileID: 6666361834112198502}
   - component: {fileID: 1772385007540501308}
   - component: {fileID: 8731421850836467937}
   - component: {fileID: 1716801239003652162}
-  - component: {fileID: -6484431698828714467}
+  - component: {fileID: 4743616065787740030}
   m_Layer: 15
   m_Name: RocketProjectile
   m_TagString: Untagged
@@ -183,29 +182,6 @@ Transform:
   - {fileID: 5221329146824019210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6666361834112198502
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7896600582549687648}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.14
-  m_Height: 0.94
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!54 &1772385007540501308
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -258,18 +234,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1772385007540501308}
---- !u!114 &-6484431698828714467
-MonoBehaviour:
+--- !u!65 &4743616065787740030
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7896600582549687648}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172c6cea5c0272c47bcd850860fbbc05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Size: {x: 0.17, y: 1.44, z: 0.72}
+  m_Center: {x: 0, y: 0, z: 0.33}
 --- !u!1001 &5764425332759964385
 PrefabInstance:
   m_ObjectHideFlags: 0
