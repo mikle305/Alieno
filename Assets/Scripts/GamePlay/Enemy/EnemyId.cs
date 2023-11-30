@@ -9,5 +9,7 @@ namespace GamePlay.Enemy
         Grunt,
         Elite,
         SmartSuicideDrone,
+        WeakSuicideDrone,
+        WeakSoldier,
     }
 }
