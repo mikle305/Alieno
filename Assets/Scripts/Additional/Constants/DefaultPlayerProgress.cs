@@ -7,7 +7,7 @@ namespace Additional.Constants
     {
         public const float Health = 100;
         public const int Level = 1;
-        public const int Room = 2;
+        public const int Room = 1;
 
         public const int SelectionAbilitiesCount = 3;
         

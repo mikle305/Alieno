@@ -9772,10 +9772,10 @@ GameObject:
   - component: {fileID: 2165986983425284469}
   - component: {fileID: 3817889051521862035}
   - component: {fileID: 2645049077189200717}
-  - component: {fileID: 5307896570831977400}
   - component: {fileID: 296601349376737974}
   - component: {fileID: 5903540450436624478}
   - component: {fileID: 1015942238223871105}
+  - component: {fileID: 5307896570831977400}
   m_Layer: 15
   m_Name: MachineGunProjectile
   m_TagString: Untagged
@@ -14693,18 +14693,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5307896570831977400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8349505019788292705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40fc1d400dd64e6792abbc13f2d6dae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &296601349376737974
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14755,3 +14743,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2645049077189200717}
+--- !u!114 &5307896570831977400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349505019788292705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fc1d400dd64e6792abbc13f2d6dae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

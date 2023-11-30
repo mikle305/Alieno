@@ -296,15 +296,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432eb97ce06c4818a76635486e2e47ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ProjectileId>k__BackingField: 1
-  _defaultUseRate: 1
-  _defaultDamage: 20
-  _defaultMoveSpeed: 15
+  _defaultAttackRate: 1
+  _defaultAttackDamage: 20
+  _defaultMoveSpeed: 0
   _spawnsData:
   - <AbilityId>k__BackingField: 0
     <Levels>k__BackingField:
     - _spawns:
       - {fileID: 7303166966296894635}
+  <ProjectileId>k__BackingField: 1
 --- !u!1 &8148377328108508002
 GameObject:
   m_ObjectHideFlags: 0

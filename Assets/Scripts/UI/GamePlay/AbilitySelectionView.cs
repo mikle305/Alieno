@@ -1,4 +1,5 @@
-﻿using Coffee.UIEffects;
+﻿using Additional.Extensions;
+using Coffee.UIEffects;
 using DG.Tweening;
 using GamePlay.Abilities;
 using Services;
@@ -44,8 +45,8 @@ namespace UI.GamePlay
         private void OnButtonClicked(AbilityButton clickedButton)
         {
             DOTween.Sequence()
-                .Append(FadeLabel(false))
                 .Join(HideAbilities())
+                .Join(FadeLabel(false))
                 .Append(FadeWindow(false))
                 .OnComplete(() => SendSelectedAbility(clickedButton))
                 .SetUpdate(true);
@@ -56,13 +57,14 @@ namespace UI.GamePlay
             Sequence buttonsSequence = DOTween.Sequence();
             for (var i = 0; i < abilities.Length; i++)
             {
-                InitAbility(_buttons[i], abilities[i]);
+                AbilityButton abilityButton = _buttons[i];
+                AbilityId abilityId = abilities[i];
                 buttonsSequence
-                    .Append(FadeAbilityIcon(_buttons[i], true))
-                    .Join(FadeAbilityName(_buttons[i], true));
+                    .Append(FadeAbilityIcon(abilityButton, true).OnStart(() => InitAbilityVisual(abilityButton, abilityId)))
+                    .Join(FadeAbilityName(abilityButton, true));
             }
-
-            return buttonsSequence;
+            
+            return buttonsSequence.OnComplete(SubscribeButtons);
         }
 
         private Tween HideAbilities()
@@ -70,10 +72,10 @@ namespace UI.GamePlay
             Sequence buttonsSequence = DOTween.Sequence();
             foreach (AbilityButton button in _buttons)
             {
+                button.ButtonClicked -= OnButtonClicked;
                 buttonsSequence
                     .Join(FadeAbilityIcon(button, false))
-                    .Join(FadeAbilityName(button, false)
-                        .OnComplete(() => DisposeAbility(button)));
+                    .Join(FadeAbilityName(button, false).OnComplete(() => ClearAbilityVisual(button)));
             }
 
             return buttonsSequence;
@@ -90,7 +92,10 @@ namespace UI.GamePlay
             var moveCharsAnim = _label.GetComponent<MoveCharsTween>();
             return show
                 ? _label.DOFade(1, _labelAnimTime).OnComplete(moveCharsAnim.Enable)
-                : _label.DOFade(0, _labelAnimTime).OnStart(moveCharsAnim.Disable);
+                : DOTween.Sequence()
+                    .OnStart(moveCharsAnim.Disable)
+                    .AppendInterval(0.05f)
+                    .Append(_label.DOFade(0, _labelAnimTime));
         }
 
         private Tween FadeAbilityName(AbilityButton abilityButton, bool show)
@@ -106,23 +111,24 @@ namespace UI.GamePlay
             return DOTween.To(() => iconDissolve.effectFactor, x => iconDissolve.effectFactor = x, targetFade, _buttonAnimTime);
         }
 
-        private void InitAbility(AbilityButton abilityButton, AbilityId abilityId)
+        private void InitAbilityVisual(AbilityButton abilityButton, AbilityId abilityId)
         {
             AbilityUiData uiData = _uiConfig.GetAbilityData(abilityId);
             abilityButton.AbilityId = abilityId;
             abilityButton.Text.text = uiData.Name;
             abilityButton.Icon.sprite = uiData.Icon;
-            abilityButton.ButtonClicked += OnButtonClicked;
         }
 
-        private void DisposeAbility(AbilityButton abilityButton)
+        private void ClearAbilityVisual(AbilityButton abilityButton)
         {
-            abilityButton.ButtonClicked -= OnButtonClicked;
             abilityButton.Text.text = string.Empty;
             abilityButton.Icon.sprite = null;
         }
 
         private void SendSelectedAbility(AbilityButton clickedButton)
             => _abilitySelectionService.SetSelectedAbility(clickedButton.AbilityId);
+
+        private void SubscribeButtons() 
+            => _buttons.ForEach(b => b.ButtonClicked += OnButtonClicked);
     }
 }

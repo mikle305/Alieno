@@ -2050,7 +2050,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2574922036008550589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.62}
+  m_AnchorMin: {x: 0.3, y: 0.65}
   m_AnchorMax: {x: 0.7, y: 0.87}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 117.9
+  m_fontSize: 157.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
