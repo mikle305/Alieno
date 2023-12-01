@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 2795695381028728205}
   - component: {fileID: 727168980131107189}
   - component: {fileID: 4395512716126829954}
+  - component: {fileID: 6756593800054826789}
+  - component: {fileID: 3548025332746482226}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -342,6 +344,38 @@ MonoBehaviour:
   _effectToSpawn: {fileID: 0}
   _lifetime: 0.2
   _addScale: 1.05
+--- !u!114 &6756593800054826789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398320186731392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d475c79fdfed6fb4696a190eacdd8ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathComponent: {fileID: 3548025332746482226}
+  _dissolvePrefab: {fileID: -3476029315908512802, guid: 6954513c25394914fa20f351e93c592d, type: 3}
+  _meshFilters: []
+  _skinnedMeshRenderers: []
+  _effectToSpawn: {fileID: 367048339268218638, guid: 650b446a82444db49b0138148a07a7bb, type: 3}
+  _lifetime: 1
+  _addScale: 1.05
+--- !u!114 &3548025332746482226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398320186731392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ea93fb38bd4b4fb162f691494b18d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 5713044649035136142}
 --- !u!1 &196624428159768943
 GameObject:
   m_ObjectHideFlags: 0
