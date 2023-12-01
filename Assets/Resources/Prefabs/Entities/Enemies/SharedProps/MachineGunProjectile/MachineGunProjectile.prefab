@@ -9776,6 +9776,7 @@ GameObject:
   - component: {fileID: 5903540450436624478}
   - component: {fileID: 1015942238223871105}
   - component: {fileID: 5307896570831977400}
+  - component: {fileID: 7796173974107591431}
   m_Layer: 15
   m_Name: MachineGunProjectile
   m_TagString: Untagged
@@ -14755,3 +14756,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fc1d400dd64e6792abbc13f2d6dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7796173974107591431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349505019788292705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983f6965c86e7444387633770299dc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 4331314687477843193, guid: 1bcd589672a197f43b8639b994d17e4e, type: 3}
+  _clearTime: 0.5

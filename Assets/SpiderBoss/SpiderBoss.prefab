@@ -381,7 +381,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.69
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 240
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characteristic: {fileID: 824547793218119947}
-  _value: 2000
+  _value: 3000
 --- !u!114 &824547793218119947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTransform: {fileID: 2804320034924606640}
-  _turnSpeed: 6
+  _turnSpeed: 8
 --- !u!114 &870371705338578998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultAttackRate: 0.1
-  _defaultAttackDamage: 15
+  _defaultAttackDamage: 25
   _defaultMoveSpeed: 8
   _spawnsData:
   - <AbilityId>k__BackingField: 1
@@ -767,8 +767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultAttackRate: 0.5
-  _defaultAttackDamage: 5
-  _defaultMoveSpeed: 14
+  _defaultAttackDamage: 8
+  _defaultMoveSpeed: 16
   _spawnsData:
   - <AbilityId>k__BackingField: 0
     <Levels>k__BackingField:
