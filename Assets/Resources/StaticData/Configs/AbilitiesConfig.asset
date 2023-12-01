@@ -44,7 +44,7 @@ MonoBehaviour:
   - <AbilityId>k__BackingField: 5
     <Levels>k__BackingField: 010000000200000003000000
   - <AbilityId>k__BackingField: 6
-    <Levels>k__BackingField: 010000000200000003000000
+    <Levels>k__BackingField: 0100000002000000
   - <AbilityId>k__BackingField: 7
     <Levels>k__BackingField: 0100000002000000
   - <AbilityId>k__BackingField: 8
@@ -114,12 +114,9 @@ MonoBehaviour:
       data:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
-          <ChanceCoefficient>k__BackingField: 0.05
-          <MultiplierCoefficient>k__BackingField: 2
-        - <Id>k__BackingField: 2
           <ChanceCoefficient>k__BackingField: 0.15
           <MultiplierCoefficient>k__BackingField: 2
-        - <Id>k__BackingField: 3
+        - <Id>k__BackingField: 2
           <ChanceCoefficient>k__BackingField: 0.3
           <MultiplierCoefficient>k__BackingField: 2.5
     - rid: 6338515877272748035
@@ -135,9 +132,9 @@ MonoBehaviour:
       data:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
-          <RateCoefficient>k__BackingField: 0.88
+          <RateCoefficient>k__BackingField: 0.85
         - <Id>k__BackingField: 2
-          <RateCoefficient>k__BackingField: 0.7
+          <RateCoefficient>k__BackingField: 0.65
     - rid: 6338515877272748037
       type: {class: DashBoostData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:
@@ -161,9 +158,9 @@ MonoBehaviour:
       data:
         <Levels>k__BackingField:
         - <Id>k__BackingField: 1
-          <MaxHealthCoefficient>k__BackingField: 0.015
+          <MaxHealthCoefficient>k__BackingField: 0.013
         - <Id>k__BackingField: 2
-          <MaxHealthCoefficient>k__BackingField: 0.04
+          <MaxHealthCoefficient>k__BackingField: 0.03
     - rid: 6338515877272748042
       type: {class: RicochetData, ns: GamePlay.Abilities, asm: Assembly-CSharp}
       data:
