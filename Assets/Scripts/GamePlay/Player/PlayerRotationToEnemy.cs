@@ -37,8 +37,8 @@ namespace GamePlay.Player
             Quaternion originalRotation = _playerTransform.rotation;
             _playerTransform.LookAt(target);
             Quaternion newRotation = transform.rotation;
-            newRotation.x = originalRotation.x;
-            newRotation.z = originalRotation.z;
+            // newRotation.x = originalRotation.x;
+            // newRotation.z = originalRotation.z;
             transform.rotation = Quaternion.Lerp(originalRotation, newRotation, _turnSpeed * Time.deltaTime);
         }
 
@@ -49,7 +49,8 @@ namespace GamePlay.Player
                 return;
 
             Quaternion toRotation = Quaternion.LookRotation(velocity, transform.up);
-
+            // toRotation.x = _playerTransform.rotation.x;
+            // toRotation.z = _playerTransform.rotation.z;
             _playerTransform.rotation =
                 Quaternion.RotateTowards(_playerTransform.rotation, toRotation, _turnSpeed * Time.deltaTime);
         }
