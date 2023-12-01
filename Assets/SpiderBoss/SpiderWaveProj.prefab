@@ -4870,6 +4870,7 @@ GameObject:
   - component: {fileID: 2542447233262040923}
   - component: {fileID: 2273557161568445958}
   - component: {fileID: 2902582518323059158}
+  - component: {fileID: 8769723848210331610}
   m_Layer: 15
   m_Name: SpiderWaveProj
   m_TagString: Untagged
@@ -9909,3 +9910,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fc1d400dd64e6792abbc13f2d6dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8769723848210331610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6295734997354245743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7130ca5924edc3e438e6ccc5cb6e273e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 3442871188414034806, guid: bcef2f23caa98104abbe63771db158cc, type: 3}
+  _clearTime: 2
