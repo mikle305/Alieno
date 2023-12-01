@@ -21,7 +21,11 @@ namespace GamePlay.Enemy
 
         private void Update()
         {
-            UpdateRotation(ObjectsProvider.Instance.Character.transform);
+            GameObject character = ObjectsProvider.Instance.Character;
+            if (character == null)
+                return;
+            
+            UpdateRotation(character.transform);
         }
 
         public void UpdateRotation(Vector3 _target)

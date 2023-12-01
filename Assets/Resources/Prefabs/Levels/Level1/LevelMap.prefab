@@ -2346,6 +2346,7 @@ GameObject:
   - component: {fileID: 6429150348112109253}
   - component: {fileID: 1991681352590358165}
   - component: {fileID: 6358293099992327959}
+  - component: {fileID: 7348988848617048679}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2455,6 +2456,32 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7348988848617048679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578003413338141994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectFactor: 0
+  m_Width: 0.16
+  m_Rotation: 134.2
+  m_Softness: 0.427
+  m_Brightness: 0.495
+  m_Gloss: 0.581
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 1
+    duration: 0.75
+    loop: 1
+    loopDelay: 1.5
+    updateMode: 2
 --- !u!1 &7599215202470681795
 GameObject:
   m_ObjectHideFlags: 0
