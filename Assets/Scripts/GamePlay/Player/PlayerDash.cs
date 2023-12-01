@@ -64,7 +64,7 @@ namespace GamePlay.Player
                 {
                     Transform e = eColliders[i].GetComponent<Transform>();
                     Vector3 dir = e.transform.position - transform.position;
-                    Vector3 enemyPush =  dir.normalized * 2.5f;
+                    Vector3 enemyPush =  dir.normalized * 1.1f;
                     enemyPush.y = 0;
 
                     e.position -= enemyPush;

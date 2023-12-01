@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 1809519333946501200}
   - component: {fileID: 3397343260625756382}
   - component: {fileID: 4645279942783600162}
+  - component: {fileID: 1277806538517026500}
   m_Layer: 8
   m_Name: MachinegunTurret
   m_TagString: Untagged
@@ -469,6 +470,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &1277806538517026500
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957104929939289175}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.6
+  m_Center: {x: 0, y: 0.54, z: 0.35}
 --- !u!1 &7040028992807793664
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685539704317078, guid: f4c5f8c2218dfeb4d93995f3d754a722, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.623
+      value: 0.433
       objectReference: {fileID: 0}
     - target: {fileID: 4685539704317078, guid: f4c5f8c2218dfeb4d93995f3d754a722, type: 3}
       propertyPath: m_LocalPosition.z
