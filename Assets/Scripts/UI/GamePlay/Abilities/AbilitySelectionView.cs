@@ -1,4 +1,5 @@
-﻿using Additional.Extensions;
+﻿using System;
+using Additional.Extensions;
 using Coffee.UIEffects;
 using DG.Tweening;
 using GamePlay.Abilities;
@@ -24,8 +25,9 @@ namespace UI.GamePlay
 
         private AbilitySelectionService _abilitySelectionService;
         private UiConfig _uiConfig;
-
-
+        private Tween _tween;
+        
+        
         private void Awake()
         {
             _uiConfig = StaticDataService.Instance.GetUiConfig();
@@ -33,9 +35,15 @@ namespace UI.GamePlay
             _abilitySelectionService.AbilitiesGenerated += OnAbilitiesGenerated;
         }
 
+        private void OnDestroy()
+        {
+            _abilitySelectionService.AbilitiesGenerated -= OnAbilitiesGenerated;
+            _tween?.Kill();
+        }
+
         private void OnAbilitiesGenerated(AbilityId[] abilities)
         {
-            DOTween.Sequence()
+            _tween = DOTween.Sequence()
                 .Append(FadeWindow(true))
                 .Append(FadeLabel(true))
                 .Append(ShowAbilities(abilities))
@@ -44,7 +52,7 @@ namespace UI.GamePlay
 
         private void OnButtonClicked(AbilityButton clickedButton)
         {
-            DOTween.Sequence()
+            _tween = DOTween.Sequence()
                 .Join(HideAbilities())
                 .Join(FadeLabel(false))
                 .Append(FadeWindow(false))
