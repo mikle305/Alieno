@@ -29,7 +29,7 @@ namespace GamePlay.Abilities
 
         private void BoostCritDamage()
         {
-            var damageModifier = new StatModifier(ModifierType.AdditionBefore, CurrentLevel.MultiplierCoefficient - 1);
+            var damageModifier = new StatModifier(ModifierType.AdditionBefore, CurrentLevel.MultiplierCoefficient);
 
             if (_lastDamageModifier == null)
                 _attackData.CritMultiplier.AddModifier(damageModifier);
@@ -43,10 +43,10 @@ namespace GamePlay.Abilities
         {
             var chanceModifier = new StatModifier(ModifierType.AdditionBefore, CurrentLevel.ChanceCoefficient);
 
-            if (_lastDamageModifier == null)
-                _attackData.CritMultiplier.AddModifier(chanceModifier);
+            if (_lastChanceModifier == null)
+                _attackData.CritChance.AddModifier(chanceModifier);
             else
-                _attackData.CritMultiplier.ReplaceModifier(_lastChanceModifier, chanceModifier);
+                _attackData.CritChance.ReplaceModifier(_lastChanceModifier, chanceModifier);
 
             _lastChanceModifier = chanceModifier;
         }

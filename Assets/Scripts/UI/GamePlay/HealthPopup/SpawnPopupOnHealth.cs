@@ -34,7 +34,6 @@ namespace UI.GamePlay
 
         private void CreatePopup(float value, Color color)
         {
-            print(gameObject.name);
             DamagePopupView view = _uiFactory.CreateDamagePopup(transform.position);
             view.Play(value, color);
         }

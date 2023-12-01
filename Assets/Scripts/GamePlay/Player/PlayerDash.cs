@@ -92,8 +92,6 @@ namespace GamePlay.Player
         private void SetDashTarget(Vector2 inputDirection)
         {
             Vector3 position = transform.position;
-            if (inputDirection.x != 0 && inputDirection.y != 0)
-                inputDirection /= 2;
 
             var direction = new Vector3(inputDirection.x, 0, inputDirection.y);
 

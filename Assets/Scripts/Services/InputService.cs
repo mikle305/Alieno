@@ -6,7 +6,7 @@ namespace Services
     public class InputService : MonoSingleton<InputService>
     {
         public Vector2 GetMoveDirection() 
-            => new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            => new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
         public bool IsDashInvoked()
             => Input.GetKey("space");

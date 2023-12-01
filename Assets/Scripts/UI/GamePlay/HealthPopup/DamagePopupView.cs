@@ -1,3 +1,4 @@
+using System;
 using Additional.Extensions;
 using DG.Tweening;
 using TMPro;
@@ -46,9 +47,13 @@ namespace UI.GamePlay
                 .Append(_damageText.DOFade(0, _fadeDuration));
 
         private void SetText(float damage)
-            => _damageText.text = $"{(int)damage}";
+        {
+            _damageText.text = damage >= 1
+                ? $"{(int)damage}"
+                : $"{Math.Round(damage, 2)}";
+        }
 
-        private void SetColor(Color color) 
+        private void SetColor(Color color)
             => _damageText.color = color;
     }
 }
