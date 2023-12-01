@@ -41,18 +41,18 @@ namespace GameFlow.States
             SubscribeEnemiesObserver();
         }
 
+        public override void Exit()
+        {
+            _enemiesDeathObserver.AllCleared -= OnEnemiesCleared;
+        }
+
         private void SwitchToRoomMusic()
         {
             _musicService.Play(_currentRoom.BackgroundMusic);
         }
 
-        public override void Exit()
-        {
-        }
-
         private void OnEnemiesCleared()
         {
-            _enemiesDeathObserver.AllCleared -= OnEnemiesCleared;
             _context.Enter<RoomClearedState>();
         }
 

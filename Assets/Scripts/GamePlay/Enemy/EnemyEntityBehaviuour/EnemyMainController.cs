@@ -20,6 +20,8 @@ namespace GamePlay.Enemy
         private ObjectsProvider _objectsProvider;
         private EnemyAI _ai;
         private bool _isAwake;
+        
+        
         private void Start()
         {
             _ai = Instantiate(_aiPrefab);
@@ -52,7 +54,7 @@ namespace GamePlay.Enemy
     
         private void Update()
         {
-            if(_objectsProvider.Character.transform == null)
+            if(_objectsProvider.Character == null)
                 return;
             
             if (!_isAwake)

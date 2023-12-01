@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using GameFlow.Context;
 using GamePlay.Abilities;
 using SaveData;
 using Services;
 using Services.Save;
-using StaticData;
 
 namespace GameFlow.States
 {

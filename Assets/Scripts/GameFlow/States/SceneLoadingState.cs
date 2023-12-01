@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using GameFlow.Context;
 using GamePlay.Other;
+using GamePlay.UnitsComponents;
 using Services;
 using Services.Factories;
 using Services.Save;
@@ -55,6 +56,7 @@ namespace GameFlow.States
         private void InitCharacter()
         {
             GameObject character = _gameFactory.CreateCharacter();
+            SubscribeCharacterDeath(character);
             character.SetActive(false);
             _objectsProvider.Character = character;
             _objectsProvider.CharacterRigidbody = character.GetComponent<Rigidbody>();
@@ -93,6 +95,15 @@ namespace GameFlow.States
             marker.SetActive(false);
             _objectsProvider.Marker = marker;
         }
+
+        private void SubscribeCharacterDeath(GameObject character)
+        {
+            var characterDeath = character.GetComponent<Death>();
+            characterDeath.Happened += EnterDefeat;
+        }
+
+        private void EnterDefeat()
+            => _context.Enter<DefeatState>();
 
         private void EnterProgressRestore() 
             => _context.Enter<ProgressRestoreState>();

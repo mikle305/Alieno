@@ -10,8 +10,10 @@ namespace GameFlow.States
     {
         private readonly GameStateMachine _context;
         private readonly ObjectsProvider _objectsProvider;
+        private PlayerCollisionDetector _lastPlayerDetector;
+        private Action _enterNextState;
 
-
+        
         public RoomExitWaitingState(GameStateMachine context)
         {
             _context = context;
@@ -20,8 +22,9 @@ namespace GameFlow.States
 
         public override void Enter<TNext>()
         {
+            _enterNextState = EnterNextState<TNext>;
             EnableExitDirectionArrow();
-            InitPlayerExitDetector(EnterNextState<TNext>);
+            InitPlayerExitDetector();
         }
 
         public override void Exit()
@@ -34,14 +37,17 @@ namespace GameFlow.States
             _objectsProvider.DirectionArrow.gameObject.SetActive(true);
         }
 
-        private void InitPlayerExitDetector(Action onPlayerExited)
+        private void InitPlayerExitDetector()
         {
-            var detector = _objectsProvider.CurrentRoom.ExitPoint.AddComponent<PlayerCollisionDetector>();
-            detector.PlayerEntered += onPlayerExited;
+            _lastPlayerDetector = _objectsProvider.CurrentRoom.ExitPoint.AddComponent<PlayerCollisionDetector>();
+            _lastPlayerDetector.PlayerEntered += _enterNextState.Invoke;
         }
 
         private void DisposeRoomDependentObjects()
         {
+            if (_enterNextState != null)
+                _lastPlayerDetector.PlayerEntered -= _enterNextState;
+            
             _objectsProvider.Character.gameObject.SetActive(false);
             _objectsProvider.Marker.gameObject.SetActive(false);
             _objectsProvider.Hud.gameObject.SetActive(false);
