@@ -52,6 +52,9 @@ namespace GamePlay.Enemy
     
         private void Update()
         {
+            if(_objectsProvider.Character.transform == null)
+                return;
+            
             if (!_isAwake)
             {
                 if (GameplayUtils.IsVisible(transform, _objectsProvider.Character.transform))
