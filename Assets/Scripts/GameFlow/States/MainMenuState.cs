@@ -36,35 +36,21 @@ namespace GameFlow.States
         
         private void OnMainMenuLoaded()
         {
-            _menuService.StartGameInvoked += TryEnterLevel;
+            _menuService.StartGameInvoked += EnterSceneLoading;
             DisplayLevelProgress();
             PlayMenuMusic();
         }
 
         public override void Exit()
         {
-            _menuService.StartGameInvoked -= TryEnterLevel;
-        }
-
-        private void TryEnterLevel()
-        {
-            if (IsLastLevel())
-                ShowLastLevelPopup();
-            else
-                EnterSceneLoading();
+            _menuService.StartGameInvoked -= EnterSceneLoading;
         }
 
         private void DisplayLevelProgress()
             => _menuService.DisplayProgress(_saveService.Progress.PlayerData);
 
-        private bool IsLastLevel() 
-            => _staticDataService.GetPrefabsConfig().Levels.Length < _saveService.Progress.PlayerData.Level;
-
         private void PlayMenuMusic() 
             => _musicService.Play(MusicId.MainMenu1);
-
-        private void ShowLastLevelPopup()
-            => _messageNotifier.NotifyMessage(MessageId.NoLevelsMore);
 
         private void EnterSceneLoading() 
             => _context.Enter<SceneLoadingState>();
