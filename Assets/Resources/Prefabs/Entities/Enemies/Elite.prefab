@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultAttackRate: 1.5
-  _defaultAttackDamage: 25
+  _defaultAttackDamage: 30
   _defaultMoveSpeed: 55
   _spawnsData:
   - <AbilityId>k__BackingField: 0

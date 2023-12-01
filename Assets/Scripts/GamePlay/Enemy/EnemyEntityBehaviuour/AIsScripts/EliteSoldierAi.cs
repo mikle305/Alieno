@@ -20,7 +20,7 @@ namespace GamePlay.Enemy
             
             if (!_enemyAttacker.OnCooldown)
             {
-                _shootingPos = GameplayUtils.CalcFuturePos(Target, TargetRigidbody, _delayBeforeAttack);
+                _shootingPos = GameplayUtils.CalcFuturePos(Target, TargetRigidbody, _delayBeforeAttack*1.05f);
                 _enemyAnimations?.SpawnAttackIndicatorTowards(_navMeshAgent.transform.position+_attackIndicatorOffset,_delayBeforeAttack*1.4f,_shootingPos);
                 _enemyRotation?.UpdateRotation(_shootingPos);
                 _enemyAttacker?.AttackWithDelay(_delayBeforeAttack);
