@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 4788995603258710097}
   - component: {fileID: 7394119931455108812}
   - component: {fileID: 7642921351860181096}
+  - component: {fileID: 2553151487297299976}
   m_Layer: 0
   m_Name: Factories
   m_TagString: Untagged
@@ -178,6 +179,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54daaf0b14b74b68888f9983a6976233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2553151487297299976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154744057253135392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f15e31fd3814fe4b52065c3771cc5a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1383210503300959385
@@ -329,6 +342,13 @@ MonoBehaviour:
     <StartCount>k__BackingField: 5
   - <Id>k__BackingField: 4
     <StartCount>k__BackingField: 0
+  - <Id>k__BackingField: 7
+    <StartCount>k__BackingField: 6
+  - <Id>k__BackingField: 8
+    <StartCount>k__BackingField: 35
+  _defaultUiElementPools:
+  - <Id>k__BackingField: 0
+    <StartCount>k__BackingField: 30
 --- !u!1 &8964130785870587346
 GameObject:
   m_ObjectHideFlags: 0

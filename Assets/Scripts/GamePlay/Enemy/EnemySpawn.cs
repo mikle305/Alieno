@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GamePlay.Other.Ids;
+using UnityEngine;
 
 namespace GamePlay.Enemy
 {

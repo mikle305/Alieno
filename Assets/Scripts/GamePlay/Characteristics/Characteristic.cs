@@ -16,6 +16,8 @@ namespace GamePlay.Characteristics
 
         public event Action ValueChanged;
         public event Action ZeroReached;
+        public event Action<float> DecreaseTried;
+        public event Action<float> IncreaseTried;
 
 
         public void Init(float current, float max)
@@ -27,6 +29,8 @@ namespace GamePlay.Characteristics
         public void Increase(float value)
         {
             ValidateLessThanZero(value);
+            IncreaseTried?.Invoke(value);
+            
             if (IsZero())
                 return;
 
@@ -39,6 +43,8 @@ namespace GamePlay.Characteristics
         public void Decrease(float value)
         {
             ValidateLessThanZero(value);
+            DecreaseTried?.Invoke(value);
+            
             if (IsZero())
                 return;
 
@@ -112,9 +118,15 @@ namespace GamePlay.Characteristics
         private void ChangeCurrent(float diff)
         {
             if (diff < 0)
+            {
+                DecreaseTried?.Invoke(-diff);
                 ApplyDecrease(-diff);
+            }
             else if (diff > 0)
+            {
+                IncreaseTried?.Invoke(diff);
                 ApplyIncrease(diff);
+            }
         }
     }
 }

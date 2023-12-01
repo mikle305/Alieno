@@ -1,50 +1,47 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Additional.Game;
+﻿using Additional.Game;
+using GamePlay.Other.Ids;
+using StaticData;
 using UnityEngine;
 
 namespace Services.ObjectPool
 {
     public class ObjectPoolsProvider : MonoSingleton<ObjectPoolsProvider>
     {
-        [SerializeField] private ProjectilePoolEntry[] _defaultProjectilePools;
-        
-        private Dictionary<ProjectileId, IObjectPool<GameObject>> _projectilePools;
-        private StaticDataService _staticDataService;
-        private Dictionary<ProjectileId, GameObject> _projectilePrefabs;
+        [SerializeField] private PoolEntry<ProjectileId>[] _defaultProjectilePools;
+        [SerializeField] private PoolEntry<UiElementId>[] _defaultUiElementPools;
+
+        private PrefabsConfig _prefabsConfig;
+        private PoolsProvider<ProjectileId> _projectilePoolsProvider;
+        private PoolsProvider<UiElementId> _uiElementPoolsProvider;
+
+
+        public GameObject TakeProjectile(ProjectileId id)
+            => _projectilePoolsProvider.TakeItem(id);
+
+        public GameObject TakeUiElement(UiElementId id)
+            => _uiElementPoolsProvider.TakeItem(id);
 
 
         private void Start()
         {
-            _staticDataService = StaticDataService.Instance;
-            InitProjectilePrefabsMap();
-            InitProjectilePools();
+            InitPrefabsConfig();
+            InitPools();
         }
 
-        public GameObject TakeProjectile(ProjectileId id) 
-            => _projectilePools.TryGetValue(id, out IObjectPool<GameObject> pool) 
-                ? pool.Take() 
-                : null;
-
-        private void InitProjectilePools() 
-            => _projectilePools = _defaultProjectilePools.ToDictionary(entry => entry.Id, CreateProjectilePool);
-
-        private IObjectPool<GameObject> CreateProjectilePool(ProjectilePoolEntry entry)
+        private void InitPools()
         {
-            Transform parent = new GameObject($"{entry.Id.ToString()}Pool").transform;
-            parent.parent = transform;
-
-            GameObject prefab = _projectilePrefabs[entry.Id];
-            return new GameObjectPool(prefab, entry.StartCount, parent, InitPoolable);
+            _projectilePoolsProvider = CreateProjectilesProvider();
+            _uiElementPoolsProvider = CreateUiElementsProvider();
         }
 
-        private static void InitPoolable(GameObject obj, IObjectPool<GameObject> pool) 
-            => obj.AddComponent<Poolable>().Init(pool);
 
-        private void InitProjectilePrefabsMap() 
-            => _projectilePrefabs = _staticDataService
-                .GetPrefabsConfig()
-                .Projectiles
-                .ToDictionary(x => x.Id, x => x.Prefab);
+        private PoolsProvider<ProjectileId> CreateProjectilesProvider()
+            => new(transform, _prefabsConfig.GetProjectile, _defaultProjectilePools);
+
+        private PoolsProvider<UiElementId> CreateUiElementsProvider()
+            => new(transform, _prefabsConfig.GetUiElement, _defaultUiElementPools);
+
+        private void InitPrefabsConfig() 
+            => _prefabsConfig = StaticDataService.Instance.GetPrefabsConfig();
     }
 }

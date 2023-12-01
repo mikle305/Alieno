@@ -11,6 +11,6 @@ namespace StaticData.Music
         Battle3Medium,
         Battle4High,
         Boss1,
-        PerkSelection
+        PerkSelection,
     }
 }

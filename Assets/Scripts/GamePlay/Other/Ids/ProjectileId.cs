@@ -1,4 +1,4 @@
-﻿namespace Services.ObjectPool
+﻿namespace GamePlay.Other.Ids
 {
     public enum ProjectileId
     {

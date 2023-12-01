@@ -19,7 +19,7 @@ namespace Services
             => _musicConfig ??= LoadData<MusicConfig>(StaticDataPaths.MusicConfig);
 
         public PrefabsConfig GetPrefabsConfig()
-            => _prefabsConfig ??= LoadData<PrefabsConfig>(StaticDataPaths.AppConfig);
+            => _prefabsConfig ??= LoadData<PrefabsConfig>(StaticDataPaths.PrefabsConfig);
 
         public UiConfig GetUiConfig()
             => _uiConfig ??= LoadData<UiConfig>(StaticDataPaths.UiConfig);

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Additional.Game;
 using GamePlay.Enemy;
+using GamePlay.Other.Ids;
 using UnityEngine;
 
 namespace Services.Factories
@@ -25,11 +26,9 @@ namespace Services.Factories
             return Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
         }
 
-        private GameObject GetPrefab(EnemyId targetId)
+        private GameObject GetPrefab(EnemyId id)
             => _staticDataService
                 .GetPrefabsConfig()
-                .Enemies
-                .First(x => x.Id == targetId)
-                .Prefab;
+                .GetEnemy(id);
     }
 }

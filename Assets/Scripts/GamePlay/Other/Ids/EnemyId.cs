@@ -1,4 +1,4 @@
-namespace GamePlay.Enemy
+namespace GamePlay.Other.Ids
 {
     public enum EnemyId
     {

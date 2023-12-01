@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Additional.Constants;
 using GamePlay.Enemy;
+using GamePlay.Other.Ids;
 using StaticData;
 using UnityEditor;
 using UnityEngine;
@@ -35,12 +36,11 @@ namespace Editor
                }
             }
         }
-        
-        private static GameObject GetEnemyPrefab(EnemyId targetId)
-            => Resources.Load<PrefabsConfig>(StaticDataPaths.AppConfig)
-                .Enemies
-                .First(x => x.Id == targetId)
-                .Prefab;
+
+        private static GameObject GetEnemyPrefab(EnemyId id)
+            => Resources
+                .Load<PrefabsConfig>(StaticDataPaths.PrefabsConfig)
+                .GetEnemy(id);
 
         private static void DrawMeshGizmo(EnemySpawn enemySpawner,MeshFilter meshFilter)
         {

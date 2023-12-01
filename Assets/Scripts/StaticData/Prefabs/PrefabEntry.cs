@@ -1,13 +1,12 @@
 ﻿using System;
-using GamePlay.Enemy;
 using UnityEngine;
 
 namespace StaticData
 {
     [Serializable]
-    public class EnemyEntry
+    public class PrefabEntry<TId>
     {
-        [field: SerializeField] public EnemyId Id { get; private set; }
+        [field: SerializeField] public TId Id { get; private set; }
         [field: SerializeField] public GameObject Prefab { get; private set; }
     }
 }
