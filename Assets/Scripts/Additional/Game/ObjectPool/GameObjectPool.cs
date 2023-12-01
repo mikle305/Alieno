@@ -26,8 +26,8 @@ namespace Additional.Game
 
         private static GameObject CreateObject(GameObject prefab, Transform parent)
         {
+            prefab.SetActive(false);
             GameObject obj = Object.Instantiate(prefab, parent);
-            obj.SetActive(false);
             return obj;
         }
     }
@@ -56,8 +56,8 @@ namespace Additional.Game
 
         private static T CreateObject(T prefab, Transform parent)
         {
+            prefab.gameObject.SetActive(false);
             T obj = Object.Instantiate(prefab, parent);
-            obj.gameObject.SetActive(false);
             return obj;
         }
     }

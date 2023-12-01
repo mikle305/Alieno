@@ -31,7 +31,7 @@ namespace Services.ObjectPool
 
         private IObjectPool<GameObject> CreateProjectilePool(ProjectilePoolEntry entry)
         {
-            Transform parent = new GameObject(entry.Id.ToString()).transform;
+            Transform parent = new GameObject($"{entry.Id.ToString()}Pool").transform;
             parent.parent = transform;
 
             GameObject prefab = _projectilePrefabs[entry.Id];
