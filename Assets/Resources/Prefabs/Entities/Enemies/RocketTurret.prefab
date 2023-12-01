@@ -105,7 +105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 111465331031506205}
   - component: {fileID: 444948057358284855}
-  - component: {fileID: 6492743159382862493}
   - component: {fileID: 7998466959540974104}
   - component: {fileID: 8146883715024422194}
   - component: {fileID: 9213427099838598986}
@@ -159,33 +158,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!54 &6492743159382862493
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5468391878886794575}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &7998466959540974104
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -325,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultAttackRate: 3
   _defaultAttackDamage: 35
-  _defaultMoveSpeed: 25
+  _defaultMoveSpeed: 15
   _spawnsData:
   - <AbilityId>k__BackingField: 0
     <Levels>k__BackingField:
@@ -366,7 +338,7 @@ MonoBehaviour:
   - {fileID: 2048773677590417535}
   - {fileID: 2045719629411597349}
   _skinnedMeshRenderers: []
-  _effectToSpawn: {fileID: 5468391878886794575}
+  _effectToSpawn: {fileID: 0}
   _lifetime: 1
   _addScale: 1.05
 --- !u!114 &4512121935397849796

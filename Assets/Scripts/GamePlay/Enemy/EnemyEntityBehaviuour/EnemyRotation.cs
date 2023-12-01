@@ -23,7 +23,8 @@ namespace GamePlay.Enemy
             _enemyTransform.LookAt(_target);
         
             Quaternion NewRot = transform.rotation;
-        
+            NewRot.x = OriginalRot.x;
+            NewRot.z = OriginalRot.z;
             transform.rotation = Quaternion.Lerp(OriginalRot, NewRot, _turnSpeed * Time.deltaTime);
         }
     }

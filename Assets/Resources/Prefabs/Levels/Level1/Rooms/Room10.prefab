@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 2878381824844021630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.37, y: 0, z: -6.75}
+  m_LocalPosition: {x: -5.37, y: 0, z: -11.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5e1f4d5984806c444aadfa576de63c78, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 723e3755179702c4181a35da6b8da62b, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &3986276153739704691
 GameObject:
@@ -1014,7 +1014,7 @@ Transform:
   m_GameObject: {fileID: 7829842225896259982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.8, y: 0, z: -6.75}
+  m_LocalPosition: {x: 4.8, y: 0, z: -11.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5906,8 +5906,12 @@ PrefabInstance:
       value: SM_Bld_Wall_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4837895800271798, guid: 426db422399d2a140863721f897e4a47, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0756
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837895800271798, guid: 426db422399d2a140863721f897e4a47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.93
+      value: 60.207
       objectReference: {fileID: 0}
     - target: {fileID: 4837895800271798, guid: 426db422399d2a140863721f897e4a47, type: 3}
       propertyPath: m_LocalPosition.y

@@ -1,4 +1,5 @@
 using System;
+using Additional.Utils;
 using Cysharp.Threading.Tasks;
 using GamePlay.Characteristics;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace GamePlay.Player
         [SerializeField] private DashData _dashData;
         [SerializeField] private Rigidbody _playerBody;
         [SerializeField] private LayerMask _obstacleLayer;
+        [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private TrailPrefab _trailPrefab;
 
         [Header("Trail Settings")]
@@ -53,6 +55,23 @@ namespace GamePlay.Player
             _dashTarget = Vector3.zero;
         }
 
+        private void MoveEnemiesOnDash()
+        {
+            Collider[] eColliders = Physics.OverlapSphere(_dashTarget, 1f, _enemyLayer);
+            if (eColliders != null)
+            {
+                for (int i = 0; i < eColliders.Length; i++)
+                {
+                    Transform e = eColliders[i].GetComponent<Transform>();
+                    Vector3 dir = e.transform.position - transform.position;
+                    Vector3 enemyPush =  dir.normalized * 2.5f;
+                    enemyPush.y = 0;
+
+                    e.position -= enemyPush;
+                }
+            }
+        }
+        
         private void UpdateDash()
         {
             SpawnTrailMesh();
@@ -64,9 +83,10 @@ namespace GamePlay.Player
                 Stop();
                 return;
             }
-
+            
             Vector3 movePosition = Vector3.Lerp(currentPosition, _dashTarget, _dashData.Speed.GetValue() * Time.deltaTime);
             _playerBody.MovePosition(movePosition);
+            MoveEnemiesOnDash();
         }
 
         private void SetDashTarget(Vector2 inputDirection)

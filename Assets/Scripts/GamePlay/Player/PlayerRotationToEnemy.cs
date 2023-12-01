@@ -8,6 +8,7 @@ namespace GamePlay.Player
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private Rigidbody _playerRigidBody;
         [SerializeField] private float _turnSpeed = 10f;
+        [SerializeField] private PlayerDash _playerDash;
     
         private RadarService _radarService;
 
@@ -22,6 +23,9 @@ namespace GamePlay.Player
 
         private void UpdateRotation(Transform target)
         {
+            if (_playerDash.IsDashing)
+                return;
+            
             if (target == null)
                 RotateToMovement();
 
@@ -33,7 +37,8 @@ namespace GamePlay.Player
             Quaternion originalRotation = _playerTransform.rotation;
             _playerTransform.LookAt(target);
             Quaternion newRotation = transform.rotation;
-
+            newRotation.x = originalRotation.x;
+            newRotation.z = originalRotation.z;
             transform.rotation = Quaternion.Lerp(originalRotation, newRotation, _turnSpeed * Time.deltaTime);
         }
 

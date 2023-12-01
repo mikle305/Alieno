@@ -42,5 +42,10 @@ namespace Additional.Utils
         {
             return (1 << LayerMask.NameToLayer("Enemy"));
         }
+        
+        public static LayerMask GetPlayerLayerMask()
+        {
+            return (1 << LayerMask.NameToLayer("Player"));
+        }
     }
 }

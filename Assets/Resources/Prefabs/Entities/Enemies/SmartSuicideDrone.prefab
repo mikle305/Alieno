@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characteristic: {fileID: 4893718575472723032}
-  _value: 600
+  _value: 250
 --- !u!114 &4893718575472723032
 MonoBehaviour:
   m_ObjectHideFlags: 0
