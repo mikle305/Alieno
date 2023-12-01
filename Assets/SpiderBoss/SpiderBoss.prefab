@@ -356,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 1476204182251730964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.55, y: 0.3, z: -1.8}
+  m_LocalPosition: {x: 2.3, y: 0.3, z: -1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -387,7 +387,7 @@ Transform:
   m_GameObject: {fileID: 1794567520766755066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47, y: 0.3, z: -1.8}
+  m_LocalPosition: {x: -2.3, y: 0.3, z: -1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -923,8 +923,8 @@ MonoBehaviour:
   - <AbilityId>k__BackingField: 2
     <Levels>k__BackingField:
     - _spawns:
-      - {fileID: 857297985700102890}
       - {fileID: 262952538640756410}
+      - {fileID: 857297985700102890}
   <ProjectileId>k__BackingField: 7
 --- !u!114 &65181286636317194
 MonoBehaviour:

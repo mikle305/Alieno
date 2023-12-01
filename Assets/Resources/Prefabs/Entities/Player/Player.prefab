@@ -361,7 +361,7 @@ MonoBehaviour:
   _meshFilters: []
   _skinnedMeshRenderers: []
   _effectToSpawn: {fileID: 367048339268218638, guid: 650b446a82444db49b0138148a07a7bb, type: 3}
-  _lifetime: 1
+  _lifetime: 2
   _addScale: 1.05
 --- !u!114 &3548025332746482226
 MonoBehaviour:
