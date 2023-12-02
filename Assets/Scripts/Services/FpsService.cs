@@ -1,4 +1,5 @@
 ﻿using Additional.Game;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Services
@@ -10,6 +11,7 @@ namespace Services
             base.Awake();
             
             SetBackgroundLoadingPriority();
+            SetTweensPoolCount();
             Set60TargetFps();
         }
 
@@ -21,9 +23,10 @@ namespace Services
 #endif
         }
 
-        private static void SetBackgroundLoadingPriority()
-        {
-            Application.backgroundLoadingPriority = ThreadPriority.Low;
-        }
+        private static void SetBackgroundLoadingPriority() 
+            => Application.backgroundLoadingPriority = ThreadPriority.Low;
+
+        private static void SetTweensPoolCount() 
+            => DOTween.SetTweensCapacity(tweenersCapacity: 500, sequencesCapacity: 125);
     }
 }

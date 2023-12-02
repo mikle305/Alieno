@@ -30,5 +30,10 @@ namespace UI.Windows
                 .OnStart(() => onStart?.Invoke())
                 .OnComplete(() => onDone?.Invoke());
         }
+
+        private void OnDestroy()
+        {
+            _tween?.Kill();
+        }
     }
 }
