@@ -6,6 +6,7 @@ using GamePlay.Other;
 using Services;
 using Services.Factories;
 using Services.Save;
+using StaticData.Prefabs;
 using UnityEngine;
 
 namespace GameFlow.States

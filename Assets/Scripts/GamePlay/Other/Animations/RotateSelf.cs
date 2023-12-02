@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Other
+namespace GamePlay.Other.Animations
 {
     public class RotateSelf : MonoBehaviour
     {

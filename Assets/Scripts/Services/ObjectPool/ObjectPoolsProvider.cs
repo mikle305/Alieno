@@ -1,6 +1,7 @@
 ﻿using Additional.Game;
 using GamePlay.Other.Ids;
 using StaticData;
+using StaticData.Prefabs;
 using UnityEngine;
 
 namespace Services.ObjectPool

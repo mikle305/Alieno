@@ -3,7 +3,7 @@ using GamePlay.Enemy;
 using StaticData.Music;
 using UnityEngine;
 
-namespace GamePlay.Other
+namespace StaticData.Prefabs
 {
     public class Room : MonoBehaviour
     {

@@ -2,6 +2,7 @@
 using Additional.Game;
 using StaticData;
 using StaticData.Music;
+using StaticData.Prefabs;
 using StaticData.UI;
 using UnityEngine;
 

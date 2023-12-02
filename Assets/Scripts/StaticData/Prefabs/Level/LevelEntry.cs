@@ -1,8 +1,7 @@
 ﻿using System;
-using GamePlay.Other;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Prefabs
 {
     [Serializable]
     public class LevelEntry

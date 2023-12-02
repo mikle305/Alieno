@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Prefabs
 {
     [Serializable]
     public class PrefabEntry<TId>

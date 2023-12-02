@@ -1,11 +1,8 @@
 ﻿using System;
-using GamePlay.Other;
 using GamePlay.Other.Ids;
-using Services;
-using Services.ObjectPool;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Prefabs
 {
     [Serializable]
     public class ProjectileEntry

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Other
+namespace GamePlay.Other.Navigators
 {
     public class DirectionArrow : MonoBehaviour
     {

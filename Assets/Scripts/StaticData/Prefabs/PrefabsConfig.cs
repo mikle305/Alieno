@@ -4,7 +4,7 @@ using GamePlay.Other.Ids;
 using UI.GamePlay;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Prefabs
 {
     [CreateAssetMenu(menuName = "StaticData/Prefabs Config", fileName = "PrefabsConfig")]
     public class PrefabsConfig : ScriptableObject

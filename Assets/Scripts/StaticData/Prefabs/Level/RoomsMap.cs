@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GamePlay.Other
+namespace StaticData.Prefabs
 {
     public class RoomsMap : MonoBehaviour
     {

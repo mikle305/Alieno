@@ -2,6 +2,8 @@
 using Additional.Game;
 using Cinemachine;
 using GamePlay.Other;
+using GamePlay.Other.Navigators;
+using StaticData.Prefabs;
 using UI.GamePlay;
 using UnityEngine;
 

@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorMovement : MonoBehaviour
+namespace GamePlay.Other.Navigators
 {
-    /*
+    public class CursorMovement : MonoBehaviour
+    {
+        /*
     [SerializeField] private Camera _camera;
     
     private Plane _plane = new Plane(Vector3.down, 0);
@@ -30,4 +30,5 @@ public class CursorMovement : MonoBehaviour
         }
     }
 */
+    }
 }
