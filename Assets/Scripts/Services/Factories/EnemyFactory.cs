@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Additional.Game;
+﻿using Additional.Game;
 using GamePlay.Enemy;
 using GamePlay.Other.Ids;
 using UnityEngine;
