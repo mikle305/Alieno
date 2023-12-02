@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Services;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,8 +5,11 @@ using UnityEngine.AI;
 public class SpiderBossMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
+    
     void Update()
     {
-        _agent.destination = ObjectsProvider.Instance.Character.transform.position;
+        GameObject character = ObjectsProvider.Instance.Character;
+        if (character != null)
+            _agent.destination = character.transform.position;
     }
 }

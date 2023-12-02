@@ -21,6 +21,9 @@ namespace UI.GamePlay
                 UpdateStatBar();
         }
 
+        public void Unbind()
+            => _model.ValueChanged -= UpdateStatBar;
+
         private void UpdateStatBar() 
             => _view.SetValue(_model.Current, _model.Max);
     }

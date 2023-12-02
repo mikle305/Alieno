@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
 using GamePlay.Player;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ namespace UI.GamePlay
     {
         private readonly PlayerDash _dash;
         private readonly ICharacteristicView _view;
-
+        private CancellationTokenSource _cts;
+        
         
         public DashPresenter(PlayerDash dash, ICharacteristicView view)
         {
@@ -16,11 +18,20 @@ namespace UI.GamePlay
             _view = view;
             _dash.CooldownStarted += StartCooldownLoop;
         }
+        
+        public void Unbind()
+        {
+            _dash.CooldownStarted -= StartCooldownLoop;
+            _cts.Cancel();
+        }
 
-        private void StartCooldownLoop(float cooldown) 
-            => UpdateCooldownAsync(cooldown).Forget();
+        private void StartCooldownLoop(float cooldown)
+        {
+            _cts = new CancellationTokenSource();
+            UpdateCooldownAsync(cooldown, _cts.Token).Forget();
+        }
 
-        private async UniTask UpdateCooldownAsync(float cooldown)
+        private async UniTask UpdateCooldownAsync(float cooldown, CancellationToken cancellationToken)
         {
             float timeLeft = 0;
             await UniTask.WaitUntil(() =>
@@ -34,7 +45,7 @@ namespace UI.GamePlay
 
                 _view.SetValue(cooldown, cooldown);
                 return true;
-            });
+            }, cancellationToken: cancellationToken);
         }
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface ICharacteristicPresenter
     {
+        public void Unbind();
     }
 }

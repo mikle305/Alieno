@@ -5,6 +5,7 @@ using GamePlay.Abilities;
 using SaveData;
 using Services;
 using Services.Save;
+using UnityEngine;
 
 namespace GameFlow.States
 {
@@ -42,6 +43,7 @@ namespace GameFlow.States
             playerProgress.CurrentAbilities = DefaultPlayerProgress.GetAbilities();
             playerProgress.CurrentHealth = DefaultPlayerProgress.Health;
             playerProgress.Room = DefaultPlayerProgress.Room;
+            _saveService.Save();
         }
 
         private void SubscribeToMainMenu()

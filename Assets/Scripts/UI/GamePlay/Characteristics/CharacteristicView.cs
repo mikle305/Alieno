@@ -37,6 +37,11 @@ namespace UI.GamePlay
             InitTextCreatorMap();
         }
 
+        private void OnDestroy()
+        {
+            _presenter.Unbind();
+        }
+
         public void Init(ICharacteristicPresenter presenter)
         {
             _presenter = presenter;
