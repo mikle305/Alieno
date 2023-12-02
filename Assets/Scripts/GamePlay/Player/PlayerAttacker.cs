@@ -36,7 +36,7 @@ namespace GamePlay.Player
             if (!IsAutoAttacking || _onCooldown) 
                 return;
 
-            Transform enemy = _radarService.GetClosestAndVisibleEnemy();
+            Transform enemy = _radarService.GetClosestFromPlayer();
             if(enemy == null)
                 return;
             

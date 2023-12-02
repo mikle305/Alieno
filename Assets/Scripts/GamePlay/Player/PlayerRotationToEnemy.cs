@@ -19,7 +19,7 @@ namespace GamePlay.Player
         }
 
         private void Update()
-            => UpdateRotation(_radarService.GetClosestAndVisibleEnemy());
+            => UpdateRotation(_radarService.GetClosestFromPlayer());
 
         private void UpdateRotation(Transform target)
         {

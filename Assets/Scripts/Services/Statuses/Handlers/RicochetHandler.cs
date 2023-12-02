@@ -40,6 +40,6 @@ namespace Services.Statuses
         }
 
         private Transform GetNextReceiver(DamageData damageData) 
-            => _radarService.GetClosestToEnemy(damageData.Receiver.transform);
+            => _radarService.GetClosestFromEnemy(damageData.Receiver.transform);
     }
 }
