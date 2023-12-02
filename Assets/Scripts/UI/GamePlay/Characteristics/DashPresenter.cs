@@ -22,7 +22,7 @@ namespace UI.GamePlay
         public void Unbind()
         {
             _dash.CooldownStarted -= StartCooldownLoop;
-            _cts.Cancel();
+            _cts?.Cancel();
         }
 
         private void StartCooldownLoop(float cooldown)

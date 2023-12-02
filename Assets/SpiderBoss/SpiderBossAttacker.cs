@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using GamePlay.Abilities;
 using GamePlay.Characteristics;
+using Services;
 using UnityEngine;
 
 public class SpiderBossAttacker : MonoBehaviour
@@ -10,24 +11,38 @@ public class SpiderBossAttacker : MonoBehaviour
     [SerializeField] private AbilitiesEntity _jumpEntity;
     [SerializeField] private ProjectileAttackData _laserAttackData;
     [SerializeField] private ProjectileAttackData _jumpAttackData;
+    [SerializeField] private GameObject _hpCanvas;
     
+    private EndGameMenuService _endGameMenuService;
+
+
     private void Start()
     {
         _animations.JumpAnimationFinished += JumpAttack;
         _animations.AttackAnimationFinished += LaserAttack;
+        _endGameMenuService = EndGameMenuService.Instance;
+        _endGameMenuService.DefeatReceived += OnPlayerDied;
     }
 
-    public void JumpAttack()
+    private void OnPlayerDied()
+    {
+        _endGameMenuService.DefeatReceived -= OnPlayerDied;
+        _animations.JumpAnimationFinished -= JumpAttack;
+        _animations.AttackAnimationFinished -= LaserAttack;
+        _hpCanvas.SetActive(false);
+    }
+
+    private void JumpAttack()
     {
         Attack(_jumpEntity, _jumpAttackData);
     }
-    
-    public void LaserAttack()
+
+    private void LaserAttack()
     {
         Attack(_laserEntity, _laserAttackData);
     }
-    
-    public void Attack(AbilitiesEntity abilitiesEntity,ProjectileAttackData attackData)
+
+    private void Attack(AbilitiesEntity abilitiesEntity,ProjectileAttackData attackData)
     {
         abilitiesEntity.CallShot();
         StartCooldown(attackData).Forget();

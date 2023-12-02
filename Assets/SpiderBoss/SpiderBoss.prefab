@@ -795,6 +795,7 @@ MonoBehaviour:
   _jumpEntity: {fileID: 65181286636317194}
   _laserAttackData: {fileID: 7038595208570367378}
   _jumpAttackData: {fileID: 6353581169371000262}
+  _hpCanvas: {fileID: 103810313223049054}
 --- !u!114 &1245480782854364931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2311,7 +2312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be7cc19e82ba894397afc749f1e081c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 4810256561377435697}
   _onLandingEffect: {fileID: 6201982702969784675, guid: 66a65054c35dd0248ac6850988cd494e, type: 3}
   _effctClearTime: 1
 --- !u!4 &5642414996773309089 stripped
