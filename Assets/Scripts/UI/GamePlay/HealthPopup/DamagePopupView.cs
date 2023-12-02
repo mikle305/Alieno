@@ -15,17 +15,24 @@ namespace UI.GamePlay
         [SerializeField] private float _endScale = 1.0f;
         [SerializeField] private float _scaleDuration = 0.8f;
         [SerializeField] private float _moveDistance = 0.1f;
+        
+        private Sequence _tween;
 
 
         public void Play(float damage, Color color)
         {
             SetText(damage);
             SetColor(color);
-            DOTween.Sequence()
+            _tween = DOTween.Sequence()
                 .Join(Fade())
                 .Join(Scale())
                 .Join(Move())
                 .OnComplete(this.Dispose);
+        }
+
+        private void OnDisable()
+        {
+            _tween?.Kill();
         }
 
         private Tween Move()

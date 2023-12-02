@@ -23,21 +23,18 @@ namespace UI.Animations
 
         private void AnimateText()
         {
-            _charTweener = _textMesh.GetCharTweener();
+            if (_charTweener == null)
+                _charTweener = _textMesh.GetCharTweener();
+            
             for (var i = 0; i < _charTweener.CharacterCount; i++)
             {
                 Tween circleTween = _charTweener
                     .DOMoveCircle(i, _radius, _duration)
                     .SetLoops(-1, LoopType.Restart);
-                
-                Tween colorTween = _charTweener
-                    .DOColor(i, _color, _duration)
-                    .SetLoops(-1, LoopType.Yoyo);
 
                 // Offset animations based on character index in string
                 float timeOffset = (float) i / _charTweener.CharacterCount;
                 circleTween.fullPosition = timeOffset;
-                colorTween.fullPosition = timeOffset;
             }
         }
     }
