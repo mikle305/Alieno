@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4194670218996332}
   - component: {fileID: 33759270952893754}
   - component: {fileID: 23516518585772082}
-  - component: {fileID: 64250721537909058}
+  - component: {fileID: 2466527483278306849}
   m_Layer: 6
   m_Name: SM_Prop_MapTable_01
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
+  - {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64250721537909058
-MeshCollider:
+--- !u!65 &2466527483278306849
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43965719148706254, guid: fadf5e8d70c9eea46a14a588b6e40fdd, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.6858368, y: 1.17, z: 2.685837}
+  m_Center: {x: 0.000000059604645, y: 0.4505309, z: 0.0000044107437}

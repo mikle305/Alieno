@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4637364390914544}
   - component: {fileID: 33705346528146120}
   - component: {fileID: 23498337168046824}
-  - component: {fileID: 64444808686606264}
+  - component: {fileID: 7810535045908221254}
   m_Layer: 6
   m_Name: SM_Prop_Medical_Scanner_01
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
+  - {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64444808686606264
-MeshCollider:
+--- !u!65 &7810535045908221254
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43804800620452852, guid: 7c912e29b7fb9c74d9819f1766d759f3, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.986786, y: 2.3046176, z: 0.6096039}
+  m_Center: {x: 0, y: 1.1523088, z: 0}

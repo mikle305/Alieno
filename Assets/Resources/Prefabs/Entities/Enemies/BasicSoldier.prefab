@@ -682,10 +682,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23131548213589408, guid: e76ef83768e6b944daddea1cfb6e9aae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+    - target: {fileID: 23865941917910670, guid: e76ef83768e6b944daddea1cfb6e9aae, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     - target: {fileID: 137473354771163338, guid: e76ef83768e6b944daddea1cfb6e9aae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ebe9f025d5fc42442978d4d25236d410, type: 2}
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     m_RemovedComponents:
     - {fileID: 95908507388142026, guid: e76ef83768e6b944daddea1cfb6e9aae, type: 3}
     m_RemovedGameObjects:
@@ -1019,6 +1027,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -91.15
       objectReference: {fileID: 0}
+    - target: {fileID: 23071456444186598, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+    - target: {fileID: 23414000165031676, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+    - target: {fileID: 23568367457915364, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     m_RemovedComponents:
     - {fileID: 64847287875836804, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
     m_RemovedGameObjects: []

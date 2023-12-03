@@ -841,15 +841,15 @@ PrefabInstance:
     - target: {fileID: 137182130808469208, guid: 3ff34848642e0ba42be49630dade195d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ebe9f025d5fc42442978d4d25236d410, type: 2}
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     - target: {fileID: 137672251798413890, guid: 3ff34848642e0ba42be49630dade195d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ebe9f025d5fc42442978d4d25236d410, type: 2}
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     - target: {fileID: 137951077539246736, guid: 3ff34848642e0ba42be49630dade195d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ebe9f025d5fc42442978d4d25236d410, type: 2}
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1190655111576068, guid: 3ff34848642e0ba42be49630dade195d, type: 3}
@@ -1030,6 +1030,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -91.15
       objectReference: {fileID: 0}
+    - target: {fileID: 23071456444186598, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+    - target: {fileID: 23414000165031676, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+    - target: {fileID: 23568367457915364, guid: c2205ef1f9fac6f4d911c896ac86b3ab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

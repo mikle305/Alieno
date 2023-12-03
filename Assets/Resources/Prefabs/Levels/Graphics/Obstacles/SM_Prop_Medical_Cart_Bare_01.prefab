@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4970181988206704}
   - component: {fileID: 33816255222630490}
   - component: {fileID: 23391867983746652}
-  - component: {fileID: 64208062188749352}
+  - component: {fileID: 8369250413757201535}
   m_Layer: 6
   m_Name: SM_Prop_Medical_Cart_Bare_01
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
+  - {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64208062188749352
-MeshCollider:
+--- !u!65 &8369250413757201535
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43645514933801156, guid: e6b83eb8e712d4d45bece56f57bc1c09, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 0.9303932, y: 0.8743698, z: 1.5679016}
+  m_Center: {x: -0.00000037252903, y: 0.4371849, z: 0}

@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4913897844066782}
   - component: {fileID: 33552215725181194}
   - component: {fileID: 23593374711808298}
-  - component: {fileID: 64756860082666030}
+  - component: {fileID: 7740904155720195313}
   m_Layer: 6
   m_Name: SM_Prop_Medical_Isolator_01
   m_TagString: Untagged
@@ -146,7 +146,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4cee7a5983b187943adc589b9cb1f084, type: 2}
+  - {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,8 +168,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64756860082666030
-MeshCollider:
+--- !u!65 &7740904155720195313
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -186,7 +186,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43515850877494728, guid: fb050e084840e174590d8aca5e2dc499, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 0.8002495, y: 0.74415123, z: 1.1809251}
+  m_Center: {x: -0.017551005, y: 0.37207562, z: -0.000000029802322}
