@@ -7,14 +7,13 @@ using StaticData.UI;
 using TMPro;
 using UI.Animations;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI.GamePlay
 {
     public class AbilitySelectionView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _label;
-        [SerializeField] private Image _window;
+        [SerializeField] private UITransitionEffect _window;
         [SerializeField] private AbilityButton[] _buttons;
 
         [Space(5), Header("Animation Settings")] [SerializeField]
@@ -97,7 +96,9 @@ namespace UI.GamePlay
         private Tween FadeWindow(bool show)
         {
             float targetFade = show ? 1.0f : 0.0f;
-            return _window.DOFillAmount(targetFade, _windowAnimTime);
+            return DOTween.To(
+                () => _window.effectFactor, (x) => _window.effectFactor = x,
+                targetFade, _windowAnimTime);
         }
 
         private Tween ShowLabel()

@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 2178691436855629876}
   - component: {fileID: 511246264582701313}
   - component: {fileID: 8367167108322011872}
+  - component: {fileID: 2750786020226628705}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -409,15 +410,43 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0e4841fbf5babc04a902658b58199cc6, type: 3}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillMethod: 1
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2750786020226628705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763734121331519001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922b805bc01c243e5853d9cbb544118c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectMode: 2
+  m_EffectFactor: 0
+  m_TransitionTexture: {fileID: 2800000, guid: 3e04c247fb2604af186173fce0bc62de, type: 3}
+  m_EffectArea: 0
+  m_KeepAspectRatio: 0
+  m_DissolveWidth: 0.88
+  m_DissolveSoftness: 0.5
+  m_DissolveColor: {r: 0, g: 0.25, b: 1, a: 1}
+  m_PassRayOnHidden: 0
+  m_Player:
+    play: 0
+    initialPlayDelay: 0
+    duration: 1
+    loop: 0
+    loopDelay: 0
+    updateMode: 2
 --- !u!1 &1113880316262380933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,12 +2038,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 2062163469532027150}
-  _window: {fileID: 8367167108322011872}
+  _window: {fileID: 2750786020226628705}
   _buttons:
   - {fileID: 1452732548269350337}
   - {fileID: 4704507312095716597}
   - {fileID: 2407643381638400985}
-  _windowAnimTime: 0.7
+  _windowAnimTime: 1
   _labelAnimTime: 0.7
   _buttonAnimTime: 0.7
 --- !u!1 &8465248691128708183
