@@ -94,4 +94,23 @@ namespace Services
         private static void SetShaderParam(Renderer obstacleRenderer, bool isTransparent)
             => obstacleRenderer.material.SetFloat(_shaderParam, isTransparent ? 1.0f : 0.0f);
     }
+
+    public class TransparentObstacle : MonoBehaviour
+    { 
+        [SerializeField] private Material _mainMaterial;
+        [SerializeField] private Material _transparentMaterial;
+
+        private MeshRenderer[] _renderers;
+        
+
+        public void SetTransparent(bool isTransparent)
+        {
+            if (_renderers == null)
+                _renderers = GetComponentsInChildren<MeshRenderer>(includeInactive: true);
+
+            foreach (MeshRenderer render in _renderers)
+            {
+            }
+        }
+    }
 }

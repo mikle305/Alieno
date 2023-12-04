@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 namespace GamePlay.Other.Animations
 {
-    public class TrailRenderer : MonoBehaviour
+    public class CustomTrailRenderer : MonoBehaviour
     {
         [FormerlySerializedAs("_dashMaterial")]
         [Header("Trail Settings")]
