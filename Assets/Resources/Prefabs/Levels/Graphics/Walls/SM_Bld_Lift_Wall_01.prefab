@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 33917010903000776}
   - component: {fileID: 23228477755354204}
   - component: {fileID: -8575964862853408711}
+  - component: {fileID: -6070114305995243238}
   m_Layer: 6
   m_Name: SM_Bld_Lift_Wall_01
   m_TagString: Untagged
@@ -190,6 +191,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 4.9954405, z: 0.914812}
   m_Center: {x: -2.5, y: 1.5022796, z: 0.38}
+--- !u!114 &-6070114305995243238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245762855502432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7795cea2079a4eaea5f48d97b1ea86fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMaterial: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+  _transparentMaterial: {fileID: 2100000, guid: a84a97a027c915d4aa2ff266c3ab3177, type: 2}
 --- !u!1 &1496441230401456
 GameObject:
   m_ObjectHideFlags: 0

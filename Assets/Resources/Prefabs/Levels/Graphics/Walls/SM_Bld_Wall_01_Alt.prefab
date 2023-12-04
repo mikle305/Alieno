@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23918446866222136}
   - component: {fileID: 95196436367953790}
   - component: {fileID: 1549761592277956423}
+  - component: {fileID: -5923017317433999153}
   m_Layer: 6
   m_Name: SM_Bld_Wall_01_Alt
   m_TagString: Untagged
@@ -127,3 +128,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0000033, y: 4.9954405, z: 0.89182127}
   m_Center: {x: -2.500003, y: 1.5022796, z: 0.43}
+--- !u!114 &-5923017317433999153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089632392375526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7795cea2079a4eaea5f48d97b1ea86fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMaterial: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+  _transparentMaterial: {fileID: 2100000, guid: a84a97a027c915d4aa2ff266c3ab3177, type: 2}

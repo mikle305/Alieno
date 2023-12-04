@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GamePlay.Characteristics
 {
@@ -9,7 +8,7 @@ namespace GamePlay.Characteristics
         [SerializeField] private float _value;
 
 
-        private void Start()
+        private void Awake()
         {
             _characteristic.Init(_value, _value);
         }

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 33879173562500414}
   - component: {fileID: 23510801045148106}
   - component: {fileID: 2055318081789091289}
+  - component: {fileID: 2135758752468745296}
   m_Layer: 6
   m_Name: SM_Bld_Wall_Escpod_Hatch_01
   m_TagString: Untagged
@@ -189,3 +190,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0000033, y: 4.9954405, z: 1.3455415}
   m_Center: {x: -2.4999893, y: 1.5022796, z: 0.07721859}
+--- !u!114 &2135758752468745296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953488379581982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7795cea2079a4eaea5f48d97b1ea86fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMaterial: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+  _transparentMaterial: {fileID: 2100000, guid: a84a97a027c915d4aa2ff266c3ab3177, type: 2}

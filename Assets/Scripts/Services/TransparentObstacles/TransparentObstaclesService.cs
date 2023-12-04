@@ -2,23 +2,25 @@
 using Additional.Game;
 using UnityEngine;
 
-namespace Services
+namespace Services.TransparentObstacles
 {
     public class TransparentObstaclesService : MonoSingleton<TransparentObstaclesService>
     {
         [SerializeField] private LayerMask _obstacleLayer;
+        [SerializeField] private Vector3 _boxHalfSize = new(4, 0.5f, 7);
+        [SerializeField] private Vector3 _offset;
 
         private ObjectsProvider _objectsProvider;
-        private static readonly int _shaderParam = Shader.PropertyToID("_IsObstacleTransparent");
-        private readonly RaycastHit[] _currentHits = new RaycastHit[30];
-        private HashSet<Renderer> _previousTransparents = new();
+        private readonly Collider[] _currentHits = new Collider[30];
+        private HashSet<TransparentObstacle> _previousTransparents = new();
+
 
         private void Start()
         {
             _objectsProvider = ObjectsProvider.Instance;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             Camera mainCamera = _objectsProvider.MainCamera;
             GameObject character = _objectsProvider.Character;
@@ -31,38 +33,36 @@ namespace Services
                 SetAllPreviousOpaque();
                 return;
             }
-            
-            HashSet<Renderer> currentTransparent = SetRaycastedTransparent(raycastedCount);
+
+            HashSet<TransparentObstacle> currentTransparent = SetRaycastedTransparent(raycastedCount);
             SetOtherPreviousOpaque(currentTransparent);
         }
 
-        private HashSet<Renderer> SetRaycastedTransparent(int raycastedCount)
+        private HashSet<TransparentObstacle> SetRaycastedTransparent(int raycastedCount)
         {
-            var currentTransparents = new HashSet<Renderer>();
+            var currentTransparents = new HashSet<TransparentObstacle>();
             for (var i = 0; i < raycastedCount; i++)
             {
-                RaycastHit hit = _currentHits[i];
-                
-                if (!hit.collider.gameObject.TryGetComponent(out MeshRenderer obstacleRenderer))
+                if (!_currentHits[i].gameObject.TryGetComponent(out TransparentObstacle obstacle))
                     continue;
-                
-                if (!_previousTransparents.Contains(obstacleRenderer))
-                    SetShaderParam(obstacleRenderer, true);
-                
-                currentTransparents.Add(obstacleRenderer);
+
+                if (!_previousTransparents.Contains(obstacle))
+                    SetTransparent(obstacle, true);
+
+                currentTransparents.Add(obstacle);
             }
 
             return currentTransparents;
         }
 
-        private void SetOtherPreviousOpaque(HashSet<Renderer> currentTransparents)
+        private void SetOtherPreviousOpaque(HashSet<TransparentObstacle> currentTransparents)
         {
-            foreach (Renderer previousTransparent in _previousTransparents)
+            foreach (TransparentObstacle previousTransparent in _previousTransparents)
             {
                 if (currentTransparents.Contains(previousTransparent))
                     continue;
-                
-                SetShaderParam(previousTransparent, false);
+
+                SetTransparent(previousTransparent, false);
             }
 
             _previousTransparents = currentTransparents;
@@ -70,47 +70,33 @@ namespace Services
 
         private void SetAllPreviousOpaque()
         {
-            foreach (Renderer obstacleRenderer in _previousTransparents) 
-                SetShaderParam(obstacleRenderer, false);
-            
+            foreach (TransparentObstacle obstacleRenderer in _previousTransparents)
+                SetTransparent(obstacleRenderer, false);
+
             _previousTransparents.Clear();
         }
 
         private int RaycastFromCameraNonAlloc(Camera mainCamera, GameObject character)
         {
             Vector3 cameraPosition = mainCamera.transform.position;
-            Vector3 direction = (character.transform.position - cameraPosition).normalized;
-            return Physics.RaycastNonAlloc(
-                origin: cameraPosition,
-                direction,
+            Vector3 characterPosition = character.transform.position;
+
+            Vector3 boxCenter = Vector3.Lerp(cameraPosition, characterPosition, 0.5f) + _offset;
+            Quaternion boxOrientation = Quaternion.LookRotation(cameraPosition - characterPosition, Vector3.up);
+            
+            return Physics.OverlapBoxNonAlloc(
+                boxCenter,
+                _boxHalfSize,
                 _currentHits,
-                maxDistance: 10f,
-                layerMask: _obstacleLayer);
+                orientation: boxOrientation,
+                _obstacleLayer
+                );
         }
 
         private static bool IsCameraOrPlayerDisabled(Camera mainCamera, GameObject character)
             => mainCamera == null || character == null || !character.activeSelf;
 
-        private static void SetShaderParam(Renderer obstacleRenderer, bool isTransparent)
-            => obstacleRenderer.material.SetFloat(_shaderParam, isTransparent ? 1.0f : 0.0f);
-    }
-
-    public class TransparentObstacle : MonoBehaviour
-    { 
-        [SerializeField] private Material _mainMaterial;
-        [SerializeField] private Material _transparentMaterial;
-
-        private MeshRenderer[] _renderers;
-        
-
-        public void SetTransparent(bool isTransparent)
-        {
-            if (_renderers == null)
-                _renderers = GetComponentsInChildren<MeshRenderer>(includeInactive: true);
-
-            foreach (MeshRenderer render in _renderers)
-            {
-            }
-        }
+        private static void SetTransparent(TransparentObstacle obstacle, bool isTransparent)
+            => obstacle.SetTransparent(isTransparent);
     }
 }

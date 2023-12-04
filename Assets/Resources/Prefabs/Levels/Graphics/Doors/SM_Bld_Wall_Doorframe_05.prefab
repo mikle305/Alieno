@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 33534115162757688}
   - component: {fileID: 23908939371226508}
   - component: {fileID: -6797415788687188935}
+  - component: {fileID: 5736100555081921041}
   m_Layer: 6
   m_Name: SM_Bld_Wall_Doorframe_05
   m_TagString: Untagged
@@ -190,6 +191,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 5, z: 1.241095}
   m_Center: {x: -2.5, y: 1.5, z: 0}
+--- !u!114 &5736100555081921041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447055634158578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7795cea2079a4eaea5f48d97b1ea86fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMaterial: {fileID: 2100000, guid: 6291cb3dc157bfb4080bf7f707dea11b, type: 2}
+  _transparentMaterial: {fileID: 2100000, guid: a84a97a027c915d4aa2ff266c3ab3177, type: 2}
 --- !u!1 &1462296875346700
 GameObject:
   m_ObjectHideFlags: 0

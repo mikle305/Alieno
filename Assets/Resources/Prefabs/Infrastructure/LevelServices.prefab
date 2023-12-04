@@ -333,6 +333,8 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  _boxHalfSize: {x: 4, y: 0.5, z: 4}
+  _offset: {x: 0, y: -1, z: 0}
 --- !u!1 &8431818924438483855
 GameObject:
   m_ObjectHideFlags: 0
