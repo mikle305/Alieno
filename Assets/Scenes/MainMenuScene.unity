@@ -578,10 +578,6 @@ PrefabInstance:
       propertyPath: _cameraLookAt
       value: 
       objectReference: {fileID: 1886762198}
-    - target: {fileID: 2065858389810981495, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
-      propertyPath: _cameraRotateSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2229109876865749012, guid: 6059e12d2f6884b4e9f236f69c755177, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
