@@ -1924,11 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraPath:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _cameraPath: {fileID: 0}
   _canvasGroup: {fileID: 8505126340493557733}
   _uiFadeDuration: 0.5
   _cameraMoveDuration: 2.5
