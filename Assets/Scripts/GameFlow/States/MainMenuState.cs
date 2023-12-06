@@ -15,7 +15,7 @@ namespace GameFlow.States
         private readonly MusicService _musicService;
         private readonly StaticDataService _staticDataService;
         private readonly SaveService _saveService;
-        private readonly MessageNotifier _messageNotifier;
+        private readonly NotificationService _notificationService;
 
 
         public MainMenuState(GameStateMachine context)
@@ -26,7 +26,7 @@ namespace GameFlow.States
             _musicService = MusicService.Instance;
             _staticDataService = StaticDataService.Instance;
             _saveService = SaveService.Instance;
-            _messageNotifier = MessageNotifier.Instance;
+            _notificationService = NotificationService.Instance;
         }
 
         public override void Enter()

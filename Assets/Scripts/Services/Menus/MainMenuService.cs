@@ -11,7 +11,7 @@ namespace Services
     {
         private StaticDataService _staticDataService;
         private SaveService _saveService;
-        private MessageNotifier _messageNotifier;
+        private NotificationService _notificationService;
 
         public event Action StartGameInvoked;
         public event Action<PlayerData> ProgressReceived;
@@ -22,7 +22,7 @@ namespace Services
         {
             _staticDataService = StaticDataService.Instance;
             _saveService = SaveService.Instance;
-            _messageNotifier = MessageNotifier.Instance;
+            _notificationService = NotificationService.Instance;
         }
 
         private void Update()
@@ -49,6 +49,6 @@ namespace Services
             => _staticDataService.GetPrefabsConfig().Levels.Length < _saveService.Progress.PlayerData.Level;
         
         private void ShowLastLevelPopup()
-            => _messageNotifier.NotifyMessage(MessageId.NoLevelsMore);
+            => _notificationService.NotifyMessage(MessageId.NoLevelsMore);
     }
 }
