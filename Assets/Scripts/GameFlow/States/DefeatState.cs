@@ -1,8 +1,4 @@
-﻿using System;
-using Additional.Constants;
-using GameFlow.Context;
-using GamePlay.Abilities;
-using SaveData;
+﻿using GameFlow.Context;
 using Services;
 using Services.Save;
 
@@ -26,7 +22,7 @@ namespace GameFlow.States
 
         public override void Enter()
         {
-            ResetLevelProgress();
+            ResetRoomsProgress();
             SubscribeToMainMenu();
             ClearLevelObjects();
         }
@@ -34,14 +30,9 @@ namespace GameFlow.States
         public override void Exit() 
             => _endGameMenuService.ToMainMenuInvoked -= EnterMainMenu;
 
-        private void ResetLevelProgress()
+        private void ResetRoomsProgress()
         {
-            PlayerData playerProgress = _saveService.Progress.PlayerData;
-            playerProgress.AbilitySelected = true;
-            playerProgress.GeneratedAbilities = Array.Empty<AbilityId>();
-            playerProgress.CurrentAbilities = DefaultPlayerProgress.GetAbilities();
-            playerProgress.CurrentHealth = DefaultPlayerProgress.Health;
-            playerProgress.Room = DefaultPlayerProgress.Room;
+            _saveService.ResetRoomsProgress();
             _saveService.Save();
         }
 

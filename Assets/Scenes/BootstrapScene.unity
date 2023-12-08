@@ -560,7 +560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5344294698251853139, guid: 4f96512cb6207284283905ef35f311c7, type: 3}
       propertyPath: m_Name
-      value: ErrorPopupCanvas
+      value: NotificationCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7885997390994119840, guid: 4f96512cb6207284283905ef35f311c7, type: 3}
       propertyPath: m_Camera

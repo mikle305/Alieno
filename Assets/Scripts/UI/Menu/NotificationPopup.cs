@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Additional.Game;
 using Services.Notifications;
 using TMPro;
@@ -12,14 +13,14 @@ namespace UI.Menu
     {
         [SerializeField] private Window _popupWindow;
         [SerializeField] private TextMeshProUGUI _text;
-        [SerializeField] private GameObject _invisibleBackground;
         [SerializeField] private Button _confirmButton;
 
         private Dictionary<ErrorId, string> _internalErrors;
         private Dictionary<MessageId, string> _internalMessages;
         private NotificationService _notificationService;
+        private Action _actionOnConfirm;
 
-        
+
         private void Start()
         {
             InitNotificationsCollections();
@@ -34,44 +35,46 @@ namespace UI.Menu
         private void BindEvents()
         {
             _notificationService = NotificationService.Instance;
-            _notificationService.MessageReceived += ShowPopup;
-            _notificationService.InternalErrorReceived += ShowPopup;
-            _notificationService.ExternalErrorReceived += ShowPopup;
+            _notificationService.MessageReceived += ShowMessage;
+            _notificationService.InternalErrorReceived += ShowError;
+            _notificationService.ExternalErrorReceived += ShowError;
             _confirmButton.onClick.AddListener(OnConfirmButtonClicked);
         }
 
         private void UnbindEvents()
         {
-            _notificationService.MessageReceived -= ShowPopup;
-            _notificationService.InternalErrorReceived -= ShowPopup;
-            _notificationService.ExternalErrorReceived -= ShowPopup;
+            _notificationService.MessageReceived -= ShowMessage;
+            _notificationService.InternalErrorReceived -= ShowError;
+            _notificationService.ExternalErrorReceived -= ShowError;
             _confirmButton.onClick.RemoveListener(OnConfirmButtonClicked);
         }
 
-        private void ShowPopup(MessageId messageId)
-            => ShowPopup(_internalMessages[messageId]);
+        private void ShowMessage(MessageId messageId, Action onConfirm)
+            => ShowPopup(_internalMessages[messageId], onConfirm);
 
-        private void ShowPopup(ErrorId errorId)
-            => ShowPopup(_internalErrors[errorId]);
+        private void ShowError(ErrorId errorId, Action onConfirm)
+            => ShowPopup(_internalErrors[errorId], onConfirm);
 
-        private void ShowPopup(string message)
+        private void ShowError(string error, Action onConfirm)
+            => ShowPopup(error, onConfirm);
+
+        private void ShowPopup(string message, Action onConfirm)
         {
+            _actionOnConfirm = onConfirm;
             _text.text = message;
-            _invisibleBackground.SetActive(true);
             _popupWindow.Toggle(ToggleMode.Open);
         }
 
         private void HidePopup()
         {
+            _actionOnConfirm = null;
             _text.text = string.Empty;
-            _invisibleBackground.SetActive(false);
-            _popupWindow.Toggle(ToggleMode.Close);
         }
 
         private void OnConfirmButtonClicked()
         {
+            _actionOnConfirm?.Invoke();
             HidePopup();
-            _notificationService.InvokeConfirm();
         }
 
         private void InitNotificationsCollections()
@@ -90,6 +93,7 @@ namespace UI.Menu
             {
                 { MessageId.PasswordResetRequested, "Password reset link was sent on your email" },
                 { MessageId.NoLevelsMore, "No levels more yet!\nThanks for playing!" },
+                { MessageId.ProgressReset, "Are you sure you want to reset your progress?" },
             };
         }
     }

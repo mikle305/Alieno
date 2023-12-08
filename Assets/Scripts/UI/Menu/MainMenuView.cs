@@ -4,7 +4,7 @@ using PathCreation;
 using Services;
 using UnityEngine;
 
-namespace UI.GamePlay
+namespace UI.Menu
 {
     public class MainMenuView : MonoBehaviour
     {

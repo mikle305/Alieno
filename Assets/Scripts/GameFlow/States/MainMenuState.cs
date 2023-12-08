@@ -1,8 +1,6 @@
 ﻿using Additional.Constants;
 using GameFlow.Context;
 using Services;
-using Services.Notifications;
-using Services.Save;
 using StaticData.Music;
 
 namespace GameFlow.States
@@ -13,9 +11,6 @@ namespace GameFlow.States
         private readonly SceneLoader _sceneLoader;
         private readonly MainMenuService _menuService;
         private readonly MusicService _musicService;
-        private readonly StaticDataService _staticDataService;
-        private readonly SaveService _saveService;
-        private readonly NotificationService _notificationService;
 
 
         public MainMenuState(GameStateMachine context)
@@ -24,9 +19,6 @@ namespace GameFlow.States
             _sceneLoader = SceneLoader.Instance;
             _menuService = MainMenuService.Instance;
             _musicService = MusicService.Instance;
-            _staticDataService = StaticDataService.Instance;
-            _saveService = SaveService.Instance;
-            _notificationService = NotificationService.Instance;
         }
 
         public override void Enter()
@@ -36,18 +28,14 @@ namespace GameFlow.States
         
         private void OnMainMenuLoaded()
         {
-            _menuService.StartGameInvoked += EnterSceneLoading;
-            DisplayLevelProgress();
+            _menuService.GameStarted += EnterSceneLoading;
             PlayMenuMusic();
         }
 
         public override void Exit()
         {
-            _menuService.StartGameInvoked -= EnterSceneLoading;
+            _menuService.GameStarted -= EnterSceneLoading;
         }
-
-        private void DisplayLevelProgress()
-            => _menuService.DisplayProgress(_saveService.Progress.PlayerData);
 
         private void PlayMenuMusic() 
             => _musicService.Play(MusicId.MainMenu1);

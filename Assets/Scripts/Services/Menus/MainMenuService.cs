@@ -1,7 +1,6 @@
 ﻿using System;
 using Additional.Constants;
 using Additional.Game;
-using SaveData;
 using Services.Notifications;
 using Services.Save;
 
@@ -13,8 +12,7 @@ namespace Services
         private SaveService _saveService;
         private NotificationService _notificationService;
 
-        public event Action StartGameInvoked;
-        public event Action<PlayerData> ProgressReceived;
+        public event Action GameStarted;
         public event Action PlayClicked;
 
 
@@ -40,10 +38,7 @@ namespace Services
         }
         
         public void StartGame()
-            => StartGameInvoked?.Invoke();
-
-        public void DisplayProgress(PlayerData playerProgress)
-            => ProgressReceived?.Invoke(playerProgress);
+            => GameStarted?.Invoke();
         
         private bool IsLastLevel() 
             => _staticDataService.GetPrefabsConfig().Levels.Length < _saveService.Progress.PlayerData.Level;

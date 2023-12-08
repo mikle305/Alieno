@@ -5,6 +5,8 @@ namespace UI.Windows
 {
     public abstract class Window : MonoBehaviour
     {
+        [SerializeField] private GameObject _background;
+        
         private bool _isShown;
         
 
@@ -42,12 +44,16 @@ namespace UI.Windows
         {
             Show();
             _isShown = true;
+            if (_background != null)
+                _background.SetActive(true);
         }
         
         private void OnHide()
         {
             Hide();
             _isShown = false;
+            if (_background != null)
+                _background.SetActive(false);
         }
     }
 }

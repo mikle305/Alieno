@@ -2,7 +2,7 @@
 using UI.Windows;
 using UnityEngine;
 
-namespace UI.GamePlay
+namespace UI.Menu
 {
     public class DefeatMenuView : MonoBehaviour
     {

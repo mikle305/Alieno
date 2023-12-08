@@ -4,5 +4,6 @@
     {
         PasswordResetRequested,
         NoLevelsMore,
+        ProgressReset,
     }
 }

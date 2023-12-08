@@ -5,22 +5,18 @@ namespace Services.Notifications
 {
     public class NotificationService : MonoSingleton<NotificationService>
     {
-        public event Action<ErrorId> InternalErrorReceived;
-        public event Action<MessageId> MessageReceived;
-        public event Action<string> ExternalErrorReceived;
-        public event Action NotificationConfirmed;
+        public event Action<ErrorId, Action> InternalErrorReceived;
+        public event Action<MessageId, Action> MessageReceived;
+        public event Action<string, Action> ExternalErrorReceived;
         
 
-        public void NotifyMessage(MessageId messageId) 
-            => MessageReceived?.Invoke(messageId);
+        public void NotifyMessage(MessageId messageId, Action onConfirm = null) 
+            => MessageReceived?.Invoke(messageId, onConfirm);
 
-        public void NotifyError(ErrorId errorId) 
-            => InternalErrorReceived?.Invoke(errorId);
+        public void NotifyError(ErrorId errorId, Action onConfirm = null)
+            => InternalErrorReceived?.Invoke(errorId, onConfirm);
 
-        public void NotifyError(string errorMessage)
-            => ExternalErrorReceived?.Invoke(errorMessage);
-
-        public void InvokeConfirm()
-            => NotificationConfirmed?.Invoke();
+        public void NotifyError(string errorMessage, Action onConfirm = null)
+            => ExternalErrorReceived?.Invoke(errorMessage, onConfirm);
     }
 }

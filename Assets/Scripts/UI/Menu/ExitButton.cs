@@ -7,6 +7,7 @@ namespace UI.Menu
     {
         [SerializeField] private Button _button;
 
+        
         private void Start()
         {
             _button.onClick.AddListener(ExitApplication);
