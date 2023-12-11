@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Additional.Game;
+using Cysharp.Threading.Tasks;
 using UI.Loading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,20 +25,20 @@ namespace Services
                 return;
             }
             
-            _loadingCurtain.Enable(onCurtainShown: () => LoadScene(nextScene, onLoaded));
+            _loadingCurtain.Show(onCurtainShown: LoadScene);
+            return;
+
+            
+            void LoadScene()
+                => LoadSceneAsync(nextScene, onLoaded).Forget();
         }
 
-        private void LoadScene(string scene, Action onLoaded) 
-            => StartCoroutine(LoadingCoroutine(scene, onLoaded));
-
-        private IEnumerator LoadingCoroutine(string scene, Action onLoaded)
+        private async UniTask LoadSceneAsync(string scene, Action onLoaded)
         {
-            AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(scene);
-
-            while (!sceneLoading.isDone)
-                yield return null;
+            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(scene);
+            await loadingOperation;
             
-            _loadingCurtain.Disable();
+            _loadingCurtain.Hide();
             onLoaded?.Invoke();
         }
     }

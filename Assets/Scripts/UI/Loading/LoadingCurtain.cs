@@ -1,75 +1,74 @@
 ﻿using System;
-using System.Collections;
+using System.Threading;
 using Additional.Game;
-using ScreenTransitions;
+using Cysharp.Threading.Tasks;
+using TransitionsPlus;
 using UnityEngine;
 
 namespace UI.Loading
 {
     public class LoadingCurtain : MonoSingleton<LoadingCurtain>
     {
-        [SerializeField] private TransitionScreen _transitionScreen;
-        [SerializeField] private LoadingText _loadingText;
-        [SerializeField] private LoadingCircle _loadingCircle;
-        [SerializeField] private float _showingDuration;
-
-        private bool _transitionInProcess;
-        private bool _transitionAlreadyShown = true;
+        [SerializeField] private TransitionAnimator _transitionAnimator;
         
-        
-        public void Enable(Action onCurtainShown = null)
-            => StartCoroutine(LoadingCoroutine(true, onCurtainShown));
+        private TransitionAnimator _currentTransition;
+        private CancellationTokenSource _tokenSource;
 
-        public void Disable(Action onTransitionEnded = null) 
-            => StartCoroutine(LoadingCoroutine(false, onTransitionEnded));
 
-        private IEnumerator LoadingCoroutine(bool isActive, Action onTransitionEnded)
+        public void Show(Action onCurtainShown = null)
         {
-            yield return new WaitUntil(() => _transitionInProcess == false);
-            SetLoadingAnims(isActive, _showingDuration);
-            StartTransition(isActive, onTransitionEnded);
+            _tokenSource?.Cancel();
+            _tokenSource = new CancellationTokenSource();
+            ShowAsync(onCurtainShown, _tokenSource.Token).Forget();
         }
 
-        private void StartTransition(bool isActive, Action onTransitionEnded)
+        public void Hide(Action onHidden = null)
         {
-            TransitionOperation transitionOperation;
-            if (isActive)
+            _tokenSource?.Cancel();
+            _tokenSource = new CancellationTokenSource();
+            HideAsync(onHidden, _tokenSource.Token).Forget();
+        }
+
+        private async UniTask ShowAsync(Action onShown, CancellationToken token)
+        {
+            float duration = _transitionAnimator.profile.duration;
+            float timer = _transitionAnimator.progress * duration;
+            
+            await UniTask.WaitUntil(() =>
             {
-                if (_transitionAlreadyShown)
+                if (timer >= duration)
                 {
-                    onTransitionEnded?.Invoke();
-                    return;
+                    _transitionAnimator.SetProgress(1);
+                    return true;
                 }
                 
-                transitionOperation = _transitionScreen.Enter();
-                transitionOperation.OnCompleted += () => _transitionAlreadyShown = true;
-            }
-            else
-            {
-                transitionOperation = _transitionScreen.Exit();
-                _transitionAlreadyShown = false;
-            }
-
-            _transitionInProcess = true;
-            transitionOperation.OnCompleted += () =>
-            {
-                _transitionInProcess = false;
-                onTransitionEnded?.Invoke();
-            };
+                _transitionAnimator.SetProgress(timer/duration);
+                timer += Time.deltaTime;
+                return false;
+            }, cancellationToken: token);
+            
+            onShown?.Invoke();
         }
 
-        private void SetLoadingAnims(bool isActive, float duration)
+        private async UniTask HideAsync(Action onHidden, CancellationToken token)
         {
-            if (isActive)
+            float duration = _transitionAnimator.profile.duration;
+            float timer = _transitionAnimator.progress * duration;
+            
+            await UniTask.WaitUntil(() =>
             {
-                _loadingCircle.Enable(duration);
-                _loadingText.Enable(duration);
-            }
-            else
-            {
-                _loadingCircle.Disable(duration);
-                _loadingText.Disable(duration);
-            }
+                if (timer < 0)
+                {
+                    _transitionAnimator.SetProgress(0);
+                    return true;
+                }
+                
+                _transitionAnimator.SetProgress(timer/duration);
+                timer -= Time.deltaTime;
+                return false;
+            }, cancellationToken: token);
+            
+            onHidden?.Invoke();
         }
     }
 }
