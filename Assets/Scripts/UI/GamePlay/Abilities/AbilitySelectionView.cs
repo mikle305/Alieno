@@ -118,9 +118,9 @@ namespace UI.GamePlay
 
         private Tween FadeAbilityIcon(AbilityButton abilityButton, bool show)
         {
-            float targetFade = show ? 0.0f : 1.0f;
-            var iconDissolve = abilityButton.Icon.GetComponent<UIDissolve>();
-            return DOTween.To(() => iconDissolve.effectFactor, x => iconDissolve.effectFactor = x, targetFade,
+            float targetFade = show ? 1.0f : 0.0f;
+            var iconTransition = abilityButton.Icon.GetComponent<UITransitionEffect>();
+            return DOTween.To(() => iconTransition.effectFactor, x => iconTransition.effectFactor = x, targetFade,
                 _buttonAnimTime);
         }
 

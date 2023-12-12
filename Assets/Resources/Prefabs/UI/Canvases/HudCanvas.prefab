@@ -431,14 +431,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922b805bc01c243e5853d9cbb544118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectMode: 2
+  m_EffectMode: 3
   m_EffectFactor: 0
-  m_TransitionTexture: {fileID: 2800000, guid: 3e04c247fb2604af186173fce0bc62de, type: 3}
+  m_TransitionTexture: {fileID: 2800000, guid: 327b5b5a98f18c2498b98cc71cf19bbf, type: 3}
   m_EffectArea: 0
-  m_KeepAspectRatio: 0
-  m_DissolveWidth: 0.88
-  m_DissolveSoftness: 0.5
-  m_DissolveColor: {r: 0, g: 0.25, b: 1, a: 1}
+  m_KeepAspectRatio: 1
+  m_DissolveWidth: 0.42
+  m_DissolveSoftness: 1
+  m_DissolveColor: {r: 0, g: 0.88411784, b: 1, a: 1}
   m_PassRayOnHidden: 0
   m_Player:
     play: 0
@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 6384853767005790042}
   - component: {fileID: 2430876143966173683}
   - component: {fileID: 4249496389216238969}
-  - component: {fileID: 4706835890245828405}
+  - component: {fileID: 2653508953698230225}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4706835890245828405
+--- !u!114 &2653508953698230225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1188,17 +1188,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2837431092903431656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce76b7a490bd74f34a2f2752641aea24, type: 3}
+  m_Script: {fileID: 11500000, guid: 922b805bc01c243e5853d9cbb544118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectFactor: 1
-  m_Width: 0.559
-  m_Softness: 0.547
-  m_Color: {r: 0, g: 0.25, b: 1, a: 1}
-  m_ColorMode: 3
-  m_TransitionTexture: {fileID: 2800000, guid: 3e04c247fb2604af186173fce0bc62de, type: 3}
+  m_EffectMode: 3
+  m_EffectFactor: 0
+  m_TransitionTexture: {fileID: 2800000, guid: 7b459199fa4a21a4dbb8800abb732c9c, type: 3}
   m_EffectArea: 0
-  m_KeepAspectRatio: 0
+  m_KeepAspectRatio: 1
+  m_DissolveWidth: 0.3
+  m_DissolveSoftness: 0.88
+  m_DissolveColor: {r: 0, g: 0.0027356148, b: 1, a: 1}
+  m_PassRayOnHidden: 0
   m_Player:
     play: 0
     initialPlayDelay: 0
@@ -1206,7 +1207,6 @@ MonoBehaviour:
     loop: 0
     loopDelay: 0
     updateMode: 0
-  m_Reverse: 0
 --- !u!1 &3015402867250299879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 8061076269830588189}
   - component: {fileID: 6956674511199529232}
   - component: {fileID: 1450764043282323343}
-  - component: {fileID: 2240500990477767294}
+  - component: {fileID: 1889403481965690415}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -1800,7 +1800,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2240500990477767294
+--- !u!114 &1889403481965690415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1809,17 +1809,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4915250798728162912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce76b7a490bd74f34a2f2752641aea24, type: 3}
+  m_Script: {fileID: 11500000, guid: 922b805bc01c243e5853d9cbb544118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectFactor: 1
-  m_Width: 0.559
-  m_Softness: 0.547
-  m_Color: {r: 0, g: 0.25, b: 1, a: 1}
-  m_ColorMode: 3
-  m_TransitionTexture: {fileID: 2800000, guid: 3e04c247fb2604af186173fce0bc62de, type: 3}
+  m_EffectMode: 3
+  m_EffectFactor: 0
+  m_TransitionTexture: {fileID: 2800000, guid: 7b459199fa4a21a4dbb8800abb732c9c, type: 3}
   m_EffectArea: 0
-  m_KeepAspectRatio: 0
+  m_KeepAspectRatio: 1
+  m_DissolveWidth: 0.3
+  m_DissolveSoftness: 0.88
+  m_DissolveColor: {r: 0, g: 0.0027356148, b: 1, a: 1}
+  m_PassRayOnHidden: 0
   m_Player:
     play: 0
     initialPlayDelay: 0
@@ -1827,7 +1828,6 @@ MonoBehaviour:
     loop: 0
     loopDelay: 0
     updateMode: 0
-  m_Reverse: 0
 --- !u!1 &5591387986805796080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,7 +1840,7 @@ GameObject:
   - component: {fileID: 7195125812364578281}
   - component: {fileID: 5136954315144738067}
   - component: {fileID: 3401046917391704428}
-  - component: {fileID: 5280556175497387466}
+  - component: {fileID: 4564746327059439163}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -1949,7 +1949,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5280556175497387466
+--- !u!114 &4564746327059439163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1958,17 +1958,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5591387986805796080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce76b7a490bd74f34a2f2752641aea24, type: 3}
+  m_Script: {fileID: 11500000, guid: 922b805bc01c243e5853d9cbb544118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectFactor: 1
-  m_Width: 0.559
-  m_Softness: 0.547
-  m_Color: {r: 0, g: 0.25, b: 1, a: 1}
-  m_ColorMode: 3
-  m_TransitionTexture: {fileID: 2800000, guid: 3e04c247fb2604af186173fce0bc62de, type: 3}
+  m_EffectMode: 3
+  m_EffectFactor: 0
+  m_TransitionTexture: {fileID: 2800000, guid: 7b459199fa4a21a4dbb8800abb732c9c, type: 3}
   m_EffectArea: 0
-  m_KeepAspectRatio: 0
+  m_KeepAspectRatio: 1
+  m_DissolveWidth: 0.3
+  m_DissolveSoftness: 0.88
+  m_DissolveColor: {r: 0, g: 0.0027356148, b: 1, a: 1}
+  m_PassRayOnHidden: 0
   m_Player:
     play: 0
     initialPlayDelay: 0
@@ -1976,7 +1977,6 @@ MonoBehaviour:
     loop: 0
     loopDelay: 0
     updateMode: 0
-  m_Reverse: 0
 --- !u!1 &6880780631645688466
 GameObject:
   m_ObjectHideFlags: 0
