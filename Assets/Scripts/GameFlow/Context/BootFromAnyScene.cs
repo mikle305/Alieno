@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 
+using System.Linq;
 using Additional.Constants;
 using UnityEditor;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,12 @@ namespace GameFlow.Context
                 return;
 
             EditorApplication.playModeStateChanged -= Run;
-            if (SceneManager.GetActiveScene().name != SceneNames.Boot) 
+            Scene currentScene = SceneManager.GetActiveScene();
+            
+            if (currentScene.name == SceneNames.Boot)
+                return;
+            
+            if (EditorBuildSettings.scenes.Any(s => s.path == currentScene.path))
                 SceneManager.LoadScene(SceneNames.Boot);
         }
     }

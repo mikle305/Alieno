@@ -11,9 +11,7 @@ namespace GamePlay.Player
         public void Move(Vector2 direction) 
             => _body.velocity = new Vector3(x: direction.x * _runSpeed, y: 0, z: direction.y * _runSpeed);
 
-        public void Stop()
-        {
-            _body.velocity = Vector3.zero;
-        }
+        public void Stop() 
+            => _body.velocity = Vector3.zero;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Additional.Extensions
 {
@@ -13,6 +14,12 @@ namespace Additional.Extensions
                 action.Invoke(item);
             
             return convertedSource;
+        }
+        
+        public static void DebugForEach<TItem>(this IEnumerable<TItem> source, Func<TItem, object> action)
+        {
+            foreach (TItem item in source)
+                Debug.Log(action.Invoke(item));
         }
     }
 }
