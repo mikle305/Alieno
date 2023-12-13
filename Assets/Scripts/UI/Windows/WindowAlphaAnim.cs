@@ -15,6 +15,8 @@ namespace UI.Windows
 
         protected override void Show(Action onStart = null, Action onDone = null)
         {
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
             _tween?.Kill();
             _tween = _canvasGroup
                 .DOFade(_targetAlpha, _duration)
@@ -24,6 +26,8 @@ namespace UI.Windows
 
         protected override void Hide(Action onStart = null, Action onDone = null)
         {
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
             _tween?.Kill();
             _tween = _canvasGroup
                 .DOFade(0, _duration)

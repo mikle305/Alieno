@@ -16,48 +16,68 @@ MonoBehaviour:
   - <Id>k__BackingField: 0
     <Icon>k__BackingField: {fileID: 21300000, guid: ce758806ddd4110429617c11ee02675b, type: 3}
     <Name>k__BackingField: Forward Shot
+    <Description>k__BackingField: Adds a bullet that fires forward
   - <Id>k__BackingField: 1
     <Icon>k__BackingField: {fileID: 21300000, guid: a47e8bd146e381a4d9f1d4a5705567bf, type: 3}
     <Name>k__BackingField: Diagonal Shot
+    <Description>k__BackingField: Adds bullets that fire diagonally
   - <Id>k__BackingField: 2
     <Icon>k__BackingField: {fileID: 21300000, guid: 50e1c6b0d5680a54eac5a0fceb5e5fb4, type: 3}
     <Name>k__BackingField: Side Shot
+    <Description>k__BackingField: Adds bullets that fire sideways
   - <Id>k__BackingField: 3
     <Icon>k__BackingField: {fileID: 21300000, guid: 7f8824c67d2e67f4081cf44a4f94d940, type: 3}
     <Name>k__BackingField: Back Shot
+    <Description>k__BackingField: Adds a bullet that fires backwards
   - <Id>k__BackingField: 4
     <Icon>k__BackingField: {fileID: 21300000, guid: 6c50e2e279951ef4c8d548b32dc822da, type: 3}
     <Name>k__BackingField: Multishot
+    <Description>k__BackingField: Adds an extra bullet for all shots
   - <Id>k__BackingField: 5
     <Icon>k__BackingField: {fileID: 21300000, guid: 3c53931b6d7797547a4628874c7fbd56, type: 3}
     <Name>k__BackingField: Health Boost
+    <Description>k__BackingField: Increases maximum and current health
   - <Id>k__BackingField: 6
     <Icon>k__BackingField: {fileID: 21300000, guid: 6889fb0484875984ba90a8da478ea0fc, type: 3}
     <Name>k__BackingField: Crit Boost
+    <Description>k__BackingField: Increases crit chance and multiplier
   - <Id>k__BackingField: 7
     <Icon>k__BackingField: {fileID: 21300000, guid: 7ee749875c329fc44b9818e55bd2accf, type: 3}
     <Name>k__BackingField: Attack Damage
+    <Description>k__BackingField: Increases attack damage. Affects all damage-dependent
+      boosts
   - <Id>k__BackingField: 8
     <Icon>k__BackingField: {fileID: 21300000, guid: c8ccd239d012da94ca6678ae1213ec61, type: 3}
     <Name>k__BackingField: Attack Speed
+    <Description>k__BackingField: Increases attack speed
   - <Id>k__BackingField: 9
     <Icon>k__BackingField: {fileID: 21300000, guid: 53c8a47885fd9964bb98e3d83c029b79, type: 3}
     <Name>k__BackingField: Dash Boost
+    <Description>k__BackingField: Increases the movement speed of the dash, reduces
+      its cooldown
   - <Id>k__BackingField: 10
     <Icon>k__BackingField: {fileID: 21300000, guid: 4986f16cb6801e24ab1f84cc878a479b, type: 3}
     <Name>k__BackingField: Flame
+    <Description>k__BackingField: Adds a flame status applied to the shot enemy
   - <Id>k__BackingField: 11
     <Icon>k__BackingField: {fileID: 21300000, guid: b48760f97198c7c43896b62e04a3b678, type: 3}
     <Name>k__BackingField: Poison
+    <Description>k__BackingField: Adds a poison status applied to the shot enemy
   - <Id>k__BackingField: 13
     <Icon>k__BackingField: {fileID: 21300000, guid: d937eba68db665e4e9499fb83fdd0256, type: 3}
     <Name>k__BackingField: Ricochet
+    <Description>k__BackingField: Adds a ricochet from a shot enemy to another
   - <Id>k__BackingField: 14
     <Icon>k__BackingField: {fileID: 21300000, guid: 43651dcc8e960f84098d7ccb66358690, type: 3}
     <Name>k__BackingField: Bouncy Wall
+    <Description>k__BackingField: Adds a ricochet off the wall
   - <Id>k__BackingField: 15
     <Icon>k__BackingField: {fileID: 21300000, guid: 9ebbe4d076cf9da4ba57f92213aa69e6, type: 3}
     <Name>k__BackingField: Vampirism
+    <Description>k__BackingField: Adds health regeneration when hitting an enemy.
+      Depends on attack damage
   - <Id>k__BackingField: 16
     <Icon>k__BackingField: {fileID: 21300000, guid: b837358e66a4b67438d5e957c0e9be17, type: 3}
     <Name>k__BackingField: Health Absorption
+    <Description>k__BackingField: Adds health regeneration when an enemy dies. Depends
+      on maximum health

@@ -15,6 +15,7 @@ MonoBehaviour:
   <Character>k__BackingField: {fileID: 1398320186731392, guid: c38312671b1287f438871de666ae8f72, type: 3}
   <Hud>k__BackingField: {fileID: 4136456505576376216, guid: 987e7cbecfc0ce947a6714deb4ae8a0e, type: 3}
   <Marker>k__BackingField: {fileID: 8653516859488930249, guid: 91a52450e4de49c41b7a6ac50a5e1b26, type: 3}
+  <AbilityHelpElement>k__BackingField: {fileID: 3295833889760179123, guid: 724f4443f58640c48b5d586236f5bdfc, type: 3}
   <Levels>k__BackingField:
   - <Map>k__BackingField: {fileID: 3816179302152787258, guid: eca04ff4a64fb3f4f9e62fe42b082623, type: 3}
     <Rooms>k__BackingField:
