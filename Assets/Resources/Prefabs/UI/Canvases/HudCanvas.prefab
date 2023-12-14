@@ -1193,11 +1193,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectMode: 3
   m_EffectFactor: 0
-  m_TransitionTexture: {fileID: 2800000, guid: 7b459199fa4a21a4dbb8800abb732c9c, type: 3}
+  m_TransitionTexture: {fileID: 2800000, guid: 5710db297d4f6cb4aa6a46b718af07a1, type: 3}
   m_EffectArea: 0
   m_KeepAspectRatio: 1
-  m_DissolveWidth: 0.3
-  m_DissolveSoftness: 0.88
+  m_DissolveWidth: 0.6
+  m_DissolveSoftness: 1
   m_DissolveColor: {r: 0, g: 0.0027356148, b: 1, a: 1}
   m_PassRayOnHidden: 0
   m_Player:
@@ -1814,11 +1814,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectMode: 3
   m_EffectFactor: 0
-  m_TransitionTexture: {fileID: 2800000, guid: 7b459199fa4a21a4dbb8800abb732c9c, type: 3}
+  m_TransitionTexture: {fileID: 2800000, guid: 5710db297d4f6cb4aa6a46b718af07a1, type: 3}
   m_EffectArea: 0
   m_KeepAspectRatio: 1
-  m_DissolveWidth: 0.3
-  m_DissolveSoftness: 0.88
+  m_DissolveWidth: 0.6
+  m_DissolveSoftness: 1
   m_DissolveColor: {r: 0, g: 0.0027356148, b: 1, a: 1}
   m_PassRayOnHidden: 0
   m_Player:
@@ -1963,11 +1963,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectMode: 3
   m_EffectFactor: 0
-  m_TransitionTexture: {fileID: 2800000, guid: 7b459199fa4a21a4dbb8800abb732c9c, type: 3}
+  m_TransitionTexture: {fileID: 2800000, guid: 5710db297d4f6cb4aa6a46b718af07a1, type: 3}
   m_EffectArea: 0
   m_KeepAspectRatio: 1
-  m_DissolveWidth: 0.3
-  m_DissolveSoftness: 0.88
+  m_DissolveWidth: 0.6
+  m_DissolveSoftness: 1
   m_DissolveColor: {r: 0, g: 0.0027356148, b: 1, a: 1}
   m_PassRayOnHidden: 0
   m_Player:
