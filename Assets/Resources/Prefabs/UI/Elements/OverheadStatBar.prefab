@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6621635052187623350}
   - component: {fileID: 4087511167869181263}
   m_Layer: 8
-  m_Name: InWorldHpCanvas
+  m_Name: OverheadStatBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
