@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Additional.Game;
 using Cinemachine;
-using GamePlay.Other;
 using GamePlay.Other.Navigators;
 using StaticData.Prefabs;
 using UI.GamePlay;
@@ -21,7 +20,6 @@ namespace Services
         public RoomsMap RoomsMap { get; set; }
         public Room[] Rooms { get; set; }
         public Room CurrentRoom { get; set; }
-        public GameObject Marker { get; set; }
         public DirectionArrow DirectionArrow { get; set; }
         public List<Transform> AliveEnemies { get; set; }
 

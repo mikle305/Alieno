@@ -11,7 +11,6 @@ namespace StaticData.Prefabs
     {
         [field: SerializeField] public GameObject Character { get; private set; }
         [field: SerializeField] public Hud Hud { get; private set; }
-        [field: SerializeField] public GameObject Marker { get; private set; }
         [field: SerializeField] public AbilityHelpElement AbilityHelpElement { get; private set; }
         [field: SerializeField] public LevelEntry[] Levels { get; private set; }
         

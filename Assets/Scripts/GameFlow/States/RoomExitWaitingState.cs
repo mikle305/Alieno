@@ -49,7 +49,6 @@ namespace GameFlow.States
                 _lastPlayerDetector.PlayerEntered -= _enterNextState;
             
             _objectsProvider.Character.gameObject.SetActive(false);
-            _objectsProvider.Marker.gameObject.SetActive(false);
             _objectsProvider.Hud.gameObject.SetActive(false);
             _objectsProvider.DirectionArrow.gameObject.SetActive(false);
             UnityEngine.Object.Destroy(_objectsProvider.CurrentRoom.gameObject);

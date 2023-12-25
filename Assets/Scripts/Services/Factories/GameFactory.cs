@@ -21,12 +21,6 @@ namespace Services.Factories
             return Instantiate(characterPrefab);
         }
 
-        public GameObject CreateMarker()
-        {
-            GameObject markerPrefab = _staticDataService.GetPrefabsConfig().Marker;
-            return Instantiate(markerPrefab);
-        }
-
         public RoomsMap CreateRoomsMap(int level)
         {
             RoomsMap roomsMapPrefab = _staticDataService.GetPrefabsConfig().Levels[level - 1].Map;

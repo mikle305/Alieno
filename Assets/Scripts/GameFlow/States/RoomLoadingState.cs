@@ -107,7 +107,6 @@ namespace GameFlow.States
 
         private void ShowRoomDependentObjects()
         {
-            _objectsProvider.Marker.SetActive(true);
             _objectsProvider.Hud.gameObject.SetActive(true);
         }
 

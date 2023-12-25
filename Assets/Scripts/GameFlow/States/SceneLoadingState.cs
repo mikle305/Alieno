@@ -42,7 +42,6 @@ namespace GameFlow.States
             
             InitCharacter();
             InitDirectionArrow();
-            InitMarker();
             InitRoomsMap();
             InitRooms();
             
@@ -89,13 +88,6 @@ namespace GameFlow.States
                 rooms[i].gameObject.SetActive(false);
 
             _objectsProvider.Rooms = rooms;
-        }
-
-        private void InitMarker()
-        {
-            GameObject marker = _gameFactory.CreateMarker();
-            marker.SetActive(false);
-            _objectsProvider.Marker = marker;
         }
 
         private void SubscribeCharacterDeath(GameObject character)
