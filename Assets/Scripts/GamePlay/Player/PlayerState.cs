@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using System;
+using Services;
 using UnityEngine;
 
 namespace GamePlay.Player
@@ -6,13 +7,13 @@ namespace GamePlay.Player
     public class PlayerState : MonoBehaviour
     {
         [SerializeField] private PlayerMovement _movement;
+        [SerializeField] private PlayerRotation _rotation;
         [SerializeField] private PlayerAttacker _attacker;
         [SerializeField] private PlayerDash _dash;
         
         private InputService _inputService;
-        
-        private Vector2 _moveDirection;
-        private bool _isDashInvoked;
+        private bool _dashInvokedInput;
+        private Vector2 _moveDirectionInput;
 
 
         private void Start()
@@ -22,8 +23,8 @@ namespace GamePlay.Player
 
         private void Update()
         {
-            _moveDirection = _inputService.GetMoveDirection();
-            _isDashInvoked = _inputService.IsDashInvoked() && !_dash.OnCooldown;
+            _moveDirectionInput = _inputService.GetMoveDirection();
+            _dashInvokedInput = _inputService.IsDashInvoked() && !_dash.OnCooldown;
         }
 
         private void FixedUpdate()
@@ -32,21 +33,23 @@ namespace GamePlay.Player
                 return;
 
             _attacker.IsAutoAttacking = true;
-            if (_moveDirection == Vector2.zero)
+            
+            if (_moveDirectionInput == Vector2.zero)
             {
                 _movement.Stop();
                 return;
             }
             
-            if (_isDashInvoked)
+            if (_dashInvokedInput)
             {
                 _movement.Stop();
                 _attacker.IsAutoAttacking = false;
-                _dash.Dash(_moveDirection);
+                _dash.Dash(_moveDirectionInput);
                 return;
             }
 
-            _movement.Move(_moveDirection);
+            _movement.Move(_moveDirectionInput);
+            _rotation.Rotate(Time.fixedDeltaTime);
         }
 
         private void OnDisable()

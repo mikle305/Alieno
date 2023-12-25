@@ -1,39 +1,51 @@
+using Services;
 using UnityEngine;
 
 namespace GamePlay.Player
 {
     public class PlayerRotation : MonoBehaviour
     {
-        [SerializeField] private Camera _camera;
-        [SerializeField] private Transform _playerTransform;
-        [SerializeField] private float _turnSpeed = 0.5f;
-        
-        
-        private void Update() 
-            => UpdatePlayerDirection();
+        [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private float _turnSpeed = 360f;
 
-        private void UpdatePlayerDirection()
+        private RadarService _radarService;
+        private Transform _transform;
+
+
+        private void Start()
         {
-            float angle = GetAngle();
-            SetAngleSmoothly(angle);
+            _transform = transform;
+            _radarService = RadarService.Instance;
         }
 
-        private void SetAngleSmoothly(float angle)
+        public void Rotate(float deltaTime)
         {
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, -angle + 90, 0));
-            _playerTransform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
+            Transform target = _radarService.GetClosestFromPlayer();
+            if (target == null)
+                RotateToMovement(deltaTime);
+            else
+                RotateToTarget(target, deltaTime);
         }
 
-        private float GetAngle()
+        private void RotateToTarget(Transform target, float deltaTime)
         {
-            Vector3 mousePosition = Input.mousePosition;
-            Vector3 playerPosition = _camera.WorldToScreenPoint(_playerTransform.position);
+            Vector3 direction = target.position - _transform.position;
+            RotateToDirection(direction, deltaTime);
+        }
 
-            mousePosition.x -= playerPosition.x;
-            mousePosition.y -= playerPosition.y;
-            mousePosition.z = 5.23f; //The distance between the camera and object
+        private void RotateToMovement(float deltaTime)
+        {
+            Vector3 velocity = _rigidbody.velocity;
+            if (velocity == Vector3.zero)
+                return;
 
-            return Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
+            RotateToDirection(velocity, deltaTime);
+        }
+
+        private void RotateToDirection(Vector3 direction, float deltaTime)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, _turnSpeed * deltaTime);
         }
     }
 }

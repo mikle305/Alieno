@@ -41,7 +41,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398320186731392}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.020973306, y: -0, z: -0, w: 0.9997801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -53,7 +53,7 @@ Transform:
   - {fileID: 5980977657114423034}
   - {fileID: 4668016126000194695}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 2.404, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &5781377304457184436
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 2
 --- !u!136 &8221697688862398661
 CapsuleCollider:
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 5111841251721714029}
+  _rotation: {fileID: -8807447598934731001}
   _attacker: {fileID: 4333299743090805112}
   _dash: {fileID: 1239482046880393507}
 --- !u!114 &-8807447598934731001
@@ -234,10 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4816c749379f7cf4aa8897eba288927e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 4078725191484616}
-  _playerRigidBody: {fileID: 1105913242540431947}
+  _rigidbody: {fileID: 1105913242540431947}
   _turnSpeed: 360
-  _playerDash: {fileID: 1239482046880393507}
 --- !u!114 &8602244654995898822
 MonoBehaviour:
   m_ObjectHideFlags: 0
