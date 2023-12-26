@@ -22,13 +22,13 @@ namespace GameFlow.States
         private Room _currentRoom;
 
 
-        public RoomLoadingState(GameStateMachine context)
+        public RoomLoadingState(GameStateMachine context, MusicService musicService)
         {
             _context = context;
             _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
             _enemiesDeathObserver = EnemiesDeathObserver.Instance;
-            _musicService = MusicService.Instance;
+            _musicService = musicService;
         }
 
         public override void Enter()

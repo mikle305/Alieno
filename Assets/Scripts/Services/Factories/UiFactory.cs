@@ -1,27 +1,25 @@
-﻿using Additional.Game;
-using GamePlay.Other.Ids;
+﻿using GamePlay.Other.Ids;
 using Services.ObjectPool;
 using UI.GamePlay;
 using UnityEngine;
 
 namespace Services.Factories
 {
-    public class UiFactory : MonoSingleton<UiFactory>
+    public class UiFactory
     {
-        private ObjectPoolsProvider _objectPoolsProvider;
+        private ObjectPoolsProvider _poolsProvider;
 
-        
-        private void Start()
+
+        public UiFactory(ObjectPoolsProvider poolsProvider)
         {
-            _objectPoolsProvider = ObjectPoolsProvider.Instance;
+            _poolsProvider = poolsProvider;
         }
 
         public DamagePopupView CreateDamagePopup(Vector3 position)
         {
-            GameObject damagePopup = _objectPoolsProvider.TakeUiElement(UiElementId.DamagePopup);
+            GameObject damagePopup = _poolsProvider.TakeUiElement(UiElementId.DamagePopup);
             damagePopup.transform.position = position;
             damagePopup.transform.rotation = Quaternion.identity;
-            
             return damagePopup.GetComponent<DamagePopupView>();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Additional.Game;
+﻿using Additional.Constants;
+using Additional.Game;
 using SaveData;
 using Services.Save;
 using UnityEngine;
@@ -8,10 +9,6 @@ namespace Services
 {
     public class SettingsService : MonoSingleton<SettingsService>
     {
-        [SerializeField] private string _volumeMixerParam = "Volume";
-        [SerializeField] private string _sfxMixerParam = "SFX";
-        [SerializeField] private string _musicMixerParam = "Music";
-        
         private SaveService _saveService;
         private AudioMixer _audioMixer;
         
@@ -33,9 +30,9 @@ namespace Services
 
         private void ApplySettings()
         {
-            ApplyMixerGroup(_volumeMixerParam, Settings.Volume);
-            ApplyMixerGroup(_musicMixerParam, Settings.Music);
-            ApplyMixerGroup(_sfxMixerParam, Settings.Sfx);
+            ApplyMixerGroup(AudioConstants.VolumeMixerParam, Settings.Volume);
+            ApplyMixerGroup(AudioConstants.MusicMixerParam, Settings.Music);
+            ApplyMixerGroup(AudioConstants.SoundMixerParam, Settings.Sfx);
         }
         
         private void ApplyMixerGroup(string mixerParam, float value)

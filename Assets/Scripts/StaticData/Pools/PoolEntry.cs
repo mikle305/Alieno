@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Services.ObjectPool
+namespace StaticData.Pools
 {
     [Serializable]
     public class PoolEntry<TId>

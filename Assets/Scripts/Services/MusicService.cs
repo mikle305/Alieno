@@ -1,22 +1,21 @@
-using Additional.Game;
+using Additional.Constants;
 using DG.Tweening;
 using StaticData.Music;
 using UnityEngine;
 
 namespace Services
 {
-    public class MusicService : MonoSingleton<MusicService>
+    public class MusicService
     {
-        [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private float _transitionDuration = 0.5f;
-    
-        private MusicConfig _musicConfig;
+        private readonly MusicConfig _musicConfig;
+        private readonly AudioSource _audioSource;
         private Sequence _transitionSequence;
 
 
-        private void Start()
+        private MusicService(StaticDataService staticDataService, ObjectsProvider objectsProvider)
         {
-            _musicConfig = StaticDataService.Instance.GetMusicConfig();
+            _musicConfig = staticDataService.GetMusicConfig();
+            _audioSource = objectsProvider.MusicSource;
         }
 
         public void Play(MusicId musicId)
@@ -33,11 +32,11 @@ namespace Services
         }
 
         private Tween DisappearMusic() 
-            => _audioSource.DOFade(0, _transitionDuration);
+            => _audioSource.DOFade(0, AudioConstants.MusicTransitionDuration);
 
         private Tween AppearMusic(Music music) 
             => _audioSource
-                .DOFade(music.BasicVolume, _transitionDuration)
+                .DOFade(music.BasicVolume, AudioConstants.MusicTransitionDuration)
                 .OnStart(() =>
                 {
                     _audioSource.clip = music.Clip;

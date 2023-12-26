@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace Services.Factories
 {
-    public class ProjectileFactory : MonoSingleton<ProjectileFactory>
+    public class ProjectileFactory
     {
-        private ObjectPoolsProvider _poolsProvider;
+        private readonly ObjectPoolsProvider _poolsProvider;
 
 
-        private void Start()
+        private ProjectileFactory(ObjectPoolsProvider poolsProvider)
         {
-            _poolsProvider = ObjectPoolsProvider.Instance;
+            _poolsProvider = poolsProvider;
         }
 
         public ProjectileDamage Create(ProjectileAttackData attackData, Vector3 spawnPoint, Vector3 direction)

@@ -3,16 +3,16 @@ using Services.Save;
 
 namespace GameFlow.States
 {
-    public class ProgressLoadingState : State
+    public class BootState : State
     {
         private readonly GameStateMachine _context;
         private readonly SaveService _saveService;
 
 
-        public ProgressLoadingState(GameStateMachine context)
+        public BootState(GameStateMachine context, SaveService saveService)
         {
             _context = context;
-            _saveService = SaveService.Instance;
+            _saveService = saveService;
         }
 
         public override void Enter()

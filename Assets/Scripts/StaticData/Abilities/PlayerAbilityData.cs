@@ -2,7 +2,7 @@
 using GamePlay.Abilities;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Abilities
 {
     [Serializable]
     public class PlayerAbilityData

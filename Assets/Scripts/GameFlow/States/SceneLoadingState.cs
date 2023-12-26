@@ -1,11 +1,10 @@
 ﻿using Additional.Constants;
-using Cysharp.Threading.Tasks;
 using GameFlow.Context;
-using GamePlay.Other;
 using GamePlay.Other.Navigators;
 using GamePlay.UnitsComponents;
 using Services;
 using Services.Factories;
+using Services.ObjectPool;
 using Services.Save;
 using StaticData.Prefabs;
 using UnityEngine;
@@ -18,40 +17,34 @@ namespace GameFlow.States
         private readonly SceneLoader _sceneLoader;
         private readonly ObjectsProvider _objectsProvider;
         private readonly SaveService _saveService;
-        
-        private GameFactory _gameFactory;
+        private readonly ObjectPoolsProvider _poolsProvider;
+        private readonly GameFactory _gameFactory;
 
 
-        public SceneLoadingState(GameStateMachine context)
+        public SceneLoadingState(GameStateMachine context, SceneLoader sceneLoader, ObjectPoolsProvider poolsProvider,
+            GameFactory gameFactory)
         {
             _context = context;
-            _sceneLoader = SceneLoader.Instance;
+            _sceneLoader = sceneLoader;
+            _poolsProvider = poolsProvider;
+            _gameFactory = gameFactory;
             _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
         }
 
-        public override void Enter() 
+        public override void Enter()
             => _sceneLoader.Load(SceneNames.Level, OnLevelLoaded);
 
         private void OnLevelLoaded()
-            => OnLevelLoadedAsync().Forget();
-
-        private async UniTask OnLevelLoadedAsync()
         {
-            await Construct();
-            
+            _poolsProvider.InitPools();
+
             InitCharacter();
             InitDirectionArrow();
             InitRoomsMap();
             InitRooms();
-            
-            EnterProgressRestore();
-        }
 
-        private async UniTask Construct()
-        {
-            await UniTask.Yield();
-            _gameFactory = GameFactory.Instance;
+            EnterProgressRestore();
         }
 
         private void InitCharacter()
@@ -84,7 +77,7 @@ namespace GameFlow.States
             int currentRoom = GetCurrentRoom();
             Room[] rooms = _gameFactory.CreateRooms(currentLevel, currentRoom);
 
-            for (int i = currentRoom - 1; i < rooms.Length; i++) 
+            for (int i = currentRoom - 1; i < rooms.Length; i++)
                 rooms[i].gameObject.SetActive(false);
 
             _objectsProvider.Rooms = rooms;
@@ -99,13 +92,13 @@ namespace GameFlow.States
         private void EnterDefeat()
             => _context.Enter<DefeatState>();
 
-        private void EnterProgressRestore() 
+        private void EnterProgressRestore()
             => _context.Enter<ProgressRestoreState>();
 
-        private int GetCurrentLevel() 
+        private int GetCurrentLevel()
             => _saveService.Progress.PlayerData.Level;
 
-        private int GetCurrentRoom() 
+        private int GetCurrentRoom()
             => _saveService.Progress.PlayerData.Room;
     }
 }

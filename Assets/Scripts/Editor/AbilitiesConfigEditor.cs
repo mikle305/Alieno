@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using GamePlay.Abilities;
 using StaticData;
+using StaticData.Abilities;
 using TriInspector.Editors;
 using UnityEditor;
 using UnityEditor.Callbacks;

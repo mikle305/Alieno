@@ -1,5 +1,6 @@
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace Additional.Game
 {
@@ -7,12 +8,18 @@ namespace Additional.Game
     public class UiCameraSetter : MonoBehaviour
     {
         private ObjectsProvider _objectsProvider;
+        
+        
+        [Inject]
+        public void Construct(ObjectsProvider objectsProvider)
+        {
+            _objectsProvider = objectsProvider;
+        }
 
         private void Start()
         {
-            _objectsProvider = ObjectsProvider.Instance;
             Camera uiCamera = _objectsProvider != null
-                 ? _objectsProvider.UICamera
+                 ? _objectsProvider.UiCamera
                  : null;
 
             var canvas = GetComponent<Canvas>();

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Additional.Game;
 using Services.Notifications;
 using TMPro;
 using UI.Windows;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace UI.Menu
 {
-    public class NotificationPopup : MonoSingleton<NotificationPopup>
+    public class NotificationPopup : MonoBehaviour
     {
         [SerializeField] private Window _popupWindow;
         [SerializeField] private TextMeshProUGUI _text;
@@ -20,6 +20,12 @@ namespace UI.Menu
         private NotificationService _notificationService;
         private Action _actionOnConfirm;
 
+
+        [Inject]
+        public void Construct(NotificationService notificationService)
+        {
+            _notificationService = notificationService;
+        }
 
         private void Start()
         {
@@ -34,7 +40,6 @@ namespace UI.Menu
 
         private void BindEvents()
         {
-            _notificationService = NotificationService.Instance;
             _notificationService.MessageReceived += ShowMessage;
             _notificationService.InternalErrorReceived += ShowError;
             _notificationService.ExternalErrorReceived += ShowError;

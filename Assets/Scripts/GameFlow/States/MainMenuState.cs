@@ -13,12 +13,12 @@ namespace GameFlow.States
         private readonly MusicService _musicService;
 
 
-        public MainMenuState(GameStateMachine context)
+        public MainMenuState(GameStateMachine context, MusicService musicService, SceneLoader sceneLoader)
         {
             _context = context;
-            _sceneLoader = SceneLoader.Instance;
+            _sceneLoader = sceneLoader;
             _menuService = MainMenuService.Instance;
-            _musicService = MusicService.Instance;
+            _musicService = musicService;
         }
 
         public override void Enter()

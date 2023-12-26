@@ -1,26 +1,29 @@
 using System;
 using System.Collections;
 using Additional.Game;
+using StaticData.GameConfig;
 using UnityEngine;
+using VContainer;
 
 namespace Services
 {
-    public class LevelMapService : MonoSingleton<LevelMapService>
+    public class LevelMapService
     {
-        [SerializeField] private Vector3 _offset = new(0,1,0);
-        [SerializeField] private float _speed =1f;
-
         private int _currentRoom = -1;
         private Vector3 _positionToMove;
         private Coroutine _animation;
-        private ObjectsProvider _objectsProvider;
-        
+        private readonly ObjectsProvider _objectsProvider;
+        private readonly LevelMapData _levelMapData;
+        private readonly ICoroutineRunner _coroutineRunner;
+
         public event Action AnimationFinished;
+
         
-        
-        private void Start()
+        private LevelMapService(ObjectsProvider objectsProvider, StaticDataService staticDataService, ICoroutineRunner coroutineRunner)
         {
-            _objectsProvider = ObjectsProvider.Instance;
+            _objectsProvider = objectsProvider;
+            _coroutineRunner = coroutineRunner;
+            _levelMapData = staticDataService.GetGamePlayConfig().LevelMapData;
         }
 
         public void Init(int currentRoom)
@@ -28,7 +31,7 @@ namespace Services
             _currentRoom = currentRoom;
             if (_currentRoom != -1)
             {
-                _positionToMove = _objectsProvider.RoomsMap.LevelNumbers[_currentRoom].position + _offset;
+                _positionToMove = _objectsProvider.RoomsMap.LevelNumbers[_currentRoom].position + _levelMapData.Offset;
                 _objectsProvider.RoomsMap.Pointer.position = _positionToMove;
             }
             
@@ -54,7 +57,7 @@ namespace Services
                 return;
 
             if (_animation == null)
-                _animation = StartCoroutine(MoveAnimation(_objectsProvider.RoomsMap.LevelNumbers[_currentRoom]));
+                _animation = _coroutineRunner.StartCoroutine(MoveAnimation(_objectsProvider.RoomsMap.LevelNumbers[_currentRoom]));
             else
                 SkipAnimation();
         }
@@ -64,10 +67,10 @@ namespace Services
 
         private IEnumerator MoveAnimation(Transform moveTo)
         {
-            _positionToMove = moveTo.position + _offset;
+            _positionToMove = moveTo.position + _levelMapData.Offset;
             while ((Vector3.Distance(_objectsProvider.RoomsMap.Pointer.position, _positionToMove) > 0.001f))
             {
-                var step =  _speed * Time.deltaTime; // calculate distance to move
+                var step =  _levelMapData.Speed * Time.deltaTime; // calculate distance to move
                 _objectsProvider.RoomsMap.Pointer.position = Vector3.MoveTowards(_objectsProvider.RoomsMap.Pointer.position, _positionToMove, step);
                 if (Vector3.Distance(_objectsProvider.RoomsMap.Pointer.position, moveTo.position) < 0.001f)
                 {
@@ -85,7 +88,7 @@ namespace Services
 
         public void SkipAnimation()
         {
-            StopCoroutine(_animation);
+            _coroutineRunner.StopCoroutine(_animation);
             _animation = null;
 
             _objectsProvider.RoomsMap.Pointer.position = _positionToMove;

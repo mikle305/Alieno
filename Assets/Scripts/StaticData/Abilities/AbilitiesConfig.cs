@@ -4,7 +4,7 @@ using GamePlay.Abilities;
 using TriInspector;
 using UnityEngine;
 
-namespace StaticData
+namespace StaticData.Abilities
 {
     [CreateAssetMenu(menuName = "StaticData/Abilities Config", fileName = "AbilitiesConfig")]
     public class AbilitiesConfig : ScriptableObject

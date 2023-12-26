@@ -1,6 +1,7 @@
 ﻿using GamePlay.Characteristics;
 using Services.Factories;
 using UnityEngine;
+using VContainer;
 
 namespace UI.GamePlay
 {
@@ -12,10 +13,15 @@ namespace UI.GamePlay
         
         private UiFactory _uiFactory;
 
+
+        [Inject]
+        public void Construct(UiFactory uiFactory)
+        {
+            _uiFactory = uiFactory;
+        }
         
         private void Start()
         {
-            _uiFactory = UiFactory.Instance;
             _healthData.IncreaseTried += OnIncreased;
             _healthData.DecreaseTried += OnDecreased;
         }

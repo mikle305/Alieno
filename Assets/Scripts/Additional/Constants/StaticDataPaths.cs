@@ -6,5 +6,7 @@
         public const string PrefabsConfig = "StaticData/Configs/PrefabsConfig";
         public const string AbilitiesConfig = "StaticData/Configs/AbilitiesConfig";
         public const string UiConfig = "StaticData/Configs/UiConfig";
+        public const string PoolsConfig = "StaticData/Configs/PoolsConfig";
+        public const string GamePlayConfig = "StaticData/Configs/GamePlayConfig";
     }
 }

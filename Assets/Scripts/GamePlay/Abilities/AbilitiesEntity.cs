@@ -4,7 +4,9 @@ using Additional.Extensions;
 using Additional.Utils;
 using GamePlay.Projectile;
 using Services;
+using Services.Factories;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Abilities
 {
@@ -12,13 +14,16 @@ namespace GamePlay.Abilities
     {
         private StaticDataService _staticDataService;
         private readonly Dictionary<AbilityId, AbilityComponent> _abilitiesMap = new();
+        private ObjectFactory _objectFactory;
 
         public IReadOnlyDictionary<AbilityId, AbilityComponent> AbilitiesMap => _abilitiesMap;
         
         
-        private void Awake()
+        [Inject]
+        public void Construct(StaticDataService staticDataService, ObjectFactory objectFactory)
         {
-            _staticDataService = StaticDataService.Instance;
+            _objectFactory = objectFactory;
+            _staticDataService = staticDataService;
         }
 
         private void Update()
@@ -61,8 +66,8 @@ namespace GamePlay.Abilities
         private AbilityComponent CreateAbility(AbilityId abilityId, int level)
         {
             AbilityData abilityData = _staticDataService.GetAbilitiesConfig().GetAbility(abilityId);
-            var abilityComponent = Activator.CreateInstance(abilityData.ComponentType) as AbilityComponent;
-            abilityComponent!.Init(this, abilityData, level);
+            var abilityComponent = _objectFactory.CreateSafe<AbilityComponent>(abilityData.ComponentType, tryManually: true);
+            abilityComponent.Init(this, abilityData, level);
             return abilityComponent;
         }
     }

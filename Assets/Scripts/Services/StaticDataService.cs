@@ -1,7 +1,9 @@
 ﻿using Additional.Constants;
 using Additional.Game;
-using StaticData;
+using StaticData.Abilities;
+using StaticData.GameConfig;
 using StaticData.Music;
+using StaticData.Pools;
 using StaticData.Prefabs;
 using StaticData.UI;
 using UnityEngine;
@@ -14,6 +16,8 @@ namespace Services
         private PrefabsConfig _prefabsConfig;
         private UiConfig _uiConfig;
         private AbilitiesConfig _abilitiesConfig;
+        private PoolsConfig _poolsConfig;
+        private GamePlayConfig _gamePlayConfig;
 
 
         public MusicConfig GetMusicConfig()
@@ -27,8 +31,14 @@ namespace Services
         
         public AbilitiesConfig GetAbilitiesConfig()
             => _abilitiesConfig ??= LoadData<AbilitiesConfig>(StaticDataPaths.AbilitiesConfig);
-        
 
+        public PoolsConfig GetPoolsConfig()
+            => _poolsConfig ??= LoadData<PoolsConfig>(StaticDataPaths.PoolsConfig);
+
+        public GamePlayConfig GetGamePlayConfig()
+            => _gamePlayConfig ??= LoadData<GamePlayConfig>(StaticDataPaths.GamePlayConfig);
+
+        
         private static T LoadData<T>(string path)
             where T : Object
             => Resources.Load<T>(path);

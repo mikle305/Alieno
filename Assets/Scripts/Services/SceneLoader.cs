@@ -5,18 +5,16 @@ using Cysharp.Threading.Tasks;
 using UI.Loading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 namespace Services
 {
-    public class SceneLoader : MonoSingleton<SceneLoader>
+    public class SceneLoader
     {
-        private LoadingCurtain _loadingCurtain;
-
-        private void Start()
-        {
-            _loadingCurtain = LoadingCurtain.Instance;
-        }
-
+        public event Action<Action> ShowCurtainInvoked;
+        public event Action HideCurtainInvoked;
+        
+        
         public void Load(string nextScene, Action onLoaded = null)
         {
             if (SceneManager.GetActiveScene().name == nextScene)
@@ -25,7 +23,7 @@ namespace Services
                 return;
             }
             
-            _loadingCurtain.Show(onCurtainShown: LoadScene);
+            ShowCurtainInvoked?.Invoke(LoadScene);
             return;
 
             
@@ -38,7 +36,7 @@ namespace Services
             AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(scene);
             await loadingOperation;
             
-            _loadingCurtain.Hide();
+            HideCurtainInvoked?.Invoke();
             onLoaded?.Invoke();
         }
     }

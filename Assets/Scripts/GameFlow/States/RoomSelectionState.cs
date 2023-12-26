@@ -9,28 +9,28 @@ namespace GameFlow.States
     {
         private readonly GameStateMachine _context;
         private readonly ObjectsProvider _objectsProvider;
-        private LevelMapService _levelMapService;
+        private readonly LevelMapService _levelMapService;
         private readonly MusicService _musicService;
         private readonly SaveService _saveService;
 
 
-        public RoomSelectionState(GameStateMachine context)
+        public RoomSelectionState(GameStateMachine context, MusicService musicService, LevelMapService levelMapService,
+            ObjectsProvider objectsProvider, SaveService saveService)
         {
             _context = context;
-            _objectsProvider = ObjectsProvider.Instance;
-            _musicService = MusicService.Instance;
-            _saveService = SaveService.Instance;
+            _levelMapService = levelMapService;
+            _objectsProvider = objectsProvider;
+            _musicService = musicService;
+            _saveService = saveService;
         }
 
         public override void Enter()
         {
             _musicService.Play(MusicId.PerkSelection);
-            _levelMapService = LevelMapService.Instance;
             _levelMapService.AnimationFinished += EnterRoomLoadingState;
             _levelMapService.Init(_saveService.Progress.PlayerData.Room - 2);
-
         }
- 
+
         public override void Exit()
         {
             _levelMapService.AnimationFinished -= EnterRoomLoadingState;

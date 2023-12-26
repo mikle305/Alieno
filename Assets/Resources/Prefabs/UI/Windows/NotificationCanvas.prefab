@@ -282,7 +282,6 @@ GameObject:
   - component: {fileID: 6313275237949707851}
   - component: {fileID: 8731331713786328889}
   - component: {fileID: 6766076905616264097}
-  - component: {fileID: 1553339537714034922}
   m_Layer: 5
   m_Name: PopupWindow
   m_TagString: Untagged
@@ -365,21 +364,6 @@ MonoBehaviour:
   _background: {fileID: 5446304675640344882}
   _showDuration: 0.3
   _hideDuration: 0.3
---- !u!114 &1553339537714034922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3409856012796770473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f5bffbd21d948e18386954d968813ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _popupWindow: {fileID: 6766076905616264097}
-  _text: {fileID: 4992863334408904953}
-  _confirmButton: {fileID: 4775264777668435019}
 --- !u!1 &4673002609263352853
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +511,7 @@ GameObject:
   - component: {fileID: 5971056477235159297}
   - component: {fileID: 827320676175290262}
   - component: {fileID: 5812549438670283572}
+  - component: {fileID: 2124760084304641264}
   m_Layer: 5
   m_Name: NotificationCanvas
   m_TagString: Untagged
@@ -630,6 +615,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ac6c88b7a79ba4a950adc6703bbdfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2124760084304641264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344294698251853139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5bffbd21d948e18386954d968813ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popupWindow: {fileID: 6766076905616264097}
+  _text: {fileID: 4992863334408904953}
+  _confirmButton: {fileID: 4775264777668435019}
 --- !u!1 &5446304675640344882
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,16 +8,20 @@ namespace GamePlay.Abilities
     public class ShotComponent<TShotData> : AbilityComponent<TShotData, ShotLevelData>
         where TShotData : AbilityData<ShotLevelData>
     {
-        private Transform _transform;
+        private readonly ProjectileFactory _projectileFactory;
         private ProjectileAttackData _projectileAttackData;
-        private ProjectileFactory _projectileFactory;
+        private Transform _transform;
 
 
+        public ShotComponent(ProjectileFactory projectileFactory)
+        {
+            _projectileFactory = projectileFactory;
+        }
+        
         protected override void OnCreate()
         {
             _transform = Entity.transform;
             _projectileAttackData = Entity.GetComponent<ProjectileAttackData>();
-            _projectileFactory = ProjectileFactory.Instance;
         }
 
         public override void OnShotCalled() 

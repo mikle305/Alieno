@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading;
-using Additional.Game;
 using Cysharp.Threading.Tasks;
 using TransitionsPlus;
 using UnityEngine;
 
 namespace UI.Loading
 {
-    public class LoadingCurtain : MonoSingleton<LoadingCurtain>
+    public class LoadingCurtain : MonoBehaviour
     {
         [SerializeField] private TransitionAnimator _transitionAnimator;
         
@@ -15,14 +14,20 @@ namespace UI.Loading
         private CancellationTokenSource _tokenSource;
 
 
-        public void Show(Action onCurtainShown = null)
+        public void Hide()
+            => Hide(null);
+
+        public void Show()
+            => Show(null);
+
+        public void Show(Action onShown)
         {
             _tokenSource?.Cancel();
             _tokenSource = new CancellationTokenSource();
-            ShowAsync(onCurtainShown, _tokenSource.Token).Forget();
+            ShowAsync(onShown, _tokenSource.Token).Forget();
         }
 
-        public void Hide(Action onHidden = null)
+        public void Hide(Action onHidden)
         {
             _tokenSource?.Cancel();
             _tokenSource = new CancellationTokenSource();
