@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Additional.Game;
 using GamePlay.Abilities;
 using GamePlay.Statuses;
 
 namespace Services.Statuses
 {
-    public class StatusesMapper : MonoSingleton<StatusesMapper>
+    public class StatusesMapper
     {
         private readonly Dictionary<Type, Func<AbilityLevelData, Status>> _factoriesMap = new()
         {

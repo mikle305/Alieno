@@ -1,26 +1,27 @@
 ﻿using System.Collections.Generic;
-using Additional.Game;
+using StaticData.GameConfig;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace Services.TransparentObstacles
 {
-    public class TransparentObstaclesService : MonoSingleton<TransparentObstaclesService>
+    public class TransparentObstaclesService : IFixedTickable
     {
-        [SerializeField] private LayerMask _obstacleLayer;
-        [SerializeField] private Vector3 _boxHalfSize = new(4, 0.5f, 7);
-        [SerializeField] private Vector3 _offset;
-
-        private ObjectsProvider _objectsProvider;
+        private readonly ObjectsProvider _objectsProvider;
+        private readonly TransparentObstaclesData _transparentObstaclesData;
+        private readonly LayerMask _obstacleLayer;
         private readonly Collider[] _currentHits = new Collider[30];
         private HashSet<TransparentObstacle> _previousTransparents = new();
 
 
-        private void Start()
+        public TransparentObstaclesService(ObjectsProvider objectsProvider, StaticDataService staticDataService)
         {
-            _objectsProvider = ObjectsProvider.Instance;
+            _objectsProvider = objectsProvider;
+            _transparentObstaclesData = staticDataService.GetGamePlayConfig().TransparentObstaclesData;
+            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
         }
 
-        private void FixedUpdate()
+        public void FixedTick()
         {
             Camera mainCamera = _objectsProvider.MainCamera;
             GameObject character = _objectsProvider.Character;
@@ -81,12 +82,12 @@ namespace Services.TransparentObstacles
             Vector3 cameraPosition = mainCamera.transform.position;
             Vector3 characterPosition = character.transform.position;
 
-            Vector3 boxCenter = Vector3.Lerp(cameraPosition, characterPosition, 0.5f) + _offset;
+            Vector3 boxCenter = Vector3.Lerp(cameraPosition, characterPosition, 0.5f) + _transparentObstaclesData.Offset;
             Quaternion boxOrientation = Quaternion.LookRotation(cameraPosition - characterPosition, Vector3.up);
             
             return Physics.OverlapBoxNonAlloc(
                 boxCenter,
-                _boxHalfSize,
+                _transparentObstaclesData.BoxHalfSize,
                 _currentHits,
                 orientation: boxOrientation,
                 _obstacleLayer

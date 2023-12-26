@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using Additional.Game;
 using StaticData.GameConfig;
 using UnityEngine;
-using VContainer;
 
 namespace Services
 {
@@ -86,7 +84,7 @@ namespace Services
             AnimationFinished?.Invoke();
         }
 
-        public void SkipAnimation()
+        private void SkipAnimation()
         {
             _coroutineRunner.StopCoroutine(_animation);
             _animation = null;

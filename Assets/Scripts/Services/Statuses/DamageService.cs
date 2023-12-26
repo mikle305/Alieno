@@ -1,22 +1,21 @@
-﻿using Additional.Game;
-using GamePlay.Statuses;
+﻿using GamePlay.Statuses;
 using UnityEngine;
 
 namespace Services.Statuses
 {
-    public class DamageService : MonoSingleton<DamageService>
+    public class DamageService
     {
-        [SerializeField] private LayerMask _obstacleLayer;
-        
+        private readonly RandomService _randomService;
+        private readonly RadarService _radarService;
+        private LayerMask _obstacleLayer;
         private StatusHandler[] _handlers;
-        private RandomService _randomService;
-        private RadarService _radarService;
 
 
-        protected void Start()
+        public DamageService(RandomService randomService, RadarService radarService, StaticDataService staticDataService)
         {
-            _randomService = RandomService.Instance;
-            _radarService = RadarService.Instance;
+            _randomService = randomService;
+            _radarService = radarService;
+            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
             InitHandlers();
         }
 

@@ -1,5 +1,6 @@
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Player
 {
@@ -12,10 +13,11 @@ namespace GamePlay.Player
         private Transform _transform;
 
 
-        private void Start()
+        [Inject]
+        public void Construct(RadarService radarService)
         {
+            _radarService = radarService;
             _transform = transform;
-            _radarService = RadarService.Instance;
         }
 
         public void Rotate(float deltaTime)

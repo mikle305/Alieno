@@ -5,6 +5,7 @@ using GamePlay.Statuses;
 using GamePlay.UnitsComponents;
 using Services.Statuses;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Projectile
 {
@@ -22,11 +23,16 @@ namespace GamePlay.Projectile
         public event Action Happened;
 
 
+        [Inject]
+        public void Construct(DamageService damageService)
+        {
+            _damageService = damageService;
+        }
+
         public void Init(HealthData sender, float mainDamage, float critChance, float critMultiplier)
         {
             _critMultiplier = critMultiplier;
             _critChance = critChance;
-            _damageService = DamageService.Instance;
             _sender = sender;
             _mainDamage = mainDamage;
         }

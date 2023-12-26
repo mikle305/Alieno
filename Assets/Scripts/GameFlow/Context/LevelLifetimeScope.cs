@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using GamePlay.Abilities;
 using Services;
 using Services.Statuses;
 using Services.TransparentObstacles;
@@ -18,6 +19,7 @@ namespace GameFlow.Context
         {
             RegisterEntryPoint(builder);
             RegisterLevelServices(builder);
+            RegisterAbilitiesComponents(builder);
         }
 
         private void RegisterEntryPoint(IContainerBuilder builder) 
@@ -29,7 +31,22 @@ namespace GameFlow.Context
             builder.Register<RadarService>(Lifetime.Scoped);
             builder.Register<DamageService>(Lifetime.Scoped);
             builder.Register<StatusesMapper>(Lifetime.Scoped);
-            builder.Register<TransparentObstaclesService>(Lifetime.Scoped);
+            builder.RegisterEntryPoint<TransparentObstaclesService>(Lifetime.Scoped);
+        }
+        
+        private static void RegisterAbilitiesComponents(IContainerBuilder builder)
+        {
+            builder.Register<ShotComponent<ForwardShotData>>(Lifetime.Transient);
+            builder.Register<ShotComponent<BackShotData>>(Lifetime.Transient);
+            builder.Register<ShotComponent<SideShotData>>(Lifetime.Transient);
+            builder.Register<ShotComponent<DiagonalShotData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<FlameData, FlameLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<PoisonData, PoisonLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<BouncyWallData, BouncyWallLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<HealthAbsorptionData, HealthAbsorptionLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<ObstaclePenetrationData, ObstaclePenetrationLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<RicochetData, RicochetLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<VampirismData, VampirismLevelData>>(Lifetime.Transient);
         }
 
         private void BindObjectsToProvider(IObjectResolver resolver)

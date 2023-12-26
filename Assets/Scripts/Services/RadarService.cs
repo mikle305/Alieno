@@ -1,29 +1,26 @@
 using System.Collections.Generic;
-using Additional.Game;
-using TriInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
+using VContainer;
 
 namespace Services
 {
-    public class RadarService : MonoSingleton<RadarService>
+    public class RadarService
     {
-        [FormerlySerializedAs("_layersToIgnore")] [SerializeField]
-        private LayerMask _layerToCheckFor;
-
-        [ShowInInspector] private Transform _currentClosestAndVisible;
-
         private int _lastUsedFrame = -1;
         private int _lastUsedFrameEnemies = -1;
 
+        private Transform _currentClosestAndVisible;
         private List<Transform> _sortedEnemies;
         private ObjectsProvider _objectsProvider;
         private Dictionary<Transform, Transform> _enemyAndItsClosest;
+        private LayerMask _obstacleLayer;
 
 
-        private void Start()
+        [Inject]
+        public void Construct(ObjectsProvider objectsProvider, StaticDataService staticDataService)
         {
-            _objectsProvider = ObjectsProvider.Instance;
+            _objectsProvider = objectsProvider;
+            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
         }
 
         public Transform GetClosestFromEnemy(Transform fromEnemy)
@@ -129,7 +126,7 @@ namespace Services
                 from.position,
                 target.position,
                 out RaycastHit _,
-                _layerToCheckFor,
+                _obstacleLayer,
                 QueryTriggerInteraction.UseGlobal);
     }
 }

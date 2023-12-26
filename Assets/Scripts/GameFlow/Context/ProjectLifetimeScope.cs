@@ -1,5 +1,4 @@
 ﻿using GameFlow.States;
-using GamePlay.Abilities;
 using SaveData;
 using Services;
 using Services.Factories;
@@ -20,7 +19,6 @@ namespace GameFlow.Context
             RegisterFactories(builder);
             RegisterSaveService(builder);
             RegisterInputService(builder);
-            RegisterAbilitiesComponents(builder);
             RegisterOtherServices(builder);
         }
 
@@ -61,14 +59,6 @@ namespace GameFlow.Context
             builder.Register<AbilitySelectionService>(Lifetime.Singleton);
             builder.Register<SceneLoader>(Lifetime.Singleton);
             builder.RegisterInstance<ICoroutineRunner>(this);
-        }
-
-        private static void RegisterAbilitiesComponents(IContainerBuilder builder)
-        {
-            builder.Register<ShotComponent<ForwardShotData>>(Lifetime.Transient);
-            builder.Register<ShotComponent<BackShotData>>(Lifetime.Transient);
-            builder.Register<ShotComponent<SideShotData>>(Lifetime.Transient);
-            builder.Register<ShotComponent<DiagonalShotData>>(Lifetime.Transient);
         }
 
         private static void RegisterFactories(IContainerBuilder builder)

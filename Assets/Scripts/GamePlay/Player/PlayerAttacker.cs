@@ -3,6 +3,7 @@ using GamePlay.Abilities;
 using GamePlay.Characteristics;
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Player
 {
@@ -17,10 +18,16 @@ namespace GamePlay.Player
 
         public bool IsAutoAttacking { get; set; }
 
+
+        [Inject]
+        public void Construct(RadarService radarService)
+        {
+            _radarService = radarService;
+        }
+        
         private void Start()
         {
             _animations.OnAttackAnimation += Attack;
-            _radarService = RadarService.Instance;
         }
 
         private void Attack()

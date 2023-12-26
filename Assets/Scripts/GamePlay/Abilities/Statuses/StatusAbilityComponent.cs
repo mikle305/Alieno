@@ -9,10 +9,13 @@ namespace GamePlay.Abilities
         where TData : AbilityData<TLevelData> 
         where TLevelData : AbilityLevelData, new()
     {
-        private StatusesMapper _statusesMapper;
+        private readonly StatusesMapper _statusesMapper;
 
-        protected override void OnCreate() 
-            => _statusesMapper = StatusesMapper.Instance;
+
+        public StatusAbilityComponent(StatusesMapper statusesMapper)
+        {
+            _statusesMapper = statusesMapper;
+        }
 
         public override void OnShotDone(ProjectileDamage projectile) 
             => AddStatusToProjectile(projectile);
