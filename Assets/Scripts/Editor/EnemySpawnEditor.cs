@@ -1,8 +1,6 @@
-﻿using System.Linq;
-using Additional.Constants;
+﻿using Additional.Constants;
 using GamePlay.Enemy;
 using GamePlay.Other.Ids;
-using StaticData;
 using StaticData.Prefabs;
 using UnityEditor;
 using UnityEngine;
