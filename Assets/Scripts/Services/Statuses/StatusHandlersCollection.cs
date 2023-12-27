@@ -1,5 +1,5 @@
-﻿using GamePlay.Statuses;
-using UnityEngine;
+﻿using Additional.Constants;
+using GamePlay.Statuses;
 
 namespace Services.Statuses
 {
@@ -7,18 +7,15 @@ namespace Services.Statuses
     {
         private readonly RandomService _randomService;
         private readonly RadarService _radarService;
-        private readonly LayerMask _obstacleLayer;
         private StatusHandler[] _handlers;
 
 
         public StatusHandlersCollection(
             RandomService randomService, 
-            RadarService radarService,
-            StaticDataService staticDataService)
+            RadarService radarService)
         {
             _randomService = randomService;
             _radarService = radarService;
-            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
         }
 
         public void Init()
@@ -32,7 +29,7 @@ namespace Services.Statuses
                 new ElementHandler<PoisonStatus>(),
                 new ObstaclePenetrationHandler(),
                 new RicochetHandler(_radarService),
-                new BouncyWallHandler(_obstacleLayer),
+                new BouncyWallHandler(GameConstants.ObstacleLayer),
                 new DisposeHandler(),
             };
         }

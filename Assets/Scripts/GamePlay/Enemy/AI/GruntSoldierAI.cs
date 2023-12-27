@@ -7,27 +7,31 @@ namespace GamePlay.Enemy
     [CreateAssetMenu(menuName = "Enemy Ai/Grunt AI")]
     public class GruntSoldierAI : EnemyAI
     {
-        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+        public override void Execute(
+            NavMeshAgent navMeshAgent, 
+            EnemyMovement enemyMovement, 
+            EnemyRotation enemyRotation,
+            EnemyAnimations enemyAnimations,
+            EnemyAttacker enemyAttacker)
         {
-            bool isVisible = GameplayUtils.IsVisible(_enemyRotation.transform, Target);
+            bool isVisible = GameplayUtils.IsVisible(enemyRotation.transform, Target);
 
             if (isVisible)
             {
-                Vector3 futurePos = GameplayUtils.CalcFuturePos(Target, TargetRigidbody, 0.5f);
-                _enemyRotation?.UpdateRotation(futurePos);
-                _enemyAnimations?.UpdateAnimations(_navMeshAgent);
+                Vector3 futurePos = GameplayUtils.PredictPosition(Target, TargetRigidbody, 0.5f);
+                enemyRotation.UpdateRotation(futurePos);
+                enemyAnimations?.UpdateAnimations(navMeshAgent);
             
-                if (!_enemyAttacker.OnCooldown)
+                if (!enemyAttacker.OnCooldown)
                 {
-                    _enemyMovement?.UpdateMovement(_navMeshAgent, _navMeshAgent.transform);
-                    _enemyAttacker?.Attack();
+                    enemyMovement?.UpdateMovement(navMeshAgent, navMeshAgent.transform);
+                    enemyAttacker.Attack();
                 }
             }
             else
             {
-                _enemyRotation?.UpdateRotation(Target);
-                _enemyMovement?.UpdateMovement(_navMeshAgent, Target);
+                enemyRotation.UpdateRotation(Target);
+                enemyMovement?.UpdateMovement(navMeshAgent, Target);
             }
         }
     }

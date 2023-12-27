@@ -1,3 +1,5 @@
+using Additional.Constants;
+using Additional.Extensions;
 using UnityEngine;
 
 namespace Additional.Utils
@@ -5,47 +7,26 @@ namespace Additional.Utils
     public static class GameplayUtils
     {
         public static float DistanceBetween(Transform from, Transform to)
-        {
-            return (from.position - to.position).sqrMagnitude;
-        }
-        
+            => (from.position - to.position).sqrMagnitude;
+
         public static float DistanceBetween(Vector3 from, Vector3 to)
-        {
-            return (from - to).sqrMagnitude;
-        }
-        
-        public static bool IsVisible(Transform start,Transform target)
-        {
-            Transform character = start;
-            RaycastHit hit;
-            if (Physics.Linecast(character.position, target.position,out hit,(1 << LayerMask.NameToLayer("Obstacle")),QueryTriggerInteraction.UseGlobal))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        
-        public static Vector3 CalcFuturePos(Transform target,Rigidbody targetRigidBody,float predictionTime){
-            var finalPos = target.position;
-            var velocity = targetRigidBody.velocity;
+            => (from - to).sqrMagnitude;
 
-            velocity *= predictionTime;
-            finalPos += velocity;
-
-            return finalPos;
+        public static bool IsVisible(Transform from, Transform to, float offset = GameConstants.EntitiesPivotOffset)
+        {
+            Vector3 fromPosition = from.position.AddY(offset);
+            Vector3 toPosition = to.position.AddY(offset);
+            return !Physics.Linecast(fromPosition, toPosition, out RaycastHit _, GameConstants.ObstacleLayer);
         }
 
-        public static LayerMask GetEnemyLayerMask()
+        public static bool IsVisible(Transform from, Transform to, LayerMask blockingLayer, float offset = GameConstants.EntitiesPivotOffset)
         {
-            return (1 << LayerMask.NameToLayer("Enemy"));
+            Vector3 fromPosition = from.position.AddY(offset);
+            Vector3 toPosition = to.position.AddY(offset);
+            return !Physics.Linecast(fromPosition, toPosition, out RaycastHit _, blockingLayer);
         }
-        
-        public static LayerMask GetPlayerLayerMask()
-        {
-            return (1 << LayerMask.NameToLayer("Player"));
-        }
+
+        public static Vector3 PredictPosition(Transform target, Rigidbody targetRigidBody, float predictionTime)
+            => target.position + targetRigidBody.velocity * predictionTime;
     }
 }

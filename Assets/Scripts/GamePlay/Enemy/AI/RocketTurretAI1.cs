@@ -7,14 +7,16 @@ namespace GamePlay.Enemy
     [CreateAssetMenu(menuName = "Enemy Ai/RocketTurret AI")]
     public class RocketTurretAI : EnemyAI
     {
-        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+        public override void Execute(
+            NavMeshAgent navMeshAgent, 
+            EnemyMovement enemyMovement,
+            EnemyRotation enemyRotation,
+            EnemyAnimations enemyAnimations, 
+            EnemyAttacker enemyAttacker)
         {
-        
-        
-            _enemyRotation?.UpdateRotation(Target);
-            if (!_enemyAttacker.OnCooldown &&  GameplayUtils.IsVisible(_enemyRotation.transform, Target))
-                _enemyAttacker?.Attack();
+            enemyRotation?.UpdateRotation(Target);
+            if (!enemyAttacker.OnCooldown && GameplayUtils.IsVisible(enemyRotation?.transform, Target))
+                enemyAttacker.Attack();
         }
     }
 }

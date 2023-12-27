@@ -7,22 +7,25 @@ namespace GamePlay.Enemy
     [CreateAssetMenu(menuName = "Enemy Ai/Soldier AI")]
     public class BasicSoldierAI : EnemyAI
     {
-        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+        public override void Execute(
+            NavMeshAgent navMeshAgent, 
+            EnemyMovement enemyMovement,
+            EnemyRotation enemyRotation,
+            EnemyAnimations enemyAnimations, 
+            EnemyAttacker enemyAttacker)
         {
-            _enemyRotation?.UpdateRotation(Target);
-            _enemyAnimations?.UpdateAnimations(_navMeshAgent);
-            bool isVisible = GameplayUtils.IsVisible(_enemyRotation.transform, Target);
-            if (!_enemyAttacker.OnCooldown && isVisible)
+            enemyRotation?.UpdateRotation(Target);
+            enemyAnimations?.UpdateAnimations(navMeshAgent);
+            bool isVisible = GameplayUtils.IsVisible(enemyRotation.transform, Target);
+            if (!enemyAttacker.OnCooldown && isVisible)
             {
-                _enemyMovement?.UpdateMovement(_navMeshAgent, _navMeshAgent.transform);
+                enemyMovement?.UpdateMovement(navMeshAgent, navMeshAgent.transform);
 
-                _enemyAttacker?.Attack();
+                enemyAttacker.Attack();
             }
             else if (!isVisible)
             {
-                _enemyMovement?.UpdateMovement(_navMeshAgent, Target);
-
+                enemyMovement?.UpdateMovement(navMeshAgent, Target);
             }
         }
     }

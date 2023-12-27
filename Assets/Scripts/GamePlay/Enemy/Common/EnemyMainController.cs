@@ -1,3 +1,4 @@
+using Additional.Constants;
 using Additional.Utils;
 using GamePlay.Characteristics;
 using Services;
@@ -10,7 +11,8 @@ namespace GamePlay.Enemy
 {
     public class EnemyMainController : MonoBehaviour
     {
-        [FormerlySerializedAs("_ai")] [SerializeField] private EnemyAI _aiPrefab;
+        [FormerlySerializedAs("_ai")] 
+        [SerializeField] private EnemyAI _aiPrefab;
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyRotation _enemyRotation;
@@ -18,17 +20,18 @@ namespace GamePlay.Enemy
         [SerializeField] private EnemyAttacker _enemyAttacker;
         [SerializeField] private HealthData _healthData;
 
+        private readonly Collider[] _nearbyEnemies = new Collider[25];
         private ObjectsProvider _objectsProvider;
         private EnemyAI _ai;
         private bool _isAwake;
-        
-        
+
+
         [Inject]
         public void Construct(ObjectsProvider objectsProvider)
         {
             _objectsProvider = objectsProvider;
         }
-        
+
         private void Start()
         {
             _ai = Instantiate(_aiPrefab);
@@ -37,44 +40,43 @@ namespace GamePlay.Enemy
             _healthData.ValueChanged += AwakeEnemy;
         }
 
-        public void AwakeEnemy()
+        private void AwakeEnemy()
         {
-            if(_isAwake)
+            if (_isAwake)
                 return;
-        
+
             _isAwake = true;
             _healthData.ValueChanged -= AwakeEnemy;
             AwakeNearby();
         }
 
-        public void AwakeNearby()
+        private void AwakeNearby()
         {
-            var enemyLayer = GameplayUtils.GetEnemyLayerMask();
-            var colliders = Physics.OverlapSphere(transform.position, 8f, enemyLayer);
-        
-            foreach(var collider in colliders) {
-                collider.TryGetComponent<EnemyMainController>(out EnemyMainController controller);
+            int nearbyCount = Physics.OverlapSphereNonAlloc(transform.position, 8f, _nearbyEnemies, GameConstants.EnemyLayer);
+
+            for (var i = 0; i < nearbyCount; i++)
+            {
+                _nearbyEnemies[i].TryGetComponent(out EnemyMainController controller);
                 controller?.AwakeEnemy();
             }
         }
-    
+
         private void Update()
         {
-            if(_objectsProvider.Character == null)
+            if (_objectsProvider.Character == null)
                 return;
-            
+
             if (!_isAwake)
             {
                 if (GameplayUtils.IsVisible(transform, _objectsProvider.Character.transform))
                 {
                     AwakeEnemy();
                 }
-            
+
                 return;
             }
 
-            _ai.Execute(_navMeshAgent,_enemyMovement,_enemyRotation,_enemyAnimations,_enemyAttacker);
+            _ai.Execute(_navMeshAgent, _enemyMovement, _enemyRotation, _enemyAnimations, _enemyAttacker);
         }
-
     }
 }

@@ -10,23 +10,29 @@ namespace GamePlay.Enemy
         [SerializeField] private float _delayBeforeAttack = 0.75f;
 
         private Vector3 _futureEnemyPos;
-        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+
+        public override void Execute(
+            NavMeshAgent navMeshAgent, 
+            EnemyMovement enemyMovement,
+            EnemyRotation enemyRotation,
+            EnemyAnimations enemyAnimations, 
+            EnemyAttacker enemyAttacker)
         {
-            _futureEnemyPos = GameplayUtils.CalcFuturePos(Target, TargetRigidbody, 0.75f);
+            _futureEnemyPos = GameplayUtils.PredictPosition(Target, TargetRigidbody, 0.75f);
 
-            if (!_enemyAttacker.OnCooldown)
+            if (enemyAttacker.OnCooldown) 
+                return;
+            
+            navMeshAgent.enabled = true;
+            enemyMovement?.UpdateMovement(navMeshAgent, _futureEnemyPos);
+            enemyRotation?.UpdateRotation(_futureEnemyPos);
+            if (GameplayUtils.DistanceBetween(navMeshAgent.transform, Target) <= 3f ||
+                GameplayUtils.DistanceBetween(navMeshAgent.transform.position, _futureEnemyPos) <= 1)
             {
-                _navMeshAgent.enabled = true;
-                _enemyMovement?.UpdateMovement(_navMeshAgent, _futureEnemyPos);
-                _enemyRotation?.UpdateRotation(_futureEnemyPos);
-                if (GameplayUtils.DistanceBetween(_navMeshAgent.transform, Target) <= 3f || GameplayUtils.DistanceBetween(_navMeshAgent.transform.position, _futureEnemyPos) <= 1)
-                {
-                    _navMeshAgent.enabled = false;
+                navMeshAgent.enabled = false;
 
-                    _enemyAnimations?.SpawnAttackIndicator(_navMeshAgent.transform,_delayBeforeAttack*2);
-                    _enemyAttacker?.AttackWithDelay(_delayBeforeAttack);
-                }
+                enemyAnimations?.SpawnAttackIndicator(navMeshAgent.transform, _delayBeforeAttack * 2);
+                enemyAttacker.AttackWithDelay(_delayBeforeAttack);
             }
         }
     }

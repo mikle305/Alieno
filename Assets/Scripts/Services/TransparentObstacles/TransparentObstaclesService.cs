@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Additional.Constants;
 using StaticData.GameConfig;
 using UnityEngine;
 using VContainer.Unity;
@@ -12,14 +13,12 @@ namespace Services.TransparentObstacles
         
         private readonly ObjectsProvider _objectsProvider;
         private readonly TransparentObstaclesData _transparentObstaclesData;
-        private readonly LayerMask _obstacleLayer;
 
         
         public TransparentObstaclesService(ObjectsProvider objectsProvider, StaticDataService staticDataService)
         {
             _objectsProvider = objectsProvider;
             _transparentObstaclesData = staticDataService.GetGamePlayConfig().TransparentObstaclesData;
-            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
         }
 
         public void FixedTick()
@@ -91,7 +90,7 @@ namespace Services.TransparentObstacles
                 _transparentObstaclesData.BoxHalfSize,
                 _currentHits,
                 orientation: boxOrientation,
-                _obstacleLayer
+                GameConstants.ObstacleLayer
                 );
         }
 

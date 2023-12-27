@@ -8,23 +8,27 @@ namespace GamePlay.Enemy
     public class DroneAI : EnemyAI
     {
         [SerializeField] private float _delayBeforeAttack = 0.5f;
-        public override void Execute(NavMeshAgent _navMeshAgent, EnemyMovement _enemyMovement, EnemyRotation _enemyRotation,
-            EnemyAnimations _enemyAnimations,EnemyAttacker _enemyAttacker)
+
+        
+        public override void Execute(
+            NavMeshAgent navMeshAgent, 
+            EnemyMovement enemyMovement,
+            EnemyRotation enemyRotation,
+            EnemyAnimations enemyAnimations, 
+            EnemyAttacker enemyAttacker)
         {
-
-            if (!_enemyAttacker.OnCooldown)
-            {
-                _navMeshAgent.enabled = true;
-                _enemyMovement?.UpdateMovement(_navMeshAgent, Target);
-                _enemyRotation?.UpdateRotation(Target);
-                if (GameplayUtils.DistanceBetween(_navMeshAgent.transform, Target) <= 3f)
-                {
-                    _navMeshAgent.enabled = false;
-
-                    _enemyAnimations?.SpawnAttackIndicator(_navMeshAgent.transform,_delayBeforeAttack*2);
-                    _enemyAttacker?.AttackWithDelay(_delayBeforeAttack);
-                }
-            }
+            if (enemyAttacker.OnCooldown) 
+                return;
+            
+            navMeshAgent.enabled = true;
+            enemyMovement?.UpdateMovement(navMeshAgent, Target);
+            enemyRotation?.UpdateRotation(Target);
+            if (!(GameplayUtils.DistanceBetween(navMeshAgent.transform, Target) <= 3f)) 
+                return;
+            
+            navMeshAgent.enabled = false;
+            enemyAnimations?.SpawnAttackIndicator(navMeshAgent.transform, _delayBeforeAttack * 2);
+            enemyAttacker.AttackWithDelay(_delayBeforeAttack);
         }
     }
 }

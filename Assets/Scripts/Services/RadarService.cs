@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Additional.Constants;
+using Additional.Utils;
 using UnityEngine;
 using VContainer;
 
@@ -11,15 +13,13 @@ namespace Services
         private Transform _currentClosestAndVisible;
         private List<Transform> _sortedEnemies;
         private Dictionary<Transform, Transform> _enemyAndItsClosest;
-        
-        private readonly ObjectsProvider _objectsProvider;
-        private readonly LayerMask _obstacleLayer;
 
-        
-        public RadarService(ObjectsProvider objectsProvider, StaticDataService staticDataService)
+        private readonly ObjectsProvider _objectsProvider;
+
+
+        public RadarService(ObjectsProvider objectsProvider)
         {
             _objectsProvider = objectsProvider;
-            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
         }
 
         public Transform GetClosestFromEnemy(Transform fromEnemy)
@@ -29,13 +29,13 @@ namespace Services
                 _enemyAndItsClosest.TryGetValue(fromEnemy, out Transform toEnemy);
                 if (toEnemy != null)
                     return toEnemy;
-                
+
                 return FindClosestToEnemy(fromEnemy);
             }
 
-            if (_objectsProvider.AliveEnemies.Count <= 1) 
+            if (_objectsProvider.AliveEnemies.Count <= 1)
                 return null;
-            
+
             _enemyAndItsClosest = new Dictionary<Transform, Transform>();
             _lastUsedFrameEnemies = Time.frameCount;
             return FindClosestToEnemy(fromEnemy);
@@ -54,7 +54,7 @@ namespace Services
                 return null;
 
             SortEnemiesFromCharacter(aliveEnemies, character);
-            SetClosestVisibleFromCharacter(character);
+            SetClosestVisibleFromCharacter(character.transform);
 
             return _currentClosestAndVisible;
         }
@@ -63,12 +63,12 @@ namespace Services
         {
             List<Transform> sortedEnemies = SortedEnemiesFromOther(_objectsProvider.AliveEnemies, fromEnemy);
 
-            foreach (Transform enemy in sortedEnemies)
+            foreach (Transform toEnemy in sortedEnemies)
             {
-                if (IsVisible(fromEnemy, enemy))
+                if (GameplayUtils.IsVisible(fromEnemy, toEnemy))
                 {
-                    _enemyAndItsClosest.Add(fromEnemy, enemy);
-                    return enemy;
+                    _enemyAndItsClosest.Add(fromEnemy, toEnemy);
+                    return toEnemy;
                 }
             }
 
@@ -92,9 +92,9 @@ namespace Services
         private void SortEnemiesFromCharacter(List<Transform> aliveEnemies, GameObject character)
         {
             _sortedEnemies = new List<Transform>(aliveEnemies);
-            _sortedEnemies.Sort(comparison: (prev, next) 
+            _sortedEnemies.Sort(comparison: (prev, next)
                 => CompareDistances(prev, next, character.transform.position));
-            
+
             _currentClosestAndVisible = null;
         }
 
@@ -102,30 +102,22 @@ namespace Services
         {
             var sortedEnemies = new List<Transform>(aliveEnemies);
             sortedEnemies.Remove(fromEnemy);
-            sortedEnemies.Sort((prev, next) 
+            sortedEnemies.Sort((prev, next)
                 => CompareDistances(prev, next, fromEnemy.position));
-            
+
             return sortedEnemies;
         }
 
-        private void SetClosestVisibleFromCharacter(GameObject character)
+        private void SetClosestVisibleFromCharacter(Transform character)
         {
             foreach (Transform enemy in _sortedEnemies)
             {
-                if (IsVisible(character.transform, enemy))
+                if (GameplayUtils.IsVisible(character, enemy))
                 {
                     _currentClosestAndVisible = enemy;
                     break;
                 }
             }
         }
-
-        private bool IsVisible(Transform from, Transform target)
-            => !Physics.Linecast(
-                from.position,
-                target.position,
-                out RaycastHit _,
-                _obstacleLayer,
-                QueryTriggerInteraction.UseGlobal);
     }
 }
