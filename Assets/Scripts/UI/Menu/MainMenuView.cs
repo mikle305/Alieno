@@ -3,6 +3,7 @@ using DG.Tweening;
 using PathCreation;
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace UI.Menu
 {
@@ -22,10 +23,17 @@ namespace UI.Menu
         private CancellationTokenSource _rotateCameraTokenSource;
 
 
-        private void Awake()
+        [Inject]
+        public void Construct(MainMenuService menuService)
         {
-            _menuService = MainMenuService.Instance;
+            _menuService = menuService;
             _menuService.PlayClicked += OnPlayClicked;
+        }
+
+        private void OnDestroy()
+        {
+            _menuService.PlayClicked -= OnPlayClicked;
+            _sequenceTween?.Kill();
         }
 
         private void OnPlayClicked()
@@ -73,9 +81,6 @@ namespace UI.Menu
             Quaternion targetRotation = Quaternion.LookRotation(_cameraLookAt.position - _mainCamera.position);
             _mainCamera.rotation = Quaternion.Slerp(_mainCamera.rotation, targetRotation, _cameraRotateSpeed * Time.deltaTime);
         }
-
-        private void OnDestroy()
-            => _sequenceTween?.Kill();
 
         private Tween FadeUi()
             => _canvasGroup.DOFade(0, _uiFadeDuration);

@@ -3,26 +3,23 @@ using GamePlay.Other.Ids;
 using StaticData.Pools;
 using StaticData.Prefabs;
 using UnityEngine;
+using VContainer;
 
 namespace Services.ObjectPool
 {
     public class ObjectPoolsProvider
     {
+        private readonly IObjectResolver _monoResolver;
         private readonly PrefabsConfig _prefabsConfig;
         private readonly PoolsConfig _poolsConfig;
+        
         private PoolsProvider<ProjectileId> _projectilePoolsProvider;
         private PoolsProvider<UiElementId> _uiElementPoolsProvider;
 
 
-        public GameObject TakeProjectile(ProjectileId id)
-            => _projectilePoolsProvider.TakeItem(id);
-
-        public GameObject TakeUiElement(UiElementId id)
-            => _uiElementPoolsProvider.TakeItem(id);
-
-
-        public ObjectPoolsProvider(StaticDataService staticDataService)
+        public ObjectPoolsProvider(StaticDataService staticDataService, IObjectResolver monoResolver)
         {
+            _monoResolver = monoResolver;
             _prefabsConfig = staticDataService.GetPrefabsConfig();
             _poolsConfig = staticDataService.GetPoolsConfig();
         }
@@ -34,6 +31,12 @@ namespace Services.ObjectPool
             _uiElementPoolsProvider = CreateUiElementProvider(root);
         }
 
+        public GameObject TakeProjectile(ProjectileId id)
+            => _projectilePoolsProvider.TakeItem(id);
+
+        public GameObject TakeUiElement(UiElementId id)
+            => _uiElementPoolsProvider.TakeItem(id);
+
         private static Transform CreateRoot()
             => new GameObject("Pools").transform;
 
@@ -44,7 +47,7 @@ namespace Services.ObjectPool
         private PoolsProvider<UiElementId> CreateUiElementProvider(Transform root)
             => CreatePoolsProvider(root, "UiElements", _prefabsConfig.GetUiElement, _poolsConfig.UiElementPools);
 
-        private static PoolsProvider<TCategory> CreatePoolsProvider<TCategory>(
+        private PoolsProvider<TCategory> CreatePoolsProvider<TCategory>(
             Transform root,
             string parentName,
             Func<TCategory, GameObject> prefabGetter,
@@ -52,7 +55,7 @@ namespace Services.ObjectPool
         {
             Transform categoryParent = new GameObject(parentName).transform;
             categoryParent.parent = root;
-            return new PoolsProvider<TCategory>(categoryParent, prefabGetter, dataCollection);
+            return new PoolsProvider<TCategory>(categoryParent, prefabGetter, dataCollection, _monoResolver);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Services.Save;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace UI.Menu
 {
@@ -11,12 +12,13 @@ namespace UI.Menu
         
         private SaveService _saveService;
         private NotificationService _notificationService;
-
-
-        private void Start()
+        
+        
+        [Inject]
+        public void Construct(SaveService saveService, NotificationService notificationService)
         {
-            _saveService = SaveService.Instance;
-            _notificationService = NotificationService.Instance;
+            _saveService = saveService;
+            _notificationService = notificationService;
             _button.onClick.AddListener(NotifyProgressReset);
         }
         

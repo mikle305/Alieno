@@ -14,15 +14,15 @@ namespace GamePlay.Abilities
     {
         private StaticDataService _staticDataService;
         private readonly Dictionary<AbilityId, AbilityComponent> _abilitiesMap = new();
-        private ObjectFactory _objectFactory;
+        private ObjectActivator _objectActivator;
 
         public IReadOnlyDictionary<AbilityId, AbilityComponent> AbilitiesMap => _abilitiesMap;
         
         
         [Inject]
-        public void Construct(StaticDataService staticDataService, ObjectFactory objectFactory)
+        public void Construct(StaticDataService staticDataService, ObjectActivator objectActivator)
         {
-            _objectFactory = objectFactory;
+            _objectActivator = objectActivator;
             _staticDataService = staticDataService;
         }
 
@@ -66,7 +66,7 @@ namespace GamePlay.Abilities
         private AbilityComponent CreateAbility(AbilityId abilityId, int level)
         {
             AbilityData abilityData = _staticDataService.GetAbilitiesConfig().GetAbility(abilityId);
-            var abilityComponent = _objectFactory.CreateSafe<AbilityComponent>(abilityData.ComponentType, tryManually: true);
+            var abilityComponent = _objectActivator.CreateSafe<AbilityComponent>(abilityData.ComponentType, tryManually: true);
             abilityComponent.Init(this, abilityData, level);
             return abilityComponent;
         }

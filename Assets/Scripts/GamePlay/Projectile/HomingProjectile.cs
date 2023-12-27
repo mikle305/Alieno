@@ -1,38 +1,35 @@
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Projectile
 {
     public class HomingProjectile : MonoBehaviour
     {
-
-        private GameObject _player;
         [SerializeField] private float _turnSpeed = 15f;
         [SerializeField] private Rigidbody _projRigid;
-        private void Start()
+        
+        private ObjectsProvider _objectsProvider;
+
+
+        [Inject]
+        public void Construct(ObjectsProvider objectsProvider)
         {
-            if (_player == null)
-                _player = ObjectsProvider.Instance.Character;
-        }
-    
-        private void OnEnable()
-        {
-            if (_player == null)
-                _player = ObjectsProvider.Instance.Character;
+            _objectsProvider = objectsProvider;
         }
     
         private void FixedUpdate()
         {
-            RotateToPlayer(_player.transform);
+            RotateToPlayer(_objectsProvider.Character);
         }
     
-        private void RotateToPlayer(Transform target)
+        private void RotateToPlayer(GameObject target)
         {
-            // var impulse = _projRigid.Get();
-            // // _projRigid.velocity = Vector3.zero;
-            // print(impulse);
+            if (target == null)
+                return;
+            
             Quaternion originalRotation = transform.rotation;
-            transform.LookAt(target.position+new Vector3(0,0.3f,0));
+            transform.LookAt(target.transform.position+new Vector3(0,0.3f,0));
             Quaternion newRotation = transform.rotation;
 
             transform.rotation = Quaternion.Lerp(originalRotation, newRotation, _turnSpeed * Time.deltaTime);

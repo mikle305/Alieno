@@ -11,12 +11,16 @@ namespace GameFlow.States
         private readonly EndGameMenuService _endGameMenuService;
 
 
-        public DefeatState(GameStateMachine context)
+        public DefeatState(
+            GameStateMachine context,
+            ObjectsProvider objectsProvider, 
+            SaveService saveService,
+            EndGameMenuService endGameMenuService)
         {
             _context = context;
-            _objectsProvider = ObjectsProvider.Instance;
-            _saveService = SaveService.Instance;
-            _endGameMenuService = EndGameMenuService.Instance;
+            _objectsProvider = objectsProvider;
+            _saveService = saveService;
+            _endGameMenuService = endGameMenuService;
         }
 
         public override void Enter()

@@ -1,4 +1,5 @@
-﻿using GameFlow.States;
+﻿using Additional.Constants;
+using GameFlow.States;
 using GamePlay.Abilities;
 using SaveData;
 using Services;
@@ -45,7 +46,7 @@ namespace GameFlow
         private void RegisterFactories(IContainerBuilder builder)
         {
             builder.Register<ObjectPoolsProvider>(Lifetime.Singleton);
-            builder.Register<ObjectFactory>(Lifetime.Singleton);
+            builder.Register<ObjectActivator>(Lifetime.Singleton);
             builder.Register<ProjectileFactory>(Lifetime.Singleton);
             builder.Register<HudFactory>(Lifetime.Singleton);
             builder.Register<EnemyFactory>(Lifetime.Singleton);
@@ -64,8 +65,8 @@ namespace GameFlow
         {
             builder.Register<EnemiesDeathObserver>(Lifetime.Singleton);
             builder.Register<NotificationService>(Lifetime.Singleton);
-            builder.Register<MainMenuService>(Lifetime.Singleton);
-            builder.Register<EndGameMenuService>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<MainMenuService>();
+            builder.RegisterEntryPoint<EndGameMenuService>();
             builder.Register<StaticDataService>(Lifetime.Singleton);
             builder.Register<RandomService>(Lifetime.Singleton);
             builder.Register<MusicService>(Lifetime.Singleton);
@@ -97,7 +98,7 @@ namespace GameFlow
         private void RegisterSaveService(IContainerBuilder builder)
         {
             builder.Register<SaveService>(Lifetime.Singleton);
-            builder.Register<ISaveStorage<Progress>, PlayerPrefsStorage<Progress>>(Lifetime.Singleton);
+            builder.RegisterInstance<ISaveStorage<Progress>>(new PlayerPrefsStorage<Progress>(GameConstants.PrefsProgressKey));
         }
 
         private void RegisterInputService(IContainerBuilder builder)

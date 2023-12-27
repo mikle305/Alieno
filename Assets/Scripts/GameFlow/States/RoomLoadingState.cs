@@ -21,16 +21,18 @@ namespace GameFlow.States
         private Room _currentRoom;
 
 
-        public RoomLoadingState(
-            GameStateMachine context, 
-            MusicService musicService, 
-            EnemyFactory enemyFactory)
+        public RoomLoadingState(GameStateMachine context,
+            MusicService musicService,
+            EnemyFactory enemyFactory,
+            SaveService saveService,
+            ObjectsProvider objectsProvider, 
+            EnemiesDeathObserver enemiesDeathObserver)
         {
             _context = context;
             _enemyFactory = enemyFactory;
-            _saveService = SaveService.Instance;
-            _objectsProvider = ObjectsProvider.Instance;
-            _enemiesDeathObserver = EnemiesDeathObserver.Instance;
+            _saveService = saveService;
+            _objectsProvider = objectsProvider;
+            _enemiesDeathObserver = enemiesDeathObserver;
             _musicService = musicService;
         }
 

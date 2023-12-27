@@ -1,19 +1,22 @@
-﻿using Additional.Game;
-using GamePlay.Characteristics;
+﻿using GamePlay.Characteristics;
 using GamePlay.Player;
 using UI.GamePlay;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace Services.Factories
 {
-    public class HudFactory : MonoSingleton<HudFactory>
+    public class HudFactory
     {
-        private StaticDataService _staticDataService;
+        private readonly StaticDataService _staticDataService;
+        private readonly IObjectResolver _monoResolver;
 
 
-        private void Start()
+        public HudFactory(StaticDataService staticDataService, IObjectResolver monoResolver)
         {
-            _staticDataService = StaticDataService.Instance;
+            _monoResolver = monoResolver;
+            _staticDataService = staticDataService;
         }
         
         public Hud Create(GameObject character)
@@ -29,7 +32,7 @@ namespace Services.Factories
         private Hud CreateHud()
         {
             Hud hudPrefab = _staticDataService.GetPrefabsConfig().Hud;
-            return Instantiate(hudPrefab);
+            return _monoResolver.Instantiate(hudPrefab);
         }
 
         private void InitHealth(Hud hud, GameObject character)

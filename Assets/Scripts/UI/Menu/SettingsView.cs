@@ -2,6 +2,7 @@
 using UI.Windows;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace UI.Menu
 {
@@ -16,9 +17,10 @@ namespace UI.Menu
         private SettingsService _settingsService;
 
 
-        private void Start()
+        [Inject]
+        public void Construct(SettingsService settingsService)
         {
-            _settingsService = SettingsService.Instance;
+            _settingsService = settingsService;
             UpdateView();
             InitViewEvents();
         }

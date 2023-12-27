@@ -6,28 +6,29 @@ using SaveData;
 
 namespace Services.Save
 {
-    public class SaveService : MonoSingleton<SaveService>
+    public class SaveService
     {
-        private const string _progressKey = "Progress";
-        private ISaveStorage<Progress> _storage;
-        
+        private readonly ISaveStorage<Progress> _saveStorage;
+
         public Progress Progress { get; private set; }
         public event Action ProgressLoaded;
         public event Action ProgressSaved;
 
 
-        private void Start() 
-            => _storage = new PlayerPrefsStorage<Progress>(_progressKey);
+        public SaveService(ISaveStorage<Progress> saveStorage)
+        {
+            _saveStorage = saveStorage;
+        }
 
         public void Save()
         {
-            _storage.Save(Progress);
+            _saveStorage.Save(Progress);
             ProgressSaved?.Invoke();
         }
 
         public void Load()
         {
-            Progress = _storage.Load() ?? new Progress();
+            Progress = _saveStorage.Load() ?? new Progress();
             ProgressLoaded?.Invoke();
         }
 

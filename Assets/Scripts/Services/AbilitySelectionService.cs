@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using Additional.Constants;
-using Additional.Game;
 using GamePlay.Abilities;
-using StaticData;
 using StaticData.Abilities;
 
 namespace Services
 {
-    public class AbilitySelectionService : MonoSingleton<AbilitySelectionService>
+    public class AbilitySelectionService
     {
-        private StaticDataService _staticDataService;
-        private RandomService _randomService;
+        private readonly StaticDataService _staticDataService;
+        private readonly RandomService _randomService;
 
         public event Action<AbilityId[]> AbilitiesGenerated;
         public event Action<AbilityId> AbilitySelected;
 
 
-        private void Start()
+        public AbilitySelectionService(RandomService randomService, StaticDataService staticDataService)
         {
-            _randomService = RandomService.Instance;
-            _staticDataService = StaticDataService.Instance;
+            _randomService = randomService;
+            _staticDataService = staticDataService;
         }
 
         public AbilityId[] GenerateAbilities(Dictionary<AbilityId, int> currentAbilities)

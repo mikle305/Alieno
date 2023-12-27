@@ -5,13 +5,13 @@ namespace GameFlow
 {
     public class GameStateMachine : ITickable
     {
-        private readonly ObjectFactory _objectFactory;
+        private readonly ObjectActivator _objectActivator;
         private State _currentState;
 
 
-        public GameStateMachine(ObjectFactory objectFactory)
+        public GameStateMachine(ObjectActivator objectActivator)
         {
-            _objectFactory = objectFactory;
+            _objectActivator = objectActivator;
         }
         
         public void Enter<T>() 
@@ -35,6 +35,6 @@ namespace GameFlow
             => _currentState.Tick();
 
         private T GetState<T>() where T : State
-            => _objectFactory.Create<T>();
+            => _objectActivator.Create<T>();
     }
 }

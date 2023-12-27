@@ -1,5 +1,4 @@
 ﻿using Additional.Constants;
-using Additional.Game;
 using SaveData;
 using Services.Save;
 using UnityEngine;
@@ -7,18 +6,18 @@ using UnityEngine.Audio;
 
 namespace Services
 {
-    public class SettingsService : MonoSingleton<SettingsService>
+    public class SettingsService
     {
-        private SaveService _saveService;
-        private AudioMixer _audioMixer;
+        private readonly SaveService _saveService;
+        private readonly AudioMixer _audioMixer;
         
         public SettingsData Settings => _saveService.Progress.SettingsData;
 
         
-        private void Start()
+        private SettingsService(SaveService saveService, StaticDataService staticDataService)
         {
-            _saveService = SaveService.Instance;
-            _audioMixer = StaticDataService.Instance.GetMusicConfig().AudioMixer;
+            _saveService = saveService;
+            _audioMixer = staticDataService.GetMusicConfig().AudioMixer;
             _saveService.ProgressLoaded += ApplySettings;
         }
 
@@ -30,9 +29,9 @@ namespace Services
 
         private void ApplySettings()
         {
-            ApplyMixerGroup(AudioConstants.VolumeMixerParam, Settings.Volume);
-            ApplyMixerGroup(AudioConstants.MusicMixerParam, Settings.Music);
-            ApplyMixerGroup(AudioConstants.SoundMixerParam, Settings.Sfx);
+            ApplyMixerGroup(GameConstants.VolumeMixerParam, Settings.Volume);
+            ApplyMixerGroup(GameConstants.MusicMixerParam, Settings.Music);
+            ApplyMixerGroup(GameConstants.SoundMixerParam, Settings.Sfx);
         }
         
         private void ApplyMixerGroup(string mixerParam, float value)

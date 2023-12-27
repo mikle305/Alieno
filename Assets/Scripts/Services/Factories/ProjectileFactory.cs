@@ -1,5 +1,4 @@
-﻿using Additional.Game;
-using GamePlay.Characteristics;
+﻿using GamePlay.Characteristics;
 using GamePlay.Projectile;
 using Services.ObjectPool;
 using UnityEngine;

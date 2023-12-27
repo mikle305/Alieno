@@ -3,6 +3,7 @@ using GamePlay.Abilities;
 using GamePlay.Characteristics;
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Enemy
 {
@@ -17,12 +18,17 @@ namespace GamePlay.Enemy
     
         private EndGameMenuService _endGameMenuService;
 
-
+        
+        [Inject]
+        public void Construct(EndGameMenuService endGameMenuService)
+        {
+            _endGameMenuService = endGameMenuService;
+        }
+        
         private void Start()
         {
             _animations.JumpAnimationFinished += JumpAttack;
             _animations.AttackAnimationFinished += LaserAttack;
-            _endGameMenuService = EndGameMenuService.Instance;
             _endGameMenuService.DefeatReceived += OnPlayerDied;
         }
 

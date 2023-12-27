@@ -2,6 +2,7 @@
 using Services.Save;
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 namespace UI.Menu
 {
@@ -12,9 +13,10 @@ namespace UI.Menu
         private SaveService _saveService;
 
 
-        private void Awake()
+        [Inject]
+        public void Construct(SaveService saveService)
         {
-            _saveService = SaveService.Instance;
+            _saveService = saveService;
             _saveService.ProgressSaved += DisplayLevel;
             DisplayLevel();
         }

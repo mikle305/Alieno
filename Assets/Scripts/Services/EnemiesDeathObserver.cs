@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using Additional.Game;
 using GamePlay.UnitsComponents;
 using UnityEngine;
 
 namespace Services
 {
-    public class EnemiesDeathObserver : MonoSingleton<EnemiesDeathObserver>
+    public class EnemiesDeathObserver
     {
-        private ObjectsProvider _objectsProvider;
+        private readonly ObjectsProvider _objectsProvider;
+        
         private int _aliveEnemiesCount;
-        
-        public event Action AllCleared; 
-        
-        
-        private void Start()
+
+        public event Action AllCleared;
+
+
+        public EnemiesDeathObserver(ObjectsProvider objectsProvider)
         {
-            _objectsProvider = ObjectsProvider.Instance;
+            _objectsProvider = objectsProvider;
         }
 
         public void Init()

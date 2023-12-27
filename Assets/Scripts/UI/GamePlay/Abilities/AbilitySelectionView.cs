@@ -7,6 +7,7 @@ using StaticData.UI;
 using TMPro;
 using UI.Animations;
 using UnityEngine;
+using VContainer;
 
 namespace UI.GamePlay
 {
@@ -16,9 +17,8 @@ namespace UI.GamePlay
         [SerializeField] private UITransitionEffect _window;
         [SerializeField] private AbilityButton[] _buttons;
 
-        [Space(5), Header("Animation Settings")] [SerializeField]
-        private float _windowAnimTime = 0.4f;
-
+        [Space(5), Header("Animation Settings")] 
+        [SerializeField] private float _windowAnimTime = 0.4f;
         [SerializeField] private float _labelAnimTime = 0.3f;
         [SerializeField] private float _buttonAnimTime = 0.5f;
 
@@ -26,11 +26,12 @@ namespace UI.GamePlay
         private UiConfig _uiConfig;
         private Tween _tween;
 
-
-        private void Awake()
+        
+        [Inject]
+        public void Construct(StaticDataService staticDataService, AbilitySelectionService abilitySelectionService)
         {
-            _uiConfig = StaticDataService.Instance.GetUiConfig();
-            _abilitySelectionService = AbilitySelectionService.Instance;
+            _uiConfig = staticDataService.GetUiConfig();
+            _abilitySelectionService = abilitySelectionService;
             _abilitySelectionService.AbilitiesGenerated += OnAbilitiesGenerated;
         }
 

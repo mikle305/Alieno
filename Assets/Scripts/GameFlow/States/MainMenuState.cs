@@ -12,11 +12,15 @@ namespace GameFlow.States
         private readonly MusicService _musicService;
 
 
-        public MainMenuState(GameStateMachine context, MusicService musicService, SceneLoader sceneLoader)
+        public MainMenuState(
+            GameStateMachine context,
+            MusicService musicService, 
+            SceneLoader sceneLoader,
+            MainMenuService menuService)
         {
             _context = context;
             _sceneLoader = sceneLoader;
-            _menuService = MainMenuService.Instance;
+            _menuService = menuService;
             _musicService = musicService;
         }
 

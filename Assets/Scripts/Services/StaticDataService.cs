@@ -1,5 +1,4 @@
 ﻿using Additional.Constants;
-using Additional.Game;
 using StaticData.Abilities;
 using StaticData.GameConfig;
 using StaticData.Music;
@@ -10,7 +9,7 @@ using UnityEngine;
 
 namespace Services
 {
-    public class StaticDataService : MonoSingleton<StaticDataService>
+    public class StaticDataService
     {
         private MusicConfig _musicConfig;
         private PrefabsConfig _prefabsConfig;

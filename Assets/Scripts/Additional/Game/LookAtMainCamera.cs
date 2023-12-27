@@ -1,6 +1,6 @@
-﻿using System;
-using Services;
+﻿using Services;
 using UnityEngine;
+using VContainer;
 
 namespace Additional.Game
 {
@@ -8,12 +8,13 @@ namespace Additional.Game
     {
         private ObjectsProvider _objectsProvider;
         private Transform _transform;
-        
-        
-        private void Start()
+
+
+        [Inject]
+        public void Construct(ObjectsProvider objectsProvider)
         {
+            _objectsProvider = objectsProvider;
             _transform = transform;
-            _objectsProvider = ObjectsProvider.Instance;
         }
 
         private void Update() 

@@ -1,12 +1,12 @@
 ﻿using System;
 using Additional.Constants;
-using Additional.Game;
 using Services.Notifications;
 using Services.Save;
+using VContainer.Unity;
 
 namespace Services
 {
-    public class MainMenuService : MonoSingleton<MainMenuService>
+    public class MainMenuService : ITickable
     {
         private StaticDataService _staticDataService;
         private SaveService _saveService;
@@ -16,14 +16,7 @@ namespace Services
         public event Action PlayClicked;
 
 
-        private void Start()
-        {
-            _staticDataService = StaticDataService.Instance;
-            _saveService = SaveService.Instance;
-            _notificationService = NotificationService.Instance;
-        }
-
-        private void Update()
+        public void Tick()
         {
             if (!SimpleInput.GetButtonDown(InputConstants.Play)) 
                 return;

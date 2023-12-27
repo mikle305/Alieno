@@ -15,14 +15,19 @@ namespace GameFlow.States
         private readonly GameStateMachine _context;
         private readonly SaveService _saveService;
         private readonly ObjectsProvider _objectsProvider;
-        private HudFactory _hudFactory;
+        private readonly HudFactory _hudFactory;
 
 
-        public ProgressRestoreState(GameStateMachine context)
+        public ProgressRestoreState(
+            GameStateMachine context, 
+            SaveService saveService, 
+            ObjectsProvider objectsProvider,
+            HudFactory hudFactory)
         {
             _context = context;
-            _saveService = SaveService.Instance;
-            _objectsProvider = ObjectsProvider.Instance;
+            _saveService = saveService;
+            _objectsProvider = objectsProvider;
+            _hudFactory = hudFactory;
         }
 
         public override void Enter()
@@ -65,7 +70,6 @@ namespace GameFlow.States
         private void InitHud()
         {
             GameObject character = _objectsProvider.Character;
-            _hudFactory = HudFactory.Instance;
             Hud hud = _hudFactory.Create(character);
             hud.gameObject.SetActive(false);
             _objectsProvider.Hud = hud;

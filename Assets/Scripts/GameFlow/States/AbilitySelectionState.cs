@@ -16,13 +16,18 @@ namespace GameFlow.States
         private readonly StaticDataService _staticDataService;
 
 
-        public AbilitySelectionState(GameStateMachine context)
+        public AbilitySelectionState(
+            GameStateMachine context, 
+            AbilitySelectionService abilitySelectionService,
+            StaticDataService staticDataService, 
+            SaveService saveService, 
+            ObjectsProvider objectsProvider)
         {
             _context = context;
-            _abilitySelectionService = AbilitySelectionService.Instance;
-            _staticDataService = StaticDataService.Instance;
-            _saveService = SaveService.Instance;
-            _objectsProvider = ObjectsProvider.Instance;
+            _abilitySelectionService = abilitySelectionService;
+            _staticDataService = staticDataService;
+            _saveService = saveService;
+            _objectsProvider = objectsProvider;
         }
 
         public override void Enter()
@@ -101,7 +106,7 @@ namespace GameFlow.States
                 .AbilitiesMap
                 .TryGetValue(id, out abilityComponent);
 
-        private int[] GetAbilityAvailableLevels(AbilityId id) 
+        private int[] GetAbilityAvailableLevels(AbilityId id)
             => _staticDataService
                 .GetAbilitiesConfig()
                 .PlayerAbilitiesData

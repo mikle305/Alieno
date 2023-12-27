@@ -6,8 +6,10 @@ namespace Additional.Game
 {
     public class GameObjectPool : ObjectPool<GameObject>
     {
-        public GameObjectPool(GameObject prefab, int startCount, Transform parent = null, Action<GameObject, ObjectPool<GameObject>> onCreate = null)
-            : base(() => CreateObject(prefab, parent), startCount, onCreate)
+        public GameObjectPool(GameObject prefab, int startCount, Transform parent = null, 
+            Func<GameObject, Transform, GameObject> factory = null, 
+            Action<GameObject, ObjectPool<GameObject>> onCreate = null)
+            : base(() => CreateObject(prefab, parent, factory), startCount, onCreate)
         {
         }
 
@@ -24,40 +26,14 @@ namespace Additional.Game
             return obj;
         }
 
-        private static GameObject CreateObject(GameObject prefab, Transform parent)
+        private static GameObject CreateObject(GameObject prefab, Transform parent, 
+            Func<GameObject, Transform, GameObject> factory)
         {
             prefab.SetActive(false);
-            GameObject obj = Object.Instantiate(prefab, parent);
-            return obj;
-        }
-    }
-
-    public class GameObjectPool<T> : ObjectPool<T>
-        where T : Component
-    {
-        public GameObjectPool(T prefab, int startCount, Transform parent = null, Action<T, ObjectPool<T>> onCreate = null)
-            : base(() => CreateObject(prefab, parent), startCount, onCreate)
-        {
-        }
-
-
-        public override void Release(T component)
-        {
-            component.gameObject.SetActive(false);
-            base.Release(component);
-        }
-
-        public override T Take()
-        {
-            T component = base.Take();
-            component.gameObject.SetActive(true);
-            return component;
-        }
-
-        private static T CreateObject(T prefab, Transform parent)
-        {
-            prefab.gameObject.SetActive(false);
-            T obj = Object.Instantiate(prefab, parent);
+            GameObject obj = factory != null ? 
+                factory.Invoke(prefab, parent) 
+                : Object.Instantiate(prefab, parent);
+            
             return obj;
         }
     }

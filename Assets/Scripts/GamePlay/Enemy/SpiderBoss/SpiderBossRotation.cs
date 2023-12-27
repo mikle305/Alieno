@@ -1,6 +1,6 @@
-using System;
 using Services;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Enemy
 {
@@ -8,34 +8,31 @@ namespace GamePlay.Enemy
     {
         [SerializeField] private Transform _enemyTransform;
         [SerializeField] private float _turnSpeed = 6f;
+        
+        private ObjectsProvider _objectsProvider;
 
-        public void UpdateRotation(Transform _target)
+
+        [Inject]
+        public void Construct(ObjectsProvider objectsProvider)
         {
-            Quaternion OriginalRot = _enemyTransform.rotation;
-            _enemyTransform.LookAt(_target);
-        
-            Quaternion NewRot = transform.rotation;
-        
-            transform.rotation = Quaternion.Lerp(OriginalRot, NewRot, _turnSpeed * Time.deltaTime);
+            _objectsProvider = objectsProvider;
         }
 
         private void Update()
         {
-            GameObject character = ObjectsProvider.Instance.Character;
+            GameObject character = _objectsProvider.Character;
             if (character == null)
                 return;
             
             UpdateRotation(character.transform);
         }
 
-        public void UpdateRotation(Vector3 _target)
+        private void UpdateRotation(Transform target)
         {
-            Quaternion OriginalRot = _enemyTransform.rotation;
-            _enemyTransform.LookAt(_target);
-        
-            Quaternion NewRot = transform.rotation;
-        
-            transform.rotation = Quaternion.Lerp(OriginalRot, NewRot, _turnSpeed * Time.deltaTime);
+            Quaternion originalRot = _enemyTransform.rotation;
+            _enemyTransform.LookAt(target);
+            Quaternion newRot = transform.rotation;
+            transform.rotation = Quaternion.Lerp(originalRot, newRot, _turnSpeed * Time.deltaTime);
         }
     }
 }

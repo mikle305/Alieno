@@ -3,12 +3,12 @@ using VContainer;
 
 namespace Services.Factories
 {
-    public class ObjectFactory
+    public class ObjectActivator
     {
         private readonly IObjectResolver _resolver;
 
         
-        public ObjectFactory(IObjectResolver resolver)
+        public ObjectActivator(IObjectResolver resolver)
         {
             _resolver = resolver;
         }
@@ -18,7 +18,10 @@ namespace Services.Factories
         
         public T CreateUnsafe<T>(Type objectType, bool tryManually = false) where T : class 
             => (T) Create(objectType, tryManually);
-        
+
+        public T Create<T>()
+            => _resolver.Resolve<T>();
+
         public object Create(Type objectType, bool tryManually = false)
         {
             object resolved = _resolver.Resolve(objectType);
@@ -27,8 +30,5 @@ namespace Services.Factories
 
             return resolved;
         }
-
-        public T Create<T>()
-            => _resolver.Resolve<T>();
     }
 }

@@ -1,18 +1,21 @@
-﻿using Additional.Game;
-using GamePlay.Enemy;
+﻿using GamePlay.Enemy;
 using GamePlay.Other.Ids;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace Services.Factories
 {
-    public class EnemyFactory : MonoSingleton<EnemyFactory>
+    public class EnemyFactory
     {
-        private StaticDataService _staticDataService;
+        private readonly StaticDataService _staticDataService;
+        private readonly IObjectResolver _monoResolver;
 
 
-        private void Start()
+        public EnemyFactory(StaticDataService staticDataService, IObjectResolver monoResolver)
         {
-            _staticDataService = StaticDataService.Instance;
+            _monoResolver = monoResolver;
+            _staticDataService = staticDataService;
         }
 
         public GameObject Create(EnemySpawn enemySpawn) 
@@ -22,7 +25,7 @@ namespace Services.Factories
         {
             GameObject prefab = GetPrefab(enemySpawn.Id);
             Transform spawnTransform = enemySpawn.transform;
-            return Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
+            return _monoResolver.Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
         }
 
         private GameObject GetPrefab(EnemyId id)

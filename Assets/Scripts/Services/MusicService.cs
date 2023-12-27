@@ -32,11 +32,11 @@ namespace Services
         }
 
         private Tween DisappearMusic() 
-            => _audioSource.DOFade(0, AudioConstants.MusicTransitionDuration);
+            => _audioSource.DOFade(0, GameConstants.MusicTransitionDuration);
 
         private Tween AppearMusic(Music music) 
             => _audioSource
-                .DOFade(music.BasicVolume, AudioConstants.MusicTransitionDuration)
+                .DOFade(music.BasicVolume, GameConstants.MusicTransitionDuration)
                 .OnStart(() =>
                 {
                     _audioSource.clip = music.Clip;

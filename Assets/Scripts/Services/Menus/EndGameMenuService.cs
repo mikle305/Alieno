@@ -1,16 +1,16 @@
 ﻿using System;
 using Additional.Constants;
-using Additional.Game;
+using VContainer.Unity;
 
 namespace Services
 {
-    public class EndGameMenuService : MonoSingleton<EndGameMenuService>
+    public class EndGameMenuService : ITickable
     {
         public event Action ToMainMenuInvoked;
         public event Action DefeatReceived;
-        
-        
-        private void Update()
+
+
+        public void Tick()
         {
             if (!SimpleInput.GetButtonDown(InputConstants.MainMenu))
                 return;

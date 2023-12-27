@@ -7,16 +7,17 @@ namespace GameFlow.States
 {
     public class RoomExitWaitingState : State
     {
-        private readonly GameStateMachine _context;
-        private readonly ObjectsProvider _objectsProvider;
         private PlayerCollisionDetector _lastPlayerDetector;
         private Action _enterNextState;
-
         
-        public RoomExitWaitingState(GameStateMachine context)
+        private readonly GameStateMachine _context;
+        private readonly ObjectsProvider _objectsProvider;
+
+
+        public RoomExitWaitingState(GameStateMachine context, ObjectsProvider objectsProvider)
         {
             _context = context;
-            _objectsProvider = ObjectsProvider.Instance;
+            _objectsProvider = objectsProvider;
         }
 
         public override void Enter<TNext>()

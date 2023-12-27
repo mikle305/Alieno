@@ -20,15 +20,19 @@ namespace GameFlow.States
         private readonly GameFactory _gameFactory;
 
 
-        public SceneLoadingState(GameStateMachine context, SceneLoader sceneLoader, ObjectPoolsProvider poolsProvider,
-            GameFactory gameFactory)
+        public SceneLoadingState(GameStateMachine context,
+            SceneLoader sceneLoader,
+            ObjectPoolsProvider poolsProvider,
+            GameFactory gameFactory, 
+            SaveService saveService, 
+            ObjectsProvider objectsProvider)
         {
             _context = context;
             _sceneLoader = sceneLoader;
             _poolsProvider = poolsProvider;
             _gameFactory = gameFactory;
-            _saveService = SaveService.Instance;
-            _objectsProvider = ObjectsProvider.Instance;
+            _saveService = saveService;
+            _objectsProvider = objectsProvider;
         }
 
         public override void Enter()

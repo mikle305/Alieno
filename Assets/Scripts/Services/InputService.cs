@@ -1,9 +1,8 @@
-﻿using Additional.Game;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Services
 {
-    public class InputService : MonoSingleton<InputService>, IInputService
+    public class InputService : IInputService
     {
         public Vector2 GetMoveDirection() 
             => new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;

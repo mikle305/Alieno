@@ -12,11 +12,14 @@ namespace GameFlow.States
         private readonly AbilitySelectionService _abilitySelectionService;
 
 
-        public AbilitiesGenerationState(GameStateMachine context)
+        public AbilitiesGenerationState(
+            GameStateMachine context, 
+            SaveService saveService,
+            AbilitySelectionService abilitySelectionService)
         {
             _context = context;
-            _saveService = SaveService.Instance;
-            _abilitySelectionService = AbilitySelectionService.Instance;
+            _saveService = saveService;
+            _abilitySelectionService = abilitySelectionService;
         }
 
         public override void Enter()
@@ -32,7 +35,8 @@ namespace GameFlow.States
         private void GenerateAbilities()
         {
             PlayerData playerProgress = _saveService.Progress.PlayerData;
-            playerProgress.GeneratedAbilities = _abilitySelectionService.GenerateAbilities(playerProgress.CurrentAbilities);
+            playerProgress.GeneratedAbilities =
+                _abilitySelectionService.GenerateAbilities(playerProgress.CurrentAbilities);
             playerProgress.AbilitySelected = false;
             _saveService.Save();
         }
@@ -43,10 +47,10 @@ namespace GameFlow.States
             _abilitySelectionService.RestoreAbilities(generatedAbilities);
         }
 
-        private bool IsAbilitiesNotGenerated() 
+        private bool IsAbilitiesNotGenerated()
             => _saveService.Progress.PlayerData.GeneratedAbilities.Length == 0;
 
-        private void EnterAbilitySelection() 
+        private void EnterAbilitySelection()
             => _context.Enter<AbilitySelectionState>();
     }
 }

@@ -14,11 +14,11 @@ namespace GameFlow.States
         private readonly SaveService _saveService;
 
 
-        public LastRoomCheckState(GameStateMachine context)
+        public LastRoomCheckState(GameStateMachine context, ObjectsProvider objectsProvider, SaveService saveService)
         {
             _context = context;
-            _objectsProvider = ObjectsProvider.Instance;
-            _saveService = SaveService.Instance;
+            _objectsProvider = objectsProvider;
+            _saveService = saveService;
         }
 
         public override void Enter()

@@ -13,11 +13,11 @@ namespace GameFlow.States
         private readonly ObjectsProvider _objectsProvider;
         
 
-        public RoomClearedState(GameStateMachine context)
+        public RoomClearedState(GameStateMachine context, SaveService saveService, ObjectsProvider objectsProvider)
         {
             _context = context;
-            _saveService = SaveService.Instance;
-            _objectsProvider = ObjectsProvider.Instance;
+            _saveService = saveService;
+            _objectsProvider = objectsProvider;
         }
         
         public override void Enter()

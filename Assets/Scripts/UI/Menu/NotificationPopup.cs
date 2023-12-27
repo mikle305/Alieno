@@ -25,10 +25,6 @@ namespace UI.Menu
         public void Construct(NotificationService notificationService)
         {
             _notificationService = notificationService;
-        }
-
-        private void Start()
-        {
             InitNotificationsCollections();
             BindEvents();
         }

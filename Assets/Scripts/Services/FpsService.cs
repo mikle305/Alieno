@@ -1,15 +1,12 @@
-﻿using Additional.Game;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace Services
 {
-    public class FpsService : MonoSingleton<FpsService>
+    public class FpsService
     {
-        protected override void Awake()
+        public FpsService()
         {
-            base.Awake();
-            
             SetBackgroundLoadingPriority();
             SetTweensPoolCount();
             Set60TargetFps();

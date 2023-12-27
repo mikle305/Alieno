@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Additional.Game;
 using Random = UnityEngine.Random;
 
 namespace Services
 {
-    public class RandomService : MonoSingleton<RandomService>
+    public class RandomService
     {
         /// <summary>
         /// </summary>

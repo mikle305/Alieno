@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Additional.Game;
 using Cinemachine;
 using GamePlay.Other.Navigators;
 using StaticData.Prefabs;
@@ -8,7 +7,7 @@ using UnityEngine;
 
 namespace Services
 {
-    public class ObjectsProvider : MonoSingleton<ObjectsProvider>
+    public class ObjectsProvider
     {
         public Hud Hud { get; set; }
         public GameObject Character { get; set; }

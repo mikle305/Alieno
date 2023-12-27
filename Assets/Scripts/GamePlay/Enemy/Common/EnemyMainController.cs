@@ -4,6 +4,7 @@ using Services;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using VContainer;
 
 namespace GamePlay.Enemy
 {
@@ -22,10 +23,15 @@ namespace GamePlay.Enemy
         private bool _isAwake;
         
         
+        [Inject]
+        public void Construct(ObjectsProvider objectsProvider)
+        {
+            _objectsProvider = objectsProvider;
+        }
+        
         private void Start()
         {
             _ai = Instantiate(_aiPrefab);
-            _objectsProvider = ObjectsProvider.Instance;
             _ai.Target = _objectsProvider.Character.transform;
             _ai.TargetRigidbody = _objectsProvider.CharacterRigidbody;
             _healthData.ValueChanged += AwakeEnemy;

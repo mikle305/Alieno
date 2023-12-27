@@ -1,6 +1,7 @@
 ﻿using Services;
 using UI.Windows;
 using UnityEngine;
+using VContainer;
 
 namespace UI.Menu
 {
@@ -11,10 +12,16 @@ namespace UI.Menu
         private EndGameMenuService _endGameMenuService;
 
         
-        private void Awake()
+        [Inject]
+        public void Construct(EndGameMenuService endGameMenuService)
         {
-            _endGameMenuService = EndGameMenuService.Instance;
+            _endGameMenuService = endGameMenuService;
             _endGameMenuService.DefeatReceived += ShowWindow;
+        }
+
+        private void OnDestroy()
+        {
+            _endGameMenuService.DefeatReceived -= ShowWindow;
         }
 
         private void ShowWindow() 

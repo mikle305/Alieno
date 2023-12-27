@@ -1,8 +1,8 @@
 ﻿using Services;
-using StaticData;
 using StaticData.Abilities;
 using StaticData.UI;
 using UnityEngine;
+using VContainer;
 
 namespace UI.GamePlay
 {
@@ -12,10 +12,15 @@ namespace UI.GamePlay
         
         private StaticDataService _staticDataService;
 
-
+        
+        [Inject]
+        public void Construct(StaticDataService staticDataService)
+        {
+            _staticDataService = staticDataService;
+        }
+        
         private void Start()
         {
-            _staticDataService = StaticDataService.Instance;
             InitAllElements();
         }
 

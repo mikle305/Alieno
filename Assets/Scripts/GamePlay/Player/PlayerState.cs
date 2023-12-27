@@ -1,6 +1,6 @@
-﻿using System;
-using Services;
+﻿using Services;
 using UnityEngine;
+using VContainer;
 
 namespace GamePlay.Player
 {
@@ -11,14 +11,15 @@ namespace GamePlay.Player
         [SerializeField] private PlayerAttacker _attacker;
         [SerializeField] private PlayerDash _dash;
         
-        private InputService _inputService;
+        private IInputService _inputService;
         private bool _dashInvokedInput;
         private Vector2 _moveDirectionInput;
 
-
-        private void Start()
+        
+        [Inject]
+        public void Construct(IInputService inputService)
         {
-            _inputService = InputService.Instance;
+            _inputService = inputService;
         }
 
         private void Update()

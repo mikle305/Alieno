@@ -7,7 +7,7 @@ namespace Services.Factories
 {
     public class UiFactory
     {
-        private ObjectPoolsProvider _poolsProvider;
+        private readonly ObjectPoolsProvider _poolsProvider;
 
 
         public UiFactory(ObjectPoolsProvider poolsProvider)

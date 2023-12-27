@@ -1,9 +1,8 @@
 ﻿using System;
-using Additional.Game;
 
 namespace Services.Notifications
 {
-    public class NotificationService : MonoSingleton<NotificationService>
+    public class NotificationService
     {
         public event Action<ErrorId, Action> InternalErrorReceived;
         public event Action<MessageId, Action> MessageReceived;
