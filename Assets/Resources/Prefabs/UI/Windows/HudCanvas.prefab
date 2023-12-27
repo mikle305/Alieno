@@ -2045,7 +2045,7 @@ MonoBehaviour:
   - {fileID: 2407643381638400985}
   _windowAnimTime: 1
   _labelAnimTime: 0.7
-  _buttonAnimTime: 0.7
+  _buttonAnimTime: 0.4
 --- !u!1 &8465248691128708183
 GameObject:
   m_ObjectHideFlags: 0

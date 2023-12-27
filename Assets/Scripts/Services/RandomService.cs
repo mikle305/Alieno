@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Services
@@ -41,5 +42,17 @@ namespace Services
 
         public IEnumerable<T> PickMany<T>(IEnumerable<T> collection, int count) 
             => collection.OrderBy(_ => Guid.NewGuid()).Take(count);
+
+        public Vector3 GenerateFromRange(Vector3 range)
+            => new(GenerateFromRange(range.x), GenerateFromRange(range.y), GenerateFromRange(range.z));
+
+        public float GenerateFromRange(float range)
+        {
+            if (range == 0)
+                return 0;
+            
+            float absValue = Mathf.Abs(range);
+            return Generate(-absValue, absValue);
+        }
     }
 }

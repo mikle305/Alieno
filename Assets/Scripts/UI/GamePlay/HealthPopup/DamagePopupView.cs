@@ -1,8 +1,10 @@
 using System;
 using Additional.Extensions;
 using DG.Tweening;
+using Services;
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 namespace UI.GamePlay
 {
@@ -15,12 +17,21 @@ namespace UI.GamePlay
         [SerializeField] private float _endScale = 1.0f;
         [SerializeField] private float _scaleDuration = 0.8f;
         [SerializeField] private float _moveDistance = 0.1f;
+        [SerializeField] private Vector3 _offsetRange = new(1, 0.3f, 0.2f);
         
         private Sequence _tween;
+        private RandomService _randomService;
 
+
+        [Inject]
+        public void Construct(RandomService randomService)
+        {
+            _randomService = randomService;
+        }
 
         public void Play(float damage, Color color)
         {
+            SetRandomOffset();
             SetText(damage);
             SetColor(color);
             _tween = DOTween.Sequence()
@@ -34,6 +45,9 @@ namespace UI.GamePlay
         {
             _tween?.Kill();
         }
+
+        private void SetRandomOffset() 
+            => transform.localPosition += _randomService.GenerateFromRange(_offsetRange);
 
         private Tween Move()
         {

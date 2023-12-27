@@ -20,7 +20,6 @@ namespace GameFlow
         {
             _currentState?.Exit();
             _currentState = GetState<T>();
-            Debug.Log($"Entered {_currentState.GetType().Name}");
             _currentState.Enter();
         }
 
