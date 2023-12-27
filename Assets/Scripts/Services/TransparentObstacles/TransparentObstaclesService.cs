@@ -7,13 +7,14 @@ namespace Services.TransparentObstacles
 {
     public class TransparentObstaclesService : IFixedTickable
     {
+        private HashSet<TransparentObstacle> _previousTransparents = new();
+        private readonly Collider[] _currentHits = new Collider[30];
+        
         private readonly ObjectsProvider _objectsProvider;
         private readonly TransparentObstaclesData _transparentObstaclesData;
         private readonly LayerMask _obstacleLayer;
-        private readonly Collider[] _currentHits = new Collider[30];
-        private HashSet<TransparentObstacle> _previousTransparents = new();
 
-
+        
         public TransparentObstaclesService(ObjectsProvider objectsProvider, StaticDataService staticDataService)
         {
             _objectsProvider = objectsProvider;

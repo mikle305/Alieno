@@ -8,16 +8,15 @@ namespace Services
     {
         private int _lastUsedFrame = -1;
         private int _lastUsedFrameEnemies = -1;
-
         private Transform _currentClosestAndVisible;
         private List<Transform> _sortedEnemies;
-        private ObjectsProvider _objectsProvider;
         private Dictionary<Transform, Transform> _enemyAndItsClosest;
-        private LayerMask _obstacleLayer;
+        
+        private readonly ObjectsProvider _objectsProvider;
+        private readonly LayerMask _obstacleLayer;
 
-
-        [Inject]
-        public void Construct(ObjectsProvider objectsProvider, StaticDataService staticDataService)
+        
+        public RadarService(ObjectsProvider objectsProvider, StaticDataService staticDataService)
         {
             _objectsProvider = objectsProvider;
             _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;

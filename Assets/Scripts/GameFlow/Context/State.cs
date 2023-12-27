@@ -1,4 +1,4 @@
-﻿namespace GameFlow.States
+﻿namespace GameFlow
 {
     public abstract class State
     {

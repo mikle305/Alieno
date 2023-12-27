@@ -1,48 +1,26 @@
 ﻿using GamePlay.Statuses;
-using UnityEngine;
 
 namespace Services.Statuses
 {
     public class DamageService
     {
-        private readonly RandomService _randomService;
-        private readonly RadarService _radarService;
-        private LayerMask _obstacleLayer;
-        private StatusHandler[] _handlers;
+        private readonly StatusHandlersCollection _handlersCollection;
 
 
-        public DamageService(RandomService randomService, RadarService radarService, StaticDataService staticDataService)
+        public DamageService(StatusHandlersCollection handlersCollection)
         {
-            _randomService = randomService;
-            _radarService = radarService;
-            _obstacleLayer = staticDataService.GetGamePlayConfig().ObstacleLayer;
-            InitHandlers();
+            _handlersCollection = handlersCollection;
+            _handlersCollection.Init();
         }
 
         public void Process(DamageData damageData)
         {
-            foreach (StatusHandler statusHandler in _handlers)
+            foreach (StatusHandler statusHandler in _handlersCollection.Get())
             {
-                 bool toNext = statusHandler.Work(damageData);
-                 if (!toNext)
-                     break;
+                bool toNext = statusHandler.Work(damageData);
+                if (!toNext)
+                    break;
             }
-        }
-
-        private void InitHandlers()
-        {
-            _handlers = new StatusHandler[]
-            {
-                new MainDamageHandler(_randomService),
-                new VampirismHandler(),
-                new HealthAbsorptionHandler(),
-                new ElementHandler<FlameStatus>(),
-                new ElementHandler<PoisonStatus>(),
-                new ObstaclePenetrationHandler(),
-                new RicochetHandler(_radarService),
-                new BouncyWallHandler(_obstacleLayer),
-                new DisposeHandler(),
-            };
         }
     }
 }

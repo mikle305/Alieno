@@ -27,5 +27,8 @@ namespace Services.Factories
 
             return resolved;
         }
+
+        public T Create<T>()
+            => _resolver.Resolve<T>();
     }
 }

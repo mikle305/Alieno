@@ -1,5 +1,4 @@
-﻿using GameFlow.Context;
-using Services;
+﻿using Services;
 using Services.Save;
 using StaticData.Music;
 
@@ -28,7 +27,7 @@ namespace GameFlow.States
         {
             _musicService.Play(MusicId.PerkSelection);
             _levelMapService.AnimationFinished += EnterRoomLoadingState;
-            _levelMapService.Init(_saveService.Progress.PlayerData.Room - 2);
+            _levelMapService.SetRoom(_saveService.Progress.PlayerData.Room - 2);
         }
 
         public override void Exit()

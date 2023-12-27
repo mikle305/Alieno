@@ -5,7 +5,7 @@ using Additional.Constants;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
-namespace GameFlow.Context
+namespace GameFlow
 {
     [InitializeOnLoad]
     public class BootFromAnyScene

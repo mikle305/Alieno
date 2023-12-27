@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cinemachine;
-using GameFlow.Context;
 using GamePlay.Enemy;
-using GamePlay.Other;
 using Services;
 using Services.Factories;
 using Services.Save;
@@ -18,13 +16,18 @@ namespace GameFlow.States
         private readonly ObjectsProvider _objectsProvider;
         private readonly EnemiesDeathObserver _enemiesDeathObserver;
         private readonly MusicService _musicService;
-        private EnemyFactory _enemyFactory;
+        private readonly EnemyFactory _enemyFactory;
+        
         private Room _currentRoom;
 
 
-        public RoomLoadingState(GameStateMachine context, MusicService musicService)
+        public RoomLoadingState(
+            GameStateMachine context, 
+            MusicService musicService, 
+            EnemyFactory enemyFactory)
         {
             _context = context;
+            _enemyFactory = enemyFactory;
             _saveService = SaveService.Instance;
             _objectsProvider = ObjectsProvider.Instance;
             _enemiesDeathObserver = EnemiesDeathObserver.Instance;
@@ -38,24 +41,15 @@ namespace GameFlow.States
             SpawnPlayer();
             MoveCameraToPlayer();
             SpawnEnemies();
-            ShowRoomDependentObjects();
-            SubscribeEnemiesObserver();
+            ShowDependentObjects();
+            InitDependentServices();
         }
 
-        public override void Exit()
-        {
-            _enemiesDeathObserver.AllCleared -= OnEnemiesCleared;
-        }
+        public override void Exit() 
+            => _enemiesDeathObserver.AllCleared -= EnterRoomCleared;
 
-        private void SwitchToRoomMusic()
-        {
-            _musicService.Play(_currentRoom.BackgroundMusic);
-        }
-
-        private void OnEnemiesCleared()
-        {
-            _context.Enter<RoomClearedState>();
-        }
+        private void EnterRoomCleared() 
+            => _context.Enter<RoomClearedState>();
 
         private void InitCurrentRoom()
         {
@@ -66,9 +60,9 @@ namespace GameFlow.States
 
         private void MoveCameraToPlayer()
         {
-            var vCam = _objectsProvider.VirtualCamera;
-            var mCam = _objectsProvider.MainCamera;
-            var playerPosition = _objectsProvider.Character.transform.position;
+            CinemachineVirtualCamera vCam = _objectsProvider.VirtualCamera;
+            Camera mCam = _objectsProvider.MainCamera;
+            Vector3 playerPosition = _objectsProvider.Character.transform.position;
 
             vCam.enabled = false;
             mCam.enabled = false;
@@ -78,7 +72,7 @@ namespace GameFlow.States
             vCam.enabled = true;
             mCam.enabled = true;
         }
-        
+
         private void SpawnPlayer()
         {
             Transform character = _objectsProvider.Character.transform;
@@ -93,7 +87,6 @@ namespace GameFlow.States
 
         private void SpawnEnemies()
         {
-            _enemyFactory = EnemyFactory.Instance;
             EnemySpawn[] enemySpawns = _currentRoom.EnemySpawns;
             var aliveEnemies = new List<Transform>(enemySpawns.Length);
             foreach (EnemySpawn enemySpawn in enemySpawns)
@@ -105,15 +98,18 @@ namespace GameFlow.States
             _objectsProvider.AliveEnemies = aliveEnemies;
         }
 
-        private void ShowRoomDependentObjects()
+        private void ShowDependentObjects()
         {
             _objectsProvider.Hud.gameObject.SetActive(true);
         }
 
-        private void SubscribeEnemiesObserver()
+        private void InitDependentServices()
         {
-            _enemiesDeathObserver.AllCleared += OnEnemiesCleared;
+            _enemiesDeathObserver.AllCleared += EnterRoomCleared;
             _enemiesDeathObserver.Init();
         }
+
+        private void SwitchToRoomMusic() 
+            => _musicService.Play(_currentRoom.BackgroundMusic);
     }
 }

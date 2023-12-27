@@ -4,7 +4,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace GameFlow.Context
+namespace GameFlow
 {
     public class BootLifetimeScope : LifetimeScope
     {
