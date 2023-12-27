@@ -8,13 +8,17 @@ using Services.Notifications;
 using Services.ObjectPool;
 using Services.Save;
 using Services.Statuses;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace GameFlow
 {
-    public class ProjectLifetimeScope : LifetimeScope, ICoroutineRunner
+    public class ProjectLifetimeScope : LifetimeScope
     {
+        [SerializeField] private MonoRunner _monoRunnerPrefab;
+
+
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterGameStates(builder);
@@ -23,12 +27,13 @@ namespace GameFlow
             RegisterInputService(builder);
             RegisterStatusServices(builder);
             RegisterAbilitiesComponents(builder);
+            RegisterEmptyMono(builder);
             RegisterOtherServices(builder);
         }
 
         private void RegisterGameStates(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<GameStateMachine>();
+            builder.RegisterEntryPoint<GameStateMachine>().AsSelf();
             builder.Register<BootState>(Lifetime.Singleton);
             builder.Register<MainMenuState>(Lifetime.Singleton);
             builder.Register<SceneLoadingState>(Lifetime.Singleton);
@@ -65,8 +70,8 @@ namespace GameFlow
         {
             builder.Register<EnemiesDeathObserver>(Lifetime.Singleton);
             builder.Register<NotificationService>(Lifetime.Singleton);
-            builder.RegisterEntryPoint<MainMenuService>();
-            builder.RegisterEntryPoint<EndGameMenuService>();
+            builder.RegisterEntryPoint<MainMenuService>().AsSelf();
+            builder.RegisterEntryPoint<EndGameMenuService>().AsSelf();
             builder.Register<StaticDataService>(Lifetime.Singleton);
             builder.Register<RandomService>(Lifetime.Singleton);
             builder.Register<MusicService>(Lifetime.Singleton);
@@ -75,7 +80,6 @@ namespace GameFlow
             builder.Register<SettingsService>(Lifetime.Singleton);
             builder.Register<AbilitySelectionService>(Lifetime.Singleton);
             builder.Register<SceneLoader>(Lifetime.Singleton);
-            builder.RegisterInstance<ICoroutineRunner>(this);
             builder.Register<LevelMapService>(Lifetime.Singleton);
             builder.Register<RadarService>(Lifetime.Singleton);
         }
@@ -89,8 +93,10 @@ namespace GameFlow
             builder.Register<StatusAbilityComponent<FlameData, FlameLevelData>>(Lifetime.Transient);
             builder.Register<StatusAbilityComponent<PoisonData, PoisonLevelData>>(Lifetime.Transient);
             builder.Register<StatusAbilityComponent<BouncyWallData, BouncyWallLevelData>>(Lifetime.Transient);
-            builder.Register<StatusAbilityComponent<HealthAbsorptionData, HealthAbsorptionLevelData>>(Lifetime.Transient);
-            builder.Register<StatusAbilityComponent<ObstaclePenetrationData, ObstaclePenetrationLevelData>>(Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<HealthAbsorptionData, HealthAbsorptionLevelData>>(
+                Lifetime.Transient);
+            builder.Register<StatusAbilityComponent<ObstaclePenetrationData, ObstaclePenetrationLevelData>>(
+                Lifetime.Transient);
             builder.Register<StatusAbilityComponent<RicochetData, RicochetLevelData>>(Lifetime.Transient);
             builder.Register<StatusAbilityComponent<VampirismData, VampirismLevelData>>(Lifetime.Transient);
         }
@@ -98,12 +104,17 @@ namespace GameFlow
         private void RegisterSaveService(IContainerBuilder builder)
         {
             builder.Register<SaveService>(Lifetime.Singleton);
-            builder.RegisterInstance<ISaveStorage<Progress>>(new PlayerPrefsStorage<Progress>(GameConstants.PrefsProgressKey));
+            builder.RegisterInstance<ISaveStorage<Progress>>(
+                new PlayerPrefsStorage<Progress>(GameConstants.PrefsProgressKey));
         }
 
-        private void RegisterInputService(IContainerBuilder builder)
-        {
-            builder.Register<IInputService, InputService>(Lifetime.Singleton);
-        }
+        private void RegisterInputService(IContainerBuilder builder) 
+            => builder.Register<IInputService, InputService>(Lifetime.Singleton);
+
+        private void RegisterEmptyMono(IContainerBuilder builder)
+            => builder
+                .RegisterComponentInNewPrefab(_monoRunnerPrefab, Lifetime.Singleton)
+                .DontDestroyOnLoad()
+                .As<ICoroutineRunner>();
     }
 }

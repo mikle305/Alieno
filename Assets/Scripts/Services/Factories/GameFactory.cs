@@ -1,32 +1,30 @@
 ﻿using StaticData.Prefabs;
 using UnityEngine;
-using VContainer;
-using VContainer.Unity;
 
 namespace Services.Factories
 {
     public class GameFactory
     {
         private readonly StaticDataService _staticDataService;
-        private readonly IObjectResolver _monoResolver;
+        private readonly ObjectActivator _objectActivator;
 
 
-        public GameFactory(StaticDataService staticDataService, IObjectResolver monoResolver)
+        public GameFactory(StaticDataService staticDataService, ObjectActivator objectActivator)
         {
-            _monoResolver = monoResolver;
+            _objectActivator = objectActivator;
             _staticDataService = staticDataService;
         }
 
         public GameObject CreateCharacter()
         {
             GameObject characterPrefab = _staticDataService.GetPrefabsConfig().Character;
-            return _monoResolver.Instantiate(characterPrefab);
+            return _objectActivator.Instantiate(characterPrefab);
         }
 
         public RoomsMap CreateRoomsMap(int level)
         {
             RoomsMap roomsMapPrefab = _staticDataService.GetPrefabsConfig().Levels[level - 1].Map;
-            return _monoResolver.Instantiate(roomsMapPrefab);
+            return _objectActivator.Instantiate(roomsMapPrefab);
         }
 
         public Room[] CreateRooms(int level, int room)
@@ -34,7 +32,7 @@ namespace Services.Factories
             Room[] roomsPrefabs = _staticDataService.GetPrefabsConfig().Levels[level - 1].Rooms;
             var rooms = new Room[roomsPrefabs.Length];
             for (int i = room - 1; i < roomsPrefabs.Length; i++)
-                rooms[i] = _monoResolver.Instantiate(roomsPrefabs[i], Vector3.zero, Quaternion.Euler(0, 180, 0));
+                rooms[i] = _objectActivator.Instantiate(roomsPrefabs[i], Vector3.zero, Quaternion.Euler(0, 180, 0));
 
             return rooms;
         }

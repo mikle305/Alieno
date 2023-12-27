@@ -24,7 +24,7 @@ namespace GameFlow
 
         private void RegisterLevelServices(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<TransparentObstaclesService>(Lifetime.Scoped);
+            builder.RegisterEntryPoint<TransparentObstaclesService>(Lifetime.Scoped).AsSelf();
         }
 
         private void BindObjectsToProvider(IObjectResolver resolver)

@@ -1,4 +1,5 @@
 using Services.Factories;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace GameFlow
@@ -19,6 +20,7 @@ namespace GameFlow
         {
             _currentState?.Exit();
             _currentState = GetState<T>();
+            Debug.Log($"Entered {_currentState.GetType().Name}");
             _currentState.Enter();
         }
 
@@ -32,7 +34,7 @@ namespace GameFlow
         }
 
         public void Tick() 
-            => _currentState.Tick();
+            => _currentState?.Tick();
 
         private T GetState<T>() where T : State
             => _objectActivator.Create<T>();

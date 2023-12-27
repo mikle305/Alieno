@@ -1,20 +1,18 @@
 ﻿using GamePlay.Enemy;
 using GamePlay.Other.Ids;
 using UnityEngine;
-using VContainer;
-using VContainer.Unity;
 
 namespace Services.Factories
 {
     public class EnemyFactory
     {
         private readonly StaticDataService _staticDataService;
-        private readonly IObjectResolver _monoResolver;
+        private readonly ObjectActivator _objectActivator;
 
 
-        public EnemyFactory(StaticDataService staticDataService, IObjectResolver monoResolver)
+        public EnemyFactory(StaticDataService staticDataService, ObjectActivator objectActivator)
         {
-            _monoResolver = monoResolver;
+            _objectActivator = objectActivator;
             _staticDataService = staticDataService;
         }
 
@@ -25,7 +23,7 @@ namespace Services.Factories
         {
             GameObject prefab = GetPrefab(enemySpawn.Id);
             Transform spawnTransform = enemySpawn.transform;
-            return _monoResolver.Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
+            return _objectActivator.Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
         }
 
         private GameObject GetPrefab(EnemyId id)

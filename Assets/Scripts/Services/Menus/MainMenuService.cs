@@ -8,13 +8,23 @@ namespace Services
 {
     public class MainMenuService : ITickable
     {
-        private StaticDataService _staticDataService;
-        private SaveService _saveService;
-        private NotificationService _notificationService;
+        private readonly StaticDataService _staticDataService;
+        private readonly SaveService _saveService;
+        private readonly NotificationService _notificationService;
 
         public event Action GameStarted;
         public event Action PlayClicked;
 
+
+        public MainMenuService(
+            StaticDataService staticDataService, 
+            SaveService saveService, 
+            NotificationService notificationService)
+        {
+            _staticDataService = staticDataService;
+            _saveService = saveService;
+            _notificationService = notificationService;
+        }
 
         public void Tick()
         {

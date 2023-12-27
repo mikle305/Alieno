@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Additional.Game;
+using Services.Factories;
 using StaticData.Pools;
 using UnityEngine;
 using VContainer;
@@ -14,16 +15,16 @@ namespace Services.ObjectPool
         private readonly Transform _poolsParent;
         private readonly Func<TId, GameObject> _prefabGetter;
         private readonly Dictionary<TId, IObjectPool<GameObject>> _pools;
-        private readonly IObjectResolver _monoResolver;
+        private readonly ObjectActivator _objectActivator;
 
 
         public PoolsProvider(
             Transform poolsParent, 
             Func<TId, GameObject> prefabGetter, 
             PoolEntry<TId>[] defaultPools, 
-            IObjectResolver monoResolver)
+            ObjectActivator objectActivator)
         {
-            _monoResolver = monoResolver;
+            _objectActivator = objectActivator;
             _prefabGetter = prefabGetter;
             _poolsParent = poolsParent;
             _pools = defaultPools.ToDictionary(entry => entry.Id, CreatePool);
@@ -45,7 +46,7 @@ namespace Services.ObjectPool
         }
 
         private GameObject InstantiateObject(GameObject prefab, Transform parent)
-            => _monoResolver.Instantiate(prefab, parent);
+            => _objectActivator.Instantiate(prefab, parent);
 
         private void InitPoolable(GameObject obj, IObjectPool<GameObject> pool) 
             => obj.AddComponent<Poolable>().Init(pool);

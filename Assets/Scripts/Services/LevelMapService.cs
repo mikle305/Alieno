@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using StaticData.GameConfig;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace Services
 {
@@ -59,9 +60,7 @@ namespace Services
                 return;
 
             if (_animation == null)
-                _animation =
-                    _coroutineRunner.StartCoroutine(
-                        MoveAnimation(_objectsProvider.RoomsMap.LevelNumbers[_currentRoom]));
+                _animation = _coroutineRunner.StartCoroutine(MoveAnimation());
             else
                 SkipAnimation();
         }
@@ -69,10 +68,11 @@ namespace Services
         private bool CheckForAutoSkip()
             => _objectsProvider.RoomsMap.AutoSkipToggle.isOn;
 
-        private IEnumerator MoveAnimation(Transform moveTo)
+        private IEnumerator MoveAnimation()
         {
+            Transform moveTo = _objectsProvider.RoomsMap.LevelNumbers[_currentRoom];
             _positionToMove = moveTo.position + _levelMapData.Offset;
-            while ((Vector3.Distance(_objectsProvider.RoomsMap.Pointer.position, _positionToMove) > 0.001f))
+            while (Vector3.Distance(_objectsProvider.RoomsMap.Pointer.position, _positionToMove) > 0.001f)
             {
                 var step = _levelMapData.Speed * Time.deltaTime; // calculate distance to move
                 _objectsProvider.RoomsMap.Pointer.position =

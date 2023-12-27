@@ -15,10 +15,6 @@ namespace UI.Loading
         public void Construct(SceneLoader sceneLoader)
         {
             _sceneLoader = sceneLoader;
-        }
-
-        private void Start()
-        {
             _sceneLoader.ShowCurtainInvoked += _loadingCurtain.Show;
             _sceneLoader.HideCurtainInvoked += _loadingCurtain.Hide;
         }

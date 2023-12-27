@@ -29,6 +29,6 @@ MonoBehaviour:
     <StartCount>k__BackingField: 6
   - <Id>k__BackingField: 8
     <StartCount>k__BackingField: 35
-  <UiElementsPools>k__BackingField:
+  <UiElementPools>k__BackingField:
   - <Id>k__BackingField: 0
     <StartCount>k__BackingField: 30
