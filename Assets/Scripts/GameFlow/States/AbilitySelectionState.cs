@@ -38,7 +38,6 @@ namespace GameFlow.States
 
         public override void Exit()
         {
-            _objectsProvider.Hud.gameObject.SetActive(false);
             _abilitySelectionService.AbilitySelected -= OnAbilitySelected;
         }
 

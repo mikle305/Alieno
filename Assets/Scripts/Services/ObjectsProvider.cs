@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cinemachine;
 using GamePlay.Other.Navigators;
 using StaticData.Prefabs;
@@ -9,7 +10,21 @@ namespace Services
 {
     public class ObjectsProvider
     {
-        public Hud Hud { get; set; }
+        private Hud _hud;
+
+
+        public event Action HudLoaded;
+
+        public Hud Hud
+        {
+            get => _hud;
+            set
+            {
+                _hud = value;
+                HudLoaded?.Invoke();
+            }
+        }
+
         public GameObject Character { get; set; }
         public Rigidbody CharacterRigidbody { get; set; }
         public RoomsMap RoomsMap { get; set; }

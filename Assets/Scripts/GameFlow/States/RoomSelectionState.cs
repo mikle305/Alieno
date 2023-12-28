@@ -30,6 +30,7 @@ namespace GameFlow.States
         public override void Enter()
         {
             _musicService.Play(MusicId.PerkSelection);
+            _objectsProvider.Hud.gameObject.SetActive(false);
             _levelMapService.ToRoomInvoked += EnterRoomLoading;
             _levelMapService.ToMainMenuInvoked += EnterMainMenu;
             _levelMapService.SetRoom(_saveService.Progress.PlayerData.Room - 2);

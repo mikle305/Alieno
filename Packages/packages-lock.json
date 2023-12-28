@@ -30,6 +30,13 @@
       "dependencies": {},
       "hash": "5cc97c7f0085624b6ef57853d70b404440060cef"
     },
+    "com.mikle305.webgl-utils": {
+      "version": "https://github.com/mikle305/WebGLUtils.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "bc8179cd63879370c68e9068c53d6437e458632e"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

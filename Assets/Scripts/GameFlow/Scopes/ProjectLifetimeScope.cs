@@ -11,6 +11,7 @@ using Services.Statuses;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using WebGLUtils;
 
 namespace GameFlow
 {
@@ -108,8 +109,13 @@ namespace GameFlow
                 new PlayerPrefsStorage<Progress>(GameConstants.PrefsProgressKey));
         }
 
-        private void RegisterInputService(IContainerBuilder builder) 
-            => builder.Register<IInputService, InputService>(Lifetime.Singleton);
+        private void RegisterInputService(IContainerBuilder builder)
+        {
+            if (Application.isMobilePlatform || WebApplication.IsMobile)
+                builder.RegisterEntryPoint<MobileInputService>().As<IInputService>();
+            else
+                builder.Register<IInputService, StandaloneInputService>(Lifetime.Singleton);
+        }
 
         private void RegisterEmptyMono(IContainerBuilder builder)
             => builder
