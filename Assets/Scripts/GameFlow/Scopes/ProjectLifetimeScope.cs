@@ -80,7 +80,7 @@ namespace GameFlow
             builder.Register<SettingsService>(Lifetime.Singleton);
             builder.Register<AbilitySelectionService>(Lifetime.Singleton);
             builder.Register<SceneLoader>(Lifetime.Singleton);
-            builder.Register<LevelMapService>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<LevelMapService>().AsSelf();
             builder.Register<RadarService>(Lifetime.Singleton);
         }
 

@@ -98,7 +98,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43b7164cfeb4c56843962f706a0b4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _background: {fileID: 0}
   _canvasGroup: {fileID: 8328675655065387151}
   _targetAlpha: 1
   _duration: 0.3
@@ -456,3 +457,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ac6c88b7a79ba4a950adc6703bbdfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderMode: 1

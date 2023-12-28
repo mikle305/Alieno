@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
+using Additional.Constants;
 using StaticData.GameConfig;
 using UnityEngine;
 using VContainer.Unity;
 
 namespace Services
 {
-    public class LevelMapService
+    public class LevelMapService : ITickable
     {
         private int _currentRoom = -1;
         private Vector3 _positionToMove;
@@ -16,7 +17,8 @@ namespace Services
         private readonly LevelMapData _levelMapData;
         private readonly ICoroutineRunner _coroutineRunner;
 
-        public event Action AnimationFinished;
+        public event Action ToRoomInvoked;
+        public event Action ToMainMenuInvoked;
 
 
         private LevelMapService(
@@ -27,6 +29,12 @@ namespace Services
             _objectsProvider = objectsProvider;
             _coroutineRunner = coroutineRunner;
             _levelMapData = staticDataService.GetGamePlayConfig().LevelMapData;
+        }
+
+        public void Tick()
+        {
+            if (SimpleInput.GetButtonDown(InputConstants.MainMenu))
+                ToMainMenuInvoked?.Invoke();
         }
 
         public void SetRoom(int currentRoom)
@@ -40,13 +48,16 @@ namespace Services
 
             if (CheckForAutoSkip())
             {
-                AnimationFinished?.Invoke();
+                ToRoomInvoked?.Invoke();
                 return;
             }
 
             _objectsProvider.RoomsMap.gameObject.SetActive(true);
             _objectsProvider.RoomsMap.NextLvlButton.onClick.AddListener(DisplayNextRoom);
         }
+        
+        public void ExitLevelMap()
+            => _objectsProvider.RoomsMap.NextLvlButton.onClick.RemoveListener(DisplayNextRoom);
 
         public void DisplayNextRoom()
         {
@@ -88,7 +99,7 @@ namespace Services
             yield return new WaitForSeconds(1f);
 
             _animation = null;
-            AnimationFinished?.Invoke();
+            ToRoomInvoked?.Invoke();
         }
 
         private void SkipAnimation()
@@ -97,7 +108,7 @@ namespace Services
             _animation = null;
 
             _objectsProvider.RoomsMap.Pointer.position = _positionToMove;
-            AnimationFinished?.Invoke();
+            ToRoomInvoked?.Invoke();
         }
     }
 }

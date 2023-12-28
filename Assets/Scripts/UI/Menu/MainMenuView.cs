@@ -12,7 +12,7 @@ namespace UI.Menu
         [SerializeField] private Transform _mainCamera;
         [SerializeField] private PathCreator _cameraPath;
         [SerializeField] private Transform _cameraLookAt;
-        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private CanvasGroup[] _canvasGroups;
         
         [SerializeField] private float _cameraMoveDuration = 1.5f;
         [SerializeField] private float _cameraRotateSpeed = 2;
@@ -83,6 +83,15 @@ namespace UI.Menu
         }
 
         private Tween FadeUi()
-            => _canvasGroup.DOFade(0, _uiFadeDuration);
+        {
+            Sequence sequence = DOTween.Sequence();
+            foreach (CanvasGroup canvasGroup in _canvasGroups)
+            {
+                canvasGroup.interactable = false;
+                sequence.Join(canvasGroup.DOFade(0, _uiFadeDuration));
+            }
+
+            return sequence;
+        }
     }
 }

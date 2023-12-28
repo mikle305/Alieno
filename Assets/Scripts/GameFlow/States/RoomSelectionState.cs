@@ -13,8 +13,12 @@ namespace GameFlow.States
         private readonly SaveService _saveService;
 
 
-        public RoomSelectionState(GameStateMachine context, MusicService musicService, LevelMapService levelMapService,
-            ObjectsProvider objectsProvider, SaveService saveService)
+        public RoomSelectionState(
+            GameStateMachine context, 
+            MusicService musicService, 
+            LevelMapService levelMapService,
+            ObjectsProvider objectsProvider, 
+            SaveService saveService)
         {
             _context = context;
             _levelMapService = levelMapService;
@@ -26,18 +30,25 @@ namespace GameFlow.States
         public override void Enter()
         {
             _musicService.Play(MusicId.PerkSelection);
-            _levelMapService.AnimationFinished += EnterRoomLoadingState;
+            _levelMapService.ToRoomInvoked += EnterRoomLoading;
+            _levelMapService.ToMainMenuInvoked += EnterMainMenu;
             _levelMapService.SetRoom(_saveService.Progress.PlayerData.Room - 2);
         }
 
         public override void Exit()
         {
-            _levelMapService.AnimationFinished -= EnterRoomLoadingState;
-            _objectsProvider.RoomsMap.gameObject.SetActive(false);
-            _objectsProvider.RoomsMap.NextLvlButton.onClick.RemoveListener(_levelMapService.DisplayNextRoom);
+            _levelMapService.ToRoomInvoked -= EnterRoomLoading;
+            _levelMapService.ToMainMenuInvoked -= EnterMainMenu;
+            _levelMapService.ExitLevelMap();
         }
 
-        private void EnterRoomLoadingState()
-            => _context.Enter<RoomLoadingState>();
+        private void EnterRoomLoading()
+        {
+            _objectsProvider.RoomsMap.gameObject.SetActive(false);
+            _context.Enter<RoomLoadingState>();
+        }
+
+        private void EnterMainMenu() 
+            => _context.Enter<MainMenuState>();
     }
 }

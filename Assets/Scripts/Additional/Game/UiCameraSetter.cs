@@ -7,6 +7,8 @@ namespace Additional.Game
     [RequireComponent(typeof(Canvas))]
     public class UiCameraSetter : MonoBehaviour
     {
+        [SerializeField] private RenderMode _renderMode = RenderMode.ScreenSpaceCamera;
+        
         private ObjectsProvider _objectsProvider;
         
         
@@ -18,13 +20,9 @@ namespace Additional.Game
 
         private void Start()
         {
-            Camera uiCamera = _objectsProvider != null
-                 ? _objectsProvider.UiCamera
-                 : null;
-
             var canvas = GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceCamera;
-            canvas.worldCamera = uiCamera;
+            canvas.renderMode = _renderMode;
+            canvas.worldCamera = _objectsProvider?.UiCamera;
             canvas.planeDistance = 5;
         }
     }
