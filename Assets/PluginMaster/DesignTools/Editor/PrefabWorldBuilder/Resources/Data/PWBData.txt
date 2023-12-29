@@ -12,7 +12,7 @@
     "_tempCollidersAction": 1,
     "_paletteManager": {
         "_selectedPaletteIdx": 0,
-        "_selectedBrushIdx": 44,
+        "_selectedBrushIdx": 30,
         "_showBrushName": false,
         "_viewList": false,
         "_showTabsInMultipleRows": false,
@@ -162,7 +162,7 @@
         "_unsavedProfile": {
             "_paintOnMeshesWithoutCollider": false,
             "_paintOnSelectedOnly": false,
-            "_paintOnPalettePrefabs": false,
+            "_paintOnPalettePrefabs": true,
             "_mode": 0,
             "_paralellToTheSurface": true,
             "_repeat": false,
@@ -184,7 +184,7 @@
                 "_createSubparentPerPrefab": true,
                 "_overwritePrefabLayer": false,
                 "_layer": 0,
-                "_overwriteBrushProperties": false,
+                "_overwriteBrushProperties": true,
                 "_brushSettings": {
                     "_id": 638393747087894612,
                     "_surfaceDistance": 0.0,
@@ -205,7 +205,7 @@
                     "_rotateToTheSurface": true,
                     "_eulerOffset": {
                         "x": 0.0,
-                        "y": 0.0,
+                        "y": 270.0,
                         "z": 0.0
                     },
                     "_addRandomRotation": false,
@@ -595,7 +595,7 @@
                 "z": 0.0
             },
             "_spacingType": 0,
-            "_minSpacing": 5.000005722045898,
+            "_minSpacing": 2.5,
             "_randomizePositions": true,
             "_randomness": 1.0,
             "_paintOnSurfaceToolSettings": {
@@ -1381,7 +1381,7 @@
             "_projectionDirection": {
                 "x": 0.0,
                 "y": -1.0,
-                "z": 0.0
+                "z": -2.2204462064146296e-18
             },
             "_objectsOrientedAlongTheLine": true,
             "_axisOrientedAlongTheLine": 0,
@@ -1507,12 +1507,12 @@
                 }
             },
             "_shapeType": 1,
-            "_sidesCount": 5,
+            "_sidesCount": 4,
             "_axisNormalToSurface": true,
             "_normal": {
                 "x": 0.0,
                 "y": 1.0,
-                "z": 0.0
+                "z": 2.2204462064146296e-18
             },
             "_projectInNormalDir": true
         },
@@ -1678,8 +1678,8 @@
             "_paralellToTheSurface": true,
             "_cellSizeType": 0,
             "_cellSize": {
-                "x": 5.000000476837158,
-                "y": 4.997766971588135
+                "x": 5.0,
+                "y": 0.9148119688034058
             },
             "_rotation": {
                 "x": 0.0,
@@ -10174,6 +10174,888 @@
                         "_initialBrushId": 638357362817187322
                     }
                 ]
+            },
+            {
+                "_sceneGUID": "808d662560657184abf3e1f5a5482342",
+                "_items": [
+                    {
+                        "_id": 638394614526031239,
+                        "_objectPoses": [
+                            {
+                                "_id": {
+                                    "_instanceId": -17576,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-2034228542"
+                                },
+                                "_position": {
+                                    "x": -0.8460783958435059,
+                                    "y": 0.0,
+                                    "z": 12.30883502960205
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17606,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-492644695"
+                                },
+                                "_position": {
+                                    "x": -0.8460783958435059,
+                                    "y": 0.0,
+                                    "z": 17.308834075927736
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17624,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1999509989"
+                                },
+                                "_position": {
+                                    "x": -0.8460783362388611,
+                                    "y": 0.0,
+                                    "z": 22.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17642,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-449820718"
+                                },
+                                "_position": {
+                                    "x": -0.8460783362388611,
+                                    "y": 0.0,
+                                    "z": 27.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17660,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1061910947"
+                                },
+                                "_position": {
+                                    "x": -0.8460783362388611,
+                                    "y": 0.0,
+                                    "z": 32.308841705322269
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17678,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-2074228576"
+                                },
+                                "_position": {
+                                    "x": -5.846080303192139,
+                                    "y": 0.0,
+                                    "z": 12.30883502960205
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17696,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-662265516"
+                                },
+                                "_position": {
+                                    "x": -5.846080780029297,
+                                    "y": 0.0,
+                                    "z": 17.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17714,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1792667411"
+                                },
+                                "_position": {
+                                    "x": -5.8460798263549809,
+                                    "y": 0.0,
+                                    "z": 22.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17732,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-428586203"
+                                },
+                                "_position": {
+                                    "x": -5.846080303192139,
+                                    "y": 0.0,
+                                    "z": 27.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17750,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1905635929"
+                                },
+                                "_position": {
+                                    "x": -5.846080303192139,
+                                    "y": 0.0,
+                                    "z": 32.308841705322269
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17768,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1319135653"
+                                },
+                                "_position": {
+                                    "x": -10.846081733703614,
+                                    "y": 0.0,
+                                    "z": 12.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17786,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-476965264"
+                                },
+                                "_position": {
+                                    "x": -10.846081733703614,
+                                    "y": 0.0,
+                                    "z": 17.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17804,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1283755598"
+                                },
+                                "_position": {
+                                    "x": -10.846081733703614,
+                                    "y": 0.0,
+                                    "z": 22.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17822,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1439521008"
+                                },
+                                "_position": {
+                                    "x": -10.846081733703614,
+                                    "y": 0.0,
+                                    "z": 27.308837890625
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17840,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-58342564"
+                                },
+                                "_position": {
+                                    "x": -10.846081733703614,
+                                    "y": 0.0,
+                                    "z": 32.308841705322269
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17858,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1480658697"
+                                },
+                                "_position": {
+                                    "x": -15.84608268737793,
+                                    "y": 0.0,
+                                    "z": 12.30883502960205
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17876,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-460346379"
+                                },
+                                "_position": {
+                                    "x": -15.84608268737793,
+                                    "y": 0.0,
+                                    "z": 17.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17894,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-357066030"
+                                },
+                                "_position": {
+                                    "x": -15.84608268737793,
+                                    "y": 0.0,
+                                    "z": 22.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17912,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1650925805"
+                                },
+                                "_position": {
+                                    "x": -15.84608268737793,
+                                    "y": 0.0,
+                                    "z": 27.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17930,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1730452166"
+                                },
+                                "_position": {
+                                    "x": -15.84608268737793,
+                                    "y": 0.0,
+                                    "z": 32.308837890625
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17948,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-2086559001"
+                                },
+                                "_position": {
+                                    "x": -20.846084594726564,
+                                    "y": 0.0,
+                                    "z": 12.30883502960205
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17966,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1959813406"
+                                },
+                                "_position": {
+                                    "x": -20.846084594726564,
+                                    "y": 0.0,
+                                    "z": 17.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -17984,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-486742191"
+                                },
+                                "_position": {
+                                    "x": -20.846084594726564,
+                                    "y": 0.0,
+                                    "z": 22.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18002,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1307230589"
+                                },
+                                "_position": {
+                                    "x": -20.846084594726564,
+                                    "y": 0.0,
+                                    "z": 27.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18020,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-929561641"
+                                },
+                                "_position": {
+                                    "x": -20.846084594726564,
+                                    "y": 0.0,
+                                    "z": 32.308837890625
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18038,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-737695809"
+                                },
+                                "_position": {
+                                    "x": -25.846088409423829,
+                                    "y": 0.0,
+                                    "z": 12.30883502960205
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18056,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-1592903958"
+                                },
+                                "_position": {
+                                    "x": -25.84609031677246,
+                                    "y": 0.0,
+                                    "z": 17.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18074,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-2098261236"
+                                },
+                                "_position": {
+                                    "x": -25.846088409423829,
+                                    "y": 0.0,
+                                    "z": 22.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18092,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-148015669"
+                                },
+                                "_position": {
+                                    "x": -25.846084594726564,
+                                    "y": 0.0,
+                                    "z": 27.308835983276368
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            },
+                            {
+                                "_id": {
+                                    "_instanceId": -18110,
+                                    "_globalObjId": "GlobalObjectId_V1-2-808d662560657184abf3e1f5a5482342-1038443014498638-697011967"
+                                },
+                                "_position": {
+                                    "x": -25.846088409423829,
+                                    "y": 0.0,
+                                    "z": 32.308837890625
+                                },
+                                "_localRotation": {
+                                    "x": 0.0,
+                                    "y": 0.0,
+                                    "z": 0.0,
+                                    "w": 1.0
+                                },
+                                "_localScale": {
+                                    "x": 1.0,
+                                    "y": 1.0,
+                                    "z": 1.0
+                                }
+                            }
+                        ],
+                        "_controlPoints": [
+                            {
+                                "position": {
+                                    "x": 1.6539226770401,
+                                    "y": -2.177998978332134e-17,
+                                    "z": 9.80883502960205
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": -31.042865753173829,
+                                    "y": -2.177998978332134e-17,
+                                    "z": 9.80883502960205
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": -31.042865753173829,
+                                    "y": 0.0,
+                                    "z": 38.707313537597659
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": 1.6539226770401,
+                                    "y": -2.177998978332134e-17,
+                                    "z": 38.707313537597659
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": -14.69447135925293,
+                                    "y": -2.177998978332134e-17,
+                                    "z": 9.80883502960205
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": -31.042865753173829,
+                                    "y": -1.088999489166067e-17,
+                                    "z": 24.258075714111329
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": -14.69447135925293,
+                                    "y": -1.088999489166067e-17,
+                                    "z": 38.707313537597659
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": 1.6539226770401,
+                                    "y": -2.177998978332134e-17,
+                                    "z": 24.258073806762697
+                                }
+                            },
+                            {
+                                "position": {
+                                    "x": -14.69447135925293,
+                                    "y": -1.088999489166067e-17,
+                                    "z": 24.258075714111329
+                                }
+                            }
+                        ],
+                        "_settings": {
+                            "_paintOnMeshesWithoutCollider": false,
+                            "_paintOnSelectedOnly": false,
+                            "_paintOnPalettePrefabs": false,
+                            "_mode": 0,
+                            "_paralellToTheSurface": true,
+                            "_cellSizeType": 0,
+                            "_cellSize": {
+                                "x": 5.000001907348633,
+                                "y": 5.000000476837158
+                            },
+                            "_rotation": {
+                                "x": 0.0,
+                                "y": 0.0,
+                                "z": 0.0,
+                                "w": 1.0
+                            },
+                            "_spacing": {
+                                "x": 0.0,
+                                "y": 0.0
+                            },
+                            "_axisAlignedWithNormal": {
+                                "_axis": 1,
+                                "_sign": 1
+                            },
+                            "_showPreview": true,
+                            "_paintTool": {
+                                "_parentGlobalId": "",
+                                "_autoCreateParent": true,
+                                "_setSurfaceAsParent": false,
+                                "_createSubparentPerPalette": true,
+                                "_createSubparentPerTool": true,
+                                "_createSubparentPerBrush": false,
+                                "_createSubparentPerPrefab": true,
+                                "_overwritePrefabLayer": false,
+                                "_layer": 0,
+                                "_overwriteBrushProperties": false,
+                                "_brushSettings": {
+                                    "_id": 638394624878166906,
+                                    "_surfaceDistance": 0.0,
+                                    "_randomSurfaceDistance": false,
+                                    "_randomSurfaceDistanceRange": {
+                                        "_v1": -0.004999999888241291,
+                                        "_v2": 0.004999999888241291,
+                                        "_min": -0.004999999888241291,
+                                        "_max": 0.004999999888241291
+                                    },
+                                    "_embedInSurface": false,
+                                    "_embedAtPivotHeight": true,
+                                    "_localPositionOffset": {
+                                        "x": 0.0,
+                                        "y": 0.0,
+                                        "z": 0.0
+                                    },
+                                    "_rotateToTheSurface": true,
+                                    "_eulerOffset": {
+                                        "x": 0.0,
+                                        "y": 0.0,
+                                        "z": 0.0
+                                    },
+                                    "_addRandomRotation": false,
+                                    "_rotationFactor": 90.0,
+                                    "_rotateInMultiples": false,
+                                    "_randomEulerOffset": {
+                                        "x": {
+                                            "_v1": 0.0,
+                                            "_v2": 0.0,
+                                            "_min": 0.0,
+                                            "_max": 0.0
+                                        },
+                                        "y": {
+                                            "_v1": 0.0,
+                                            "_v2": 0.0,
+                                            "_min": 0.0,
+                                            "_max": 0.0
+                                        },
+                                        "z": {
+                                            "_v1": 0.0,
+                                            "_v2": 0.0,
+                                            "_min": 0.0,
+                                            "_max": 0.0
+                                        }
+                                    },
+                                    "_alwaysOrientUp": false,
+                                    "_separateScaleAxes": false,
+                                    "_scaleMultiplier": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0
+                                    },
+                                    "_randomScaleMultiplier": false,
+                                    "_randomScaleMultiplierRange": {
+                                        "x": {
+                                            "_v1": 1.0,
+                                            "_v2": 1.0,
+                                            "_min": 1.0,
+                                            "_max": 1.0
+                                        },
+                                        "y": {
+                                            "_v1": 1.0,
+                                            "_v2": 1.0,
+                                            "_min": 1.0,
+                                            "_max": 1.0
+                                        },
+                                        "z": {
+                                            "_v1": 1.0,
+                                            "_v2": 1.0,
+                                            "_min": 1.0,
+                                            "_max": 1.0
+                                        }
+                                    },
+                                    "_flipX": 0,
+                                    "_flipY": 0,
+                                    "_thumbnailSettings": {
+                                        "_backgroudColor": {
+                                            "r": 0.5,
+                                            "g": 0.5,
+                                            "b": 0.5,
+                                            "a": 1.0
+                                        },
+                                        "_lightEuler": {
+                                            "x": 130.0,
+                                            "y": -165.0
+                                        },
+                                        "_lightColor": {
+                                            "r": 1.0,
+                                            "g": 1.0,
+                                            "b": 1.0,
+                                            "a": 1.0
+                                        },
+                                        "_lightIntensity": 1.0,
+                                        "_zoom": 1.0,
+                                        "_targetEuler": {
+                                            "x": 0.0,
+                                            "y": 125.0,
+                                            "z": 0.0
+                                        },
+                                        "_targetOffset": {
+                                            "x": 0.0,
+                                            "y": 0.0
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "_state": 3,
+                        "_initialBrushId": 638394596045379590
+                    }
+                ]
             }
         ]
     },
@@ -10438,10 +11320,10 @@
         ],
         "_selectedProfileName": "Default",
         "_unsavedProfile": {
-            "_radius": 1.0,
+            "_radius": 3.083798885345459,
             "_modifierTool": {
                 "_command": 0,
-                "_allButSelected": false,
+                "_allButSelected": true,
                 "_onlyTheClosest": false
             },
             "_outermostPrefabFilter": true
@@ -11164,7 +12046,7 @@
             "_origin": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 14.96923828125
+                "z": 34.255340576171878
             },
             "_rotation": {
                 "x": 0.0,

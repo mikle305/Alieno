@@ -13,7 +13,7 @@ namespace SaveData
         public float CurrentHealth = DefaultPlayerProgress.Health;
         public Dictionary<AbilityId, int> CurrentAbilities = DefaultPlayerProgress.GetAbilities();
 
-        public bool AbilitySelected = true;
+        public bool AbilitySelected = DefaultPlayerProgress.AbilitySelected;
         public AbilityId[] GeneratedAbilities = Array.Empty<AbilityId>();
     }
 }

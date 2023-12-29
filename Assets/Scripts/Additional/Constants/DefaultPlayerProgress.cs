@@ -10,6 +10,7 @@ namespace Additional.Constants
         public const int Room = 1;
 
         public const int SelectionAbilitiesCount = 3;
+        public const bool AbilitySelected = true;
 
         public static Dictionary<AbilityId, int> GetAbilities()
             => new()

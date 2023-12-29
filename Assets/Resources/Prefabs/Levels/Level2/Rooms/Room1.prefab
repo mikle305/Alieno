@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 7
+  <HealthMultiplier>k__BackingField: 1
 --- !u!1 &607183209686810767
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +264,7 @@ MonoBehaviour:
   <EntryPoint>k__BackingField: {fileID: 8753052059331104429}
   <ExitPoint>k__BackingField: {fileID: 3499944506714914547}
   <BackgroundMusic>k__BackingField: 1
+  <EnemiesHealthMultiplier>k__BackingField: 1
 --- !u!1 &1948274761661137945
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 7
+  <HealthMultiplier>k__BackingField: 1
 --- !u!1 &4781715718314242449
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +903,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 83c2387c6c5b27b4fa05f170d7aaff7b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2c38602465acb6f4fb7020205066ee5f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5811214571273439144
 GameObject:
@@ -1619,6 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Id>k__BackingField: 8
+  <HealthMultiplier>k__BackingField: 1
 --- !u!1 &8304082433910684610
 GameObject:
   m_ObjectHideFlags: 0

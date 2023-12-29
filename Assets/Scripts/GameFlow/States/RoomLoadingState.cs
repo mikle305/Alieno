@@ -93,7 +93,7 @@ namespace GameFlow.States
             var aliveEnemies = new List<Transform>(enemySpawns.Length);
             foreach (EnemySpawn enemySpawn in enemySpawns)
             {
-                GameObject enemy = _enemyFactory.Create(enemySpawn);
+                GameObject enemy = _enemyFactory.Create(enemySpawn, _currentRoom.EnemiesHealthMultiplier);
                 aliveEnemies.Add(enemy.transform);
             }
 

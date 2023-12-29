@@ -37,10 +37,11 @@ namespace GameFlow.States
         private void SetNextLevelProgress()
         {
             PlayerData playerData = _saveService.Progress.PlayerData;
-            playerData.Room = DefaultPlayerProgress.Room;
             playerData.Level++;
+            playerData.Room = DefaultPlayerProgress.Room;
             playerData.CurrentHealth = DefaultPlayerProgress.Health;
             playerData.GeneratedAbilities = Array.Empty<AbilityId>();
+            playerData.AbilitySelected = DefaultPlayerProgress.AbilitySelected;
             playerData.CurrentAbilities = DefaultPlayerProgress.GetAbilities();
 
             _saveService.Save();

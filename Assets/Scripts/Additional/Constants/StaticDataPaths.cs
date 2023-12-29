@@ -8,5 +8,6 @@
         public const string UiConfig = "StaticData/Configs/UiConfig";
         public const string PoolsConfig = "StaticData/Configs/PoolsConfig";
         public const string GamePlayConfig = "StaticData/Configs/GamePlayConfig";
+        public const string EnemiesConfig = "StaticData/Configs/EnemiesConfig";
     }
 }

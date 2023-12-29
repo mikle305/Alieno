@@ -7469,7 +7469,7 @@
                 "_min": -0.004999999888241291,
                 "_max": 0.004999999888241291
             },
-            "_embedInSurface": false,
+            "_embedInSurface": true,
             "_embedAtPivotHeight": true,
             "_localPositionOffset": {
                 "x": 0.0,
@@ -9061,7 +9061,7 @@
             "_rotateToTheSurface": false,
             "_eulerOffset": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 180.0,
                 "z": 0.0
             },
             "_addRandomRotation": false,

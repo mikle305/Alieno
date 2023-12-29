@@ -1,5 +1,7 @@
-﻿using GamePlay.Enemy;
+﻿using GamePlay.Characteristics;
+using GamePlay.Enemy;
 using GamePlay.Other.Ids;
+using StaticData.Enemies;
 using UnityEngine;
 
 namespace Services.Factories
@@ -16,14 +18,26 @@ namespace Services.Factories
             _staticDataService = staticDataService;
         }
 
-        public GameObject Create(EnemySpawn enemySpawn) 
-            => SpawnNew(enemySpawn);
+        public GameObject Create(EnemySpawn enemySpawn, float roomHealthMultiplier)
+        {
+            GameObject enemy = SpawnEnemy(enemySpawn);
+            InitHealth(enemy, enemySpawn, roomHealthMultiplier);
+            return enemy;
+        }
 
-        private GameObject SpawnNew(EnemySpawn enemySpawn)
+        private GameObject SpawnEnemy(EnemySpawn enemySpawn)
         {
             GameObject prefab = GetPrefab(enemySpawn.Id);
             Transform spawnTransform = enemySpawn.transform;
-            return _objectActivator.Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
+            GameObject enemy = _objectActivator.Instantiate(prefab, spawnTransform.position, Quaternion.identity, spawnTransform);
+            return enemy;
+        }
+
+        private void InitHealth(GameObject enemy, EnemySpawn enemySpawn, float roomHealthMultiplier)
+        {
+            EnemyEntry enemyConfig = _staticDataService.GetEnemiesConfig().GetEnemy(enemySpawn.Id);
+            float health = enemyConfig.Health * roomHealthMultiplier * enemySpawn.HealthMultiplier;
+            enemy.GetComponent<HealthData>().Init(health, health);
         }
 
         private GameObject GetPrefab(EnemyId id)

@@ -1,5 +1,6 @@
 ﻿using Additional.Constants;
 using StaticData.Abilities;
+using StaticData.Enemies;
 using StaticData.GameConfig;
 using StaticData.Music;
 using StaticData.Pools;
@@ -17,6 +18,7 @@ namespace Services
         private AbilitiesConfig _abilitiesConfig;
         private PoolsConfig _poolsConfig;
         private GamePlayConfig _gamePlayConfig;
+        private EnemiesConfig _enemiesConfig;
 
 
         public MusicConfig GetMusicConfig()
@@ -34,10 +36,13 @@ namespace Services
         public PoolsConfig GetPoolsConfig()
             => _poolsConfig ??= LoadData<PoolsConfig>(StaticDataPaths.PoolsConfig);
 
+        public EnemiesConfig GetEnemiesConfig()
+            => _enemiesConfig ??= LoadData<EnemiesConfig>(StaticDataPaths.EnemiesConfig);
+
         public GamePlayConfig GetGamePlayConfig()
             => _gamePlayConfig ??= LoadData<GamePlayConfig>(StaticDataPaths.GamePlayConfig);
 
-        
+
         private static T LoadData<T>(string path)
             where T : Object
             => Resources.Load<T>(path);
